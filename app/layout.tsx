@@ -38,6 +38,11 @@ export const metadata: Metadata = {
     description,
     images: ["/logo.png"],
   },
+  icons: {
+    icon: "/logo-icon.png",
+    shortcut: "/logo-icon.png",
+    apple: "/logo-icon.png",
+  },
   robots: {
     index: true,
     follow: true,
