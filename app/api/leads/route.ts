@@ -24,7 +24,7 @@ async function sendConfirmationEmail(lead: LeadData) {
   if (!lead.email) return;
 
   const voornaam = lead.voornaam ?? "";
-  const from = process.env.RESEND_FROM_EMAIL ?? "Warmtepomp.ai <noreply@warmtepompai.vercel.app>";
+  const from = process.env.RESEND_FROM_EMAIL ?? "Warmtepomp.ai <noreply@warmtepomp.ai>";
 
   const html = `
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
