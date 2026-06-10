@@ -16,7 +16,7 @@ const benefits = [
   {
     icon: ShieldIcon,
     title: "Eerlijk advies",
-    body: "Geen verborgen belangen of provisie-afspraken met fabrikanten. We vergelijken alle grote merken op prijs, efficiency en geschiktheid.",
+    body: "Geen verborgen belangen of provisie-afspraken met fabrikanten. We geven onafhankelijk advies over het beste type warmtepomp voor jouw situatie en koppelen je aan meerdere installateurs om te vergelijken.",
     note: "100% onafhankelijk",
   },
 ];

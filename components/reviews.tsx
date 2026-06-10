@@ -21,7 +21,7 @@ const reviews = [
     location: "Eindhoven",
     rating: 4,
     date: "februari 2025",
-    text: "Heel helder stappenplan en de vergelijking tussen merken was goed onderbouwd. Fijn dat ze niet aan één installateur vastzaten.",
+    text: "Heel helder stappenplan en het advies over welk type warmtepomp het beste paste was goed onderbouwd. Fijn dat ze me aan meerdere installateurs konden koppelen.",
   },
 ];
 

@@ -18,7 +18,7 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   title: "Warmtepomp.ai – Vind de beste warmtepomp voor jouw woning",
   description:
-    "Onafhankelijke keuzehulp voor warmtepompen in Nederland. Persoonlijk advies, actuele subsidie-informatie en vergelijking van 40+ merken.",
+    "Onafhankelijke keuzehulp voor warmtepompen in Nederland. Persoonlijk advies over het beste type warmtepomp, actuele subsidie-informatie en gekoppeld aan gecertificeerde installateurs bij jou in de buurt.",
 };
 
 export default function RootLayout({

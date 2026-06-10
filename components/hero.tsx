@@ -4,7 +4,7 @@ import { StarIcon } from "./icons";
 
 const stats = [
   { value: "€3.500", label: "max subsidie 2025" },
-  { value: "40+", label: "merken vergeleken" },
+  { value: "Gratis", label: "installateurs vergelijken" },
   { value: "100%", label: "onafhankelijk advies" },
 ];
 
