@@ -211,36 +211,43 @@ export default function VergelijkPage() {
               <p className="mb-6 text-white/60">
                 We gebruiken dit om installateurs bij jou in de buurt te vinden.
               </p>
-              <div className="relative">
-                <MapPinIcon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-green" />
-                <input
-                  type="text"
-                  value={data.postcode}
-                  onChange={(e) => {
-                    update("postcode", e.target.value.toUpperCase());
-                    if (postcodeError) setPostcodeError("");
-                  }}
-                  placeholder="1234AB"
-                  maxLength={7}
-                  autoComplete="postal-code"
-                  aria-label="Postcode"
-                  aria-describedby={postcodeError ? "postcode-error" : undefined}
-                  className="w-full rounded-xl border-2 border-white/20 bg-white/5 py-4 pl-11 pr-4 text-base text-white placeholder:text-white/30 outline-none transition-all focus:border-turquoise focus:bg-white/10"
-                />
-              </div>
-              {postcodeError && (
-                <p id="postcode-error" role="alert" className="mt-2 text-sm text-red-400">
-                  {postcodeError}
-                </p>
-              )}
-              <button
-                type="button"
-                onClick={handlePostcodeNext}
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-7 py-4 text-base font-bold text-dark shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5 sm:w-auto"
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handlePostcodeNext();
+                }}
+                noValidate
               >
-                Volgende
-                <ArrowRight className="h-5 w-5" />
-              </button>
+                <div className="relative">
+                  <MapPinIcon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-green" />
+                  <input
+                    type="text"
+                    value={data.postcode}
+                    onChange={(e) => {
+                      update("postcode", e.target.value.toUpperCase());
+                      if (postcodeError) setPostcodeError("");
+                    }}
+                    placeholder="1234AB"
+                    maxLength={7}
+                    autoComplete="postal-code"
+                    aria-label="Postcode"
+                    aria-describedby={postcodeError ? "postcode-error" : undefined}
+                    className="w-full rounded-xl border-2 border-white/20 bg-white/5 py-4 pl-11 pr-4 text-base text-white placeholder:text-white/30 outline-none transition-all focus:border-turquoise focus:bg-white/10"
+                  />
+                </div>
+                {postcodeError && (
+                  <p id="postcode-error" role="alert" className="mt-2 text-sm text-red-400">
+                    {postcodeError}
+                  </p>
+                )}
+                <button
+                  type="submit"
+                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-7 py-4 text-base font-bold text-dark shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5 sm:w-auto"
+                >
+                  Volgende
+                  <ArrowRight className="h-5 w-5" />
+                </button>
+              </form>
             </Step>
           )}
 
