@@ -56,7 +56,7 @@ const types = [
     ],
     nadelen: ["Hoge investeringskosten", "Boring in de tuin nodig"],
     kosten: "€12.000 – €20.000",
-    subsidie: "Op aanvraag",
+    subsidie: "Gratis berekenen",
     sterren: 3,
   },
   {

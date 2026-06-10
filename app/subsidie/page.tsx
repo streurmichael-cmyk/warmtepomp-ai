@@ -25,6 +25,8 @@ const bedragen = [
     description:
       "Het indicatieve maximumbedrag voor een lucht-water warmtepomp. De exacte hoogte hangt af van het vermogen van de installatie.",
     highlight: true,
+    ctaHref: undefined as string | undefined,
+    ctaLabel: undefined as string | undefined,
   },
   {
     icon: ShieldIcon,
@@ -33,14 +35,18 @@ const bedragen = [
     description:
       "Voor een hybride warmtepomp, die je cv-ketel aanvult, geldt mogelijk een lager subsidiebedrag dan voor een volledig elektrische warmtepomp.",
     highlight: false,
+    ctaHref: undefined as string | undefined,
+    ctaLabel: undefined as string | undefined,
   },
   {
     icon: QuestionIcon,
     title: "Overige types",
-    amount: "Op aanvraag",
+    amount: "Gratis berekening",
     description:
-      "Voor bijvoorbeeld bodem- of water/water-warmtepompen gelden mogelijk andere bedragen en voorwaarden. Wij rekenen dit graag voor je uit.",
+      "Voor bijvoorbeeld bodem- of water/water-warmtepompen gelden andere bedragen en voorwaarden, afhankelijk van het vermogen van de installatie. Vul de keuzehulp in en wij rekenen dit gratis en persoonlijk voor je uit.",
     highlight: false,
+    ctaHref: "/vergelijk" as string | undefined,
+    ctaLabel: "Vraag jouw berekening aan" as string | undefined,
   },
 ];
 
@@ -135,6 +141,15 @@ export default function SubsidiePage() {
                   >
                     {item.description}
                   </p>
+                  {item.ctaHref && (
+                    <Link
+                      href={item.ctaHref}
+                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-green hover:underline"
+                    >
+                      {item.ctaLabel}
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  )}
                 </article>
               ))}
             </div>
