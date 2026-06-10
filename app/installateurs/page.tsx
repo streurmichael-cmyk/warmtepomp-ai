@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Gecertificeerde warmtepomp installateurs bij jou in de buurt | warmtepomp.ai",
   description:
-    "Vind een gecertificeerde warmtepomp installateur bij jou in de buurt. Vergelijk gratis offertes en ontvang binnen 24 uur reactie.",
+    "Vind een gecertificeerde warmtepomp installateur bij jou in de buurt. Plan een gratis adviesgesprek en ontvang binnen 24 uur reactie.",
   path: "/installateurs",
 });
 
@@ -20,8 +20,8 @@ const benefits = [
   },
   {
     icon: NetworkIcon,
-    title: "Meerdere offertes vergelijken",
-    body: "Ontvang meerdere offertes en vergelijk prijs, levertijd en beoordelingen op één plek.",
+    title: "Adviesgesprek en offerte op maat",
+    body: "Na een vrijblijvend gesprek en eventuele opname bij je thuis ontvang je een offerte die aansluit op jouw woning.",
   },
   {
     icon: ConversationIcon,
@@ -54,8 +54,8 @@ export default function InstallateursPage() {
               Vind een gecertificeerde warmtepomp installateur bij jou in de buurt
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted">
-              Vul je postcode en woningtype in en ontvang gratis en vrijblijvend offertes van
-              installateurs uit jouw regio.
+              Vul je postcode en woningtype in. Een installateur uit jouw regio neemt contact op
+              voor een gratis en vrijblijvend adviesgesprek.
             </p>
 
             <InstallateursLeadForm />

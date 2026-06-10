@@ -35,7 +35,7 @@ export async function generateMetadata({
 
   return buildMetadata({
     title: `Warmtepomp installateur ${city.name} | Gratis vergelijken | warmtepomp.ai`,
-    description: `Vind de beste warmtepomp installateur in ${city.name}. Vergelijk prijzen, lees reviews en ontvang gratis offertes. ISDE subsidie tot €2.500.`,
+    description: `Vind een gecertificeerde warmtepomp installateur in ${city.name}. Plan een gratis adviesgesprek. ISDE subsidie tot €2.500.`,
     path: `/installateurs/${city.slug}`,
   });
 }
@@ -69,7 +69,7 @@ export default async function StadPage({
     {
       icon: ConversationIcon,
       title: "Gratis en vrijblijvend",
-      body: "Het invullen van de keuzehulp en het ontvangen van offertes is volledig gratis en je zit nergens aan vast.",
+      body: "Het invullen van de keuzehulp en het adviesgesprek met een installateur zijn volledig gratis en je zit nergens aan vast.",
     },
   ];
 
@@ -119,8 +119,8 @@ export default async function StadPage({
                 Voordat je een installateur kiest, is het slim om eerst te weten welk type
                 warmtepomp het beste bij jouw woning past. Onze gratis keuzehulp geeft je in een
                 paar minuten persoonlijk advies over het beste type, de geschatte kosten en de
-                ISDE-subsidie. Daarna ontvang je gratis offertes van installateurs in {city.name}{" "}
-                en omgeving.
+                ISDE-subsidie. Daarna plan je een gratis adviesgesprek met een installateur in{" "}
+                {city.name} en omgeving, die op basis daarvan een offerte op maat opstelt.
               </p>
             </div>
 

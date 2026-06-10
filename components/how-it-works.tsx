@@ -17,7 +17,7 @@ const steps = [
     number: "3",
     icon: NetworkIcon,
     title: "Ga aan de slag",
-    body: "Vergelijk offertes van gecertificeerde installateurs in jouw regio.",
+    body: "Plan een gratis adviesgesprek met een gecertificeerde installateur bij jou in de buurt.",
   },
 ];
 

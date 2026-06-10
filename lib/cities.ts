@@ -51,7 +51,7 @@ export const cities: City[] = [
       },
       {
         q: "Zijn er gecertificeerde installateurs actief in Rotterdam?",
-        a: "Ja, Rotterdam heeft een ruim aanbod aan gecertificeerde installateurs, van de havenrand tot de wijken rondom het centrum. Via warmtepomp.ai vraag je gratis offertes aan bij installateurs in jouw regio.",
+        a: "Ja, Rotterdam heeft een ruim aanbod aan gecertificeerde installateurs, van de havenrand tot de wijken rondom het centrum. Via warmtepomp.ai plan je gratis een adviesgesprek met installateurs in jouw regio.",
       },
       {
         q: "Is mijn woning in Rotterdam geschikt voor een warmtepomp?",
@@ -95,7 +95,7 @@ export const cities: City[] = [
       },
       {
         q: "Zijn er gecertificeerde installateurs actief in Den Haag?",
-        a: "Ja, in de regio Den Haag zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel de jaren '30-wijken als de Vinex-wijken. Via onze keuzehulp ontvang je gratis offertes van installateurs bij jou in de buurt.",
+        a: "Ja, in de regio Den Haag zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel de jaren '30-wijken als de Vinex-wijken. Via onze keuzehulp plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
       },
       {
         q: "Is mijn woning in Den Haag geschikt voor een warmtepomp?",
@@ -117,7 +117,7 @@ export const cities: City[] = [
       },
       {
         q: "Zijn er gecertificeerde installateurs actief in Eindhoven?",
-        a: "Ja, in de regio Eindhoven en de bredere Brainport-regio zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai vraag je gratis en vrijblijvend offertes aan bij installateurs bij jou in de buurt.",
+        a: "Ja, in de regio Eindhoven en de bredere Brainport-regio zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai plan je gratis en vrijblijvend een adviesgesprek met installateurs bij jou in de buurt.",
       },
       {
         q: "Is mijn woning in Eindhoven geschikt voor een warmtepomp?",
@@ -139,7 +139,7 @@ export const cities: City[] = [
       },
       {
         q: "Zijn er gecertificeerde installateurs actief in Almere?",
-        a: "Ja, in Almere en de directe omgeving zijn meerdere gecertificeerde installateurs actief. Via onze keuzehulp ontvang je gratis offertes van installateurs bij jou in de buurt.",
+        a: "Ja, in Almere en de directe omgeving zijn meerdere gecertificeerde installateurs actief. Via onze keuzehulp plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
       },
       {
         q: "Is mijn woning in Almere geschikt voor een warmtepomp?",
@@ -161,7 +161,7 @@ export const cities: City[] = [
       },
       {
         q: "Zijn er gecertificeerde installateurs actief in Haarlem?",
-        a: "Ja, in Haarlem en omgeving zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel de historische binnenstad als de naoorlogse wijken. Via warmtepomp.ai ontvang je gratis offertes van installateurs bij jou in de buurt.",
+        a: "Ja, in Haarlem en omgeving zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel de historische binnenstad als de naoorlogse wijken. Via warmtepomp.ai plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
       },
       {
         q: "Is mijn woning in Haarlem geschikt voor een warmtepomp?",
@@ -183,7 +183,7 @@ export const cities: City[] = [
       },
       {
         q: "Zijn er gecertificeerde installateurs actief in Leiden?",
-        a: "Ja, in Leiden en de regio zijn meerdere gecertificeerde installateurs actief. Via onze keuzehulp vraag je gratis en vrijblijvend offertes aan bij installateurs bij jou in de buurt.",
+        a: "Ja, in Leiden en de regio zijn meerdere gecertificeerde installateurs actief. Via onze keuzehulp plan je gratis en vrijblijvend een adviesgesprek met installateurs bij jou in de buurt.",
       },
       {
         q: "Is mijn woning in Leiden geschikt voor een warmtepomp?",
@@ -205,7 +205,7 @@ export const cities: City[] = [
       },
       {
         q: "Zijn er gecertificeerde installateurs actief in Zaandam?",
-        a: "Ja, in Zaandam en de regio Zaanstad zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai ontvang je gratis offertes van installateurs bij jou in de buurt.",
+        a: "Ja, in Zaandam en de regio Zaanstad zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
       },
       {
         q: "Is mijn woning in Zaandam geschikt voor een warmtepomp?",
@@ -226,7 +226,7 @@ export const cities: City[] = [
       },
       {
         q: "Zijn er gecertificeerde installateurs actief in Purmerend?",
-        a: "Ja, in Purmerend en de regio Waterland zijn meerdere gecertificeerde installateurs actief. Via onze keuzehulp ontvang je gratis en vrijblijvend offertes van installateurs bij jou in de buurt.",
+        a: "Ja, in Purmerend en de regio Waterland zijn meerdere gecertificeerde installateurs actief. Via onze keuzehulp plan je gratis en vrijblijvend een adviesgesprek met installateurs bij jou in de buurt.",
       },
       {
         q: "Is mijn woning in Purmerend geschikt voor een warmtepomp?",

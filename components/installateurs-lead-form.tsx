@@ -169,8 +169,8 @@ export function InstallateursLeadForm({
       {step === "lead" && (
         <form onSubmit={handleLeadSubmit} noValidate className="space-y-4">
           <p className="text-sm text-muted">
-            We hebben installateurs gevonden in {postcode}. Vul je gegevens in om vrijblijvend
-            offertes te ontvangen.
+            We hebben installateurs gevonden in {postcode}. Vul je gegevens in voor een
+            vrijblijvend adviesgesprek.
           </p>
           <div>
             <div className="relative">
@@ -238,7 +238,7 @@ export function InstallateursLeadForm({
             disabled={submitting}
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-7 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
           >
-            {submitting ? "Versturen..." : "Ontvang offertes"}
+            {submitting ? "Versturen..." : "Plan adviesgesprek"}
             {!submitting && <ArrowRight className="h-5 w-5" />}
           </button>
         </form>
@@ -251,8 +251,10 @@ export function InstallateursLeadForm({
           </div>
           <h2 className="font-display text-xl font-bold text-dark">Bedankt, {voornaam}!</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            We hebben je een bevestigingsmail gestuurd. Installateurs bij jou in de buurt nemen
-            binnen 24 uur contact met je op.
+            We hebben je een bevestigingsmail gestuurd. Een installateur bij jou in de buurt
+            neemt binnen 24 uur contact op voor een vrijblijvend adviesgesprek. Is een
+            warmtepomp geschikt voor jouw woning? Dan volgt een opname bij je thuis, waarna je
+            een offerte op maat ontvangt.
           </p>
         </div>
       )}
