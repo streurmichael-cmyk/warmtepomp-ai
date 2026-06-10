@@ -256,6 +256,437 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "warmtepomp-kosten-2026-compleet-overzicht",
+    title: "Warmtepomp Kosten 2026: Compleet Overzicht Aanschaf en Installatie",
+    description:
+      "Alle kosten van een warmtepomp op een rij: aanschaf, installatie, bijkomende kosten, subsidie en de invloed van je woning. Het complete kostenoverzicht voor 2026.",
+    publishedAt: "2026-06-24",
+    intro:
+      "Wat kost een warmtepomp nu eigenlijk echt? Niet alleen het apparaat zelf, maar ook de installatie, eventuele aanpassingen aan je woning en de jaarlijkse kosten daarna. In dit artikel zetten we alle kostenposten voor 2026 op een rij, zodat je vooraf weet waar je rekening mee moet houden — en hoeveel je dankzij subsidie kunt terugkrijgen.",
+    sections: [
+      {
+        type: "text",
+        heading: "De drie meest voorkomende type warmtepompen en hun prijs",
+        paragraphs: [
+          "De prijs van een warmtepomp hangt sterk af van het type. Een hybride warmtepomp, die naast je bestaande cv-ketel werkt, kost gemiddeld €3.500 tot €7.000 inclusief installatie. Dit is voor veel huishoudens de meest toegankelijke instap, omdat je je verwarmingssysteem niet volledig hoeft te vervangen.",
+          "Een volledig elektrische lucht-water warmtepomp, die je cv-ketel helemaal vervangt, kost doorgaans €6.000 tot €12.000 inclusief installatie. De prijs hangt af van het vermogen dat je woning nodig heeft, het merk en eventuele aanpassingen aan je afgiftesysteem (radiatoren of vloerverwarming).",
+          "Een bodem-water warmtepomp, die warmte uit de grond haalt via een bodemlus, is de duurste optie: reken op €12.000 tot €20.000 inclusief installatie en boorwerkzaamheden. Daar staat tegenover dat dit type vaak het meest efficiënt is en het hele jaar door een stabiele temperatuur uit de bodem haalt.",
+          "Deze bedragen zijn landelijke gemiddelden, gebaseerd op cijfers van Milieu Centraal, de Consumentenbond en RVO. De exacte prijs voor jouw situatie hangt af van je woning, het gewenste vermogen en de installateur die je kiest.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Waar bestaan de installatiekosten precies uit?",
+        paragraphs: [
+          "De totaalprijs die je van een installateur krijgt, bestaat meestal uit een aantal onderdelen: het apparaat zelf (de buitenunit en eventueel een binnenunit of boilervat), het installatiemateriaal (leidingen, koudemiddel, elektra), het arbeidsloon van de monteurs, en eventuele bijkomende werkzaamheden.",
+          "Bij een hybride warmtepomp is de installatie vaak in één dag klaar, omdat de bestaande cv-ketel en radiatoren blijven staan. Bij een volledig elektrische warmtepomp kan de installatie meerdere dagen duren, zeker als ook de radiatoren vervangen moeten worden door grotere exemplaren of als er (deels) vloerverwarming wordt aangelegd.",
+          "Een ander kostenonderdeel waar mensen vaak aan voorbijgaan: een nieuwe groep in de meterkast. Een warmtepomp heeft relatief veel stroom nodig, en niet elke meterkast heeft hier standaard ruimte voor. Een elektricien moet hier soms apart voor langskomen, wat een paar honderd euro kan kosten.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/kosten",
+        label: "Bekijk het volledige kostenoverzicht per type",
+        description:
+          "Vergelijk de kosten van hybride, lucht-water en bodem-water warmtepompen inclusief subsidie en besparing.",
+      },
+      {
+        type: "text",
+        heading: "Bijkomende kosten waar je rekening mee moet houden",
+        paragraphs: [
+          "Naast de aanschaf en installatie zijn er een paar kostenposten die vaak vergeten worden. Allereerst: isolatie. Voor een volledig elektrische warmtepomp is het belangrijk dat je woning goed geïsoleerd is, anders loopt je energierekening alsnog op. Als je woning nog niet goed geïsoleerd is, kan dit een investering van enkele duizenden euro's betekenen — al kom je daar vaak ook voor in aanmerking voor subsidie.",
+          "Ten tweede: onderhoud. Een warmtepomp heeft, net als een cv-ketel, periodiek onderhoud nodig om optimaal te blijven functioneren. Reken op een onderhoudscontract van ongeveer €100 tot €200 per jaar, afhankelijk van de leverancier.",
+          "Ten derde: de buitenunit. Bij sommige woningen is een geluiddempende ombouw of een speciale plaatsing nodig, bijvoorbeeld vanwege regelgeving rond geluid bij de buren. Dit is meestal een relatief kleine kostenpost, maar telt wel mee in de totale prijs.",
+          "Tot slot: als je een bodem-water warmtepomp overweegt, moet er een vergunning worden aangevraagd voor de bodemlus. De kosten hiervoor verschillen per gemeente, maar een goede installateur regelt dit doorgaans voor je en neemt het mee in de offerte.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Hoeveel subsidie kun je aftrekken van de aanschafprijs?",
+        paragraphs: [
+          "Via de ISDE-subsidie kun je een vast bedrag terugkrijgen, afhankelijk van het type en vermogen van je warmtepomp. Voor een lucht-water warmtepomp is dit doorgaans tot €2.500. Voor een hybride warmtepomp ligt het bedrag meestal lager, en voor een bodem-water warmtepomp vaak hoger, omdat deze installaties duurder zijn.",
+          "Reken je de subsidie mee, dan daalt de netto-investering voor een gemiddelde lucht-water warmtepomp van bijvoorbeeld €9.000 naar ongeveer €6.500. Voor een hybride warmtepomp van €5.000 kan de netto-investering uitkomen op ongeveer €4.000 tot €4.500, afhankelijk van het exacte subsidiebedrag voor jouw installatie.",
+          "Let op: de ISDE-bedragen worden jaarlijks vastgesteld door RVO en kunnen wijzigen. Controleer voor je definitieve berekening altijd de actuele bedragen.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/subsidie",
+        label: "Check hoeveel ISDE-subsidie jij kunt krijgen",
+        description:
+          "Bekijk de actuele subsidiebedragen per type warmtepomp en lees hoe je de aanvraag doet.",
+      },
+      {
+        type: "text",
+        heading: "Wat levert het op? Terugverdientijd en maandlasten",
+        paragraphs: [
+          "De terugverdientijd van een warmtepomp hangt af van de aanschafprijs, de subsidie, je huidige energierekening en hoeveel je bespaart op gas. Voor een hybride warmtepomp ligt de terugverdientijd voor veel woningen tussen de 4 en 7 jaar. Voor een volledig elektrische warmtepomp duurt dit vaak iets langer, maar daar staat tegenover dat je helemaal van het gas af bent en minder afhankelijk bent van gasprijsschommelingen.",
+          "Qua maandlasten zien veel huishoudens dat hun gasrekening flink daalt, terwijl de stroomrekening iets stijgt. Per saldo houden de meeste mensen een netto besparing over, zeker met de huidige energieprijzen. Hoeveel dat precies is, hangt sterk af van je woning, je stookgedrag en het elektriciteitscontract dat je hebt.",
+          "Wil je niet zelf gaan rekenen, maar gewoon weten wat een warmtepomp voor jouw specifieke woning ongeveer gaat kosten en opleveren? Onze gratis keuzehulp geeft je in een paar minuten een persoonlijk overzicht van de kosten, subsidie en geschatte besparing.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/vergelijk",
+        label: "Bereken de kosten voor jouw woning",
+        description:
+          "Vul een paar vragen over je woning in en ontvang direct een persoonlijke kosteninschatting.",
+      },
+      {
+        type: "text",
+        heading: "Conclusie",
+        paragraphs: [
+          "De kosten van een warmtepomp variëren flink, van zo'n €3.500 voor een hybride warmtepomp tot €20.000 voor een bodem-water systeem. Door rekening te houden met bijkomende kosten zoals isolatie, een extra groep in de meterkast en onderhoud, voorkom je verrassingen achteraf. Met de ISDE-subsidie en de besparing op je energierekening verdien je de investering bij de meeste woningen binnen enkele jaren terug. Twijfel je welk type het beste bij jouw woning past en wat dat ongeveer gaat kosten? Start de gratis keuzehulp voor een persoonlijk advies.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "warmtepomp-subsidie-aanvragen-stap-voor-stap",
+    title: "ISDE Subsidie Aanvragen in 2026: Stap voor Stap Uitgelegd",
+    description:
+      "Een praktische stap-voor-stap handleiding voor het aanvragen van de ISDE-subsidie voor je warmtepomp in 2026, inclusief documenten, deadlines en veelgemaakte fouten.",
+    publishedAt: "2026-06-26",
+    intro:
+      "De ISDE-subsidie kan honderden tot duizenden euro's schelen op de aanschaf van je warmtepomp, maar de aanvraag voelt voor veel mensen onnodig ingewikkeld. In dit artikel lopen we stap voor stap door het hele proces: van de voorbereiding tot het moment dat het geld op je rekening staat.",
+    sections: [
+      {
+        type: "text",
+        heading: "Voordat je begint: wat heb je nodig?",
+        paragraphs: [
+          "Voor je aan de aanvraag begint, is het handig om een aantal zaken alvast te verzamelen. Je hebt een DigiD nodig om in te loggen op mijn.rvo.nl, je rekeningnummer (IBAN) waarop de subsidie gestort moet worden, en straks de offerte, factuur en betaalbewijs van je warmtepomp.",
+          "Het is belangrijk om te weten dat je de aanvraag pas kunt indienen ná de installatie en betaling van je warmtepomp — niet vooraf. De offerte heb je wel al vóór de installatie nodig, dus bewaar deze goed zodra je hem ontvangt van je installateur.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Stap 1: kies een erkend installatiebedrijf en vraag een offerte aan",
+        paragraphs: [
+          "De eerste stap is het kiezen van een installateur. Voor de ISDE-subsidie is het belangrijk dat de installatie wordt uitgevoerd door een vakbekwaam installatiebedrijf — dit is niet alleen een subsidievoorwaarde, maar ook je garantie voor een correct afgestelde warmtepomp.",
+          "Vraag bij voorkeur offertes aan bij twee tot drie installateurs, zodat je kunt vergelijken op prijs, levertijd en het type warmtepomp dat geadviseerd wordt. Let erop dat de offerte duidelijk het merk, type, vermogen en de COP-waarde (de efficiëntie) van de warmtepomp vermeldt — deze gegevens heb je later nodig bij je aanvraag.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/vergelijk",
+        label: "Vind een installateur en vergelijk offertes",
+        description:
+          "Vul de gratis keuzehulp in en plan een vrijblijvend adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        type: "text",
+        heading: "Stap 2: laat de warmtepomp installeren en bewaar alle documenten",
+        paragraphs: [
+          "Na akkoord op de offerte plant de installateur de installatie in. Tijdens of na de installatie ontvang je een factuur. Controleer deze goed: staat het type warmtepomp, het vermogen en de COP-waarde correct vermeld? Klopt het bedrag met de offerte? Eventuele extra werkzaamheden, zoals een nieuwe groep in de meterkast, mogen vaak ook worden meegenomen in de aanvraag, dus zorg dat deze ook duidelijk op de factuur staan.",
+          "Betaal de factuur en bewaar het betaalbewijs (bijvoorbeeld een bankafschrift of betalingsbevestiging). Zonder geldig betaalbewijs kan RVO je aanvraag afwijzen, dus dit is een document dat je niet mag missen.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Stap 3: log in op mijn.rvo.nl en vul het aanvraagformulier in",
+        paragraphs: [
+          "Ga naar mijn.rvo.nl en log in met je DigiD. Kies de regeling 'ISDE' en vervolgens de categorie voor warmtepompen voor particuliere woningeigenaren. Het formulier vraagt om je persoonlijke gegevens, het adres waar de warmtepomp is geïnstalleerd, en gegevens over de installatie zelf, zoals het type, merk en vermogen.",
+          "Vervolgens upload je de offerte, de factuur en het betaalbewijs als bijlagen. Zorg dat dit duidelijk leesbare scans of foto's zijn — onleesbare documenten zijn een veelvoorkomende reden voor vertraging.",
+          "Controleer aan het einde van het formulier al je gegevens nog een keer voordat je de aanvraag definitief verstuurt. Na het indienen ontvang je een ontvangstbevestiging per e-mail.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/subsidie",
+        label: "Bekijk de actuele ISDE-bedragen per warmtepomp",
+        description:
+          "Zie hoeveel subsidie je kunt verwachten voor jouw type warmtepomp voordat je de aanvraag indient.",
+      },
+      {
+        type: "text",
+        heading: "Stap 4: wachten op de beoordeling en uitbetaling",
+        paragraphs: [
+          "Na het indienen beoordeelt RVO je aanvraag. Dit duurt meestal enkele weken, maar kan in drukke periodes (bijvoorbeeld vlak na de jaarwisseling, wanneer veel mensen tegelijk een aanvraag indienen) langer duren.",
+          "Wordt je aanvraag goedgekeurd, dan ontvang je een toekenningsbrief en wordt het subsidiebedrag overgemaakt op het rekeningnummer dat je hebt opgegeven. Wordt je aanvraag afgewezen of wil RVO aanvullende informatie, dan ontvang je hierover bericht — vaak kun je in dat geval binnen een bepaalde termijn alsnog de ontbrekende documenten aanleveren.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Veelgemaakte fouten en hoe je ze voorkomt",
+        paragraphs: [
+          "De meest voorkomende fout is een onvolledige of onduidelijke factuur, waarop bijvoorbeeld het vermogen van de warmtepomp ontbreekt. Vraag je installateur vooraf om te bevestigen dat de factuur alle benodigde technische gegevens bevat.",
+          "Een andere fout is te lang wachten met de aanvraag. Hoewel je vaak 12 maanden de tijd hebt, kan het jaarlijkse subsidiebudget eerder op raken. Dien je aanvraag daarom in zodra je alle documenten compleet hebt.",
+          "Tot slot: sommige mensen denken dat de installateur de subsidie automatisch voor hen aanvraagt. Dat is meestal niet het geval — de aanvraag en de verantwoordelijkheid daarvoor liggen bij jou als woningeigenaar, ook al kan een installateur je hier soms wel bij helpen.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/kosten",
+        label: "Bekijk wat een warmtepomp kost ná aftrek van subsidie",
+        description:
+          "Zie hoe de ISDE-subsidie de netto-investering van jouw warmtepomp verlaagt.",
+      },
+      {
+        type: "text",
+        heading: "Conclusie",
+        paragraphs: [
+          "De ISDE-aanvraag is geen ingewikkeld proces, zolang je de juiste documenten op het juiste moment verzamelt: een duidelijke offerte vooraf, en een complete factuur en betaalbewijs na installatie. Door je aanvraag op tijd in te dienen via mijn.rvo.nl, voorkom je dat je misloopt op subsidie. Wil je eerst weten welk type warmtepomp het beste bij jouw woning past en hoeveel subsidie je daarvoor ongeveer kunt verwachten? Start de gratis keuzehulp voor een persoonlijk advies.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "beste-warmtepomp-merken-2026",
+    title: "Beste Warmtepomp Merken 2026: Daikin, Vaillant, Bosch Vergeleken",
+    description:
+      "Een eerlijke vergelijking van populaire warmtepompmerken in 2026: Daikin, Vaillant, Bosch en meer. Wat zijn de verschillen en waar moet je op letten bij je keuze?",
+    publishedAt: "2026-06-29",
+    intro:
+      "Bij het kiezen van een warmtepomp kom je al snel een aantal bekende merknamen tegen: Daikin, Vaillant, Bosch, en nog een paar anderen. Maar wat zijn nu eigenlijk de verschillen, en hoe belangrijk is het merk eigenlijk voor jouw uiteindelijke keuze? In dit artikel zetten we de meest gekozen merken op een rij en geven we praktische tips voor het maken van je keuze.",
+    sections: [
+      {
+        type: "text",
+        heading: "Hoe belangrijk is het merk eigenlijk?",
+        paragraphs: [
+          "Voordat we de merken bespreken, eerst een belangrijke nuance: het merk is niet het enige — en vaak ook niet het belangrijkste — onderdeel van een goede warmtepompinstallatie. Minstens zo belangrijk is of het vermogen van de warmtepomp goed is afgestemd op jouw woning, en of de installateur de installatie vakkundig uitvoert en goed afstelt.",
+          "Een topmerk dat verkeerd is gedimensioneerd of slecht is afgesteld, presteert in de praktijk vaak slechter dan een minder bekend merk dat wél goed is geïnstalleerd. Toch hebben de grote merken wel degelijk verschillen in geluidsniveau, efficiëntie (uitgedrukt in COP- en SCOP-waarden), garantievoorwaarden en de beschikbaarheid van onderdelen en servicemonteurs.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Daikin",
+        paragraphs: [
+          "Daikin is een van de bekendste namen op de Nederlandse markt en heeft een breed assortiment, van hybride warmtepompen tot volledig elektrische lucht-water systemen. Het merk staat bekend om een relatief stille werking en een ruim landelijk netwerk van installateurs en servicemonteurs, wat handig is mocht er ooit onderhoud nodig zijn.",
+          "Daikin-warmtepompen zitten qua prijs vaak in het middensegment tot iets hoger. Voor mensen die zekerheid willen over de beschikbaarheid van onderdelen en service in de toekomst, is dit een belangrijk voordeel.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Vaillant",
+        paragraphs: [
+          "Vaillant is van oudsher vooral bekend van cv-ketels, maar heeft inmiddels ook een sterk aanbod aan warmtepompen, waaronder hybride modellen die goed samenwerken met bestaande Vaillant-ketels. Dit kan praktisch zijn als je al een Vaillant-ketel hebt en op zoek bent naar een hybride oplossing.",
+          "Vaillant-warmtepompen worden over het algemeen goed beoordeeld op betrouwbaarheid en hebben vaak een ruime garantietermijn op onderdelen, mits het onderhoud wordt uitgevoerd door een erkende installateur.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Bosch",
+        paragraphs: [
+          "Bosch biedt een breed scala aan warmtepompen, van compacte hybride modellen tot grotere lucht-water systemen voor volledig elektrische verwarming. Het merk staat bekend om een goede prijs-kwaliteitverhouding en een relatief eenvoudige bediening via een app.",
+          "Net als Daikin en Vaillant heeft Bosch een uitgebreid netwerk van installateurs in Nederland, wat zorgt voor een goede beschikbaarheid van onderdelen en service.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/warmtepompen",
+        label: "Lees meer over de verschillende types warmtepompen",
+        description:
+          "Voordat je een merk kiest, is het slim om eerst te weten welk type warmtepomp het beste bij jouw woning past.",
+      },
+      {
+        type: "text",
+        heading: "Andere merken die je tegenkomt",
+        paragraphs: [
+          "Naast Daikin, Vaillant en Bosch kom je in Nederland ook regelmatig merken tegen zoals Mitsubishi Electric, Nibe, Itho Daalderop, Remeha en Toshiba. Deze merken bieden vergelijkbare types warmtepompen en zitten vaak in een vergelijkbaar prijssegment, met net iets andere accenten — bijvoorbeeld op geluidsniveau, ontwerp van de buitenunit, of specifieke functies in de bijbehorende app.",
+          "Voor de meeste huishoudens geldt: de verschillen tussen deze A-merken zijn in de praktijk klein vergeleken met het effect van een goed afgestelde installatie. Het is daarom verstandiger om in eerste instantie te kiezen voor een installateur die je vertrouwt en die ervaring heeft met het type woning dat jij hebt, en pas daarna te kijken welk merk die installateur aanbeveelt.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Waar moet je op letten bij het vergelijken van merken en offertes?",
+        paragraphs: [
+          "Kijk allereerst naar de SCOP-waarde (Seasonal Coefficient of Performance) — dit geeft aan hoe efficiënt de warmtepomp het hele jaar door werkt. Hoe hoger de SCOP, hoe minder stroom de warmtepomp nodig heeft om dezelfde hoeveelheid warmte te leveren.",
+          "Let ook op het geluidsniveau van de buitenunit, vooral als deze dicht bij je eigen slaapkamer of die van de buren komt te staan. Dit wordt meestal uitgedrukt in decibel (dB) en kan per merk en model verschillen.",
+          "Vraag daarnaast naar de garantietermijn op onderdelen en arbeid, en of er in jouw regio voldoende servicemonteurs beschikbaar zijn voor het merk dat geadviseerd wordt. Tot slot: vergelijk niet alleen de aanschafprijs, maar ook de geschatte energiekosten op de lange termijn — een iets duurdere, efficiëntere warmtepomp kan zich op termijn terugbetalen.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/vergelijk",
+        label: "Ontvang advies zonder gebonden te zijn aan één merk",
+        description:
+          "Onze keuzehulp is onafhankelijk van merk en installateur — je krijgt advies dat past bij jouw woning, niet bij een specifiek merk.",
+      },
+      {
+        type: "text",
+        heading: "Conclusie",
+        paragraphs: [
+          "Daikin, Vaillant en Bosch zijn alledrie betrouwbare merken met een ruim aanbod aan warmtepompen en een goed servicenetwerk in Nederland — en hetzelfde geldt voor merken als Mitsubishi Electric, Nibe en Itho Daalderop. Het verschil tussen deze merken is voor de meeste woningen kleiner dan het verschil tussen een goed en een slecht uitgevoerde installatie. Kies daarom in eerste instantie een betrouwbare, gecertificeerde installateur, en laat die op basis van jouw woning een passend merk en model adviseren. Wil je weten welk type warmtepomp en welk vermogen bij jouw woning past? Start de gratis keuzehulp voor een persoonlijk advies.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "warmtepomp-geschikt-voor-mijn-woning",
+    title: "Is een Warmtepomp Geschikt voor Mijn Woning? De Complete Checklist",
+    description:
+      "Twijfel je of een warmtepomp geschikt is voor jouw woning? Deze complete checklist helpt je op basis van bouwjaar, isolatie, radiatoren en woningtype.",
+    publishedAt: "2026-07-01",
+    intro:
+      "Een van de meest gestelde vragen die we krijgen is: 'is een warmtepomp wel geschikt voor mijn woning?' Het goede nieuws is dat voor vrijwel elke woning een passende oplossing bestaat — de vraag is vooral wélk type warmtepomp het beste past. Met deze checklist loop je zelf de belangrijkste punten na.",
+    sections: [
+      {
+        type: "text",
+        heading: "1. Wat is het bouwjaar van je woning?",
+        paragraphs: [
+          "Het bouwjaar van je woning zegt vaak iets over de standaard isolatie en het type verwarmingssysteem. Woningen van vóór de jaren '70 hebben doorgaans minder isolatie en kleinere radiatoren, terwijl woningen vanaf de jaren '90 en zeker nieuwbouw vaak al goed geïsoleerd zijn en soms al vloerverwarming hebben.",
+          "Dit betekent niet dat een oudere woning ongeschikt is — het betekent vooral dat een hybride warmtepomp vaak een logischere eerste stap is voor oudere woningen, terwijl nieuwere woningen vaak direct geschikt zijn voor een volledig elektrische warmtepomp.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "2. Hoe is je woning geïsoleerd?",
+        paragraphs: [
+          "Isolatie is misschien wel de belangrijkste factor. Heeft je woning dubbel glas, dakisolatie, vloerisolatie en spouwmuurisolatie? Dan is de kans groot dat een volledig elektrische warmtepomp goed werkt, omdat je woning de warmte goed vasthoudt.",
+          "Is je woning nog niet (volledig) geïsoleerd, dan raden we vaak aan om eerst te kijken naar de meest voor de hand liggende isolatiemaatregelen — zoals dakisolatie of het vervangen van enkel glas — voordat je overstapt op een volledig elektrische warmtepomp. Een hybride warmtepomp kan in de tussentijd al wel voor een flinke besparing zorgen, zonder dat isolatie een vereiste is.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/kosten",
+        label: "Bekijk de kosten per type warmtepomp",
+        description:
+          "Zie wat hybride, lucht-water en bodem-water warmtepompen kosten, inclusief subsidie.",
+      },
+      {
+        type: "text",
+        heading: "3. Welk type radiatoren of vloerverwarming heb je?",
+        paragraphs: [
+          "Volledig elektrische warmtepompen werken het meest efficiënt met een lage aanvoertemperatuur — dus met (deels) vloerverwarming of grote lage-temperatuur radiatoren. Heb je nog kleine, oude radiatoren uit de jaren '60-70, dan kunnen deze soms onvoldoende warmte afgeven bij de lagere temperaturen van een volledig elektrische warmtepomp.",
+          "Dit is geen showstopper: vaak volstaat het om een aantal radiatoren te vervangen door grotere exemplaren, wat door een installateur tijdens de offerte wordt meegenomen. Of, als alternatief, kies je voor een hybride warmtepomp die ook bij hogere temperaturen goed functioneert.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "4. Welk woningtype heb je en hoeveel buitenruimte is er?",
+        paragraphs: [
+          "Bij een tussenwoning of appartement is er vaak beperkte ruimte voor een buitenunit, maar dit is bijna altijd op te lossen — denk aan plaatsing in de tuin, op een balkon of zelfs op een plat dak. Bij een vrijstaande woning of woning met veel grond is er bovendien de mogelijkheid om een bodem-water warmtepomp te overwegen, met een bodemlus in de tuin.",
+          "Bij appartementen in een gestapeld gebouw (bijvoorbeeld een flat) ligt de situatie vaak anders: hier is een individuele warmtepomp niet altijd mogelijk of wenselijk, en wordt verduurzaming soms collectief geregeld via de VvE. Woon je in een dergelijk gebouw, dan is het verstandig om dit gezamenlijk met de VvE te bespreken.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/warmtepompen",
+        label: "Welk type warmtepomp past bij jouw situatie?",
+        description: "Lees de uitleg over hybride, lucht-water, bodem-water en lucht-lucht warmtepompen.",
+      },
+      {
+        type: "text",
+        heading: "5. Hoeveel stroom kan je meterkast aan?",
+        paragraphs: [
+          "Een warmtepomp gebruikt meer stroom dan een cv-ketel, en niet elke meterkast heeft hier standaard voldoende capaciteit voor. Vooral bij oudere woningen met een verouderde meterkast kan een extra groep nodig zijn.",
+          "Dit is meestal eenvoudig op te lossen door een elektricien, maar het is wel een kostenpost om in je begroting mee te nemen. Een goede installateur checkt dit standaard tijdens de opname.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "6. Wat is je huidige energieverbruik en stookgedrag?",
+        paragraphs: [
+          "Tot slot speelt je huidige energieverbruik een rol bij het bepalen van het juiste vermogen van de warmtepomp. Een installateur kijkt hiervoor vaak naar je gasverbruik van de afgelopen jaren, het aantal vierkante meters dat verwarmd moet worden, en het aantal bewoners.",
+          "Een te kleine warmtepomp zal op koude dagen niet voldoende warmte kunnen leveren, terwijl een te grote warmtepomp onnodig duur is in aanschaf en minder efficiënt kan werken. Dit is precies waarom een goede opname door een installateur zo belangrijk is.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/vergelijk",
+        label: "Doe de gratis check voor jouw woning",
+        description:
+          "Beantwoord een paar vragen over je woning en ontvang direct een persoonlijk advies over welk type warmtepomp past.",
+      },
+      {
+        type: "text",
+        heading: "Conclusie",
+        paragraphs: [
+          "Voor vrijwel elke woning bestaat een passende warmtepompoplossing — de vraag is niet zozeer óf, maar wélk type. Bouwjaar, isolatie, het type radiatoren, je woningtype en de capaciteit van je meterkast bepalen samen welk type warmtepomp het beste past en wat de eventuele bijkomende werkzaamheden zijn. Loop je deze checklist door en blijf je toch met vragen zitten? Vul de gratis keuzehulp in en ontvang binnen een paar minuten een persoonlijk advies, afgestemd op jouw woning.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "warmtepomp-besparing-berekenen",
+    title: "Hoeveel Bespaar je met een Warmtepomp? Bereken het Zelf (2026)",
+    description:
+      "Reken zelf uit hoeveel je kunt besparen met een warmtepomp: van gasverbruik en energieprijzen tot subsidie en terugverdientijd. Met praktische rekenvoorbeelden voor 2026.",
+    publishedAt: "2026-07-03",
+    intro:
+      "Een warmtepomp kan flink besparen op je energierekening, maar hoeveel precies hangt af van jouw situatie. In dit artikel laten we zien welke factoren de besparing bepalen en geven we praktische rekenvoorbeelden, zodat je voor jouw eigen woning een goede inschatting kunt maken.",
+    sections: [
+      {
+        type: "text",
+        heading: "Welke factoren bepalen je besparing?",
+        paragraphs: [
+          "De besparing die een warmtepomp oplevert, hangt af van een aantal factoren: je huidige gasverbruik, het type warmtepomp dat je kiest, de actuele gas- en stroomprijzen, en de isolatiestaat van je woning.",
+          "In grote lijnen geldt: hoe hoger je huidige gasverbruik, hoe groter het besparingspotentieel. Een woning die nu 1.500 m³ gas per jaar verbruikt, heeft logischerwijs meer te besparen dan een woning die al maar 800 m³ verbruikt.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Stap 1: bepaal je huidige gasverbruik en -kosten",
+        paragraphs: [
+          "Kijk op je laatste jaarafrekening van je energieleverancier hoeveel m³ gas je het afgelopen jaar hebt verbruikt, en wat de gasprijs per m³ was. Vermenigvuldig deze twee getallen om je jaarlijkse gaskosten te bepalen.",
+          "Bijvoorbeeld: bij een verbruik van 1.200 m³ en een gasprijs van €1,30 per m³ kom je uit op €1.560 aan jaarlijkse gaskosten. Dit is je startpunt voor de berekening.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Stap 2: schat de besparing met een hybride warmtepomp",
+        paragraphs: [
+          "Een hybride warmtepomp neemt typisch 70 tot 90% van de verwarmingsvraag over, wat in de praktijk vaak neerkomt op een gasbesparing van 30 tot 50%. Bij ons voorbeeld van €1.560 aan gaskosten zou dit een besparing van ongeveer €470 tot €780 per jaar betekenen op je gasrekening.",
+          "Daar staat een stijging van je stroomverbruik tegenover, omdat de warmtepomp elektriciteit gebruikt. Voor een gemiddelde hybride warmtepomp komt dit neer op extra stroomkosten van ongeveer €200 tot €400 per jaar, afhankelijk van je stroomtarief en de hoeveelheid warmte die de warmtepomp levert.",
+          "Per saldo kom je voor een hybride warmtepomp dan vaak uit op een netto besparing van €200 tot €450 per jaar, bovenop het comfort van een modern verwarmingssysteem.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/kosten",
+        label: "Bekijk de aanschafkosten van een hybride warmtepomp",
+        description:
+          "Zie wat een hybride warmtepomp kost inclusief installatie en ISDE-subsidie.",
+      },
+      {
+        type: "text",
+        heading: "Stap 3: schat de besparing met een volledig elektrische warmtepomp",
+        paragraphs: [
+          "Bij een volledig elektrische lucht-water warmtepomp ga je (vrijwel) helemaal van het gas af. In ons voorbeeld zou je dus de volledige €1.560 aan gaskosten besparen — minus een klein bedrag voor eventueel resterend gasverbruik, bijvoorbeeld voor koken.",
+          "Daar staat een grotere stijging van je stroomverbruik tegenover dan bij een hybride warmtepomp, omdat de warmtepomp nu al jouw verwarming voor zijn rekening neemt. Voor een gemiddelde woning kan dit neerkomen op extra stroomkosten van ongeveer €700 tot €1.100 per jaar.",
+          "Per saldo houd je dan vaak een netto besparing over van €400 tot €700 per jaar, afhankelijk van je woning, isolatie en stroomtarief — plus dat je niet langer afhankelijk bent van de gasprijs.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Stap 4: reken de subsidie en terugverdientijd uit",
+        paragraphs: [
+          "Trek van de aanschafprijs eerst de ISDE-subsidie af om je netto-investering te bepalen. Voor een hybride warmtepomp van bijvoorbeeld €5.000 met een subsidie van €1.000 kom je op een netto-investering van €4.000. Bij een netto besparing van €300 per jaar is de terugverdientijd dan ongeveer 13 jaar — maar let op: dit is exclusief de stijgende gasprijzen, die de besparing in de praktijk vaak groter maken naarmate de jaren vorderen.",
+          "Voor een volledig elektrische warmtepomp van bijvoorbeeld €9.000 met €2.500 subsidie kom je op een netto-investering van €6.500. Bij een netto besparing van €550 per jaar kom je dan uit op een terugverdientijd van ongeveer 12 jaar.",
+          "Deze berekeningen zijn voorbeelden — de werkelijke cijfers voor jouw woning kunnen hoger of lager uitvallen, afhankelijk van je verbruik, isolatie en de energieprijzen op het moment van aanschaf.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/subsidie",
+        label: "Bekijk de actuele ISDE-subsidiebedragen",
+        description: "Zie hoeveel subsidie jij kunt krijgen en hoe dit je terugverdientijd verkort.",
+      },
+      {
+        type: "text",
+        heading: "Wat de berekening niet meeneemt, maar wel meetelt",
+        paragraphs: [
+          "Naast de directe besparing op je energierekening zijn er een paar zaken die niet altijd in een simpele berekening passen, maar wel waardevol zijn. Zo is een woning met een warmtepomp en een goed energielabel doorgaans meer waard bij verkoop. Daarnaast geeft een warmtepomp vaak meer comfort, bijvoorbeeld doordat hij ook kan koelen in de zomer (afhankelijk van het model).",
+          "Ook onafhankelijkheid van gas speelt voor veel mensen een rol: met een volledig elektrische warmtepomp ben je niet meer kwetsbaar voor schommelingen in de gasprijs, wat voor sommige huishoudens net zo belangrijk is als de besparing zelf.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/vergelijk",
+        label: "Bereken jouw persoonlijke besparing",
+        description:
+          "Vul de gratis keuzehulp in op basis van jouw woning en ontvang een berekening op maat.",
+      },
+      {
+        type: "text",
+        heading: "Conclusie",
+        paragraphs: [
+          "De besparing van een warmtepomp hangt sterk af van je huidige gasverbruik, het gekozen type en de energieprijzen — maar voor de meeste woningen geldt dat een warmtepomp na aftrek van subsidie binnen 10 tot 15 jaar is terugverdiend, met daarna jarenlang voordeel. Wil je niet zelf alle berekeningen maken, maar gewoon een persoonlijke inschatting voor jouw woning? Vul de gratis keuzehulp in en ontvang direct een advies inclusief geschatte besparing en terugverdientijd.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

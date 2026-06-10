@@ -234,6 +234,335 @@ export const cities: City[] = [
       },
     ],
   },
+  {
+    slug: "groningen",
+    name: "Groningen",
+    province: "Groningen",
+    context:
+      "Van de karakteristieke jaren '30-wijken zoals de Korrewegwijk en Helpman tot de moderne nieuwbouw rond Meerstad",
+    woningType: "jaren '30-woningen, studentenwoningen en nieuwbouw rond Meerstad",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Groningen?",
+        a: "In Groningen liggen de kosten van een hybride warmtepomp gemiddeld tussen €3.500 en €7.000, en een volledig elektrische lucht-water warmtepomp tussen €6.000 en €12.000, inclusief installatie. Voor de karakteristieke jaren '30-woningen in wijken als de Korrewegwijk is een hybride warmtepomp vaak een logische eerste stap.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Groningen?",
+        a: "Ja, in Groningen en de provincie zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel de oudere stadswijken als de nieuwbouw rond Meerstad. Via warmtepomp.ai plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Groningen geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor jaren '30-woningen en studentenwoningen in de bestaande stad is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwbouw rond Meerstad meestal al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "tilburg",
+    name: "Tilburg",
+    province: "Noord-Brabant",
+    context:
+      "Van de naoorlogse wijken rond het centrum en Tilburg-Noord tot de moderne nieuwbouw in de Reeshof",
+    woningType: "jaren '60-70 woningen en moderne nieuwbouw in de Reeshof",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Tilburg?",
+        a: "In Tilburg liggen de kosten van een hybride warmtepomp gemiddeld tussen €3.500 en €7.000, en een volledig elektrische lucht-water warmtepomp tussen €6.000 en €12.000, inclusief installatie. De staat van isolatie van jouw woning bepaalt mede welk type het beste past en wat dat kost.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Tilburg?",
+        a: "Ja, in Tilburg en de regio Hart van Brabant zijn meerdere gecertificeerde installateurs actief. Via onze keuzehulp plan je gratis en vrijblijvend een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Tilburg geschikt voor een warmtepomp?",
+        a: "Veel woningen in Tilburg zijn geschikt. Voor jaren '60-70 woningen rond het centrum en Tilburg-Noord is een hybride warmtepomp vaak een goede start, terwijl nieuwbouw in de Reeshof meestal al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "breda",
+    name: "Breda",
+    province: "Noord-Brabant",
+    context:
+      "Van de karakteristieke jaren '30-wijken zoals Belcrum en Brabantpark tot de moderne nieuwbouw in Nieuw Wolfslaar",
+    woningType: "jaren '30-woningen en moderne nieuwbouw",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Breda?",
+        a: "Een hybride warmtepomp kost in Breda gemiddeld €3.500 – €7.000 en een volledig elektrische lucht-water warmtepomp €6.000 – €12.000, inclusief installatie. Voor de karakteristieke jaren '30-woningen in Belcrum en Brabantpark is vaak eerst een hybride warmtepomp een logische stap.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Breda?",
+        a: "Ja, in Breda en omgeving zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel de oudere woonwijken als nieuwbouwprojecten. Via warmtepomp.ai plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Breda geschikt voor een warmtepomp?",
+        a: "Veel woningen in Breda zijn geschikt. Voor jaren '30-woningen in wijken als Brabantpark is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwbouw in Nieuw Wolfslaar meestal al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "nijmegen",
+    name: "Nijmegen",
+    province: "Gelderland",
+    context:
+      "Van de karakteristieke jaren '20-30 woningen in Nijmegen-Oost tot de nieuwbouwwijken in de Waalsprong",
+    woningType: "jaren '20-30 woningen en nieuwbouw in de Waalsprong",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Nijmegen?",
+        a: "In Nijmegen liggen de kosten van een hybride warmtepomp gemiddeld tussen €3.500 en €7.000, en een volledig elektrische lucht-water warmtepomp tussen €6.000 en €12.000, inclusief installatie. Voor de karakteristieke woningen in Nijmegen-Oost is vaak eerst een hybride warmtepomp de meest praktische keuze.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Nijmegen?",
+        a: "Ja, in Nijmegen en de regio zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel de oudere stadswijken als de nieuwbouw aan de overkant van de Waal. Via onze keuzehulp plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Nijmegen geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor jaren '20-30 woningen in Nijmegen-Oost is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwbouw in de Waalsprong doorgaans al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "enschede",
+    name: "Enschede",
+    province: "Overijssel",
+    context:
+      "Van de vernieuwde wijk Roombeek tot de jaren '70-wijken zoals Wesselerbrink en Velve-Lindenhof",
+    woningType: "jaren '70-woningen en moderne nieuwbouw in Roombeek",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Enschede?",
+        a: "In Enschede liggen de kosten van een hybride warmtepomp gemiddeld tussen €3.500 en €7.000, en een volledig elektrische lucht-water warmtepomp tussen €6.000 en €12.000, inclusief installatie. De exacte prijs hangt mede af van de isolatiestaat van jouw woning.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Enschede?",
+        a: "Ja, in Enschede en de regio Twente zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai plan je gratis en vrijblijvend een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Enschede geschikt voor een warmtepomp?",
+        a: "Veel woningen in Enschede zijn geschikt. Voor jaren '70-woningen in wijken als Wesselerbrink is een hybride warmtepomp vaak een goede start, terwijl de vernieuwde woningen in Roombeek meestal al geschikt zijn voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "zwolle",
+    name: "Zwolle",
+    province: "Overijssel",
+    context:
+      "Van de historische binnenstad binnen de grachten tot de groeiende nieuwbouwwijk Stadshagen",
+    woningType: "oudere binnenstadswoningen en nieuwbouw in Stadshagen",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Zwolle?",
+        a: "Een hybride warmtepomp kost in Zwolle gemiddeld €3.500 – €7.000 en een volledig elektrische lucht-water warmtepomp €6.000 – €12.000, inclusief installatie. Voor woningen in de historische binnenstad kan extra maatwerk nodig zijn, wat de prijs kan beïnvloeden.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Zwolle?",
+        a: "Ja, in Zwolle en omgeving zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel de historische binnenstad als de nieuwbouw in Stadshagen. Via onze keuzehulp plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Zwolle geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor oudere woningen binnen de grachten is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwbouw in Stadshagen meestal al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "amersfoort",
+    name: "Amersfoort",
+    province: "Utrecht",
+    context:
+      "Van de karakteristieke jaren '30-woningen in het Soesterkwartier tot de moderne nieuwbouw in Vathorst",
+    woningType: "jaren '30-woningen en nieuwbouw in Vathorst",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Amersfoort?",
+        a: "In Amersfoort liggen de kosten van een hybride warmtepomp gemiddeld tussen €3.500 en €7.000, en een volledig elektrische lucht-water warmtepomp tussen €6.000 en €12.000, inclusief installatie. Voor de jaren '30-woningen in het Soesterkwartier is vaak eerst een hybride warmtepomp een logische stap.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Amersfoort?",
+        a: "Ja, in Amersfoort en de regio Eemland zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Amersfoort geschikt voor een warmtepomp?",
+        a: "Veel woningen in Amersfoort zijn geschikt. Voor jaren '30-woningen in het Soesterkwartier is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwbouw in Vathorst meestal al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "apeldoorn",
+    name: "Apeldoorn",
+    province: "Gelderland",
+    context:
+      "Van de groene jaren '60-70 wijken tot de nieuwbouw in Zuidbroek en Het Vlaschveld",
+    woningType: "jaren '60-70 woningen en moderne nieuwbouw",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Apeldoorn?",
+        a: "In Apeldoorn liggen de kosten van een hybride warmtepomp gemiddeld tussen €3.500 en €7.000, en een volledig elektrische lucht-water warmtepomp tussen €6.000 en €12.000, inclusief installatie. De exacte prijs hangt af van het type woning en het vermogen van de warmtepomp.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Apeldoorn?",
+        a: "Ja, in Apeldoorn en de regio zijn meerdere gecertificeerde installateurs actief. Via onze keuzehulp plan je gratis en vrijblijvend een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Apeldoorn geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor jaren '60-70 woningen is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwbouw in Zuidbroek en Het Vlaschveld meestal al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "dordrecht",
+    name: "Dordrecht",
+    province: "Zuid-Holland",
+    context:
+      "Van de historische binnenstad op het eiland tot de nieuwbouwwijk Stadspolders",
+    woningType: "historische grachtenpanden en nieuwbouw in Stadspolders",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Dordrecht?",
+        a: "Een hybride warmtepomp kost in Dordrecht gemiddeld €3.500 – €7.000 en een volledig elektrische lucht-water warmtepomp €6.000 – €12.000, inclusief installatie. In de historische binnenstad kan extra maatwerk nodig zijn, wat de prijs kan beïnvloeden.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Dordrecht?",
+        a: "Ja, in Dordrecht en de Drechtsteden zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel historische panden als nieuwbouw. Via warmtepomp.ai plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Dordrecht geschikt voor een warmtepomp?",
+        a: "Veel woningen in Dordrecht zijn geschikt. Voor historische panden in de binnenstad is een hybride warmtepomp vaak een goede start, terwijl nieuwbouw in Stadspolders meestal al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "zoetermeer",
+    name: "Zoetermeer",
+    province: "Zuid-Holland",
+    context:
+      "Een Vinex-stad met wijken als Palenstein, Seghwaert en Meerzicht, grotendeels gebouwd vanaf de jaren '60",
+    woningType: "jaren '70-80 woningen en moderne nieuwbouw",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Zoetermeer?",
+        a: "In Zoetermeer liggen de kosten van een hybride warmtepomp gemiddeld tussen €3.500 en €7.000, en een volledig elektrische lucht-water warmtepomp tussen €6.000 en €12.000, inclusief installatie. Veel woningen in Zoetermeer hebben een vergelijkbare bouwstijl, wat de inschatting van de kosten vaak eenvoudiger maakt.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Zoetermeer?",
+        a: "Ja, in Zoetermeer en de regio Haaglanden zijn meerdere gecertificeerde installateurs actief. Via onze keuzehulp plan je gratis en vrijblijvend een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Zoetermeer geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor jaren '70-80 woningen in wijken als Palenstein en Seghwaert is een hybride warmtepomp vaak de beste eerste stap, en bij goede isolatie kan een volledig elektrische warmtepomp ook al een optie zijn.",
+      },
+    ],
+  },
+  {
+    slug: "maastricht",
+    name: "Maastricht",
+    province: "Limburg",
+    context:
+      "Van de historische binnenstad en Wyck tot de moderne nieuwbouw op Céramique",
+    woningType: "historische woningen en moderne nieuwbouw op Céramique",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Maastricht?",
+        a: "Een hybride warmtepomp kost in Maastricht gemiddeld €3.500 – €7.000 en een volledig elektrische lucht-water warmtepomp €6.000 – €12.000, inclusief installatie. Voor historische woningen in de binnenstad en Wyck kan extra maatwerk nodig zijn, wat de prijs kan beïnvloeden.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Maastricht?",
+        a: "Ja, in Maastricht en de regio Zuid-Limburg zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel historische panden als nieuwbouw. Via warmtepomp.ai plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Maastricht geschikt voor een warmtepomp?",
+        a: "Veel woningen in Maastricht zijn geschikt. Voor historische woningen in Wyck en de binnenstad is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwbouw op Céramique meestal al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "den-bosch",
+    name: "Den Bosch",
+    province: "Noord-Brabant",
+    context:
+      "Van de jaren '50-60 wijken zoals de Kruiskamp tot de nieuwbouw in Boschveld en De Groote Wielen",
+    woningType: "jaren '50-60 woningen en nieuwbouw in Boschveld",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Den Bosch?",
+        a: "In Den Bosch liggen de kosten van een hybride warmtepomp gemiddeld tussen €3.500 en €7.000, en een volledig elektrische lucht-water warmtepomp tussen €6.000 en €12.000, inclusief installatie. Voor de jaren '50-60 woningen in de Kruiskamp is vaak eerst een hybride warmtepomp een logische stap.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Den Bosch?",
+        a: "Ja, in Den Bosch en de regio zijn meerdere gecertificeerde installateurs actief. Via onze keuzehulp plan je gratis en vrijblijvend een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Den Bosch geschikt voor een warmtepomp?",
+        a: "Veel woningen in Den Bosch zijn geschikt. Voor jaren '50-60 woningen in de Kruiskamp is een hybride warmtepomp vaak een goede start, terwijl nieuwbouw in Boschveld en De Groote Wielen meestal al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "alkmaar",
+    name: "Alkmaar",
+    province: "Noord-Holland",
+    context:
+      "Van de jaren '70 wijken zoals De Mare en Daalmeer tot de nieuwbouw rond Overstad",
+    woningType: "jaren '70-woningen en nieuwbouw rond Overstad",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Alkmaar?",
+        a: "Een hybride warmtepomp kost in Alkmaar gemiddeld €3.500 – €7.000 en een volledig elektrische lucht-water warmtepomp €6.000 – €12.000, inclusief installatie. De exacte prijs hangt mede af van de isolatiestaat van jouw woning.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Alkmaar?",
+        a: "Ja, in Alkmaar en de regio Noord-Holland-Noord zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Alkmaar geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor jaren '70-woningen in wijken als De Mare en Daalmeer is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwbouw rond Overstad meestal al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "delft",
+    name: "Delft",
+    province: "Zuid-Holland",
+    context:
+      "Van de historische binnenstad rond de grachten tot de jaren '70-80 wijk Tanthof",
+    woningType: "historische woningen en jaren '70-80 woningen in Tanthof",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Delft?",
+        a: "In Delft liggen de kosten van een hybride warmtepomp gemiddeld tussen €3.500 en €7.000, en een volledig elektrische lucht-water warmtepomp tussen €6.000 en €12.000, inclusief installatie. Voor historische woningen in de binnenstad kan extra maatwerk nodig zijn, wat de prijs kan beïnvloeden.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Delft?",
+        a: "Ja, in Delft en omgeving zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel historische panden als naoorlogse wijken. Via onze keuzehulp plan je gratis een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Delft geschikt voor een warmtepomp?",
+        a: "Veel woningen in Delft zijn geschikt. Voor historische woningen in de binnenstad is een hybride warmtepomp vaak de beste eerste stap, terwijl woningen in Tanthof bij goede isolatie ook al geschikt kunnen zijn voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "hoorn",
+    name: "Hoorn",
+    province: "Noord-Holland",
+    context: "Van de jaren '70 wijk Grote Waal tot de nieuwbouw in Poort van Hoorn",
+    woningType: "jaren '70-woningen en nieuwbouw in Poort van Hoorn",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Hoorn?",
+        a: "Een hybride warmtepomp kost in Hoorn gemiddeld €3.500 – €7.000 en een volledig elektrische lucht-water warmtepomp €6.000 – €12.000, inclusief installatie. De exacte prijs hangt af van het type woning en het vermogen van de warmtepomp.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Hoorn?",
+        a: "Ja, in Hoorn en de regio West-Friesland zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai plan je gratis en vrijblijvend een adviesgesprek met installateurs bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Hoorn geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor jaren '70-woningen in de Grote Waal is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwbouw in Poort van Hoorn meestal al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
 ];
 
 export function getCity(slug: string): City | undefined {
