@@ -20,7 +20,7 @@ export function PostcodeInput() {
       setError("Vul een geldige postcode in, bijv. 1234AB");
       return;
     }
-    window.location.href = `#keuzehulp?postcode=${clean}`;
+    window.location.href = `/vergelijk?postcode=${clean}`;
   }
 
   return (

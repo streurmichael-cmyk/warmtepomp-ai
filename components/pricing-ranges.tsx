@@ -107,7 +107,7 @@ export function PricingRanges() {
 
         <p className="mt-8 text-center text-xs text-muted">
           Indicatieve prijzen incl. arbeidskosten, excl. BTW. De exacte prijs hangt af van jouw situatie.{" "}
-          <Link href="#keuzehulp" className="text-green underline underline-offset-2 hover:text-turquoise">
+          <Link href="/vergelijk" className="text-green underline underline-offset-2 hover:text-turquoise">
             Start de keuzehulp voor een persoonlijke berekening
           </Link>
           .
@@ -115,7 +115,7 @@ export function PricingRanges() {
 
         <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
-            href="#keuzehulp"
+            href="/vergelijk"
             className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-8 py-4 text-base font-bold text-dark shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5"
           >
             Bereken mijn persoonlijke prijs

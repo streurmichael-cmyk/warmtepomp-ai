@@ -31,7 +31,7 @@ export function Header() {
             </Link>
           ))}
           <Link
-            href="#keuzehulp"
+            href="/vergelijk"
             className="rounded-lg bg-green px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-turquoise"
           >
             Start keuzehulp
@@ -70,7 +70,7 @@ export function Header() {
             ))}
             <li className="pt-2">
               <Link
-                href="#keuzehulp"
+                href="/vergelijk"
                 className="block rounded-lg bg-green px-4 py-3 text-center text-sm font-semibold text-white"
                 onClick={() => setOpen(false)}
               >

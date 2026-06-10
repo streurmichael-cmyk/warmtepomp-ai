@@ -12,7 +12,7 @@ export function CtaBanner() {
           Start gratis de keuzehulp en ontdek welke warmtepomp het beste bij jou past.
         </p>
         <Link
-          href="#keuzehulp"
+          href="/vergelijk"
           className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-xl bg-gradient-to-br from-green to-turquoise px-8 py-4 text-base font-bold text-dark shadow-[0_4px_28px_rgba(34,181,114,0.4)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(0,212,160,0.5)]"
         >
           Start nu — het is gratis
