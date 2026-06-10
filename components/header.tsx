@@ -6,11 +6,12 @@ import { ArrowRight, CloseIcon, MenuIcon } from "./icons";
 import { Logo } from "./logo";
 
 const links = [
-  { href: "/hoe-het-werkt", label: "Voordelen" },
+  { href: "/warmtepompen", label: "Warmtepompen" },
+  { href: "/kosten", label: "Kosten" },
+  { href: "/hoe-het-werkt", label: "Hoe het werkt" },
   { href: "/installateurs", label: "Installateurs" },
   { href: "/subsidie", label: "Subsidie" },
-  { href: "/#kosten", label: "Kosten" },
-  { href: "/#faq", label: "FAQ" },
+  { href: "/faq", label: "FAQ" },
 ];
 
 export function Header() {
@@ -21,7 +22,7 @@ export function Header() {
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-5 sm:px-8">
         <Logo variant="light" />
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Hoofdnavigatie">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-7" aria-label="Hoofdnavigatie">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -42,7 +43,7 @@ export function Header() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-green/20 text-dark md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-green/20 text-dark lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Menu sluiten" : "Menu openen"}
@@ -55,7 +56,7 @@ export function Header() {
       {open && (
         <nav
           id="mobile-menu"
-          className="border-t border-green/10 bg-white px-5 py-4 md:hidden"
+          className="border-t border-green/10 bg-white px-5 py-4 lg:hidden"
           aria-label="Mobiele navigatie"
         >
           <ul className="flex flex-col gap-1">

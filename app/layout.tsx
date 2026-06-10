@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Source_Sans_3 } from "next/font/google";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -30,7 +31,10 @@ export default function RootLayout({
       lang="nl"
       className={`${fraunces.variable} ${sourceSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <WhatsAppButton />
+      </body>
     </html>
   );
 }

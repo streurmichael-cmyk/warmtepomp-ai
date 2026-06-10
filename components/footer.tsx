@@ -4,10 +4,12 @@ import { Logo } from "./logo";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/warmtepompen", label: "Warmtepompen" },
+  { href: "/kosten", label: "Kosten" },
   { href: "/hoe-het-werkt", label: "Hoe het werkt" },
   { href: "/installateurs", label: "Installateurs" },
   { href: "/subsidie", label: "Subsidie" },
-  { href: "/#faq", label: "FAQ" },
+  { href: "/faq", label: "FAQ" },
 ];
 
 export function Footer() {
