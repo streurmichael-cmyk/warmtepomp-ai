@@ -21,7 +21,7 @@ import {
 
 type IconComponent = React.ComponentType<{ className?: string }>;
 
-const TOTAL_STEPS = 4;
+const TOTAL_STEPS = 6;
 
 const woningTypes: { label: string; icon: IconComponent }[] = [
   { label: "Tussenwoning", icon: HomeIcon },
@@ -33,6 +33,15 @@ const woningTypes: { label: string; icon: IconComponent }[] = [
 
 const oppervlaktes = ["< 75 m²", "75 - 100 m²", "100 - 150 m²", "150 - 200 m²", "> 200 m²"];
 
+const bouwjaren = ["Voor 1975", "1975 - 1992", "1992 - 2015", "Na 2015"];
+
+const isolatieNiveaus = [
+  "Slecht geïsoleerd",
+  "Redelijk geïsoleerd",
+  "Goed geïsoleerd",
+  "Weet ik niet",
+];
+
 const systemen: { label: string; icon: IconComponent }[] = [
   { label: "CV-ketel op gas", icon: FlameIcon },
   { label: "Stadsverwarming", icon: NetworkIcon },
@@ -43,6 +52,8 @@ const systemen: { label: string; icon: IconComponent }[] = [
 type FormData = {
   woningtype: string;
   oppervlakte: string;
+  bouwjaar: string;
+  isolatie: string;
   huidigSysteem: string;
   postcode: string;
   voornaam: string;
@@ -53,6 +64,8 @@ type FormData = {
 const initialData: FormData = {
   woningtype: "",
   oppervlakte: "",
+  bouwjaar: "",
+  isolatie: "",
   huidigSysteem: "",
   postcode: "",
   voornaam: "",
@@ -121,7 +134,7 @@ export default function VergelijkPage() {
       });
       if (!res.ok) throw new Error("Request failed");
       update("postcode", cleanPostcode);
-      setStep(5);
+      setStep(7);
     } catch {
       setSubmitError("Er ging iets mis bij het versturen. Probeer het opnieuw.");
     } finally {
@@ -186,7 +199,37 @@ export default function VergelijkPage() {
           )}
 
           {step === 3 && (
-            <Step heading="Hoe verwarm je nu?" onBack={() => setStep(2)}>
+            <Step heading="Wanneer is je woning gebouwd?" onBack={() => setStep(2)}>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {bouwjaren.map((opt) => (
+                  <OptionCard
+                    key={opt}
+                    label={opt}
+                    selected={data.bouwjaar === opt}
+                    onClick={() => selectAndNext("bouwjaar", opt)}
+                  />
+                ))}
+              </div>
+            </Step>
+          )}
+
+          {step === 4 && (
+            <Step heading="Hoe is je woning geïsoleerd?" onBack={() => setStep(3)}>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {isolatieNiveaus.map((opt) => (
+                  <OptionCard
+                    key={opt}
+                    label={opt}
+                    selected={data.isolatie === opt}
+                    onClick={() => selectAndNext("isolatie", opt)}
+                  />
+                ))}
+              </div>
+            </Step>
+          )}
+
+          {step === 5 && (
+            <Step heading="Hoe verwarm je nu?" onBack={() => setStep(4)}>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {systemen.map((opt) => (
                   <OptionCard
@@ -201,8 +244,8 @@ export default function VergelijkPage() {
             </Step>
           )}
 
-          {step === 4 && (
-            <Step heading="Jouw persoonlijke warmtepomp advies is klaar" onBack={() => setStep(3)}>
+          {step === 6 && (
+            <Step heading="Jouw persoonlijke warmtepomp advies is klaar" onBack={() => setStep(5)}>
               <p className="mb-6 text-muted">
                 Vul je gegevens in en ontvang gratis en vrijblijvend advies, afgestemd op jouw
                 woning.
@@ -271,7 +314,7 @@ export default function VergelijkPage() {
             </Step>
           )}
 
-          {step === 5 && (
+          {step === 7 && (
             <div className="text-center">
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green/15 text-green">
                 <CheckCircleIcon className="h-9 w-9" />

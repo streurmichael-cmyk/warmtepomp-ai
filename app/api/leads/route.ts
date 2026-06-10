@@ -4,6 +4,8 @@ import { Resend } from "resend";
 type LeadData = {
   woningtype?: string;
   oppervlakte?: string;
+  bouwjaar?: string;
+  isolatie?: string;
   huidigSysteem?: string;
   postcode?: string;
   voornaam?: string;
@@ -65,6 +67,8 @@ async function generateAdvies(lead: LeadData, subsidieInfo: string): Promise<str
 Gegevens van de aanvrager:
 - Woningtype: ${lead.woningtype ?? "onbekend"}
 - Oppervlakte: ${lead.oppervlakte ?? "onbekend"}
+- Bouwjaar: ${lead.bouwjaar ?? "onbekend"}
+- Isolatieniveau: ${lead.isolatie ?? "onbekend"}
 - Huidig verwarmingssysteem: ${lead.huidigSysteem ?? "onbekend"}
 - Postcode: ${lead.postcode ?? "onbekend"}
 
@@ -154,6 +158,8 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
       <ul>
         <li>Woningtype: ${lead.woningtype ?? "-"}</li>
         <li>Oppervlakte: ${lead.oppervlakte ?? "-"}</li>
+        <li>Bouwjaar: ${lead.bouwjaar ?? "-"}</li>
+        <li>Isolatieniveau: ${lead.isolatie ?? "-"}</li>
         <li>Huidig systeem: ${lead.huidigSysteem ?? "-"}</li>
         <li>Postcode: ${lead.postcode ?? "-"}</li>
       </ul>
@@ -198,6 +204,8 @@ async function sendNotificationEmail(lead: LeadData) {
         <li>Telefoon: ${lead.telefoon ?? "-"}</li>
         <li>Woningtype: ${lead.woningtype ?? "-"}</li>
         <li>Oppervlakte: ${lead.oppervlakte ?? "-"}</li>
+        <li>Bouwjaar: ${lead.bouwjaar ?? "-"}</li>
+        <li>Isolatieniveau: ${lead.isolatie ?? "-"}</li>
         <li>Huidig systeem: ${lead.huidigSysteem ?? "-"}</li>
         <li>Postcode: ${lead.postcode ?? "-"}</li>
       </ul>
