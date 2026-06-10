@@ -41,11 +41,14 @@ async function sendConfirmationEmail(lead: LeadData) {
     </div>
   `;
 
+  // TODO: zet "to" terug naar lead.email zodra het afzenderdomein op resend.com is geverifieerd
+  const to = "streurmichael@gmail.com";
+
   try {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from,
-      to: lead.email,
+      to,
       subject: `Bedankt ${voornaam} — jouw warmtepomp advies is onderweg`,
       html,
     });
