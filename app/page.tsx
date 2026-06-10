@@ -1,4 +1,5 @@
 import { Benefits } from "@/components/benefits";
+import { CitiesSection } from "@/components/cities-section";
 import { CtaBanner } from "@/components/cta-banner";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
@@ -8,10 +9,37 @@ import { HowItWorks } from "@/components/how-it-works";
 import { PricingRanges } from "@/components/pricing-ranges";
 import { Reviews } from "@/components/reviews";
 import { TrustBar } from "@/components/trust-bar";
+import { SITE_URL, buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Warmtepomp vergelijken? Vind de beste deal | warmtepomp.ai",
+  description:
+    "Onafhankelijke keuzehulp voor warmtepompen in Nederland. Persoonlijk advies over het beste type warmtepomp, actuele subsidie-informatie en gekoppeld aan gecertificeerde installateurs bij jou in de buurt.",
+  path: "/",
+});
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "warmtepomp.ai",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "info@warmtepomp.ai",
+    contactType: "customer service",
+    areaServed: "NL",
+    availableLanguage: ["Dutch"],
+  },
+};
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
       <Header />
       <TrustBar />
       <main>
@@ -19,6 +47,7 @@ export default function Home() {
         <Benefits />
         <HowItWorks />
         <PricingRanges />
+        <CitiesSection />
         <Reviews />
         <Faq />
         <CtaBanner />

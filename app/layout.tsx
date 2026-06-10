@@ -15,10 +15,33 @@ const sourceSans = Source_Sans_3({
   display: "swap",
 });
 
+const description =
+  "Onafhankelijke keuzehulp voor warmtepompen in Nederland. Persoonlijk advies over het beste type warmtepomp, actuele subsidie-informatie en gekoppeld aan gecertificeerde installateurs bij jou in de buurt.";
+
 export const metadata: Metadata = {
-  title: "Warmtepomp.ai – Vind de beste warmtepomp voor jouw woning",
-  description:
-    "Onafhankelijke keuzehulp voor warmtepompen in Nederland. Persoonlijk advies over het beste type warmtepomp, actuele subsidie-informatie en gekoppeld aan gecertificeerde installateurs bij jou in de buurt.",
+  metadataBase: new URL("https://warmtepomp.ai"),
+  title: "Warmtepomp vergelijken? Vind de beste deal | warmtepomp.ai",
+  description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "nl_NL",
+    siteName: "warmtepomp.ai",
+    title: "Warmtepomp vergelijken? Vind de beste deal | warmtepomp.ai",
+    description,
+    url: "/",
+    images: [{ url: "/logo.png", width: 512, height: 512, alt: "warmtepomp.ai" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Warmtepomp vergelijken? Vind de beste deal | warmtepomp.ai",
+    description,
+    images: ["/logo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

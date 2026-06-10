@@ -2,10 +2,36 @@ import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
+import { faqs } from "@/lib/faqs";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Veelgestelde vragen over warmtepompen | warmtepomp.ai",
+  description:
+    "Antwoord op de meest gestelde vragen over warmtepompen, kosten, subsidie en installatie — in gewone taal uitgelegd.",
+  path: "/faq",
+});
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
 
 export default function FaqPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Header />
       <TrustBar />
       <main>

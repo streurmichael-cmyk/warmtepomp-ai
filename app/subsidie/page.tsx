@@ -9,6 +9,14 @@ import {
   ShieldIcon,
   SubsidyIcon,
 } from "@/components/icons";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "ISDE Subsidie warmtepomp 2026: tot €2.500 | warmtepomp.ai",
+  description:
+    "Alles over de ISDE-subsidie voor warmtepompen in 2026: hoogte van de bedragen per type, voorwaarden en hoe je de subsidie aanvraagt bij de RVO.",
+  path: "/subsidie",
+});
 
 const voorwaarden = [
   "De warmtepomp wordt geplaatst in een bestaande woning of nieuwbouwwoning die voldoet aan de RVO-eisen.",
@@ -165,6 +173,10 @@ export default function SubsidiePage() {
               >
                 rvo.nl/subsidies/isde
               </a>
+              . Benieuwd wat een warmtepomp je in totaal kost? Bekijk{" "}
+              <Link href="/kosten" className="font-bold text-green hover:underline">
+                ons kostenoverzicht
+              </Link>
               .
             </p>
           </div>

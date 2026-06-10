@@ -10,6 +10,14 @@ import {
   ShieldIcon,
   SubsidyIcon,
 } from "@/components/icons";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Voorbeeldadvies warmtepomp: zo ziet jouw advies eruit | warmtepomp.ai",
+  description:
+    "Benieuwd hoe een persoonlijk warmtepompadvies eruitziet? Bekijk een voorbeeld met aanbevolen type, geschatte kosten, ISDE-subsidie en besparing.",
+  path: "/voorbeeld-advies",
+});
 
 const woningGegevens = [
   { label: "Woningtype", value: "Tussenwoning" },

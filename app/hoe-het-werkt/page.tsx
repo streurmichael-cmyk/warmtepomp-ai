@@ -9,6 +9,14 @@ import {
   NetworkIcon,
   UserIcon,
 } from "@/components/icons";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Hoe werkt warmtepomp.ai? In 4 stappen naar jouw advies | warmtepomp.ai",
+  description:
+    "Zo werkt warmtepomp.ai: vul je gegevens in, ontvang persoonlijk advies, vergelijk gecertificeerde installateurs en plan je installatie. Gratis en vrijblijvend.",
+  path: "/hoe-het-werkt",
+});
 
 const steps = [
   {

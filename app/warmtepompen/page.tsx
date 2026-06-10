@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CitiesSection } from "@/components/cities-section";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
@@ -12,6 +13,14 @@ import {
   SnowflakeIcon,
   StarIcon,
 } from "@/components/icons";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Welke warmtepomp past bij mij? Alle types uitgelegd | warmtepomp.ai",
+  description:
+    "Ontdek welk type warmtepomp het beste past bij jouw woning: lucht-water, hybride, bodem-water of lucht-lucht. Vergelijk uitleg, voor- en nadelen, kosten en subsidie.",
+  path: "/warmtepompen",
+});
 
 const types = [
   {
@@ -314,6 +323,8 @@ export default function WarmtepompenPage() {
             </div>
           </div>
         </section>
+
+        <CitiesSection className="bg-white" />
 
         <section className="bg-green py-20 text-center sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">

@@ -10,6 +10,14 @@ import {
   SubsidyIcon,
   UserIcon,
 } from "@/components/icons";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Over ons | warmtepomp.ai",
+  description:
+    "Maak kennis met warmtepomp.ai: onafhankelijk advies over warmtepompen, opgericht door Michael Streur. Lees wie we zijn, waarom we dit doen en hoe we geld verdienen.",
+  path: "/over-ons",
+});
 
 export default function OverOnsPage() {
   return (

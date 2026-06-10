@@ -4,6 +4,14 @@ import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import { SavingsCalculator } from "@/components/savings-calculator";
 import { ArrowRight, NetworkIcon, SubsidyIcon } from "@/components/icons";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Wat kost een warmtepomp in 2026? Eerlijk overzicht | warmtepomp.ai",
+  description:
+    "Eerlijk overzicht van de kosten van een warmtepomp in 2026: aanschaf en installatie per type, ISDE-subsidie en je maandelijkse besparing berekenen.",
+  path: "/kosten",
+});
 
 const kosten = [
   { type: "Lucht-water warmtepomp", bedrag: "€6.000 – €12.000" },
