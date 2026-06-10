@@ -4,11 +4,11 @@
   --dark: #0d1f16;
   --green: #22b572;
   --turquoise: #00d4a0;
-  --light-bg: #f4faf7;
+  --light-bg: #f7faf8;
   --white: #ffffff;
-  --text: #1a1a1a;
+  --text: #0d1f16;
   --muted: #5a7264;
-  --footer: #07130d;
+  --footer: #f7faf8;
 }
 
 @theme inline {

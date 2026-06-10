@@ -2,45 +2,47 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { CloseIcon, MenuIcon } from "./icons";
+import { ArrowRight, CloseIcon, MenuIcon } from "./icons";
 import { Logo } from "./logo";
 
 const links = [
-  { href: "#voordelen", label: "Voordelen" },
-  { href: "#hoe-werkt", label: "Hoe het werkt" },
-  { href: "#kosten", label: "Kosten" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/hoe-het-werkt", label: "Voordelen" },
+  { href: "/installateurs", label: "Installateurs" },
+  { href: "/subsidie", label: "Subsidie" },
+  { href: "/#kosten", label: "Kosten" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-dark shadow-[0_2px_24px_rgba(0,0,0,0.35)]">
+    <header className="sticky top-0 z-50 border-b border-green/10 bg-white">
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Logo />
+        <Logo variant="light" />
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Hoofdnavigatie">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-white/75 transition-colors hover:text-turquoise"
+              className="text-sm font-medium text-dark/70 transition-colors hover:text-green"
             >
               {link.label}
             </Link>
           ))}
           <Link
             href="/vergelijk"
-            className="rounded-lg bg-green px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-turquoise"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-green px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-turquoise"
           >
             Start keuzehulp
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </nav>
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/15 text-white md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-green/20 text-dark md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Menu sluiten" : "Menu openen"}
@@ -53,7 +55,7 @@ export function Header() {
       {open && (
         <nav
           id="mobile-menu"
-          className="border-t border-white/10 bg-dark px-5 py-4 md:hidden"
+          className="border-t border-green/10 bg-white px-5 py-4 md:hidden"
           aria-label="Mobiele navigatie"
         >
           <ul className="flex flex-col gap-1">
@@ -61,7 +63,7 @@ export function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block py-2.5 text-base font-medium text-white/85"
+                  className="block py-2.5 text-base font-medium text-dark/80"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
@@ -71,10 +73,11 @@ export function Header() {
             <li className="pt-2">
               <Link
                 href="/vergelijk"
-                className="block rounded-lg bg-green px-4 py-3 text-center text-sm font-semibold text-white"
+                className="flex items-center justify-center gap-1.5 rounded-lg bg-green px-4 py-3 text-center text-sm font-semibold text-white"
                 onClick={() => setOpen(false)}
               >
                 Start keuzehulp
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </li>
           </ul>

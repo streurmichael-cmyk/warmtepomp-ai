@@ -7,11 +7,13 @@ import { Hero } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
 import { PricingRanges } from "@/components/pricing-ranges";
 import { Reviews } from "@/components/reviews";
+import { TrustBar } from "@/components/trust-bar";
 
 export default function Home() {
   return (
     <>
       <Header />
+      <TrustBar />
       <main>
         <Hero />
         <Benefits />

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { StarIcon } from "./icons";
 
 const reviews = [
@@ -30,7 +31,7 @@ function Stars({ rating }: { rating: number }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <StarIcon
           key={i}
-          className={`h-4 w-4 ${i < rating ? "text-green" : "text-white/20"}`}
+          className={`h-4 w-4 ${i < rating ? "text-green" : "text-green/15"}`}
         />
       ))}
     </div>
@@ -39,22 +40,33 @@ function Stars({ rating }: { rating: number }) {
 
 export function Reviews() {
   return (
-    <section id="reviews" className="bg-dark py-20 sm:py-24">
+    <section id="reviews" className="bg-white py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        {/* Aggregate score */}
-        <div className="mb-14 text-center">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
-            Wat klanten zeggen
-          </p>
-          <div className="flex items-center justify-center gap-3">
-            <span className="font-display text-5xl font-bold text-white">4.8</span>
-            <div className="flex flex-col items-start gap-1">
-              <div className="flex gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <StarIcon key={i} className="h-5 w-5 text-green" />
-                ))}
+        {/* Photo + aggregate score */}
+        <div className="mb-14 grid items-center gap-10 lg:grid-cols-[1fr_1.4fr]">
+          <div className="overflow-hidden rounded-3xl shadow-[0_24px_64px_rgba(13,31,22,0.12)]">
+            <Image
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800"
+              alt="Tevreden gezin thuis"
+              width={800}
+              height={600}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="text-center lg:text-left">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              Wat klanten zeggen
+            </p>
+            <div className="flex items-center justify-center gap-3 lg:justify-start">
+              <span className="font-display text-5xl font-bold text-dark">4.8</span>
+              <div className="flex flex-col items-start gap-1">
+                <div className="flex gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <StarIcon key={i} className="h-5 w-5 text-green" />
+                  ))}
+                </div>
+                <span className="text-sm text-muted">op basis van 312 beoordelingen</span>
               </div>
-              <span className="text-sm text-white/45">op basis van 312 beoordelingen</span>
             </div>
           </div>
         </div>
@@ -64,24 +76,24 @@ export function Reviews() {
           {reviews.map((r) => (
             <article
               key={r.name}
-              className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm"
+              className="flex flex-col rounded-2xl border border-green/10 bg-light-bg p-7"
             >
               <Stars rating={r.rating} />
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-white/75">
+              <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">
                 &ldquo;{r.text}&rdquo;
               </p>
-              <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-5">
+              <div className="mt-6 flex items-center justify-between border-t border-green/10 pt-5">
                 <div>
-                  <p className="text-sm font-bold text-white">{r.name}</p>
-                  <p className="text-xs text-white/40">{r.location}</p>
+                  <p className="text-sm font-bold text-dark">{r.name}</p>
+                  <p className="text-xs text-muted">{r.location}</p>
                 </div>
-                <span className="text-xs text-white/30">{r.date}</span>
+                <span className="text-xs text-muted/70">{r.date}</span>
               </div>
             </article>
           ))}
         </div>
 
-        <p className="mt-10 text-center text-xs text-white/30">
+        <p className="mt-10 text-center text-xs text-muted">
           Beoordelingen zijn geverifieerd via e-mail na gebruik van de keuzehulp.
         </p>
       </div>

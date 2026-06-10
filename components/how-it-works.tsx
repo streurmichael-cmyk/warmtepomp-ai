@@ -1,16 +1,21 @@
+import { ConversationIcon, HomeIcon, NetworkIcon } from "./icons";
+
 const steps = [
   {
     number: "1",
+    icon: HomeIcon,
     title: "Vertel over je woning",
     body: "Bouwjaar, isolatie, verwarmingsoppervlak — we stellen de juiste vragen.",
   },
   {
     number: "2",
+    icon: ConversationIcon,
     title: "Ontvang je advies",
     body: "Op basis van jouw situatie tonen we de beste opties met voor- en nadelen.",
   },
   {
     number: "3",
+    icon: NetworkIcon,
     title: "Ga aan de slag",
     body: "Vergelijk offertes van gecertificeerde installateurs in jouw regio.",
   },
@@ -39,8 +44,8 @@ export function HowItWorks() {
           />
           {steps.map((step) => (
             <li key={step.number} className="relative text-center">
-              <div className="relative z-10 mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green to-turquoise text-lg font-extrabold text-dark shadow-[0_4px_16px_rgba(34,181,114,0.35)]">
-                {step.number}
+              <div className="relative z-10 mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green to-turquoise text-white shadow-[0_4px_16px_rgba(34,181,114,0.35)]">
+                <step.icon className="h-6 w-6" />
               </div>
               <h3 className="font-display text-lg font-bold text-dark">
                 {step.title}

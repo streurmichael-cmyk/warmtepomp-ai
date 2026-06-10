@@ -130,21 +130,21 @@ export default function VergelijkPage() {
   }
 
   return (
-    <main className="relative flex min-h-screen flex-col overflow-hidden bg-dark text-white">
+    <main className="relative flex min-h-screen flex-col overflow-hidden bg-light-bg text-dark">
       <div
-        className="hero-glow-green pointer-events-none absolute -left-32 -top-32 h-[520px] w-[520px] rounded-full bg-green/20 blur-[100px]"
+        className="hero-glow-green pointer-events-none absolute -left-32 -top-32 h-[520px] w-[520px] rounded-full bg-green/10 blur-[100px]"
         aria-hidden="true"
       />
       <div
-        className="hero-glow-turquoise pointer-events-none absolute -bottom-28 -right-24 h-[440px] w-[440px] rounded-full bg-turquoise/15 blur-[100px]"
+        className="hero-glow-turquoise pointer-events-none absolute -bottom-28 -right-24 h-[440px] w-[440px] rounded-full bg-turquoise/10 blur-[100px]"
         aria-hidden="true"
       />
 
       <div className="relative z-10 flex items-center justify-between px-5 py-6 sm:px-8">
-        <Logo />
+        <Logo variant="light" />
         <Link
           href="/"
-          className="text-sm font-medium text-white/55 transition-colors hover:text-turquoise"
+          className="text-sm font-medium text-muted transition-colors hover:text-green"
         >
           Sluiten
         </Link>
@@ -203,7 +203,7 @@ export default function VergelijkPage() {
 
           {step === 4 && (
             <Step heading="Jouw persoonlijke warmtepomp advies is klaar" onBack={() => setStep(3)}>
-              <p className="mb-6 text-white/60">
+              <p className="mb-6 text-muted">
                 Vul je gegevens in en ontvang gratis en vrijblijvend advies, afgestemd op jouw
                 woning.
               </p>
@@ -251,7 +251,7 @@ export default function VergelijkPage() {
                 />
 
                 {submitError && (
-                  <p role="alert" className="text-sm text-red-400">
+                  <p role="alert" className="text-sm text-red-500">
                     {submitError}
                   </p>
                 )}
@@ -259,12 +259,12 @@ export default function VergelijkPage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-7 py-4 text-base font-bold text-dark shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-7 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
                 >
                   {submitting ? "Versturen..." : "Ontvang gratis advies"}
                   {!submitting && <ArrowRight className="h-5 w-5" />}
                 </button>
-                <p className="text-center text-xs text-white/40">
+                <p className="text-center text-xs text-muted">
                   Geen verplichtingen · Binnen 24 uur contact
                 </p>
               </form>
@@ -276,16 +276,16 @@ export default function VergelijkPage() {
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green/15 text-green">
                 <CheckCircleIcon className="h-9 w-9" />
               </div>
-              <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
                 Bedankt, {data.voornaam}!
               </h1>
-              <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-white/65">
+              <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-muted">
                 We hebben je een bevestigingsmail gestuurd. We koppelen je aan een installateur
                 bij jou in de buurt en je ontvangt binnen 24 uur een bericht.
               </p>
               <Link
                 href="/"
-                className="mt-8 inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-turquoise hover:text-turquoise"
+                className="mt-8 inline-flex items-center gap-2 rounded-xl border border-green/20 px-6 py-3 text-sm font-semibold text-dark transition-colors hover:border-green hover:text-green"
               >
                 Terug naar home
               </Link>
@@ -301,13 +301,13 @@ function ProgressBar({ step, total }: { step: number; total: number }) {
   const pct = (step / total) * 100;
   return (
     <div className="mb-10">
-      <div className="mb-2 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.12em] text-white/45">
+      <div className="mb-2 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.12em] text-muted">
         <span>
           Stap {step} van {total}
         </span>
         <span>{Math.round(pct)}%</span>
       </div>
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+      <div className="h-1.5 w-full overflow-hidden rounded-full bg-green/10">
         <div
           className="h-full rounded-full bg-gradient-to-r from-green to-turquoise transition-all duration-500"
           style={{ width: `${pct}%` }}
@@ -332,13 +332,13 @@ function Step({
         <button
           type="button"
           onClick={onBack}
-          className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-white/55 transition-colors hover:text-turquoise"
+          className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-green"
         >
           <ArrowLeft className="h-4 w-4" />
           Terug
         </button>
       )}
-      <h1 className="mb-8 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
+      <h1 className="mb-8 font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
         {heading}
       </h1>
       {children}
@@ -364,12 +364,12 @@ function OptionCard({
       aria-pressed={!!selected}
       className={`flex flex-col items-center justify-center gap-3 rounded-2xl border-2 px-4 py-6 text-center text-sm font-semibold transition-all hover:-translate-y-1 ${
         selected
-          ? "border-turquoise bg-turquoise/10 text-white"
-          : "border-white/10 bg-white/5 text-white/85 hover:border-green/50 hover:bg-white/10"
+          ? "border-green bg-green/10 text-dark"
+          : "border-green/10 bg-white text-dark/85 hover:border-green/40 hover:bg-green/5"
       }`}
     >
       {Icon && (
-        <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-green/15 text-green">
+        <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-green/10 text-green">
           <Icon className="h-6 w-6" />
         </span>
       )}
@@ -403,12 +403,12 @@ function FormField({
           onChange={(e) => onChange(e.target.value)}
           aria-invalid={!!error}
           aria-describedby={error ? errorId : undefined}
-          className="w-full rounded-xl border-2 border-white/20 bg-white/5 py-4 pl-11 pr-4 text-base text-white placeholder:text-white/30 outline-none transition-all focus:border-turquoise focus:bg-white/10"
+          className="w-full rounded-xl border-2 border-green/15 bg-white py-4 pl-11 pr-4 text-base text-dark placeholder:text-muted/50 outline-none transition-all focus:border-green focus:shadow-[0_0_0_4px_rgba(34,181,114,0.1)]"
           {...rest}
         />
       </div>
       {error && (
-        <p id={errorId} role="alert" className="mt-1.5 text-sm text-red-400">
+        <p id={errorId} role="alert" className="mt-1.5 text-sm text-red-500">
           {error}
         </p>
       )}

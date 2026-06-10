@@ -33,7 +33,7 @@ const ranges = [
 
 export function PricingRanges() {
   return (
-    <section id="kosten" className="bg-white py-20 sm:py-24">
+    <section id="kosten" className="bg-light-bg py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mb-14 text-center">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
@@ -54,19 +54,19 @@ export function PricingRanges() {
               key={r.type}
               className={`relative rounded-2xl border p-8 transition-all hover:-translate-y-1 ${
                 r.highlight
-                  ? "border-green/50 bg-dark shadow-[0_16px_48px_rgba(34,181,114,0.15)]"
-                  : "border-green/15 bg-light-bg hover:border-green/35 hover:shadow-[0_16px_48px_rgba(34,181,114,0.08)]"
+                  ? "border-transparent bg-gradient-to-br from-green to-turquoise shadow-[0_16px_48px_rgba(34,181,114,0.25)]"
+                  : "border-green/15 bg-white hover:border-green/35 hover:shadow-[0_16px_48px_rgba(34,181,114,0.08)]"
               }`}
             >
               {r.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-green to-turquoise px-4 py-1 text-xs font-bold text-dark">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-white px-4 py-1 text-xs font-bold text-green">
                   {r.note}
                 </span>
               )}
 
               <div
                 className={`mb-5 flex h-12 w-12 items-center justify-center rounded-xl ${
-                  r.highlight ? "bg-green/20 text-turquoise" : "bg-green/10 text-green"
+                  r.highlight ? "bg-white/20 text-white" : "bg-green/10 text-green"
                 }`}
               >
                 <r.icon className="h-6 w-6" />
@@ -80,24 +80,24 @@ export function PricingRanges() {
 
               <div className="mt-5 space-y-2">
                 <div>
-                  <p className={`text-xs font-semibold uppercase tracking-wide ${r.highlight ? "text-white/40" : "text-muted/70"}`}>
+                  <p className={`text-xs font-semibold uppercase tracking-wide ${r.highlight ? "text-white/70" : "text-muted/70"}`}>
                     Totaalprijs
                   </p>
                   <p className={`text-xl font-bold ${r.highlight ? "text-white" : "text-dark"}`}>
                     {r.gross}
                   </p>
                 </div>
-                <div className="rounded-lg bg-green/10 px-4 py-3">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-green/70">
+                <div className={`rounded-lg px-4 py-3 ${r.highlight ? "bg-white/15" : "bg-green/10"}`}>
+                  <p className={`text-xs font-semibold uppercase tracking-wide ${r.highlight ? "text-white/80" : "text-green/70"}`}>
                     Na ISDE-subsidie
                   </p>
-                  <p className="text-lg font-extrabold text-green">{r.afterSubsidy}</p>
+                  <p className={`text-lg font-extrabold ${r.highlight ? "text-white" : "text-green"}`}>{r.afterSubsidy}</p>
                 </div>
               </div>
 
-              <p className={`mt-4 text-sm ${r.highlight ? "text-white/55" : "text-muted"}`}>
+              <p className={`mt-4 text-sm ${r.highlight ? "text-white/85" : "text-muted"}`}>
                 Aanbevolen type:{" "}
-                <span className={`font-semibold ${r.highlight ? "text-white/80" : "text-dark"}`}>
+                <span className={`font-semibold ${r.highlight ? "text-white" : "text-dark"}`}>
                   {r.ideal}
                 </span>
               </p>
@@ -116,7 +116,7 @@ export function PricingRanges() {
         <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/vergelijk"
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-8 py-4 text-base font-bold text-dark shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-8 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5"
           >
             Bereken mijn persoonlijke prijs
             <ArrowRight className="h-5 w-5" />
