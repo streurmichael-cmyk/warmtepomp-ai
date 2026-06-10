@@ -280,8 +280,8 @@ export default function VergelijkPage() {
                 Bedankt, {data.voornaam}!
               </h1>
               <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-white/65">
-                We koppelen je aan een installateur bij jou in de buurt. Je ontvangt binnen 24 uur
-                een bericht.
+                We hebben je een bevestigingsmail gestuurd. We koppelen je aan een installateur
+                bij jou in de buurt en je ontvangt binnen 24 uur een bericht.
               </p>
               <Link
                 href="/"
