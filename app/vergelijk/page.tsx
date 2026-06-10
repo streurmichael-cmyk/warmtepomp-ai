@@ -21,7 +21,7 @@ import {
 
 type IconComponent = React.ComponentType<{ className?: string }>;
 
-const TOTAL_STEPS = 5;
+const TOTAL_STEPS = 4;
 
 const woningTypes: { label: string; icon: IconComponent }[] = [
   { label: "Tussenwoning", icon: HomeIcon },
@@ -60,12 +60,11 @@ const initialData: FormData = {
   email: "",
 };
 
-type LeadErrors = Partial<Record<"voornaam" | "telefoon" | "email", string>>;
+type LeadErrors = Partial<Record<"voornaam" | "telefoon" | "email" | "postcode", string>>;
 
 export default function VergelijkPage() {
   const [step, setStep] = useState(1);
   const [data, setData] = useState<FormData>(initialData);
-  const [postcodeError, setPostcodeError] = useState("");
   const [leadErrors, setLeadErrors] = useState<LeadErrors>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -87,17 +86,6 @@ export default function VergelijkPage() {
     setStep((s) => s + 1);
   }
 
-  function handlePostcodeNext() {
-    const clean = data.postcode.replace(/\s/g, "").toUpperCase();
-    if (!/^\d{4}[A-Z]{2}$/.test(clean)) {
-      setPostcodeError("Vul een geldige postcode in, bijv. 1234AB");
-      return;
-    }
-    update("postcode", clean);
-    setPostcodeError("");
-    setStep(5);
-  }
-
   async function handleLeadSubmit(e: React.FormEvent) {
     e.preventDefault();
 
@@ -109,6 +97,10 @@ export default function VergelijkPage() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
       errors.email = "Vul een geldig e-mailadres in";
     }
+    const cleanPostcode = data.postcode.replace(/\s/g, "").toUpperCase();
+    if (!/^\d{4}[A-Z]{2}$/.test(cleanPostcode)) {
+      errors.postcode = "Vul een geldige postcode in, bijv. 1234AB";
+    }
 
     if (Object.keys(errors).length > 0) {
       setLeadErrors(errors);
@@ -119,14 +111,17 @@ export default function VergelijkPage() {
     setSubmitting(true);
     setSubmitError("");
 
+    const payload = { ...data, postcode: cleanPostcode };
+
     try {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("Request failed");
-      setStep(6);
+      update("postcode", cleanPostcode);
+      setStep(5);
     } catch {
       setSubmitError("Er ging iets mis bij het versturen. Probeer het opnieuw.");
     } finally {
@@ -207,57 +202,23 @@ export default function VergelijkPage() {
           )}
 
           {step === 4 && (
-            <Step heading="Wat is je postcode?" onBack={() => setStep(3)}>
-              <p className="mb-6 text-white/60">
-                We gebruiken dit om installateurs bij jou in de buurt te vinden.
-              </p>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handlePostcodeNext();
-                }}
-                noValidate
-              >
-                <div className="relative">
-                  <MapPinIcon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-green" />
-                  <input
-                    type="text"
-                    value={data.postcode}
-                    onChange={(e) => {
-                      update("postcode", e.target.value.toUpperCase());
-                      if (postcodeError) setPostcodeError("");
-                    }}
-                    placeholder="1234AB"
-                    maxLength={7}
-                    autoComplete="postal-code"
-                    aria-label="Postcode"
-                    aria-describedby={postcodeError ? "postcode-error" : undefined}
-                    className="w-full rounded-xl border-2 border-white/20 bg-white/5 py-4 pl-11 pr-4 text-base text-white placeholder:text-white/30 outline-none transition-all focus:border-turquoise focus:bg-white/10"
-                  />
-                </div>
-                {postcodeError && (
-                  <p id="postcode-error" role="alert" className="mt-2 text-sm text-red-400">
-                    {postcodeError}
-                  </p>
-                )}
-                <button
-                  type="submit"
-                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-7 py-4 text-base font-bold text-dark shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5 sm:w-auto"
-                >
-                  Volgende
-                  <ArrowRight className="h-5 w-5" />
-                </button>
-              </form>
-            </Step>
-          )}
-
-          {step === 5 && (
-            <Step heading="Jouw persoonlijke warmtepomp advies is klaar" onBack={() => setStep(4)}>
+            <Step heading="Jouw persoonlijke warmtepomp advies is klaar" onBack={() => setStep(3)}>
               <p className="mb-6 text-white/60">
                 Vul je gegevens in en ontvang gratis en vrijblijvend advies, afgestemd op jouw
                 woning.
               </p>
               <form onSubmit={handleLeadSubmit} noValidate className="space-y-4">
+                <FormField
+                  name="postcode"
+                  icon={MapPinIcon}
+                  type="text"
+                  placeholder="Postcode, bijv. 1234AB"
+                  maxLength={7}
+                  autoComplete="postal-code"
+                  value={data.postcode}
+                  onChange={(v) => update("postcode", v.toUpperCase())}
+                  error={leadErrors.postcode}
+                />
                 <FormField
                   name="voornaam"
                   icon={UserIcon}
@@ -310,7 +271,7 @@ export default function VergelijkPage() {
             </Step>
           )}
 
-          {step === 6 && (
+          {step === 5 && (
             <div className="text-center">
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green/15 text-green">
                 <CheckCircleIcon className="h-9 w-9" />
