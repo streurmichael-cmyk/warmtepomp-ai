@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --dark: #0d1f16;
+  --green: #22b572;
+  --turquoise: #00d4a0;
+  --light-bg: #f4faf7;
+  --white: #ffffff;
+  --text: #1a1a1a;
+  --muted: #5a7264;
+  --footer: #07130d;
+}
+
+@theme inline {
+  --color-dark: var(--dark);
+  --color-green: var(--green);
+  --color-turquoise: var(--turquoise);
+  --color-light-bg: var(--light-bg);
+  --color-white: var(--white);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-footer: var(--footer);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-source-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: var(--font-source-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--green) 30%, transparent);
+}
+
+@keyframes hero-float {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(24px, 16px) scale(1.06);
+  }
+}
+
+.hero-glow-green {
+  animation: hero-float 9s ease-in-out infinite alternate;
+}
+
+.hero-glow-turquoise {
+  animation: hero-float 9s ease-in-out infinite alternate;
+  animation-delay: -4.5s;
+}
+
+@keyframes hero-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.35);
+  }
+}
+
+.hero-badge-dot {
+  animation: hero-pulse 2.2s ease-in-out infinite;
+}
