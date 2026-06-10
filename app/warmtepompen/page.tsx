@@ -246,6 +246,22 @@ export default function WarmtepompenPage() {
                 </article>
               ))}
             </div>
+
+            <p className="mt-8 text-center text-xs text-muted">
+              Kosten zijn indicatief. Bronnen: Milieu Centraal, Consumentenbond, RVO (2025).
+              <br />
+              Subsidiebedragen zijn indicatief en onder voorbehoud van wijzigingen door RVO.
+              Controleer actuele bedragen op{" "}
+              <a
+                href="https://www.rvo.nl/subsidies-financiering/isde"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-green hover:underline"
+              >
+                rvo.nl/subsidies/isde
+              </a>
+              .
+            </p>
           </div>
         </section>
 

@@ -2,9 +2,8 @@ import { CheckCircleIcon } from "./icons";
 
 const items = [
   "100% onafhankelijk advies",
-  "Gratis en vrijblijvend",
+  "Gratis & vrijblijvend advies",
   "Binnen 24 uur reactie",
-  "Al 500+ woningen geholpen",
 ];
 
 export function TrustBar() {

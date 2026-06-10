@@ -155,9 +155,17 @@ export default function SubsidiePage() {
             </div>
 
             <p className="mt-8 text-center text-xs text-muted">
-              * Genoemde bedragen zijn indicatief, gebaseerd op de huidige ISDE-regeling, en
-              vormen geen garantie. Vraag altijd een persoonlijke berekening en de actuele
-              voorwaarden op via RVO.nl.
+              Bedragen zijn indicatief en onder voorbehoud van wijzigingen door RVO. Controleer
+              actuele bedragen op{" "}
+              <a
+                href="https://www.rvo.nl/subsidies-financiering/isde"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-green hover:underline"
+              >
+                rvo.nl/subsidies/isde
+              </a>
+              .
             </p>
           </div>
         </section>

@@ -9,9 +9,9 @@ const benefits = [
   },
   {
     icon: ConversationIcon,
-    title: "Geen chatbot",
-    body: "Onze keuzehulp stelt gerichte vragen over jouw woning en situatie. Geen generieke antwoorden, maar een aanbeveling die op jou is afgestemd.",
-    note: "Menselijk & persoonlijk",
+    title: "Geen verkooppraatjes",
+    body: "Onze AI-keuzehulp stelt gerichte vragen over jouw woning en situatie. Geen generieke antwoorden of opdringerige verkoop, maar een aanbeveling die op jou is afgestemd.",
+    note: "Persoonlijk advies",
   },
   {
     icon: ShieldIcon,

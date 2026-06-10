@@ -12,6 +12,7 @@ const links = [
   { href: "/installateurs", label: "Installateurs" },
   { href: "/subsidie", label: "Subsidie" },
   { href: "/faq", label: "FAQ" },
+  { href: "/over-ons", label: "Over ons" },
 ];
 
 export function Header() {

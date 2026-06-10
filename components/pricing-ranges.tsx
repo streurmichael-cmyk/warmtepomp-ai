@@ -111,6 +111,10 @@ export function PricingRanges() {
             Start de keuzehulp voor een persoonlijke berekening
           </Link>
           .
+          <br />
+          Bronnen: Milieu Centraal, Consumentenbond, RVO (2025). Subsidiebedragen zijn indicatief
+          en onder voorbehoud van wijzigingen door RVO. Controleer actuele bedragen op
+          rvo.nl/subsidies/isde.
         </p>
 
         <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

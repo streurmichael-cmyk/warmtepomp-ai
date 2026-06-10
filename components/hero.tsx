@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { PostcodeInput } from "./postcode-input";
-import { StarIcon } from "./icons";
 
 const stats = [
   { value: "€3.500", label: "max subsidie 2025" },
@@ -45,18 +44,6 @@ export function Hero() {
           {/* Postcode input */}
           <div className="mt-10">
             <PostcodeInput />
-          </div>
-
-          {/* Social proof bar */}
-          <div className="mt-8 flex items-center justify-center gap-2 lg:justify-start">
-            <div className="flex gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <StarIcon key={i} className="h-4 w-4 text-green" />
-              ))}
-            </div>
-            <span className="text-sm text-muted">
-              <span className="font-semibold text-dark">4.8/5</span> · 312 klanten gingen je voor
-            </span>
           </div>
         </div>
 
