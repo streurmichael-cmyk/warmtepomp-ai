@@ -79,7 +79,7 @@ Schrijf het advies als een stuk HTML (alleen de inhoud, geen <html>/<head>/<body
 5. Terugverdientijd (indicatie)
 6. Een duidelijke volgende stap voor de aanvrager
 
-Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het indicaties zijn.`;
+Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het indicaties zijn. Houd het beknopt: maximaal 2-3 zinnen per onderdeel. Geef alleen de kale HTML terug, zonder markdown code block (geen \`\`\`).`;
 
   try {
     const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -90,11 +90,11 @@ Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het in
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: 1500,
+        model: "claude-sonnet-4-6",
+        max_tokens: 2048,
         messages: [{ role: "user", content: prompt }],
       }),
-      signal: AbortSignal.timeout(30000),
+      signal: AbortSignal.timeout(60000),
     });
 
     if (!res.ok) {
@@ -110,6 +110,9 @@ Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het in
       .filter((block: { type?: string; text?: string }) => block.type === "text")
       .map((block: { text?: string }) => block.text ?? "")
       .join("\n")
+      .trim()
+      .replace(/^```(?:html)?\n?/i, "")
+      .replace(/\n?```$/, "")
       .trim();
 
     return text || null;
