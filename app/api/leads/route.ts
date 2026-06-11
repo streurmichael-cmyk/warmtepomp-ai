@@ -91,6 +91,8 @@ Schrijf het advies als een stuk HTML (alleen de inhoud, geen <html>/<head>/<body
 
 Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het indicaties zijn. Houd het beknopt: maximaal 2-3 zinnen per onderdeel. Geef alleen de kale HTML terug, zonder markdown code block (geen \`\`\`).`;
 
+  console.log("Anthropic API aanroepen voor persoonlijk advies...");
+
   try {
     const res = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -114,7 +116,10 @@ Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het in
 
     const data = await res.json();
     const content = data?.content;
-    if (!Array.isArray(content)) return null;
+    if (!Array.isArray(content)) {
+      console.error("Anthropic API gaf onverwacht antwoord terug:", JSON.stringify(data));
+      return null;
+    }
 
     const text = content
       .filter((block: { type?: string; text?: string }) => block.type === "text")
@@ -124,6 +129,12 @@ Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het in
       .replace(/^```(?:html)?\n?/i, "")
       .replace(/\n?```$/, "")
       .trim();
+
+    console.log(
+      text
+        ? `Persoonlijk advies ontvangen van Anthropic (${text.length} tekens)`
+        : "Anthropic API gaf een leeg advies terug"
+    );
 
     return text || null;
   } catch (err) {
@@ -172,16 +183,17 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
       </ul>
       ${adviesHtml}
       <p>Tot snel!</p>
-      <p style="color: #22b572; font-weight: bold;">warmtepomp.ai</p>
+      <p style="color: #22b572; font-weight: bold;">Team warmtepomp.ai</p>
     </div>
   `;
 
-  // TODO: zet "to" terug naar lead.email zodra het afzenderdomein op resend.com is geverifieerd
-  const to = "streurmichael@gmail.com";
+  const to = lead.email;
+
+  console.log(`Bevestigingsmail versturen naar ${to}...`);
 
   try {
     const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from,
       to,
       subject: `Bedankt ${voornaam} — jouw warmtepomp advies is onderweg`,
@@ -190,6 +202,8 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
 
     if (error) {
       console.error("Versturen van bevestigingsmail mislukt:", error);
+    } else {
+      console.log(`Bevestigingsmail verstuurd naar ${to} (id: ${data?.id})`);
     }
   } catch (err) {
     console.error("Versturen van bevestigingsmail mislukt:", err);
@@ -198,7 +212,10 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
 
 async function sendNotificationEmail(lead: LeadData) {
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return;
+  if (!apiKey) {
+    console.warn("RESEND_API_KEY niet ingesteld, notificatiemail wordt overgeslagen");
+    return;
+  }
 
   const from = process.env.RESEND_FROM_EMAIL ?? "Warmtepomp.ai <noreply@warmtepomp.ai>";
 
@@ -222,17 +239,23 @@ async function sendNotificationEmail(lead: LeadData) {
     </div>
   `;
 
+  const to = "michael.streur@upcmail.nl";
+
+  console.log(`Notificatiemail versturen naar ${to}...`);
+
   try {
     const resend = new Resend(apiKey);
-    const { error } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from,
-      to: "michael.streur@upcmail.nl",
+      to,
       subject: `Nieuwe lead: ${lead.voornaam ?? "Onbekend"} (${lead.postcode ?? "-"})`,
       html,
     });
 
     if (error) {
       console.error("Versturen van notificatiemail mislukt:", error);
+    } else {
+      console.log(`Notificatiemail verstuurd naar ${to} (id: ${data?.id})`);
     }
   } catch (err) {
     console.error("Versturen van notificatiemail mislukt:", err);
