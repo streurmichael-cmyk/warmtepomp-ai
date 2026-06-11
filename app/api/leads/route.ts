@@ -87,9 +87,13 @@ Schrijf het advies als een stuk HTML (alleen de inhoud, geen <html>/<head>/<body
 3. Actuele ISDE-subsidie die van toepassing is
 4. Geschatte maandelijkse besparing op de energierekening
 5. Terugverdientijd (indicatie)
-6. Een duidelijke volgende stap voor de aanvrager
 
-Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het indicaties zijn. Houd het beknopt: maximaal 2-3 zinnen per onderdeel. Geef alleen de kale HTML terug, zonder markdown code block (geen \`\`\`).`;
+Belangrijke regels:
+- Begin meteen met de inhoud van punt 1. Geen aanhef of begroeting (dus niet "Hallo", "Hoi [naam]", "Beste lezer" of iets dergelijks) en geen ondertekening of afsluitende groet aan het einde — dat staat al in de rest van de e-mail.
+- Schrijf informeel en persoonlijk: gebruik altijd "je", "jij" en "jouw", nooit "u" of "uw". Geen corporate of stijve taal.
+- Noem geen volgende stappen zoals zelf een installateur zoeken, het installateurregister, het STEK-keurmerk, de RVO-meldcodelijst, of het aanvragen van offertes — dat regelen wij voor de klant en staat al elders in de e-mail.
+- Gebruik geen hyperlinks of verwijzingen naar andere websites.
+- Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het indicaties zijn. Houd het beknopt: maximaal 2-3 zinnen per onderdeel. Geef alleen de kale HTML terug, zonder markdown code block (geen \`\`\`).`;
 
   console.log("Anthropic API aanroepen voor persoonlijk advies...");
 
@@ -161,8 +165,7 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
           ${advies}
         </div>
         <p style="margin-top: 24px; font-size: 12px; color: #5a7264; border-top: 1px solid #e5e5e5; padding-top: 12px;">
-          Subsidiebedragen zijn onder voorbehoud van wijzigingen door RVO. Controleer actuele bedragen op
-          <a href="https://www.rvo.nl/subsidies-financiering/isde/woningeigenaren" style="color: #22b572;">rvo.nl/subsidies/isde</a>.
+          Let op: subsidiebedragen kunnen wijzigen, dit advies is een indicatie.
         </p>
       `
     : "";
@@ -170,7 +173,7 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
   const html = `
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
       <p>Hoi ${voornaam},</p>
-      <p>Bedankt voor je aanvraag! We nemen binnen 24 uur contact met je op om je persoonlijke warmtepompadvies te bespreken.</p>
+      <p>Bedankt voor je aanvraag! Hieronder vind je direct je persoonlijke warmtepompadvies.</p>
       <p><strong>Jouw gegevens:</strong></p>
       <ul>
         <li>Woningtype: ${lead.woningtype ?? "-"}</li>
@@ -182,8 +185,12 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
         <li>Postcode: ${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}</li>
       </ul>
       ${adviesHtml}
-      <p>Tot snel!</p>
-      <p style="color: #22b572; font-weight: bold;">Team warmtepomp.ai</p>
+      <div style="margin: 24px 0;">
+        <h2 style="font-size: 18px; color: #0d1f16;">Wat gebeurt er nu?</h2>
+        <p>We koppelen je binnen 24 uur aan een gecertificeerde installateur bij jou in de buurt. Die neemt contact met je op voor een vrijblijvend gesprek en een passende offerte.</p>
+        <p>Je hoeft zelf verder niets te doen — wij regelen het voor je.</p>
+      </div>
+      <p>Groeten,<br>Michael<br><span style="color: #22b572; font-weight: bold;">warmtepomp.ai</span></p>
     </div>
   `;
 
@@ -221,21 +228,16 @@ async function sendNotificationEmail(lead: LeadData) {
 
   const html = `
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
-      <h2>Nieuwe lead binnengekomen</h2>
-      <p><strong>${lead.wantsInstallateur ? "Wil installateurs-offertes (telefoon ingevuld)" : "Wil alleen het advies per e-mail"}</strong></p>
       <ul>
-        <li>Voornaam: ${lead.voornaam ?? "-"}</li>
-        <li>E-mail: ${lead.email ?? "-"}</li>
-        <li>Telefoon: ${lead.telefoon ?? "-"}</li>
-        <li>Woningtype: ${lead.woningtype ?? "-"}</li>
-        <li>Oppervlakte: ${lead.oppervlakte ?? "-"}</li>
-        <li>Bouwjaar: ${lead.bouwjaar ?? "-"}</li>
-        <li>Isolatieniveau: ${lead.isolatie ?? "-"}</li>
-        <li>Huidig systeem: ${lead.huidigSysteem ?? "-"}</li>
-        <li>Geschat gasverbruik: ${lead.gasverbruik ? `${lead.gasverbruik} m³ per jaar` : "-"}</li>
-        <li>Postcode: ${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}</li>
-        <li>Voorlopig advies: ${lead.adviesType ?? "-"}</li>
+        <li><strong>Naam:</strong> ${lead.voornaam ?? "-"}</li>
+        <li><strong>Telefoon:</strong> ${lead.telefoon ?? "-"}</li>
+        <li><strong>Email:</strong> ${lead.email ?? "-"}</li>
+        <li><strong>Woningtype:</strong> ${lead.woningtype ?? "-"}</li>
+        <li><strong>Oppervlakte:</strong> ${lead.oppervlakte ?? "-"}</li>
+        <li><strong>Postcode:</strong> ${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}</li>
+        <li><strong>Huidig systeem:</strong> ${lead.huidigSysteem ?? "-"}</li>
       </ul>
+      <p style="margin-top: 24px; font-weight: bold;">Reageer binnen 24 uur</p>
     </div>
   `;
 
@@ -248,7 +250,7 @@ async function sendNotificationEmail(lead: LeadData) {
     const { data, error } = await resend.emails.send({
       from,
       to,
-      subject: `Nieuwe lead: ${lead.voornaam ?? "Onbekend"} (${lead.postcode ?? "-"})`,
+      subject: `🔥 Nieuwe lead: ${lead.voornaam ?? "Onbekend"} - ${lead.woningtype ?? "Onbekend"} - ${lead.postcode ?? "-"}`,
       html,
     });
 
