@@ -58,8 +58,8 @@ export default function KostenPage() {
             </p>
             <div className="mt-10 aspect-[16/9] max-h-[300px] overflow-hidden rounded-xl sm:max-h-none">
               <Image
-                src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200"
-                alt="Gezin dat thuis geniet van een energiezuinige woning"
+                src="/images/stel-met-papieren.png"
+                alt="Stel dat thuis de energierekening en besparingen bekijkt"
                 width={1200}
                 height={675}
                 loading="lazy"

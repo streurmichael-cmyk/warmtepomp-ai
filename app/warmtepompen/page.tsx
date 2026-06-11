@@ -152,7 +152,7 @@ export default function WarmtepompenPage() {
             </div>
             <div className="mb-8 aspect-[16/9] max-h-[300px] overflow-hidden rounded-xl sm:max-h-none">
               <Image
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200"
+                src="/images/buitenunit-closeup.png"
                 alt="Buitenunit van een warmtepomp naast een woning"
                 width={1200}
                 height={675}

@@ -22,7 +22,7 @@ const heroVariants: HeroVariant[] = [
     badge: "Gratis & onafhankelijk advies",
     headlinePrefix: "Is een warmtepomp slim voor ",
     headlineHighlight: "jouw woning?",
-    subline: "Eerlijk antwoord in 3 minuten. Geen verkooppraatje, geen verplichting.",
+    subline: "Eerlijk antwoord in 5 minuten. Geen verkooppraatje, geen verplichting.",
     ctaLabel: "Doe de gratis check",
   },
   {
@@ -80,7 +80,7 @@ export function Hero() {
         <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
           <div className="aspect-[4/3] max-h-[300px] overflow-hidden rounded-xl shadow-[0_24px_64px_rgba(13,31,22,0.15)] sm:max-h-none">
             <Image
-              src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200"
+              src="/images/rijtjeshuizen-buitenunit.png"
               alt="Warmtepomp buitenunit bij een modern huis"
               width={1200}
               height={900}
