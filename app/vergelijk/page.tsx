@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Logo } from "@/components/logo";
 import {
   ArrowLeft,
@@ -20,7 +20,6 @@ import {
   type AdviesResultaat,
   berekenAdvies,
   bouwjaarOpties,
-  isolatieOpties,
   oppervlakteOpties,
   schatGasverbruik,
   standaardIsolatie,
@@ -30,15 +29,29 @@ type IconComponent = React.ComponentType<{ className?: string }>;
 
 type StepName =
   | "adres"
+  | "zoeken"
   | "bevestig"
-  | "isolatie"
   | "systeem"
   | "gasverbruik"
+  | "verwerken"
   | "advies"
   | "contact"
   | "bedankt";
 
-const QUESTION_STEPS: StepName[] = ["adres", "bevestig", "isolatie", "systeem", "gasverbruik"];
+const PROGRESS_STEPS: { steps: StepName[]; label: string }[] = [
+  { steps: ["adres"], label: "Jouw adres" },
+  { steps: ["zoeken", "bevestig"], label: "Jouw woning" },
+  { steps: ["systeem", "gasverbruik"], label: "Verwarmingssysteem" },
+  { steps: ["verwerken", "advies"], label: "Jouw advies" },
+  { steps: ["contact"], label: "Gegevens" },
+];
+
+const VERWERKING_TEKSTEN = [
+  "De AI analyseert jouw woning...",
+  "Subsidies worden berekend...",
+  "Beste warmtepomp types worden bepaald...",
+  "Persoonlijk advies wordt opgesteld...",
+];
 
 const woningtypeOpties = ["Tussenwoning", "Hoekwoning", "Twee-onder-een-kap", "Vrijstaand", "Appartement"];
 
@@ -55,7 +68,9 @@ type FormData = {
   adres: string;
   woningtype: string;
   oppervlakte: string;
+  oppervlakteM2?: number;
   bouwjaar: string;
+  bouwjaarJaar?: number;
   isolatie: string;
   huidigSysteem: string;
   gasverbruik: number;
@@ -82,53 +97,32 @@ const initialData: FormData = {
 type AdresErrors = Partial<Record<"postcode" | "huisnummer" | "algemeen", string>>;
 type LeadErrors = Partial<Record<"voornaam" | "telefoon" | "email", string>>;
 
+function leesAdresParams() {
+  const params = new URLSearchParams(window.location.search);
+  const postcode = params.get("postcode")?.replace(/\s/g, "").toUpperCase() ?? "";
+  const huisnummer = params.get("huisnummer")?.trim() ?? "";
+  const woningtype = params.get("woningtype") ?? "";
+  return { postcode, huisnummer, woningtype };
+}
+
 export default function VergelijkPage() {
   const [step, setStep] = useState<StepName>("adres");
-  const [data, setData] = useState<FormData>(() => {
-    if (typeof window === "undefined") return initialData;
-    const params = new URLSearchParams(window.location.search);
-    const postcode = params.get("postcode")?.replace(/\s/g, "").toUpperCase() ?? "";
-    const woningtype = params.get("woningtype") ?? "";
-    return {
-      ...initialData,
-      ...(/^\d{4}[A-Z]{2}$/.test(postcode) ? { postcode } : {}),
-      ...(woningtypeOpties.includes(woningtype) ? { woningtype } : {}),
-    };
-  });
-  const [zoeken, setZoeken] = useState(false);
+  const [data, setData] = useState<FormData>(initialData);
   const [adresGevonden, setAdresGevonden] = useState(false);
   const [autoIngevuld, setAutoIngevuld] = useState(false);
+  const [editMode, setEditMode] = useState(false);
   const [adresErrors, setAdresErrors] = useState<AdresErrors>({});
   const [leadErrors, setLeadErrors] = useState<LeadErrors>({});
   const [wantsInstallateur, setWantsInstallateur] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const lookupGestart = useRef(false);
 
   function update<K extends keyof FormData>(field: K, value: FormData[K]) {
     setData((d) => ({ ...d, [field]: value }));
   }
 
-  async function handleAdresSubmit(e: React.FormEvent) {
-    e.preventDefault();
-
-    const cleanPostcode = data.postcode.replace(/\s/g, "").toUpperCase();
-    const cleanHuisnummer = data.huisnummer.trim();
-
-    const errors: AdresErrors = {};
-    if (!/^\d{4}[A-Z]{2}$/.test(cleanPostcode)) {
-      errors.postcode = "Vul een geldige postcode in, bijv. 1234AB";
-    }
-    if (!/^\d+[A-Za-z]?$/.test(cleanHuisnummer)) {
-      errors.huisnummer = "Vul een geldig huisnummer in";
-    }
-    if (Object.keys(errors).length > 0) {
-      setAdresErrors(errors);
-      return;
-    }
-
-    setAdresErrors({});
-    setZoeken(true);
-
+  async function performLookup(cleanPostcode: string, cleanHuisnummer: string) {
     try {
       const res = await fetch(
         `/api/woninggegevens?postcode=${cleanPostcode}&huisnummer=${encodeURIComponent(cleanHuisnummer)}`
@@ -142,7 +136,10 @@ export default function VergelijkPage() {
           huisnummer: cleanHuisnummer,
           adres: json.woning.adres ?? `${cleanPostcode} ${cleanHuisnummer}`,
           bouwjaar: json.woning.bouwjaar || d.bouwjaar,
+          bouwjaarJaar: json.woning.bouwjaarJaar,
           oppervlakte: json.woning.oppervlakte || d.oppervlakte,
+          oppervlakteM2: json.woning.oppervlakteM2,
+          woningtype: json.woning.woningtype || d.woningtype,
         }));
         setAdresGevonden(true);
         setAutoIngevuld(Boolean(json.woning.bouwjaar || json.woning.oppervlakte));
@@ -166,14 +163,59 @@ export default function VergelijkPage() {
       setAdresGevonden(false);
       setAutoIngevuld(false);
     } finally {
-      setZoeken(false);
       setStep("bevestig");
     }
   }
 
-  function selectIsolatie(opt: string) {
-    const waarde = opt === "Weet ik niet" ? standaardIsolatie(data.bouwjaar) : opt;
-    setData((d) => ({ ...d, isolatie: waarde }));
+  // Als we via de homepage met postcode + huisnummer binnenkomen, start de zoekopdracht direct.
+  useEffect(() => {
+    if (lookupGestart.current) return;
+    lookupGestart.current = true;
+
+    const { postcode, huisnummer, woningtype } = leesAdresParams();
+    const postcodeGeldig = /^\d{4}[A-Z]{2}$/.test(postcode);
+    const huisnummerGeldig = /^\d+[A-Za-z]?$/.test(huisnummer);
+    const woningtypeGeldig = woningtypeOpties.includes(woningtype);
+
+    if (postcodeGeldig && huisnummerGeldig) {
+      setData((d) => ({ ...d, postcode, huisnummer, ...(woningtypeGeldig ? { woningtype } : {}) }));
+      setStep("zoeken");
+      performLookup(postcode, huisnummer);
+    } else if (postcodeGeldig || woningtypeGeldig) {
+      setData((d) => ({
+        ...d,
+        ...(postcodeGeldig ? { postcode } : {}),
+        ...(woningtypeGeldig ? { woningtype } : {}),
+      }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function handleAdresSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    const cleanPostcode = data.postcode.replace(/\s/g, "").toUpperCase();
+    const cleanHuisnummer = data.huisnummer.trim();
+
+    const errors: AdresErrors = {};
+    if (!/^\d{4}[A-Z]{2}$/.test(cleanPostcode)) {
+      errors.postcode = "Vul een geldige postcode in, bijv. 1234AB";
+    }
+    if (!/^\d+[A-Za-z]?$/.test(cleanHuisnummer)) {
+      errors.huisnummer = "Vul een geldig huisnummer in";
+    }
+    if (Object.keys(errors).length > 0) {
+      setAdresErrors(errors);
+      return;
+    }
+
+    setAdresErrors({});
+    setStep("zoeken");
+    await performLookup(cleanPostcode, cleanHuisnummer);
+  }
+
+  function bevestigWoning() {
+    update("isolatie", standaardIsolatie(data.bouwjaar));
     setStep("systeem");
   }
 
@@ -248,6 +290,15 @@ export default function VergelijkPage() {
     }
   }
 
+  const ontbreekt = {
+    woningtype: !data.woningtype,
+    bouwjaar: !data.bouwjaar,
+    oppervlakte: !data.oppervlakte,
+  };
+  const toonAlleVelden = editMode || !adresGevonden;
+  const toonVeld = (veld: keyof typeof ontbreekt) => toonAlleVelden || ontbreekt[veld];
+  const klaarOmTeBevestigen = !!data.woningtype && !!data.bouwjaar && !!data.oppervlakte;
+
   return (
     <main className="flex min-h-screen flex-col bg-light-bg text-dark">
       <div className="flex items-center justify-between px-5 py-6 sm:px-8">
@@ -296,93 +347,118 @@ export default function VergelijkPage() {
 
                 <button
                   type="submit"
-                  disabled={zoeken}
-                  className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44] disabled:opacity-60"
+                  className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
                 >
-                  {zoeken ? "Bezig met zoeken..." : "Zoek mijn woning"}
-                  {!zoeken && <ArrowRight className="h-5 w-5" />}
+                  Zoek mijn woning
+                  <ArrowRight className="h-5 w-5" />
                 </button>
                 <p className="text-center text-xs text-muted-light">
-                  Geen verplichtingen — we vragen pas om je naam en e-mail als je advies klaar is.
+                  We halen automatisch je woninggegevens op via het Kadaster — je hoeft ze niet zelf in
+                  te vullen.
                 </p>
               </form>
             </Step>
           )}
 
+          {step === "zoeken" && (
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+              <div
+                className="mb-6 h-12 w-12 animate-spin rounded-full border-4 border-green/15 border-t-action"
+                aria-hidden="true"
+              />
+              <p className="font-display text-lg font-bold text-dark">
+                Even geduld... we zoeken jouw woning op in het Kadaster
+              </p>
+            </div>
+          )}
+
           {step === "bevestig" && (
-            <Step heading="Klopt dit?" onBack={() => setStep("adres")}>
-              <div className="mb-8 flex items-start gap-3 rounded-xl border border-green/15 bg-white p-4">
+            <Step
+              heading={adresGevonden ? "We hebben jouw woning gevonden!" : "We konden je woning niet automatisch vinden"}
+              onBack={() => setStep("adres")}
+            >
+              <div className="mb-6 flex items-start gap-3 rounded-xl border border-green/15 bg-white p-4">
                 <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-action/10 text-action">
-                  <MapPinIcon className="h-5 w-5" />
+                  {adresGevonden ? <CheckCircleIcon className="h-5 w-5" /> : <MapPinIcon className="h-5 w-5" />}
                 </span>
                 <div>
                   <p className="font-display text-lg font-bold text-dark">
                     {data.adres || `${data.postcode} ${data.huisnummer}`}
                   </p>
                   <p className="text-sm text-muted">
-                    {autoIngevuld
-                      ? "De tool heeft een deel van je gegevens alvast ingevuld — klopt het niet, pas het dan aan."
-                      : adresGevonden
-                        ? "De tool heeft je adres gevonden, maar niet alle details. Vul de onderstaande gegevens zelf aan."
-                        : "De tool kon je woning niet automatisch vinden. Vul de onderstaande gegevens zelf in."}
+                    {adresGevonden
+                      ? autoIngevuld
+                        ? "De tool heeft een deel van je gegevens alvast ingevuld — controleer en vul aan waar nodig."
+                        : "De tool heeft je adres gevonden, maar niet alle details. Vul de onderstaande gegevens zelf aan."
+                      : "Vul de onderstaande gegevens zelf in, dan gaan we gewoon verder."}
                   </p>
                 </div>
               </div>
 
+              <div className="mb-6 grid gap-3 sm:grid-cols-3">
+                <InfoCard
+                  label="Bouwjaar"
+                  value={data.bouwjaarJaar ? String(data.bouwjaarJaar) : data.bouwjaar || "Onbekend"}
+                />
+                <InfoCard
+                  label="Woonoppervlakte"
+                  value={data.oppervlakteM2 ? `${data.oppervlakteM2} m²` : data.oppervlakte || "Onbekend"}
+                />
+                <InfoCard label="Woningtype" value={data.woningtype || "Onbekend"} />
+              </div>
+
               <div className="space-y-6">
-                <ChipGroup
-                  label="Wat voor woning is het?"
-                  options={woningtypeOpties}
-                  value={data.woningtype}
-                  onChange={(v) => update("woningtype", v)}
-                />
-                <ChipGroup
-                  label="Wanneer is je woning gebouwd?"
-                  options={bouwjaarOpties}
-                  value={data.bouwjaar}
-                  onChange={(v) => update("bouwjaar", v)}
-                />
-                <ChipGroup
-                  label="Hoe groot is je woning?"
-                  options={oppervlakteOpties}
-                  value={data.oppervlakte}
-                  onChange={(v) => update("oppervlakte", v)}
-                />
-              </div>
-
-              <button
-                type="button"
-                disabled={!data.woningtype || !data.bouwjaar || !data.oppervlakte}
-                onClick={() => setStep("isolatie")}
-                className="mt-8 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44] disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                Klopt, ga verder
-                <ArrowRight className="h-5 w-5" />
-              </button>
-            </Step>
-          )}
-
-          {step === "isolatie" && (
-            <Step heading="Hoe is je woning geïsoleerd?" onBack={() => setStep("bevestig")}>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-                {isolatieOpties.map((opt) => (
-                  <OptionCard
-                    key={opt}
-                    label={opt}
-                    selected={data.isolatie === opt || (opt === "Weet ik niet" && data.isolatie === "")}
-                    onClick={() => selectIsolatie(opt)}
+                {toonVeld("woningtype") && (
+                  <ChipGroup
+                    label="Wat voor woning is het?"
+                    options={woningtypeOpties}
+                    value={data.woningtype}
+                    onChange={(v) => update("woningtype", v)}
                   />
-                ))}
+                )}
+                {toonVeld("bouwjaar") && (
+                  <ChipGroup
+                    label="Wanneer is je woning gebouwd?"
+                    options={bouwjaarOpties}
+                    value={data.bouwjaar}
+                    onChange={(v) => update("bouwjaar", v)}
+                  />
+                )}
+                {toonVeld("oppervlakte") && (
+                  <ChipGroup
+                    label="Hoe groot is je woning?"
+                    options={oppervlakteOpties}
+                    value={data.oppervlakte}
+                    onChange={(v) => update("oppervlakte", v)}
+                  />
+                )}
               </div>
-              <p className="mt-4 text-xs text-muted-light">
-                Niet zeker? Kies &ldquo;Weet ik niet&rdquo; — dan gaat de tool uit van een gemiddelde
-                isolatie voor het bouwjaar van je woning.
-              </p>
+
+              <div className="mt-8 space-y-3">
+                <button
+                  type="button"
+                  disabled={!klaarOmTeBevestigen}
+                  onClick={bevestigWoning}
+                  className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44] disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  Klopt dit! Ga verder
+                  <ArrowRight className="h-5 w-5" />
+                </button>
+                {adresGevonden && !editMode && (
+                  <button
+                    type="button"
+                    onClick={() => setEditMode(true)}
+                    className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border-2 border-green/20 px-7 py-3.5 text-base font-bold text-dark transition-colors hover:border-action hover:text-action"
+                  >
+                    Gegevens aanpassen
+                  </button>
+                )}
+              </div>
             </Step>
           )}
 
           {step === "systeem" && (
-            <Step heading="Hoe verwarm je nu?" onBack={() => setStep("isolatie")}>
+            <Step heading="Hoe verwarm je nu?" onBack={() => setStep("bevestig")}>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {systemen.map((opt) => (
                   <OptionCard
@@ -420,7 +496,7 @@ export default function VergelijkPage() {
 
               <button
                 type="button"
-                onClick={() => setStep("advies")}
+                onClick={() => setStep("verwerken")}
                 className="mt-8 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
               >
                 Bekijk mijn advies
@@ -428,6 +504,8 @@ export default function VergelijkPage() {
               </button>
             </Step>
           )}
+
+          {step === "verwerken" && <VerwerkenStep onDone={() => setStep("advies")} />}
 
           {step === "advies" && (
             <div>
@@ -631,21 +709,44 @@ export default function VergelijkPage() {
 }
 
 function ProgressIndicator({ step }: { step: StepName }) {
-  const idx = QUESTION_STEPS.indexOf(step);
+  const idx = PROGRESS_STEPS.findIndex((p) => p.steps.includes(step));
   if (idx === -1) return null;
-
-  const remaining = QUESTION_STEPS.length - idx;
 
   return (
     <div className="mb-10">
       <p className="mb-3 text-sm font-semibold text-muted-light">
-        {remaining === 1 ? "Nog 1 vraag" : `Nog ${remaining} vragen`}
+        Stap {idx + 1} van {PROGRESS_STEPS.length} · {PROGRESS_STEPS[idx].label}
       </p>
       <div className="flex gap-2">
-        {QUESTION_STEPS.map((s, i) => (
-          <div key={s} className={`h-1.5 flex-1 rounded-full ${i <= idx ? "bg-action" : "bg-green/10"}`} />
+        {PROGRESS_STEPS.map((p, i) => (
+          <div key={p.label} className={`h-1.5 flex-1 rounded-full ${i <= idx ? "bg-action" : "bg-green/10"}`} />
         ))}
       </div>
+    </div>
+  );
+}
+
+function VerwerkenStep({ onDone }: { onDone: () => void }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((i) => (i + 1 < VERWERKING_TEKSTEN.length ? i + 1 : i));
+    }, 1250);
+    const timeout = setTimeout(onDone, 5000);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [onDone]);
+
+  return (
+    <div className="flex flex-col items-center justify-center py-20 text-center">
+      <div
+        className="mb-6 h-12 w-12 animate-spin rounded-full border-4 border-green/15 border-t-action"
+        aria-hidden="true"
+      />
+      <p className="font-display text-lg font-bold text-dark">{VERWERKING_TEKSTEN[index]}</p>
     </div>
   );
 }
@@ -673,6 +774,15 @@ function Step({
       )}
       <h1 className="mb-8 font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">{heading}</h1>
       {children}
+    </div>
+  );
+}
+
+function InfoCard({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-green/15 bg-white p-4">
+      <p className="text-xs font-bold uppercase tracking-wide text-muted-light">{label}</p>
+      <p className="mt-1 font-display text-lg font-bold text-dark">{value}</p>
     </div>
   );
 }

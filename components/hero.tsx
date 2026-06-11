@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { PostcodeInput } from "./postcode-input";
-import { WoningtypeCards } from "./woningtype-cards";
+import { AddressLookupForm } from "./address-lookup-form";
 
 const stats = [
   { value: "5 min", label: "tijd om je advies te krijgen" },
@@ -14,7 +13,6 @@ type HeroVariant = {
   headlineHighlight: string;
   headlineSuffix?: string;
   subline: string;
-  ctaLabel: string;
 };
 
 const heroVariants: HeroVariant[] = [
@@ -24,7 +22,6 @@ const heroVariants: HeroVariant[] = [
     headlinePrefix: "Is een warmtepomp slim voor ",
     headlineHighlight: "jouw woning?",
     subline: "Eerlijk antwoord in 5 minuten. Geen verkooppraatje, geen verplichting.",
-    ctaLabel: "Doe de gratis check",
   },
   {
     // Variant 2 — voor beslissers
@@ -33,7 +30,6 @@ const heroVariants: HeroVariant[] = [
     headlineHighlight: "€1.200 per jaar",
     headlineSuffix: " op je energierekening",
     subline: "Ontdek welke warmtepomp bij jouw woning past en hoeveel subsidie je krijgt.",
-    ctaLabel: "Bereken mijn besparing",
   },
   {
     // Variant 3 — voor sceptici
@@ -41,7 +37,6 @@ const heroVariants: HeroVariant[] = [
     headlinePrefix: "Warmtepomp: ",
     headlineHighlight: "geschikt voor jou of niet?",
     subline: "We zeggen het eerlijk. Soms is het antwoord nee. Maar dan weet je het zeker.",
-    ctaLabel: "Check het gratis",
   },
 ];
 
@@ -72,12 +67,7 @@ export function Hero() {
             {variant.subline}
           </p>
 
-          <WoningtypeCards />
-
-          {/* Postcode input */}
-          <div className="mt-10">
-            <PostcodeInput ctaLabel={variant.ctaLabel} />
-          </div>
+          <AddressLookupForm />
         </div>
 
         <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
