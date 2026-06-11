@@ -80,7 +80,7 @@ export function Hero() {
         <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
           <div className="aspect-[4/3] max-h-[300px] overflow-hidden rounded-xl shadow-[0_24px_64px_rgba(13,31,22,0.15)] sm:max-h-none">
             <Image
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200"
+              src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200"
               alt="Warmtepomp buitenunit bij een modern huis"
               width={1200}
               height={900}

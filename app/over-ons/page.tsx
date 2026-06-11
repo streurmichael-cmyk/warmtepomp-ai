@@ -45,7 +45,7 @@ export default function OverOnsPage() {
               <div className="flex items-start gap-4">
                 <div className="aspect-square h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl sm:h-20 sm:w-20">
                   <Image
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400"
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400"
                     alt="Portretfoto van Michael Streur, oprichter van warmtepomp.ai"
                     width={400}
                     height={400}
