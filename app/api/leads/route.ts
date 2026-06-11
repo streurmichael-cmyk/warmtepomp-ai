@@ -241,7 +241,7 @@ async function sendNotificationEmail(lead: LeadData) {
     </div>
   `;
 
-  const to = "michael.streur@upcmail.nl";
+  const to = "info@warmtepomp.ai";
 
   console.log(`Notificatiemail versturen naar ${to}...`);
 
