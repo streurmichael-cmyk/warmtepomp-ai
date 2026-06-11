@@ -54,7 +54,7 @@ export function PostcodeInput({ ctaLabel = "Check mijn woning" }: { ctaLabel?: s
         </p>
       )}
       <p className="mt-3 text-sm text-muted text-center lg:text-left">
-        Geen verplichtingen · we vragen pas om je gegevens als je advies klaar is
+        Geen registratie vereist · 100% gratis · Resultaat binnen 5 minuten
       </p>
     </form>
   );
