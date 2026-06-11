@@ -2,7 +2,7 @@ import Image from "next/image";
 import { PostcodeInput } from "./postcode-input";
 
 const stats = [
-  { value: "€3.500", label: "max subsidie 2025" },
+  { value: "€3.500", label: "max subsidie 2026" },
   { value: "Gratis", label: "installateurs vergelijken" },
   { value: "100%", label: "onafhankelijk advies" },
 ];

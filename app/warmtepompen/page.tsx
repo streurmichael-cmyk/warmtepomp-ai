@@ -257,7 +257,7 @@ export default function WarmtepompenPage() {
             </div>
 
             <p className="mt-8 text-center text-xs text-muted">
-              Kosten zijn indicatief. Bronnen: Milieu Centraal, Consumentenbond, RVO (2025).
+              Kosten zijn indicatief. Bronnen: Milieu Centraal, Consumentenbond, RVO (2026).
               <br />
               Subsidiebedragen zijn indicatief en onder voorbehoud van wijzigingen door RVO.
               Controleer actuele bedragen op{" "}

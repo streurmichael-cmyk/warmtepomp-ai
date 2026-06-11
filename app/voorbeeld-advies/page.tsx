@@ -139,7 +139,7 @@ export default function VoorbeeldAdviesPage() {
               <p className="mt-8 text-xs text-muted">
                 Dit is een voorbeeld op basis van een fictieve woning, ter illustratie van hoe
                 een advies eruitziet. Kosten zijn indicatief. Bronnen: Milieu Centraal,
-                Consumentenbond, RVO (2025). Subsidiebedragen zijn indicatief en onder
+                Consumentenbond, RVO (2026). Subsidiebedragen zijn indicatief en onder
                 voorbehoud van wijzigingen door RVO. Controleer actuele bedragen op{" "}
                 <a
                   href="https://www.rvo.nl/subsidies-financiering/isde"

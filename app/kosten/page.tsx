@@ -93,7 +93,7 @@ export default function KostenPage() {
               * Bedragen zijn indicatief en zijn afhankelijk van je woning, het vermogen van de
               warmtepomp en de installateur.
               <br />
-              Bronnen: Milieu Centraal, Consumentenbond, RVO (2025).
+              Bronnen: Milieu Centraal, Consumentenbond, RVO (2026).
             </p>
           </div>
         </section>

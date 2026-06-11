@@ -112,7 +112,7 @@ export function PricingRanges() {
           </Link>
           .
           <br />
-          Bronnen: Milieu Centraal, Consumentenbond, RVO (2025). Subsidiebedragen zijn indicatief
+          Bronnen: Milieu Centraal, Consumentenbond, RVO (2026). Subsidiebedragen zijn indicatief
           en onder voorbehoud van wijzigingen door RVO. Controleer actuele bedragen op
           rvo.nl/subsidies/isde.
         </p>

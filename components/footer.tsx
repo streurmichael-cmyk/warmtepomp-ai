@@ -61,10 +61,10 @@ export function Footer() {
         <div className="mt-12 flex flex-col gap-3 border-t border-green/10 pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} warmtepomp.ai · Alle rechten voorbehouden</span>
           <span className="flex gap-4">
-            <Link href="#" className="hover:text-green">
+            <Link href="/privacy" className="hover:text-green">
               Privacy
             </Link>
-            <Link href="#" className="hover:text-green">
+            <Link href="/disclaimer" className="hover:text-green">
               Disclaimer
             </Link>
           </span>

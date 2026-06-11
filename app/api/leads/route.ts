@@ -18,7 +18,7 @@ function isLeadData(value: unknown): value is LeadData {
 }
 
 const RVO_FALLBACK_INFO = `
-Indicatieve ISDE-subsidiebedragen (2025, onder voorbehoud van wijzigingen):
+Indicatieve ISDE-subsidiebedragen (2026, onder voorbehoud van wijzigingen):
 - Lucht-water warmtepomp: tot €2.500
 - Hybride warmtepomp: wisselend bedrag, afhankelijk van vermogen, doorgaans lager dan een volledig elektrische warmtepomp
 - Bodem-water (bodemgebonden) warmtepomp: hoger subsidiebedrag, afhankelijk van vermogen, vraag op aanvraag
