@@ -226,7 +226,7 @@ async function sendNotificationEmail(lead: LeadData) {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from,
-      to: "streurmichael@gmail.com",
+      to: "michael.streur@upcmail.nl",
       subject: `Nieuwe lead: ${lead.voornaam ?? "Onbekend"} (${lead.postcode ?? "-"})`,
       html,
     });
