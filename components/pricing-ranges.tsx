@@ -1,5 +1,6 @@
 import { ArrowRight, HomeIcon } from "./icons";
 import Link from "next/link";
+import { SubsidyDisclaimer } from "./subsidy-disclaimer";
 
 const ranges = [
   {
@@ -44,7 +45,7 @@ export function PricingRanges() {
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
             Inclusief installatie. Met de ISDE-subsidie betaal je aanzienlijk minder —
-            wij berekenen jouw exacte voordeel.
+            de tool berekent jouw exacte voordeel.
           </p>
         </div>
 
@@ -105,16 +106,16 @@ export function PricingRanges() {
           ))}
         </div>
 
-        <p className="mt-8 text-center text-xs text-muted">
+        <SubsidyDisclaimer className="mt-8" />
+
+        <p className="mt-4 text-center text-xs text-muted">
           Indicatieve prijzen incl. arbeidskosten, excl. BTW. De exacte prijs hangt af van jouw situatie.{" "}
           <Link href="/vergelijk" className="text-action underline underline-offset-2 hover:text-dark">
             Start de keuzehulp voor een persoonlijke berekening
           </Link>
           .
           <br />
-          Bronnen: Milieu Centraal, Consumentenbond, RVO (2026). Subsidiebedragen zijn indicatief
-          en onder voorbehoud van wijzigingen door RVO. Controleer actuele bedragen op
-          rvo.nl/subsidies/isde.
+          Bronnen: Milieu Centraal, Consumentenbond, RVO (2026).
         </p>
 
         <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

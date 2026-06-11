@@ -88,7 +88,12 @@ export default function VergelijkPage() {
     if (typeof window === "undefined") return initialData;
     const params = new URLSearchParams(window.location.search);
     const postcode = params.get("postcode")?.replace(/\s/g, "").toUpperCase() ?? "";
-    return /^\d{4}[A-Z]{2}$/.test(postcode) ? { ...initialData, postcode } : initialData;
+    const woningtype = params.get("woningtype") ?? "";
+    return {
+      ...initialData,
+      ...(/^\d{4}[A-Z]{2}$/.test(postcode) ? { postcode } : {}),
+      ...(woningtypeOpties.includes(woningtype) ? { woningtype } : {}),
+    };
   });
   const [zoeken, setZoeken] = useState(false);
   const [adresGevonden, setAdresGevonden] = useState(false);
@@ -259,8 +264,8 @@ export default function VergelijkPage() {
           {step === "adres" && (
             <Step heading="Waar staat je woning?">
               <p className="mb-6 text-base leading-relaxed text-muted">
-                Vul je postcode en huisnummer in. We zoeken automatisch een aantal gegevens van je
-                woning op, zodat je zelf minder hoeft in te vullen.
+                Vul je postcode en huisnummer in. De tool zoekt automatisch een aantal gegevens van
+                je woning op, zodat je zelf minder hoeft in te vullen.
               </p>
               <form onSubmit={handleAdresSubmit} noValidate className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
@@ -316,10 +321,10 @@ export default function VergelijkPage() {
                   </p>
                   <p className="text-sm text-muted">
                     {autoIngevuld
-                      ? "We hebben een deel van je gegevens alvast ingevuld — klopt het niet, pas het dan aan."
+                      ? "De tool heeft een deel van je gegevens alvast ingevuld — klopt het niet, pas het dan aan."
                       : adresGevonden
-                        ? "We hebben je adres gevonden, maar niet alle details. Vul de onderstaande gegevens zelf aan."
-                        : "We konden je woning niet automatisch vinden. Vul de onderstaande gegevens zelf in."}
+                        ? "De tool heeft je adres gevonden, maar niet alle details. Vul de onderstaande gegevens zelf aan."
+                        : "De tool kon je woning niet automatisch vinden. Vul de onderstaande gegevens zelf in."}
                   </p>
                 </div>
               </div>
@@ -370,7 +375,7 @@ export default function VergelijkPage() {
                 ))}
               </div>
               <p className="mt-4 text-xs text-muted-light">
-                Niet zeker? Kies &ldquo;Weet ik niet&rdquo; — we gaan dan uit van een gemiddelde
+                Niet zeker? Kies &ldquo;Weet ik niet&rdquo; — dan gaat de tool uit van een gemiddelde
                 isolatie voor het bouwjaar van je woning.
               </p>
             </Step>
@@ -395,8 +400,8 @@ export default function VergelijkPage() {
           {step === "gasverbruik" && (
             <Step heading="Hoeveel gas verbruik je per jaar?" onBack={() => setStep("systeem")}>
               <p className="mb-6 text-base leading-relaxed text-muted">
-                We hebben dit alvast geschat op basis van je woning. Klopt het ongeveer? Het exacte
-                getal vind je op de jaarafrekening van je energieleverancier.
+                De tool heeft dit alvast geschat op basis van je woning. Klopt het ongeveer? Het
+                exacte getal vind je op de jaarafrekening van je energieleverancier.
               </p>
               <input
                 type="range"

@@ -27,7 +27,7 @@ const steps = [
   {
     icon: ConversationIcon,
     title: "Ontvang persoonlijk advies",
-    body: "Op basis van jouw antwoorden berekenen we direct welk type warmtepomp het beste past, inclusief een inschatting van kosten en subsidie.",
+    body: "Op basis van jouw antwoorden berekent de tool direct welk type warmtepomp het beste past, inclusief een inschatting van kosten en subsidie.",
   },
   {
     icon: NetworkIcon,

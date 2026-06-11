@@ -1,6 +1,7 @@
 import { Benefits } from "@/components/benefits";
 import { CitiesSection } from "@/components/cities-section";
 import { CtaBanner } from "@/components/cta-banner";
+import { ExampleAdviceCta } from "@/components/example-advice-cta";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { FounderTrust } from "@/components/founder-trust";
@@ -48,6 +49,7 @@ export default function Home() {
         <Hero />
         <FounderTrust />
         <HowItWorks />
+        <ExampleAdviceCta />
         <Benefits />
         <Objections />
         <PricingRanges />

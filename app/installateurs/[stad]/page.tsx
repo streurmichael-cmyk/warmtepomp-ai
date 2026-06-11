@@ -15,6 +15,7 @@ import {
   ShieldIcon,
   SubsidyIcon,
 } from "@/components/icons";
+import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
 import { cities, getCity } from "@/lib/cities";
 import { buildMetadata } from "@/lib/seo";
 
@@ -143,6 +144,10 @@ export default async function StadPage({
               </h2>
             </div>
 
+            <p className="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-muted">
+              {city.localParagraph}
+            </p>
+
             <div className="grid gap-6 md:grid-cols-3">
               {waarom.map((item) => (
                 <article
@@ -167,7 +172,7 @@ export default async function StadPage({
                 Kosten
               </p>
               <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
-                Gemiddelde kosten van een warmtepomp in {city.name}
+                Gemiddelde warmtepomp kosten in {city.name} in 2026
               </h2>
             </div>
 
@@ -209,7 +214,7 @@ export default async function StadPage({
                 </div>
                 <div>
                   <h2 className="font-display text-lg font-bold text-dark">
-                    ISDE-subsidie in {city.name}
+                    ISDE subsidie in {city.name} (2026)
                   </h2>
                   <p className="mt-2 text-base leading-relaxed text-muted">
                     Ook in {city.name} kun je via de ISDE-regeling van de Rijksoverheid subsidie
@@ -217,18 +222,11 @@ export default async function StadPage({
                     afhankelijk van het vermogen. De aanvraag verloopt landelijk via
                     mijn.rvo.nl, ongeacht waar in Nederland je woont.
                   </p>
+
+                  <SubsidyDisclaimer className="mt-4" />
+
                   <p className="mt-3 text-xs text-muted">
-                    Bedragen zijn indicatief en onder voorbehoud van wijzigingen door RVO.
-                    Controleer actuele bedragen op{" "}
-                    <a
-                      href="https://www.rvo.nl/subsidies-financiering/isde"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-bold text-action hover:underline"
-                    >
-                      rvo.nl/subsidies/isde
-                    </a>{" "}
-                    of bekijk{" "}
+                    Bekijk ook{" "}
                     <Link href="/subsidie" className="font-bold text-action hover:underline">
                       onze subsidiepagina
                     </Link>

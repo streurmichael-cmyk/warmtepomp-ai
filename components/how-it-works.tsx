@@ -1,29 +1,29 @@
-import { CheckCircleIcon, ConversationIcon, HomeIcon, SubsidyIcon } from "./icons";
+import { ConversationIcon, HomeIcon, NetworkIcon, SubsidyIcon } from "./icons";
 
 const steps = [
   {
     number: "1",
     icon: HomeIcon,
-    title: "Jij vult een paar vragen in",
-    body: "Postcode en huisnummer, en een paar korte vragen over je woning. Geen account, geen e-mailadres nodig om te beginnen.",
+    title: "Jij vult je woninggegevens in",
+    body: "Woningtype, bouwjaar en isolatie — een paar korte vragen over jouw woning. Geen account nodig om te beginnen.",
   },
   {
     number: "2",
     icon: SubsidyIcon,
-    title: "Wij rekenen, niet wij verkopen",
-    body: "We combineren jouw gegevens met actuele cijfers van Milieu Centraal, RVO en de Consumentenbond over isolatie, energieprijzen en subsidies.",
+    title: "De tool analyseert jouw situatie",
+    body: "Op basis van openbare data en de actuele subsidiebedragen berekent de tool wat voor jouw woning relevant is.",
   },
   {
     number: "3",
     icon: ConversationIcon,
-    title: "Je ziet direct je advies",
-    body: "Welk type warmtepomp (of misschien geen warmtepomp) bij jouw huis past, met een inschatting van kosten, besparing en subsidie.",
+    title: "Je ontvangt een persoonlijk advies",
+    body: "Welk type warmtepomp bij jouw huis past, met een inschatting van kosten, subsidie en besparing.",
   },
   {
     number: "4",
-    icon: CheckCircleIcon,
-    title: "Jij bepaalt of je verder gaat",
-    body: "Vind je het advies nuttig? Dan kun je je laten koppelen aan installateurs. Wil je dat niet? Dan stopt het hier, zonder gevolgen.",
+    icon: NetworkIcon,
+    title: "Wij zoeken passende installateurs",
+    body: "Gecertificeerde installateurs bij jou in de regio, zodat je eenvoudig offertes kunt vergelijken.",
   },
 ];
 
@@ -36,7 +36,7 @@ export function HowItWorks() {
             Transparant
           </p>
           <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
-            Hoe komt je advies tot stand?
+            Hoe komt jouw advies tot stand?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
             Geen black box — dit is precies wat er gebeurt met jouw antwoorden.

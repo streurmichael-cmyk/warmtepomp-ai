@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -31,7 +30,7 @@ export default function OverOnsPage() {
               Over ons
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
-              Eerlijk advies, zonder poespas
+              Wie zit er achter warmtepomp.ai?
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted">
               Warmtepomp.ai is nieuw, klein en transparant over wie we zijn en hoe we werken.
@@ -42,22 +41,25 @@ export default function OverOnsPage() {
         <section className="bg-light-bg py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="rounded-2xl border border-green/10 bg-white p-8 sm:p-10">
-              <div className="flex items-start gap-4">
-                <div className="aspect-square h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl sm:h-20 sm:w-20">
-                  <Image
-                    src="/images/portret-man.png"
-                    alt="Portretfoto van Michael Streur, oprichter van warmtepomp.ai"
-                    width={428}
-                    height={445}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+              <div className="flex flex-col items-start gap-6 sm:flex-row">
+                <img
+                  src="/portret-michael.png"
+                  alt="Michael Streur, oprichter warmtepomp.ai"
+                  className="h-24 w-24 flex-shrink-0 rounded-2xl object-cover sm:h-28 sm:w-28"
+                />
                 <div>
-                  <h2 className="font-display text-lg font-bold text-dark">Wie we zijn</h2>
+                  <h2 className="font-display text-lg font-bold text-dark">Hoi, ik ben Michael</h2>
                   <p className="mt-2 text-base leading-relaxed text-muted">
-                    Warmtepomp.ai is opgericht door Michael Streur, een onafhankelijke adviseur
-                    uit de regio Amsterdam.
+                    Ik ben de oprichter van warmtepomp.ai. Een paar jaar geleden liep ik zelf
+                    vast in het oerwoud van offertes, subsidieregels en installateurs die allemaal
+                    een ander verhaal vertelden. Wat me opviel: het draaide vaak meer om de
+                    provisie van de installateur dan om wat het beste was voor de woning.
+                  </p>
+                  <p className="mt-3 text-base leading-relaxed text-muted">
+                    Daarom bouwde ik warmtepomp.ai: een keuzehulp die in een paar minuten een
+                    eerlijk, persoonlijk advies geeft — zonder dat er één verkoper aan te pas komt.
+                    Ik werk er in mijn eentje aan, vanuit de regio Amsterdam, en lees ook echt elke
+                    aanvraag die binnenkomt.
                   </p>
                 </div>
               </div>
@@ -127,8 +129,10 @@ export default function OverOnsPage() {
               </div>
               <div className="rounded-2xl border border-green/10 bg-light-bg p-6 text-center">
                 <MapPinIcon className="mx-auto h-5 w-5 text-green" />
-                <p className="mt-2 font-display text-lg font-bold text-dark">Heel Nederland</p>
-                <p className="text-xs text-muted">Werkgebied</p>
+                <p className="mt-2 font-display text-lg font-bold text-dark">
+                  Regio Amsterdam, Noord-Holland
+                </p>
+                <p className="text-xs text-muted">Vestigingsplaats</p>
               </div>
             </div>
           </div>

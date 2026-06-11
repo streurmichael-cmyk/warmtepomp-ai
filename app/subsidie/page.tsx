@@ -9,6 +9,7 @@ import {
   ShieldIcon,
   SubsidyIcon,
 } from "@/components/icons";
+import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -51,7 +52,7 @@ const bedragen = [
     title: "Overige types",
     amount: "Gratis berekening",
     description:
-      "Voor bijvoorbeeld bodem- of water/water-warmtepompen gelden andere bedragen en voorwaarden, afhankelijk van het vermogen van de installatie. Vul de keuzehulp in en wij rekenen dit gratis en persoonlijk voor je uit.",
+      "Voor bijvoorbeeld bodem- of water/water-warmtepompen gelden andere bedragen en voorwaarden, afhankelijk van het vermogen van de installatie. Vul de keuzehulp in en de tool berekent dit gratis en persoonlijk voor je.",
     highlight: false,
     ctaHref: "/vergelijk" as string | undefined,
     ctaLabel: "Vraag jouw berekening aan" as string | undefined,
@@ -162,18 +163,10 @@ export default function SubsidiePage() {
               ))}
             </div>
 
-            <p className="mt-8 text-center text-xs text-muted">
-              Bedragen zijn indicatief en onder voorbehoud van wijzigingen door RVO. Controleer
-              actuele bedragen op{" "}
-              <a
-                href="https://www.rvo.nl/subsidies-financiering/isde"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-bold text-action hover:underline"
-              >
-                rvo.nl/subsidies/isde
-              </a>
-              . Benieuwd wat een warmtepomp je in totaal kost? Bekijk{" "}
+            <SubsidyDisclaimer className="mt-8" />
+
+            <p className="mt-4 text-center text-xs text-muted">
+              Benieuwd wat een warmtepomp je in totaal kost? Bekijk{" "}
               <Link href="/kosten" className="font-bold text-action hover:underline">
                 ons kostenoverzicht
               </Link>

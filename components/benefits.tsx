@@ -4,7 +4,7 @@ const benefits = [
   {
     icon: SubsidyIcon,
     title: "Actuele subsidie",
-    body: "Wij houden de ISDE-subsidieregeling voor je bij en berekenen automatisch hoeveel jij kunt ontvangen in 2026. Zo mis je geen voordeel.",
+    body: "De tool houdt de actuele ISDE-subsidieregeling voor je bij en berekent automatisch hoeveel jij kunt ontvangen in 2026. Zo mis je geen voordeel.",
     note: "Tot €3.500 voordeel",
   },
   {
@@ -16,7 +16,7 @@ const benefits = [
   {
     icon: ShieldIcon,
     title: "Eerlijk advies",
-    body: "Geen verborgen belangen of provisie-afspraken met fabrikanten. We geven onafhankelijk advies over het beste type warmtepomp voor jouw situatie en koppelen je aan meerdere installateurs om te vergelijken.",
+    body: "Geen verborgen belangen of provisie-afspraken met fabrikanten. De tool analyseert jouw situatie en geeft onafhankelijk advies over het beste type warmtepomp. Daarna koppelen we je aan meerdere installateurs om te vergelijken.",
     note: "100% onafhankelijk",
   },
 ];

@@ -1,9 +1,13 @@
 import Link from "next/link";
-import { ArrowRight, ShieldIcon } from "./icons";
+import { ArrowRight, ShieldIcon, WhatsAppIcon } from "./icons";
 
 const sources = ["Milieu Centraal", "RVO", "Consumentenbond"];
 
 export function Reviews() {
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const text = encodeURIComponent("Hallo, ik heb een vraag over warmtepompen");
+  const whatsappHref = `https://wa.me/${number}?text=${text}`;
+
   return (
     <section id="transparantie" className="bg-light-bg py-20 sm:py-24">
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
@@ -11,7 +15,7 @@ export function Reviews() {
           <ShieldIcon className="h-7 w-7" />
         </div>
         <h2 className="mt-6 font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
-          We zijn nieuw. Daarom zijn we extra transparant.
+          Wat andere huiseigenaren zeggen
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
           Warmtepomp.ai is net gestart, dus we hebben nog geen stapel reviews — en die gaan we
@@ -66,6 +70,31 @@ export function Reviews() {
             </div>
             <ArrowRight className="h-5 w-5 flex-shrink-0 text-action transition-transform group-hover:translate-x-1" />
           </Link>
+
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between gap-4 rounded-2xl border border-green/15 bg-white p-6 transition-colors hover:border-action"
+          >
+            <div className="flex items-start gap-4">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#25D366]/10 text-[#25D366]">
+                <WhatsAppIcon className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="font-display text-lg font-bold text-dark">
+                  Heb je al een warmtepomp via ons gevonden?
+                </p>
+                <p className="mt-1 text-sm text-muted">
+                  Laat ons weten hoe het is gegaan — jouw ervaring helpt andere huiseigenaren.
+                </p>
+              </div>
+            </div>
+            <span className="flex flex-shrink-0 items-center gap-1.5 font-display text-sm font-bold text-action transition-transform group-hover:translate-x-1">
+              Stuur een berichtje
+              <ArrowRight className="h-4 w-4" />
+            </span>
+          </a>
         </div>
       </div>
     </section>

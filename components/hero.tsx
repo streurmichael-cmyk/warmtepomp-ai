@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PostcodeInput } from "./postcode-input";
+import { WoningtypeCards } from "./woningtype-cards";
 
 const stats = [
   { value: "5 min", label: "tijd om je advies te krijgen" },
@@ -70,6 +71,8 @@ export function Hero() {
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted lg:mx-0">
             {variant.subline}
           </p>
+
+          <WoningtypeCards />
 
           {/* Postcode input */}
           <div className="mt-10">

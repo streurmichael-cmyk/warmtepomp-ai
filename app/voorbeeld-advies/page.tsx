@@ -10,6 +10,7 @@ import {
   ShieldIcon,
   SubsidyIcon,
 } from "@/components/icons";
+import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -118,6 +119,8 @@ export default function VoorbeeldAdviesPage() {
                     </tbody>
                   </table>
                 </div>
+
+                <SubsidyDisclaimer className="mt-4" />
               </div>
 
               <div className="mt-8">
@@ -139,17 +142,7 @@ export default function VoorbeeldAdviesPage() {
               <p className="mt-8 text-xs text-muted">
                 Dit is een voorbeeld op basis van een fictieve woning, ter illustratie van hoe
                 een advies eruitziet. Kosten zijn indicatief. Bronnen: Milieu Centraal,
-                Consumentenbond, RVO (2026). Subsidiebedragen zijn indicatief en onder
-                voorbehoud van wijzigingen door RVO. Controleer actuele bedragen op{" "}
-                <a
-                  href="https://www.rvo.nl/subsidies-financiering/isde"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-bold text-action hover:underline"
-                >
-                  rvo.nl/subsidies/isde
-                </a>
-                .
+                Consumentenbond, RVO (2026).
               </p>
             </div>
           </div>
