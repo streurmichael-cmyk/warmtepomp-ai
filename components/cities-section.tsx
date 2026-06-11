@@ -7,7 +7,7 @@ export function CitiesSection({ className = "bg-white" }: { className?: string }
     <section className={`${className} py-20 sm:py-24`}>
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mb-14 max-w-2xl text-center sm:mx-auto">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
             Per stad
           </p>
           <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">

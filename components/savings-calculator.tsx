@@ -39,7 +39,7 @@ export function SavingsCalculator() {
           <p className="text-xs font-bold uppercase tracking-wide text-muted">
             Besparing per maand
           </p>
-          <p className="mt-2 font-display text-2xl font-bold text-green">
+          <p className="mt-2 font-display text-2xl font-bold text-action">
             €{besparingPerMaand.toLocaleString("nl-NL")}
           </p>
         </div>
@@ -47,7 +47,7 @@ export function SavingsCalculator() {
           <p className="text-xs font-bold uppercase tracking-wide text-muted">
             Besparing per jaar
           </p>
-          <p className="mt-2 font-display text-2xl font-bold text-green">
+          <p className="mt-2 font-display text-2xl font-bold text-action">
             €{besparingPerJaar.toLocaleString("nl-NL")}
           </p>
         </div>
@@ -55,7 +55,7 @@ export function SavingsCalculator() {
           <p className="text-xs font-bold uppercase tracking-wide text-muted">
             Terugverdientijd
           </p>
-          <p className="mt-2 font-display text-2xl font-bold text-green">
+          <p className="mt-2 font-display text-2xl font-bold text-action">
             {terugverdientijd.toLocaleString("nl-NL")} jaar
           </p>
         </div>

@@ -1,14 +1,26 @@
 import { CheckCircleIcon } from "./icons";
 
+// Tijdelijke placeholders voor social-proof statistieken. Vul in met de echte
+// cijfers en zet SHOW_STATS op true zodra die beschikbaar zijn.
+const ADVIEZEN_DEZE_WEEK = 47;
+const GEMIDDELDE_BEOORDELING = 4.8;
+const SHOW_STATS = false;
+
 const items = [
-  "100% onafhankelijk advies",
-  "Gratis & vrijblijvend advies",
-  "Binnen 24 uur reactie",
+  ...(SHOW_STATS
+    ? [
+        `Al ${ADVIEZEN_DEZE_WEEK} adviezen gegeven deze week`,
+        `Gemiddeld ${GEMIDDELDE_BEOORDELING} ★ tevredenheid`,
+      ]
+    : []),
+  "100% onafhankelijk — geen commissie van merken",
+  "Gratis advies, geen verplichtingen",
+  "Je gegevens worden nooit doorverkocht",
 ];
 
 export function TrustBar() {
   return (
-    <div className="bg-green py-2.5 text-white">
+    <div className="bg-action py-2.5 text-white">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-1.5 px-5 text-xs font-semibold sm:px-8">
         {items.map((item) => (
           <span key={item} className="inline-flex items-center gap-1.5">

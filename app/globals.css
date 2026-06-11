@@ -4,10 +4,14 @@
   --dark: #0d1f16;
   --green: #22b572;
   --turquoise: #00d4a0;
+  --action: #0e7a4f;
   --light-bg: #f7faf8;
   --white: #ffffff;
   --text: #0d1f16;
-  --muted: #5a7264;
+  --muted: #46594e;
+  --muted-light: #5a7264;
+  --error: #b91c1c;
+  --error-bg: #fef2f2;
   --footer: #f7faf8;
 }
 
@@ -15,10 +19,14 @@
   --color-dark: var(--dark);
   --color-green: var(--green);
   --color-turquoise: var(--turquoise);
+  --color-action: var(--action);
   --color-light-bg: var(--light-bg);
   --color-white: var(--white);
   --color-text: var(--text);
   --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
+  --color-error: var(--error);
+  --color-error-bg: var(--error-bg);
   --color-footer: var(--footer);
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-source-sans);
@@ -38,36 +46,12 @@ body {
   background: color-mix(in srgb, var(--green) 30%, transparent);
 }
 
-@keyframes hero-float {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(24px, 16px) scale(1.06);
-  }
-}
-
-.hero-glow-green {
-  animation: hero-float 9s ease-in-out infinite alternate;
-}
-
+/* Static accent shapes — no motion, per "geen bewegende elementen" voor de doelgroep */
+.hero-glow-green,
 .hero-glow-turquoise {
-  animation: hero-float 9s ease-in-out infinite alternate;
-  animation-delay: -4.5s;
-}
-
-@keyframes hero-pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.45;
-    transform: scale(1.35);
-  }
+  transform: none;
 }
 
 .hero-badge-dot {
-  animation: hero-pulse 2.2s ease-in-out infinite;
+  opacity: 1;
 }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -8,7 +9,6 @@ import {
   MapPinIcon,
   ShieldIcon,
   SubsidyIcon,
-  UserIcon,
 } from "@/components/icons";
 import { buildMetadata } from "@/lib/seo";
 
@@ -27,7 +27,7 @@ export default function OverOnsPage() {
       <main>
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
               Over ons
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
@@ -43,8 +43,15 @@ export default function OverOnsPage() {
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="rounded-2xl border border-green/10 bg-white p-8 sm:p-10">
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-green/10 text-green">
-                  <UserIcon className="h-6 w-6" />
+                <div className="aspect-square h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl sm:h-20 sm:w-20">
+                  <Image
+                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400"
+                    alt="Portretfoto van Michael Streur, oprichter van warmtepomp.ai"
+                    width={400}
+                    height={400}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <div>
                   <h2 className="font-display text-lg font-bold text-dark">Wie we zijn</h2>
@@ -94,7 +101,7 @@ export default function OverOnsPage() {
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="mb-10 text-center">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Praktisch
               </p>
               <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
@@ -113,7 +120,7 @@ export default function OverOnsPage() {
                 <MailIcon className="mx-auto h-5 w-5 text-green" />
                 <a
                   href="mailto:info@warmtepomp.ai"
-                  className="mt-2 block font-display text-lg font-bold text-dark hover:text-green"
+                  className="mt-2 block font-display text-lg font-bold text-dark hover:text-action"
                 >
                   info@warmtepomp.ai
                 </a>
@@ -127,7 +134,7 @@ export default function OverOnsPage() {
           </div>
         </section>
 
-        <section className="bg-green py-20 text-center sm:py-24">
+        <section className="bg-action py-20 text-center sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Benieuwd wat wij voor jou kunnen doen?
@@ -138,7 +145,7 @@ export default function OverOnsPage() {
             </p>
             <Link
               href="/vergelijk"
-              className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-green shadow-[0_4px_28px_rgba(13,31,22,0.15)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(13,31,22,0.2)]"
+              className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-action shadow-[0_4px_28px_rgba(13,31,22,0.15)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(13,31,22,0.2)]"
             >
               Start de keuzehulp
               <ArrowRight className="h-5 w-5" />

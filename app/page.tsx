@@ -3,9 +3,11 @@ import { CitiesSection } from "@/components/cities-section";
 import { CtaBanner } from "@/components/cta-banner";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
+import { FounderTrust } from "@/components/founder-trust";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
+import { Objections } from "@/components/objections";
 import { PricingRanges } from "@/components/pricing-ranges";
 import { Reviews } from "@/components/reviews";
 import { TrustBar } from "@/components/trust-bar";
@@ -44,8 +46,10 @@ export default function Home() {
       <TrustBar />
       <main>
         <Hero />
-        <Benefits />
+        <FounderTrust />
         <HowItWorks />
+        <Benefits />
+        <Objections />
         <PricingRanges />
         <CitiesSection />
         <Reviews />

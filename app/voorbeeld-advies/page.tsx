@@ -41,7 +41,7 @@ export default function VoorbeeldAdviesPage() {
       <main>
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
               Voorbeeldadvies
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
@@ -85,7 +85,7 @@ export default function VoorbeeldAdviesPage() {
                   <ShieldIcon className="h-6 w-6" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wide text-green">
+                  <p className="text-xs font-bold uppercase tracking-wide text-action">
                     Aanbevolen type
                   </p>
                   <h3 className="font-display text-xl font-bold text-dark">
@@ -145,7 +145,7 @@ export default function VoorbeeldAdviesPage() {
                   href="https://www.rvo.nl/subsidies-financiering/isde"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-green hover:underline"
+                  className="font-bold text-action hover:underline"
                 >
                   rvo.nl/subsidies/isde
                 </a>
@@ -155,7 +155,7 @@ export default function VoorbeeldAdviesPage() {
           </div>
         </section>
 
-        <section className="bg-green py-20 text-center sm:py-24">
+        <section className="bg-action py-20 text-center sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <SubsidyIcon className="mx-auto h-10 w-10 text-white/80" />
             <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -167,7 +167,7 @@ export default function VoorbeeldAdviesPage() {
             </p>
             <Link
               href="/vergelijk"
-              className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-green shadow-[0_4px_28px_rgba(13,31,22,0.15)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(13,31,22,0.2)]"
+              className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-action shadow-[0_4px_28px_rgba(13,31,22,0.15)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(13,31,22,0.2)]"
             >
               Ontvang jouw eigen advies
               <ArrowRight className="h-5 w-5" />

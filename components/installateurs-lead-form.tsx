@@ -126,7 +126,7 @@ export function InstallateursLeadForm({
               />
             </div>
             {errors.postcode && (
-              <p role="alert" className="mt-1.5 text-sm text-red-500">
+              <p role="alert" className="mt-1.5 text-sm text-error">
                 {errors.postcode}
               </p>
             )}
@@ -150,7 +150,7 @@ export function InstallateursLeadForm({
               </select>
             </div>
             {errors.woningtype && (
-              <p role="alert" className="mt-1.5 text-sm text-red-500">
+              <p role="alert" className="mt-1.5 text-sm text-error">
                 {errors.woningtype}
               </p>
             )}
@@ -158,7 +158,7 @@ export function InstallateursLeadForm({
 
           <button
             type="submit"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-7 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5"
           >
             Zoek installateurs
             <ArrowRight className="h-5 w-5" />
@@ -185,7 +185,7 @@ export function InstallateursLeadForm({
               />
             </div>
             {errors.voornaam && (
-              <p role="alert" className="mt-1.5 text-sm text-red-500">
+              <p role="alert" className="mt-1.5 text-sm text-error">
                 {errors.voornaam}
               </p>
             )}
@@ -203,7 +203,7 @@ export function InstallateursLeadForm({
               />
             </div>
             {errors.telefoon && (
-              <p role="alert" className="mt-1.5 text-sm text-red-500">
+              <p role="alert" className="mt-1.5 text-sm text-error">
                 {errors.telefoon}
               </p>
             )}
@@ -221,14 +221,14 @@ export function InstallateursLeadForm({
               />
             </div>
             {errors.email && (
-              <p role="alert" className="mt-1.5 text-sm text-red-500">
+              <p role="alert" className="mt-1.5 text-sm text-error">
                 {errors.email}
               </p>
             )}
           </div>
 
           {submitError && (
-            <p role="alert" className="text-sm text-red-500">
+            <p role="alert" className="text-sm text-error">
               {submitError}
             </p>
           )}
@@ -236,7 +236,7 @@ export function InstallateursLeadForm({
           <button
             type="submit"
             disabled={submitting}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-7 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
           >
             {submitting ? "Versturen..." : "Plan adviesgesprek"}
             {!submitting && <ArrowRight className="h-5 w-5" />}

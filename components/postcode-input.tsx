@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ArrowRight, MapPinIcon } from "./icons";
 
-export function PostcodeInput() {
+export function PostcodeInput({ ctaLabel = "Check mijn woning" }: { ctaLabel?: string }) {
   const [postcode, setPostcode] = useState("");
   const [error, setError] = useState("");
 
@@ -42,19 +42,19 @@ export function PostcodeInput() {
         </div>
         <button
           type="submit"
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-7 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(0,212,160,0.4)] whitespace-nowrap"
+          className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white shadow-[0_4px_24px_rgba(14,122,79,0.3)] transition-colors hover:bg-[#0c6a44] whitespace-nowrap"
         >
-          Start gratis
+          {ctaLabel}
           <ArrowRight className="h-5 w-5" />
         </button>
       </div>
       {error && (
-        <p id="postcode-error" role="alert" className="mt-2 text-sm text-red-500 text-left pl-1">
+        <p id="postcode-error" role="alert" className="mt-2 text-sm text-error text-left pl-1">
           {error}
         </p>
       )}
-      <p className="mt-3 text-xs text-muted text-center lg:text-left">
-        Geen registratie vereist · 100% gratis · Resultaat binnen 5 minuten
+      <p className="mt-3 text-sm text-muted text-center lg:text-left">
+        Geen verplichtingen · we vragen pas om je gegevens als je advies klaar is
       </p>
     </form>
   );

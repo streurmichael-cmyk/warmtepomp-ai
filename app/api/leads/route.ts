@@ -7,10 +7,14 @@ type LeadData = {
   bouwjaar?: string;
   isolatie?: string;
   huidigSysteem?: string;
+  gasverbruik?: number;
   postcode?: string;
+  huisnummer?: string;
   voornaam?: string;
   telefoon?: string;
   email?: string;
+  adviesType?: string;
+  wantsInstallateur?: boolean;
 };
 
 function isLeadData(value: unknown): value is LeadData {
@@ -70,7 +74,9 @@ Gegevens van de aanvrager:
 - Bouwjaar: ${lead.bouwjaar ?? "onbekend"}
 - Isolatieniveau: ${lead.isolatie ?? "onbekend"}
 - Huidig verwarmingssysteem: ${lead.huidigSysteem ?? "onbekend"}
-- Postcode: ${lead.postcode ?? "onbekend"}
+- Geschat jaarlijks gasverbruik: ${lead.gasverbruik ? `${lead.gasverbruik} m³` : "onbekend"}
+- Postcode: ${lead.postcode ?? "onbekend"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}
+- Voorlopig advies uit de website-tool: ${lead.adviesType ?? "onbekend"}
 
 Actuele ISDE-subsidie-informatie (afkomstig van rvo.nl):
 ${subsidieInfo}
@@ -161,7 +167,8 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
         <li>Bouwjaar: ${lead.bouwjaar ?? "-"}</li>
         <li>Isolatieniveau: ${lead.isolatie ?? "-"}</li>
         <li>Huidig systeem: ${lead.huidigSysteem ?? "-"}</li>
-        <li>Postcode: ${lead.postcode ?? "-"}</li>
+        <li>Geschat gasverbruik: ${lead.gasverbruik ? `${lead.gasverbruik} m³ per jaar` : "-"}</li>
+        <li>Postcode: ${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}</li>
       </ul>
       ${adviesHtml}
       <p>Tot snel!</p>
@@ -198,6 +205,7 @@ async function sendNotificationEmail(lead: LeadData) {
   const html = `
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
       <h2>Nieuwe lead binnengekomen</h2>
+      <p><strong>${lead.wantsInstallateur ? "Wil installateurs-offertes (telefoon ingevuld)" : "Wil alleen het advies per e-mail"}</strong></p>
       <ul>
         <li>Voornaam: ${lead.voornaam ?? "-"}</li>
         <li>E-mail: ${lead.email ?? "-"}</li>
@@ -207,7 +215,9 @@ async function sendNotificationEmail(lead: LeadData) {
         <li>Bouwjaar: ${lead.bouwjaar ?? "-"}</li>
         <li>Isolatieniveau: ${lead.isolatie ?? "-"}</li>
         <li>Huidig systeem: ${lead.huidigSysteem ?? "-"}</li>
-        <li>Postcode: ${lead.postcode ?? "-"}</li>
+        <li>Geschat gasverbruik: ${lead.gasverbruik ? `${lead.gasverbruik} m³ per jaar` : "-"}</li>
+        <li>Postcode: ${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}</li>
+        <li>Voorlopig advies: ${lead.adviesType ?? "-"}</li>
       </ul>
     </div>
   `;

@@ -101,7 +101,7 @@ export default async function StadPage({
             aria-hidden="true"
           />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
               Installateurs in {city.name}
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
@@ -135,7 +135,7 @@ export default async function StadPage({
         <section className="bg-light-bg py-20 sm:py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="mb-14 max-w-2xl text-center sm:mx-auto">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Waarom warmtepomp.ai
               </p>
               <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
@@ -163,7 +163,7 @@ export default async function StadPage({
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="mb-10 text-center">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Kosten
               </p>
               <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
@@ -224,12 +224,12 @@ export default async function StadPage({
                       href="https://www.rvo.nl/subsidies-financiering/isde"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-bold text-green hover:underline"
+                      className="font-bold text-action hover:underline"
                     >
                       rvo.nl/subsidies/isde
                     </a>{" "}
                     of bekijk{" "}
-                    <Link href="/subsidie" className="font-bold text-green hover:underline">
+                    <Link href="/subsidie" className="font-bold text-action hover:underline">
                       onze subsidiepagina
                     </Link>
                     .
@@ -243,7 +243,7 @@ export default async function StadPage({
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="mb-10 text-center">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Veelgestelde vragen
               </p>
               <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
@@ -273,7 +273,7 @@ export default async function StadPage({
         <section className="bg-light-bg py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="mb-8 text-center">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Meer lezen
               </p>
               <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">

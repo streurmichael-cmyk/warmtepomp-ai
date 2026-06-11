@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -45,7 +46,7 @@ export default function KostenPage() {
             aria-hidden="true"
           />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
               Kosten
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
@@ -55,13 +56,23 @@ export default function KostenPage() {
               Geen verborgen kosten, geen kleine lettertjes. Hier zie je precies wat je kunt
               verwachten — van aanschaf tot subsidie en maandelijkse besparing.
             </p>
+            <div className="mt-10 aspect-[16/9] max-h-[300px] overflow-hidden rounded-xl sm:max-h-none">
+              <Image
+                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200"
+                alt="Installateur die een warmtepomp installeert bij een woning"
+                width={1200}
+                height={675}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
         </section>
 
         <section className="bg-light-bg py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="mb-10 text-center">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Aanschaf en installatie
               </p>
               <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
@@ -101,7 +112,7 @@ export default function KostenPage() {
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="mb-10 text-center">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Subsidie
               </p>
               <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
@@ -168,12 +179,12 @@ export default function KostenPage() {
                   href="https://www.rvo.nl/subsidies-financiering/isde"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-green hover:underline"
+                  className="font-bold text-action hover:underline"
                 >
                   rvo.nl/subsidies/isde
                 </a>{" "}
                 of bekijk{" "}
-                <Link href="/subsidie" className="font-bold text-green hover:underline">
+                <Link href="/subsidie" className="font-bold text-action hover:underline">
                   onze subsidiepagina
                 </Link>
                 .
@@ -185,7 +196,7 @@ export default function KostenPage() {
         <section className="bg-light-bg py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="mb-10 text-center">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Bereken het zelf
               </p>
               <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
@@ -217,7 +228,7 @@ export default function KostenPage() {
                     href="https://www.warmtefonds.nl"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-green hover:underline"
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-action hover:underline"
                   >
                     Meer informatie op warmtefonds.nl
                     <ArrowRight className="h-4 w-4" />
@@ -228,7 +239,7 @@ export default function KostenPage() {
           </div>
         </section>
 
-        <section className="bg-green py-20 text-center sm:py-24">
+        <section className="bg-action py-20 text-center sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Bereken jouw persoonlijke besparing
@@ -239,7 +250,7 @@ export default function KostenPage() {
             </p>
             <Link
               href="/vergelijk"
-              className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-green shadow-[0_4px_28px_rgba(13,31,22,0.15)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(13,31,22,0.2)]"
+              className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-action shadow-[0_4px_28px_rgba(13,31,22,0.15)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(13,31,22,0.2)]"
             >
               Bereken jouw persoonlijke besparing
               <ArrowRight className="h-5 w-5" />

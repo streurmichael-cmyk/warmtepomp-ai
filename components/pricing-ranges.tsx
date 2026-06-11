@@ -36,7 +36,7 @@ export function PricingRanges() {
     <section id="kosten" className="bg-light-bg py-20 sm:py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mb-14 text-center">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
             Wat kost een warmtepomp?
           </p>
           <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
@@ -54,7 +54,7 @@ export function PricingRanges() {
               key={r.type}
               className={`relative rounded-2xl border p-8 transition-all hover:-translate-y-1 ${
                 r.highlight
-                  ? "border-transparent bg-gradient-to-br from-green to-turquoise shadow-[0_16px_48px_rgba(34,181,114,0.25)]"
+                  ? "border-transparent bg-action shadow-[0_16px_48px_rgba(34,181,114,0.25)]"
                   : "border-green/15 bg-white hover:border-green/35 hover:shadow-[0_16px_48px_rgba(34,181,114,0.08)]"
               }`}
             >
@@ -107,7 +107,7 @@ export function PricingRanges() {
 
         <p className="mt-8 text-center text-xs text-muted">
           Indicatieve prijzen incl. arbeidskosten, excl. BTW. De exacte prijs hangt af van jouw situatie.{" "}
-          <Link href="/vergelijk" className="text-green underline underline-offset-2 hover:text-turquoise">
+          <Link href="/vergelijk" className="text-action underline underline-offset-2 hover:text-dark">
             Start de keuzehulp voor een persoonlijke berekening
           </Link>
           .
@@ -120,7 +120,7 @@ export function PricingRanges() {
         <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/vergelijk"
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-8 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-xl bg-action px-8 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5"
           >
             Bereken mijn persoonlijke prijs
             <ArrowRight className="h-5 w-5" />

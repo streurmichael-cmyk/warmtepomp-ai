@@ -50,7 +50,7 @@ export default function HoeHetWerktPage() {
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="mb-14 text-center">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Hoe het werkt
               </p>
               <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
@@ -73,7 +73,7 @@ export default function HoeHetWerktPage() {
                   >
                     0{i + 1}
                   </span>
-                  <div className="relative mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-green to-turquoise text-white shadow-[0_4px_16px_rgba(34,181,114,0.3)]">
+                  <div className="relative mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-action text-white shadow-[0_4px_16px_rgba(34,181,114,0.3)]">
                     <step.icon className="h-6 w-6" />
                   </div>
                   <h3 className="relative font-display text-lg font-bold text-dark">
@@ -89,7 +89,7 @@ export default function HoeHetWerktPage() {
             <div className="mt-14 text-center">
               <Link
                 href="/vergelijk"
-                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-green to-turquoise px-8 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-xl bg-action px-8 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5"
               >
                 Start nu gratis
                 <ArrowRight className="h-5 w-5" />

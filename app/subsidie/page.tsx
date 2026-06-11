@@ -66,7 +66,7 @@ export default function SubsidiePage() {
       <main>
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
               Subsidie
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
@@ -103,7 +103,7 @@ export default function SubsidiePage() {
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="mb-14 max-w-2xl text-center sm:mx-auto">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Indicatie
               </p>
               <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
@@ -117,7 +117,7 @@ export default function SubsidiePage() {
                   key={item.title}
                   className={`rounded-2xl border p-8 transition-all hover:-translate-y-1 ${
                     item.highlight
-                      ? "border-transparent bg-gradient-to-br from-green to-turquoise text-white shadow-[0_16px_48px_rgba(34,181,114,0.25)]"
+                      ? "border-transparent bg-action text-white shadow-[0_16px_48px_rgba(34,181,114,0.25)]"
                       : "border-green/15 bg-light-bg hover:border-green/35"
                   }`}
                 >
@@ -152,7 +152,7 @@ export default function SubsidiePage() {
                   {item.ctaHref && (
                     <Link
                       href={item.ctaHref}
-                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-green hover:underline"
+                      className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-action hover:underline"
                     >
                       {item.ctaLabel}
                       <ArrowRight className="h-4 w-4" />
@@ -169,12 +169,12 @@ export default function SubsidiePage() {
                 href="https://www.rvo.nl/subsidies-financiering/isde"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold text-green hover:underline"
+                className="font-bold text-action hover:underline"
               >
                 rvo.nl/subsidies/isde
               </a>
               . Benieuwd wat een warmtepomp je in totaal kost? Bekijk{" "}
-              <Link href="/kosten" className="font-bold text-green hover:underline">
+              <Link href="/kosten" className="font-bold text-action hover:underline">
                 ons kostenoverzicht
               </Link>
               .
@@ -198,7 +198,7 @@ export default function SubsidiePage() {
           </div>
         </section>
 
-        <section className="bg-green py-20 text-center sm:py-24">
+        <section className="bg-action py-20 text-center sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Benieuwd wat jij kunt besparen?
@@ -209,7 +209,7 @@ export default function SubsidiePage() {
             </p>
             <Link
               href="/vergelijk"
-              className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-green shadow-[0_4px_28px_rgba(13,31,22,0.15)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(13,31,22,0.2)]"
+              className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-action shadow-[0_4px_28px_rgba(13,31,22,0.15)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(13,31,22,0.2)]"
             >
               Bereken jouw subsidie
               <ArrowRight className="h-5 w-5" />

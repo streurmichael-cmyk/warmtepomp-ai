@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CitiesSection } from "@/components/cities-section";
 import { Footer } from "@/components/footer";
@@ -125,7 +126,7 @@ export default function WarmtepompenPage() {
             aria-hidden="true"
           />
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
               Uitleg
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
@@ -142,12 +143,22 @@ export default function WarmtepompenPage() {
         <section className="bg-light-bg py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="mb-10 text-center">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Hoe werkt het?
               </p>
               <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
                 Een koelkast, maar dan andersom
               </h2>
+            </div>
+            <div className="mb-8 aspect-[16/9] max-h-[300px] overflow-hidden rounded-xl sm:max-h-none">
+              <Image
+                src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1200"
+                alt="Binnenunit van een warmtepomp die een woonkamer verwarmt"
+                width={1200}
+                height={675}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="rounded-2xl border border-green/10 bg-white p-8 sm:p-10">
               <p className="text-base leading-relaxed text-muted">
@@ -172,7 +183,7 @@ export default function WarmtepompenPage() {
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="mb-14 max-w-2xl text-center sm:mx-auto">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 De 4 types
               </p>
               <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
@@ -187,7 +198,7 @@ export default function WarmtepompenPage() {
                   className="rounded-2xl border border-green/10 bg-light-bg p-8 transition-all hover:-translate-y-1 hover:border-green/35 hover:shadow-[0_16px_48px_rgba(34,181,114,0.08)]"
                 >
                   <div className="mb-5 flex items-start justify-between gap-4">
-                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-green to-turquoise text-white shadow-[0_4px_16px_rgba(34,181,114,0.3)]">
+                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl bg-action text-white shadow-[0_4px_16px_rgba(34,181,114,0.3)]">
                       <type.icon className="h-6 w-6" />
                     </div>
                     <StarRating score={type.sterren} />
@@ -197,7 +208,7 @@ export default function WarmtepompenPage() {
                   <p className="mt-2 text-sm leading-relaxed text-muted">{type.uitleg}</p>
 
                   <div className="mt-5 rounded-xl bg-white p-4">
-                    <p className="text-xs font-bold uppercase tracking-wide text-green">
+                    <p className="text-xs font-bold uppercase tracking-wide text-action">
                       Geschikt voor
                     </p>
                     <p className="mt-1 text-sm leading-relaxed text-muted">
@@ -265,7 +276,7 @@ export default function WarmtepompenPage() {
                 href="https://www.rvo.nl/subsidies-financiering/isde"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold text-green hover:underline"
+                className="font-bold text-action hover:underline"
               >
                 rvo.nl/subsidies/isde
               </a>
@@ -277,7 +288,7 @@ export default function WarmtepompenPage() {
         <section className="bg-light-bg py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="mb-10 text-center">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Snel checken
               </p>
               <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
@@ -326,7 +337,7 @@ export default function WarmtepompenPage() {
 
         <CitiesSection className="bg-white" />
 
-        <section className="bg-green py-20 text-center sm:py-24">
+        <section className="bg-action py-20 text-center sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Welke warmtepomp past bij jouw woning?
@@ -337,7 +348,7 @@ export default function WarmtepompenPage() {
             </p>
             <Link
               href="/vergelijk"
-              className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-green shadow-[0_4px_28px_rgba(13,31,22,0.15)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(13,31,22,0.2)]"
+              className="mt-8 inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-8 py-4 text-base font-bold text-action shadow-[0_4px_28px_rgba(13,31,22,0.15)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_36px_rgba(13,31,22,0.2)]"
             >
               Welke warmtepomp past bij jouw woning?
               <ArrowRight className="h-5 w-5" />

@@ -12,7 +12,7 @@ export function Faq({ showHeading = true }: { showHeading?: boolean }) {
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         {showHeading && (
           <div className="mb-12 text-center">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
               Veelgestelde vragen
             </p>
             <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">

@@ -47,7 +47,7 @@ export default function InstallateursPage() {
           />
 
           <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
               Installateurs
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
@@ -65,7 +65,7 @@ export default function InstallateursPage() {
         <section className="bg-light-bg py-20 sm:py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="mb-14 max-w-2xl text-center sm:mx-auto">
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-green">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
                 Waarom via warmtepomp.ai?
               </p>
               <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
