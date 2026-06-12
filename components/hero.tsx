@@ -63,11 +63,15 @@ export function Hero() {
             {variant.headlineSuffix}
           </h1>
 
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted lg:mx-0">
+          <p className="mx-auto mt-6 max-w-xl text-lg font-medium leading-relaxed text-dark lg:mx-0">
             {variant.subline}
           </p>
 
           <AddressLookupForm />
+
+          <p className="mx-auto mt-4 max-w-xl text-sm text-muted lg:mx-0">
+            ✓ Geen registratie vereist · ✓ 100% gratis · ✓ Resultaat binnen 5 minuten
+          </p>
         </div>
 
         <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
