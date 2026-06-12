@@ -42,7 +42,7 @@ export function Benefits() {
           {benefits.map((item) => (
             <article
               key={item.title}
-              className="group relative overflow-hidden rounded-2xl border border-green/15 bg-white p-8 transition-all hover:-translate-y-1 hover:border-green/35 hover:shadow-[0_16px_48px_rgba(34,181,114,0.12)]"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-green/15 bg-white p-8 transition-all hover:-translate-y-1 hover:border-green/35 hover:shadow-[0_16px_48px_rgba(34,181,114,0.12)]"
             >
               <div
                 className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-green to-turquoise opacity-0 transition-opacity group-hover:opacity-100"
@@ -54,10 +54,10 @@ export function Benefits() {
               <h3 className="font-display text-xl font-bold text-dark">
                 {item.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
                 {item.body}
               </p>
-              <span className="mt-5 inline-block rounded-full bg-green/10 px-3 py-1 text-xs font-bold text-green">
+              <span className="mt-5 inline-block w-fit self-start rounded-full bg-green/10 px-3 py-1 text-xs font-bold text-green">
                 {item.note}
               </span>
             </article>
