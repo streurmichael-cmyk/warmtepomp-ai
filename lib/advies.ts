@@ -63,6 +63,15 @@ export type AdviesInput = {
   isolatie: string;
   huidigSysteem: string;
   gasverbruik: number;
+  heeftZonnepanelen?: string;
+  aantalZonnepanelen?: number;
+};
+
+export type ZonnepanelenImpact = {
+  eigenOpwekKwh: number;
+  dekkingPercentage: number;
+  extraBesparingPerJaar: number;
+  terugverdientijdMetZon: string;
 };
 
 export type AdviesResultaat = {
@@ -73,9 +82,17 @@ export type AdviesResultaat = {
   subsidie: string;
   besparingPerJaar: number;
   terugverdientijd: string;
+  zonnepanelen?: ZonnepanelenImpact;
 };
 
 const BESPARING_PER_M3 = 0.56;
+
+/** Gemiddelde jaaropbrengst van één zonnepaneel (400 Wp) in kWh. */
+export const KWH_PER_ZONNEPANEEL = 350;
+/** Gemiddeld jaarverbruik van een warmtepomp in kWh. */
+export const WARMTEPOMP_VERBRUIK_KWH = 3500;
+/** Gehanteerde stroomprijs per kWh voor de besparingsberekening. */
+export const STROOMPRIJS_PER_KWH = 0.32;
 
 /** Eenvoudige, lokale indicatie-berekening — geen AI nodig, draait direct in de browserflow
  * zodat de bezoeker zijn advies ziet vóórdat hij contactgegevens achterlaat. */
@@ -136,6 +153,28 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
       ? `${Math.max(1, Math.round((nettoInvestering / besparingPerJaar) * 10) / 10)} jaar`
       : "—";
 
+  let zonnepanelen: ZonnepanelenImpact | undefined;
+  if (input.heeftZonnepanelen === "Ja" && input.aantalZonnepanelen) {
+    const eigenOpwekKwh = input.aantalZonnepanelen * KWH_PER_ZONNEPANEEL;
+    const dekkingPercentage = Math.min(
+      Math.round((eigenOpwekKwh / WARMTEPOMP_VERBRUIK_KWH) * 100),
+      100
+    );
+    const extraBesparingPerJaar = Math.round(eigenOpwekKwh * STROOMPRIJS_PER_KWH);
+    const totaleBesparing = besparingPerJaar + extraBesparingPerJaar;
+    const terugverdientijdMetZon =
+      totaleBesparing > 0
+        ? `${Math.max(1, Math.round((nettoInvestering / totaleBesparing) * 10) / 10)} jaar`
+        : "—";
+
+    zonnepanelen = {
+      eigenOpwekKwh,
+      dekkingPercentage,
+      extraBesparingPerJaar,
+      terugverdientijdMetZon,
+    };
+  }
+
   return {
     passend: true,
     type,
@@ -144,5 +183,6 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
     subsidie,
     besparingPerJaar,
     terugverdientijd,
+    zonnepanelen,
   };
 }

@@ -20,9 +20,11 @@ import {
   type AdviesResultaat,
   berekenAdvies,
   bouwjaarOpties,
+  KWH_PER_ZONNEPANEEL,
   oppervlakteOpties,
   schatGasverbruik,
   standaardIsolatie,
+  WARMTEPOMP_VERBRUIK_KWH,
 } from "@/lib/advies";
 
 type IconComponent = React.ComponentType<{ className?: string }>;
@@ -33,6 +35,7 @@ type StepName =
   | "bevestig"
   | "systeem"
   | "gasverbruik"
+  | "zonnepanelen"
   | "verwerken"
   | "advies"
   | "contact"
@@ -41,7 +44,7 @@ type StepName =
 const PROGRESS_STEPS: { steps: StepName[]; label: string }[] = [
   { steps: ["adres"], label: "Jouw adres" },
   { steps: ["zoeken", "bevestig"], label: "Jouw woning" },
-  { steps: ["systeem", "gasverbruik"], label: "Verwarmingssysteem" },
+  { steps: ["systeem", "gasverbruik", "zonnepanelen"], label: "Verwarmingssysteem" },
   { steps: ["verwerken", "advies"], label: "Jouw advies" },
   { steps: ["contact"], label: "Gegevens" },
 ];
@@ -62,6 +65,8 @@ const systemen: { label: string; icon: IconComponent }[] = [
   { label: "Anders", icon: QuestionIcon },
 ];
 
+const zonnepanelenOpties = ["Nee", "Ja", "Nog niet, maar ik overweeg het"] as const;
+
 type FormData = {
   postcode: string;
   huisnummer: string;
@@ -74,6 +79,8 @@ type FormData = {
   isolatie: string;
   huidigSysteem: string;
   gasverbruik: number;
+  heeftZonnepanelen: string;
+  aantalZonnepanelen: number;
   voornaam: string;
   telefoon: string;
   email: string;
@@ -89,6 +96,8 @@ const initialData: FormData = {
   isolatie: "",
   huidigSysteem: "",
   gasverbruik: 0,
+  heeftZonnepanelen: "",
+  aantalZonnepanelen: 10,
   voornaam: "",
   telefoon: "",
   email: "",
@@ -225,6 +234,13 @@ export default function VergelijkPage() {
     setStep("gasverbruik");
   }
 
+  function selectZonnepanelen(optie: string) {
+    update("heeftZonnepanelen", optie);
+    if (optie !== "Ja") {
+      setStep("verwerken");
+    }
+  }
+
   const advies = useMemo<AdviesResultaat>(
     () =>
       berekenAdvies({
@@ -234,8 +250,19 @@ export default function VergelijkPage() {
         isolatie: data.isolatie,
         huidigSysteem: data.huidigSysteem,
         gasverbruik: data.gasverbruik,
+        heeftZonnepanelen: data.heeftZonnepanelen,
+        aantalZonnepanelen: data.aantalZonnepanelen,
       }),
-    [data.woningtype, data.oppervlakte, data.bouwjaar, data.isolatie, data.huidigSysteem, data.gasverbruik]
+    [
+      data.woningtype,
+      data.oppervlakte,
+      data.bouwjaar,
+      data.isolatie,
+      data.huidigSysteem,
+      data.gasverbruik,
+      data.heeftZonnepanelen,
+      data.aantalZonnepanelen,
+    ]
   );
 
   async function handleLeadSubmit(e: React.FormEvent) {
@@ -266,6 +293,8 @@ export default function VergelijkPage() {
       isolatie: data.isolatie,
       huidigSysteem: data.huidigSysteem,
       gasverbruik: data.gasverbruik,
+      heeftZonnepanelen: data.heeftZonnepanelen,
+      aantalZonnepanelen: data.heeftZonnepanelen === "Ja" ? data.aantalZonnepanelen : undefined,
       postcode: data.postcode,
       huisnummer: data.huisnummer,
       voornaam: data.voornaam.trim(),
@@ -496,12 +525,59 @@ export default function VergelijkPage() {
 
               <button
                 type="button"
-                onClick={() => setStep("verwerken")}
+                onClick={() => setStep("zonnepanelen")}
                 className="mt-8 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
               >
-                Bekijk mijn advies
+                Volgende
                 <ArrowRight className="h-5 w-5" />
               </button>
+            </Step>
+          )}
+
+          {step === "zonnepanelen" && (
+            <Step heading="Heb je zonnepanelen?" onBack={() => setStep("gasverbruik")}>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                {zonnepanelenOpties.map((opt) => (
+                  <OptionCard
+                    key={opt}
+                    label={opt}
+                    selected={data.heeftZonnepanelen === opt}
+                    onClick={() => selectZonnepanelen(opt)}
+                  />
+                ))}
+              </div>
+
+              {data.heeftZonnepanelen === "Ja" && (
+                <div className="mt-8">
+                  <p className="mb-2 text-sm font-bold text-dark">Hoeveel zonnepanelen heb je?</p>
+                  <input
+                    type="range"
+                    min={0}
+                    max={30}
+                    step={1}
+                    value={data.aantalZonnepanelen}
+                    onChange={(e) => update("aantalZonnepanelen", Number(e.target.value))}
+                    className="w-full accent-action"
+                    aria-label="Aantal zonnepanelen"
+                  />
+                  <p className="mt-2 text-center font-display text-3xl font-bold text-dark">
+                    {data.aantalZonnepanelen}{" "}
+                    <span className="text-base font-semibold text-muted">panelen</span>
+                  </p>
+                  <p className="mt-2 text-center text-xs text-muted-light">
+                    Gemiddeld paneel levert 400 Wp = ±350 kWh/jaar
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={() => setStep("verwerken")}
+                    className="mt-8 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
+                  >
+                    Bekijk mijn advies
+                    <ArrowRight className="h-5 w-5" />
+                  </button>
+                </div>
+              )}
             </Step>
           )}
 
@@ -511,7 +587,7 @@ export default function VergelijkPage() {
             <div>
               <button
                 type="button"
-                onClick={() => setStep("gasverbruik")}
+                onClick={() => setStep("zonnepanelen")}
                 className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-action"
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -559,6 +635,41 @@ export default function VergelijkPage() {
                       </span>
                       .
                     </p>
+                  )}
+
+                  {advies.zonnepanelen && (
+                    <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                      <p className="text-base text-muted">
+                        Met jouw {data.aantalZonnepanelen} zonnepanelen wek je ±
+                        {advies.zonnepanelen.eigenOpwekKwh.toLocaleString("nl-NL")} kWh per jaar op. Daarmee dek
+                        je ±{advies.zonnepanelen.dekkingPercentage}% van het stroomverbruik van je warmtepomp
+                        en bespaar je extra{" "}
+                        <span className="font-bold text-dark">
+                          €{advies.zonnepanelen.extraBesparingPerJaar.toLocaleString("nl-NL")} per jaar
+                        </span>
+                        .
+                      </p>
+                      <p className="mt-3 text-base text-muted">
+                        Terugverdientijd zonder zonnepanelen:{" "}
+                        <span className="font-bold text-dark">{advies.terugverdientijd}</span>
+                        <br />
+                        Terugverdientijd met {data.aantalZonnepanelen} zonnepanelen:{" "}
+                        <span className="font-bold text-dark">
+                          {advies.zonnepanelen.terugverdientijdMetZon}
+                        </span>
+                      </p>
+                    </div>
+                  )}
+
+                  {data.heeftZonnepanelen === "Nog niet, maar ik overweeg het" && (
+                    <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                      <p className="text-base text-muted">
+                        <span className="font-bold text-dark">Tip:</span> combineer je warmtepomp met
+                        zonnepanelen voor maximale besparing. Met 10 panelen dek je al ±
+                        {Math.min(Math.round((10 * KWH_PER_ZONNEPANEEL) / WARMTEPOMP_VERBRUIK_KWH * 100), 100)}%
+                        van je stroomkosten.
+                      </p>
+                    </div>
                   )}
 
                   <p className="mt-6 text-xs leading-relaxed text-muted-light">

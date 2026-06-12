@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { pingIndexNow } from "@/lib/indexnow";
+import { berekenAdvies } from "@/lib/advies";
 
 type LeadData = {
   woningtype?: string;
@@ -9,6 +10,8 @@ type LeadData = {
   isolatie?: string;
   huidigSysteem?: string;
   gasverbruik?: number;
+  heeftZonnepanelen?: string;
+  aantalZonnepanelen?: number;
   postcode?: string;
   huisnummer?: string;
   voornaam?: string;
@@ -60,12 +63,71 @@ async function getRvoSubsidieInfo(): Promise<string> {
   }
 }
 
+function beschrijfZonnepanelen(lead: LeadData): string {
+  if (lead.heeftZonnepanelen === "Ja" && lead.aantalZonnepanelen) {
+    return `${lead.aantalZonnepanelen} panelen`;
+  }
+  return lead.heeftZonnepanelen ?? "onbekend";
+}
+
+function berekenZonnepanelenInfo(lead: LeadData): string {
+  if (lead.heeftZonnepanelen === "Ja" && lead.aantalZonnepanelen) {
+    const advies = berekenAdvies({
+      woningtype: lead.woningtype ?? "",
+      oppervlakte: lead.oppervlakte ?? "",
+      bouwjaar: lead.bouwjaar ?? "",
+      isolatie: lead.isolatie ?? "",
+      huidigSysteem: lead.huidigSysteem ?? "",
+      gasverbruik: lead.gasverbruik ?? 0,
+      heeftZonnepanelen: lead.heeftZonnepanelen,
+      aantalZonnepanelen: lead.aantalZonnepanelen,
+    });
+    const zon = advies.zonnepanelen;
+    if (!zon) return "";
+
+    return `
+Berekende zonnepanelen-impact (gebruik deze cijfers exact, reken niet zelf opnieuw):
+- Eigen stroomopwek: ${zon.eigenOpwekKwh} kWh per jaar
+- Dekking van het stroomverbruik van de warmtepomp: ${zon.dekkingPercentage}%
+- Extra besparing op de energierekening: €${zon.extraBesparingPerJaar} per jaar
+- Terugverdientijd zonder zonnepanelen: ${advies.terugverdientijd}
+- Terugverdientijd met ${lead.aantalZonnepanelen} zonnepanelen: ${zon.terugverdientijdMetZon}
+
+Verwerk dit in het advies met een zin in de vorm van:
+"Met jouw ${lead.aantalZonnepanelen} zonnepanelen wek je ±${zon.eigenOpwekKwh} kWh per jaar op. Daarmee dek je ±${zon.dekkingPercentage}% van het stroomverbruik van je warmtepomp. Dit bespaart je extra €${zon.extraBesparingPerJaar} per jaar."
+
+Noem bij de terugverdientijd beide scenario's: "Terugverdientijd zonder zonnepanelen: ${advies.terugverdientijd}" en "Terugverdientijd met ${lead.aantalZonnepanelen} zonnepanelen: ${zon.terugverdientijdMetZon}".`.trim();
+  }
+
+  if (lead.heeftZonnepanelen === "Nog niet, maar ik overweeg het") {
+    const voorbeeld = berekenAdvies({
+      woningtype: lead.woningtype ?? "",
+      oppervlakte: lead.oppervlakte ?? "",
+      bouwjaar: lead.bouwjaar ?? "",
+      isolatie: lead.isolatie ?? "",
+      huidigSysteem: lead.huidigSysteem ?? "",
+      gasverbruik: lead.gasverbruik ?? 0,
+      heeftZonnepanelen: "Ja",
+      aantalZonnepanelen: 10,
+    });
+    const dekking = voorbeeld.zonnepanelen?.dekkingPercentage ?? 0;
+
+    return `
+Geef de volgende tip mee in het advies:
+"Tip: Combineer je warmtepomp met zonnepanelen voor maximale besparing. Met 10 panelen dek je al ±${dekking}% van je stroomkosten."`.trim();
+  }
+
+  return "";
+}
+
 async function generateAdvies(lead: LeadData, subsidieInfo: string): Promise<string | null> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     console.warn("ANTHROPIC_API_KEY niet ingesteld, persoonlijk advies wordt overgeslagen");
     return null;
   }
+
+  const zonnepanelenInfo = berekenZonnepanelenInfo(lead);
 
   const prompt = `Je bent een onafhankelijk warmtepomp-adviseur voor warmtepomp.ai. Schrijf een persoonlijk, vriendelijk advies in het Nederlands voor onderstaande aanvrager, op basis van hun woninggegevens en de actuele ISDE-subsidie-informatie.
 
@@ -76,25 +138,26 @@ Gegevens van de aanvrager:
 - Isolatieniveau: ${lead.isolatie ?? "onbekend"}
 - Huidig verwarmingssysteem: ${lead.huidigSysteem ?? "onbekend"}
 - Geschat jaarlijks gasverbruik: ${lead.gasverbruik ? `${lead.gasverbruik} m³` : "onbekend"}
+- Zonnepanelen: ${beschrijfZonnepanelen(lead)}
 - Postcode: ${lead.postcode ?? "onbekend"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}
 - Voorlopig advies uit de website-tool: ${lead.adviesType ?? "onbekend"}
 
 Actuele ISDE-subsidie-informatie (afkomstig van rvo.nl):
 ${subsidieInfo}
-
+${zonnepanelenInfo ? `\n${zonnepanelenInfo}\n` : ""}
 Schrijf het advies als een stuk HTML (alleen de inhoud, geen <html>/<head>/<body> tags, gebruik <h2>, <p>, <ul>/<li> waar passend) met de volgende onderdelen:
 1. Aanbevolen warmtepomp type voor deze situatie, met een korte onderbouwing
 2. Geschatte kosten (aanschaf + installatie), als bandbreedte
 3. Actuele ISDE-subsidie die van toepassing is
 4. Geschatte maandelijkse besparing op de energierekening
-5. Terugverdientijd (indicatie)
+5. Terugverdientijd (indicatie) — als er berekende zonnepanelen-cijfers zijn aangeleverd, noem dan beide scenario's (met en zonder zonnepanelen)
 
 Belangrijke regels:
 - Begin meteen met de inhoud van punt 1. Geen aanhef of begroeting (dus niet "Hallo", "Hoi [naam]", "Beste lezer" of iets dergelijks) en geen ondertekening of afsluitende groet aan het einde — dat staat al in de rest van de e-mail.
 - Schrijf informeel en persoonlijk: gebruik altijd "je", "jij" en "jouw", nooit "u" of "uw". Geen corporate of stijve taal.
 - Noem geen volgende stappen zoals zelf een installateur zoeken, het installateurregister, het STEK-keurmerk, de RVO-meldcodelijst, of het aanvragen van offertes — dat regelen wij voor de klant en staat al elders in de e-mail.
 - Gebruik geen hyperlinks of verwijzingen naar andere websites.
-- Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het indicaties zijn. Houd het beknopt: maximaal 2-3 zinnen per onderdeel. Geef alleen de kale HTML terug, zonder markdown code block (geen \`\`\`).`;
+- Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het indicaties zijn. Houd het beknopt: maximaal 2-3 zinnen per onderdeel, behalve punt 5 als er twee terugverdientijd-scenario's genoemd moeten worden. Geef alleen de kale HTML terug, zonder markdown code block (geen \`\`\`).`;
 
   console.log("Anthropic API aanroepen voor persoonlijk advies...");
 
