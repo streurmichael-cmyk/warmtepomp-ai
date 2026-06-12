@@ -34,6 +34,7 @@ type StepName =
   | "zoeken"
   | "bevestig"
   | "systeem"
+  | "stadsverwarming"
   | "gasverbruik"
   | "zonnepanelen"
   | "verwerken"
@@ -229,6 +230,11 @@ export default function VergelijkPage() {
   }
 
   function selectSysteem(label: string) {
+    if (label === "Stadsverwarming") {
+      update("huidigSysteem", label);
+      setStep("stadsverwarming");
+      return;
+    }
     const geschat = schatGasverbruik(data.oppervlakte, data.bouwjaar);
     setData((d) => ({ ...d, huidigSysteem: label, gasverbruik: d.gasverbruik || geschat }));
     setStep("gasverbruik");
@@ -498,6 +504,45 @@ export default function VergelijkPage() {
                     onClick={() => selectSysteem(opt.label)}
                   />
                 ))}
+              </div>
+            </Step>
+          )}
+
+          {step === "stadsverwarming" && (
+            <Step heading="Geen warmtepomp nodig" onBack={() => setStep("systeem")}>
+              <div className="mb-6 flex items-start gap-3 rounded-xl border border-green/15 bg-white p-4">
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-action/10 text-action">
+                  <NetworkIcon className="h-5 w-5" />
+                </span>
+                <p className="font-display text-lg font-bold text-dark">
+                  Bij stadsverwarming heb je geen warmtepomp nodig — je bent al aangesloten op een
+                  warmtenet.
+                </p>
+              </div>
+              <p className="text-base leading-relaxed text-muted">
+                Een warmtenet (ook wel stadsverwarming of blokverwarming) levert warmte vanuit een
+                centrale bron via leidingen aan de huizen in de buurt — net als een hele grote,
+                gedeelde cv-installatie. Een warmtepomp voegt daar in de praktijk niets aan toe.
+                Heb je vragen over je aansluiting, kosten of voorwaarden? Neem dan contact op met je
+                warmteleverancier.
+              </p>
+              <a
+                href="https://www.milieucentraal.nl/energie-besparen/aardgasvrij-wonen/warmtenet/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-action hover:underline"
+              >
+                Meer informatie over warmtenetten op Milieu Centraal
+                <ArrowRight className="h-4 w-4" />
+              </a>
+
+              <div className="mt-10 space-y-3">
+                <Link
+                  href="/"
+                  className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
+                >
+                  Terug naar home
+                </Link>
               </div>
             </Step>
           )}
