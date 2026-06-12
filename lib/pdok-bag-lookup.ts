@@ -86,12 +86,16 @@ export async function zoekDetailsPdokBag(postcode: string, huisnummer: string): 
       result.bouwjaar = bouwjaarNaarBracket(bouwjaarRaw);
     }
 
-    if (object.gebruiksdoel === "woonfunctie" && object.pandidentificatie) {
+    if (object.pandidentificatie) {
       const pandObjecten = await wfsGetFeatures(
         [{ field: "pandidentificatie", value: object.pandidentificatie }],
         10
       );
-      if (pandObjecten.length > 1) {
+      // Meerdere verblijfsobjecten in het pand, waarvan minstens één een woonfunctie heeft:
+      // vrijwel zeker een appartement. We kijken naar het pand als geheel, niet alleen naar
+      // dit object, omdat individuele appartementen (vooral met huisletter) in BAG soms als
+      // "overige gebruiksfunctie" geregistreerd staan terwijl het gebouw duidelijk woongebouw is.
+      if (pandObjecten.length > 1 && pandObjecten.some((o) => o.gebruiksdoel === "woonfunctie")) {
         result.woningtype = "Appartement";
       }
     }
