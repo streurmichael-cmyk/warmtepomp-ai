@@ -715,18 +715,13 @@ export default function VergelijkPage() {
                   </p>
 
                   <div className="mt-10 space-y-3">
-                    <a
-                      href="https://lt45.net/c/?si=12392&li=1544210&wi=422172&ws=&dl=warmtepomp%2F"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      type="button"
                       className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
                     >
                       Vraag vrijblijvend offertes aan
                       <ArrowRight className="h-5 w-5" />
-                    </a>
-                    <p className="text-center text-xs text-muted-light">
-                      Je wordt doorgestuurd naar Eneco — een van onze partners.
-                    </p>
+                    </button>
                     <button
                       type="button"
                       onClick={() => setStep("contact")}
