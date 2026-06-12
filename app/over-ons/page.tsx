@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -41,11 +42,13 @@ export default function OverOnsPage() {
         <section className="bg-light-bg py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="rounded-2xl border border-green/10 bg-white p-8 sm:p-10">
-              <div className="flex flex-col items-start gap-6 sm:flex-row">
-                <img
-                  src="/portret-michael.png"
+              <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:items-start sm:text-left">
+                <Image
+                  src="/portret-michael.jpg"
                   alt="Michael Streur, oprichter warmtepomp.ai"
-                  className="h-24 w-24 flex-shrink-0 rounded-2xl object-cover sm:h-28 sm:w-28"
+                  width={112}
+                  height={112}
+                  className="h-24 w-24 flex-shrink-0 rounded-full border-4 border-green/10 object-cover sm:h-28 sm:w-28"
                 />
                 <div>
                   <h2 className="font-display text-lg font-bold text-dark">Hoi, ik ben Michael</h2>
