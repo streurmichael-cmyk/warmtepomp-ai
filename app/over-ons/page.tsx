@@ -118,7 +118,7 @@ export default function OverOnsPage() {
             <div className="grid gap-6 sm:grid-cols-3">
               <div className="flex flex-col items-center rounded-2xl border border-green/10 bg-light-bg p-6 text-center">
                 <BuildingIcon className="h-5 w-5 text-green" />
-                <div className="mt-3 flex flex-1 flex-col items-center justify-center">
+                <div className="mt-3 flex flex-1 flex-col items-center justify-start">
                   <p className="text-xs font-bold uppercase tracking-wide text-muted">
                     KvK-inschrijving
                   </p>
@@ -127,7 +127,7 @@ export default function OverOnsPage() {
               </div>
               <div className="flex flex-col items-center rounded-2xl border border-green/10 bg-light-bg p-6 text-center">
                 <MailIcon className="h-5 w-5 text-green" />
-                <div className="mt-3 flex flex-1 flex-col items-center justify-center">
+                <div className="mt-3 flex flex-1 flex-col items-center justify-start">
                   <p className="text-xs font-bold uppercase tracking-wide text-muted">E-mail</p>
                   <a
                     href="mailto:info@warmtepomp.ai"
@@ -139,7 +139,7 @@ export default function OverOnsPage() {
               </div>
               <div className="flex flex-col items-center rounded-2xl border border-green/10 bg-light-bg p-6 text-center">
                 <MapPinIcon className="h-5 w-5 text-green" />
-                <div className="mt-3 flex flex-1 flex-col items-center justify-center">
+                <div className="mt-3 flex flex-1 flex-col items-center justify-start">
                   <p className="text-xs font-bold uppercase tracking-wide text-muted">
                     Vestigingsplaats
                   </p>
