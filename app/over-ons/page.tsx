@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import {
   ArrowRight,
+  BuildingIcon,
   MailIcon,
   MapPinIcon,
   ShieldIcon,
@@ -116,7 +117,8 @@ export default function OverOnsPage() {
 
             <div className="grid gap-6 sm:grid-cols-3">
               <div className="rounded-2xl border border-green/10 bg-light-bg p-6 text-center">
-                <p className="text-xs font-bold uppercase tracking-wide text-muted">
+                <BuildingIcon className="mx-auto h-5 w-5 text-green" />
+                <p className="mt-2 text-xs font-bold uppercase tracking-wide text-muted">
                   KvK-inschrijving
                 </p>
                 <p className="mt-2 font-display text-lg font-bold text-dark">In aanvraag</p>
