@@ -388,8 +388,8 @@ export default function VergelijkPage() {
                   <ArrowRight className="h-5 w-5" />
                 </button>
                 <p className="text-center text-xs text-muted-light">
-                  We halen automatisch je woninggegevens op via het Kadaster — je hoeft ze niet zelf in
-                  te vullen.
+                  We halen woninggegevens op via de BAG (Basisregistratie Adressen en Gebouwen) van de
+                  overheid. We slaan je adres niet op en verkopen het nooit door.
                 </p>
               </form>
             </Step>
@@ -718,9 +718,13 @@ export default function VergelijkPage() {
                   )}
 
                   <p className="mt-6 text-xs leading-relaxed text-muted-light">
-                    Dit is een eerste indicatie op basis van de gegevens die je net invulde en
-                    gemiddelde cijfers van Milieu Centraal en RVO. Je definitieve advies — met een
-                    berekening op maat — ontvang je per e-mail.
+                    Dit is een eerste indicatie op basis van de gegevens die je net invulde. Je
+                    definitieve advies — met een berekening op maat — ontvang je per e-mail.
+                  </p>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-light">
+                    Dit advies is gebaseerd op: BAG-woningdata, RVO subsidiebedragen 2026 en
+                    gemiddelden van Milieu Centraal. Aannames: energielabel op basis van bouwjaar,
+                    gemiddeld verbruik voor jouw woningtype.
                   </p>
 
                   <div className="mt-10 space-y-3">
