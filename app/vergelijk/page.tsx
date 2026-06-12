@@ -398,13 +398,13 @@ export default function VergelijkPage() {
               <div className="mb-6 grid gap-3 sm:grid-cols-3">
                 <InfoCard
                   label="Bouwjaar"
-                  value={data.bouwjaarJaar ? String(data.bouwjaarJaar) : data.bouwjaar || "Onbekend"}
+                  value={data.bouwjaarJaar ? String(data.bouwjaarJaar) : data.bouwjaar}
                 />
                 <InfoCard
                   label="Woonoppervlakte"
-                  value={data.oppervlakteM2 ? `${data.oppervlakteM2} m²` : data.oppervlakte || "Onbekend"}
+                  value={data.oppervlakteM2 ? `${data.oppervlakteM2} m²` : data.oppervlakte}
                 />
-                <InfoCard label="Woningtype" value={data.woningtype || "Onbekend"} />
+                <InfoCard label="Woningtype" value={data.woningtype} />
               </div>
 
               <div className="space-y-6">
@@ -778,11 +778,15 @@ function Step({
   );
 }
 
-function InfoCard({ label, value }: { label: string; value: string }) {
+function InfoCard({ label, value }: { label: string; value?: string }) {
   return (
     <div className="rounded-xl border border-green/15 bg-white p-4">
       <p className="text-xs font-bold uppercase tracking-wide text-muted-light">{label}</p>
-      <p className="mt-1 font-display text-lg font-bold text-dark">{value}</p>
+      {value ? (
+        <p className="mt-1 font-display text-lg font-bold text-dark">{value}</p>
+      ) : (
+        <p className="mt-1 text-sm font-semibold text-muted">Niet gevonden via Kadaster — vul zelf in ↓</p>
+      )}
     </div>
   );
 }

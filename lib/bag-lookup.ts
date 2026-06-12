@@ -1,4 +1,4 @@
-import { bouwjaarNaarBracket, oppervlakteNaarBracket, type WoningGegevens } from "./woning-lookup";
+import { bouwjaarNaarBracket, oppervlakteNaarBracket, type WoningGegevens } from "./woning-types";
 
 const BAG_BASE = "https://api.bag.kadaster.nl/lvbag/individuelebevragingen/v2";
 
