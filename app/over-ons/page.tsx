@@ -116,28 +116,37 @@ export default function OverOnsPage() {
             </div>
 
             <div className="grid gap-6 sm:grid-cols-3">
-              <div className="rounded-2xl border border-green/10 bg-light-bg p-6 text-center">
-                <BuildingIcon className="mx-auto h-5 w-5 text-green" />
-                <p className="mt-2 text-xs font-bold uppercase tracking-wide text-muted">
-                  KvK-inschrijving
-                </p>
-                <p className="mt-2 font-display text-lg font-bold text-dark">In aanvraag</p>
+              <div className="flex flex-col items-center rounded-2xl border border-green/10 bg-light-bg p-6 text-center">
+                <BuildingIcon className="h-5 w-5 text-green" />
+                <div className="mt-3 flex flex-1 flex-col items-center justify-center">
+                  <p className="text-xs font-bold uppercase tracking-wide text-muted">
+                    KvK-inschrijving
+                  </p>
+                  <p className="mt-2 font-display text-lg font-bold text-dark">In aanvraag</p>
+                </div>
               </div>
-              <div className="rounded-2xl border border-green/10 bg-light-bg p-6 text-center">
-                <MailIcon className="mx-auto h-5 w-5 text-green" />
-                <a
-                  href="mailto:info@warmtepomp.ai"
-                  className="mt-2 block font-display text-lg font-bold text-dark hover:text-action"
-                >
-                  info@warmtepomp.ai
-                </a>
+              <div className="flex flex-col items-center rounded-2xl border border-green/10 bg-light-bg p-6 text-center">
+                <MailIcon className="h-5 w-5 text-green" />
+                <div className="mt-3 flex flex-1 flex-col items-center justify-center">
+                  <p className="text-xs font-bold uppercase tracking-wide text-muted">E-mail</p>
+                  <a
+                    href="mailto:info@warmtepomp.ai"
+                    className="mt-2 font-display text-lg font-bold text-dark hover:text-action"
+                  >
+                    info@warmtepomp.ai
+                  </a>
+                </div>
               </div>
-              <div className="rounded-2xl border border-green/10 bg-light-bg p-6 text-center">
-                <MapPinIcon className="mx-auto h-5 w-5 text-green" />
-                <p className="mt-2 font-display text-lg font-bold text-dark">
-                  Regio Amsterdam, Noord-Holland
-                </p>
-                <p className="text-xs text-muted">Vestigingsplaats</p>
+              <div className="flex flex-col items-center rounded-2xl border border-green/10 bg-light-bg p-6 text-center">
+                <MapPinIcon className="h-5 w-5 text-green" />
+                <div className="mt-3 flex flex-1 flex-col items-center justify-center">
+                  <p className="text-xs font-bold uppercase tracking-wide text-muted">
+                    Vestigingsplaats
+                  </p>
+                  <p className="mt-2 font-display text-lg font-bold text-dark">
+                    Regio Amsterdam, Noord-Holland
+                  </p>
+                </div>
               </div>
             </div>
           </div>
