@@ -39,7 +39,7 @@ export function HowItWorks() {
             Hoe komt jouw advies tot stand?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
-            Geen black box — dit is precies wat er gebeurt met jouw antwoorden.
+            Volledig transparant — dit is precies wat er met jouw antwoorden gebeurt.
           </p>
         </div>
 
