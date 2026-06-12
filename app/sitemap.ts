@@ -13,9 +13,9 @@ const staticPages: { path: string; changeFrequency: MetadataRoute.Sitemap[number
   { path: "/hoe-het-werkt", changeFrequency: "monthly", priority: 0.6 },
   { path: "/voorbeeld-advies", changeFrequency: "monthly", priority: 0.6 },
   { path: "/faq", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/over-ons", changeFrequency: "monthly", priority: 0.5 },
-  { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
-  { path: "/disclaimer", changeFrequency: "yearly", priority: 0.3 },
+  { path: "/over-ons", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/privacy", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/disclaimer", changeFrequency: "monthly", priority: 0.6 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
 ];
 
@@ -32,15 +32,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const cityEntries: MetadataRoute.Sitemap = cities.map((city) => ({
     url: `${SITE_URL}/installateurs/${city.slug}`,
     lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.7,
+    changeFrequency: "weekly",
+    priority: 0.8,
   }));
 
   const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
     lastModified: new Date(post.publishedAt),
     changeFrequency: "monthly",
-    priority: 0.6,
+    priority: 0.7,
   }));
 
   return [...staticEntries, ...cityEntries, ...blogEntries];

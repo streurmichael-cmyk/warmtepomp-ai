@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { pingIndexNow } from "@/lib/indexnow";
 
 type LeadData = {
   woningtype?: string;
@@ -278,7 +279,11 @@ export async function POST(request: Request) {
     const subsidieInfo = await getRvoSubsidieInfo();
     const advies = await generateAdvies(data, subsidieInfo);
 
-    await Promise.all([sendConfirmationEmail(data, advies), sendNotificationEmail(data)]);
+    await Promise.all([
+      sendConfirmationEmail(data, advies),
+      sendNotificationEmail(data),
+      pingIndexNow(),
+    ]);
   }
 
   return NextResponse.json({ success: true });

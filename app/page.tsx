@@ -15,7 +15,7 @@ import { TrustBar } from "@/components/trust-bar";
 import { SITE_URL, buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Warmtepomp vergelijken? Vind de beste deal | warmtepomp.ai",
+  title: "Welke warmtepomp past bij jouw woning? | warmtepomp.ai",
   description:
     "Onafhankelijke keuzehulp voor warmtepompen in Nederland. Persoonlijk advies over het beste type warmtepomp, actuele subsidie-informatie en gekoppeld aan gecertificeerde installateurs bij jou in de buurt.",
   path: "/",
@@ -36,12 +36,25 @@ const organizationJsonLd = {
   },
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "warmtepomp.ai",
+  url: SITE_URL,
+  description: "Onafhankelijk warmtepomp advies voor jouw woning",
+  inLanguage: "nl-NL",
+};
+
 export default function Home() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
       <Header />
       <TrustBar />

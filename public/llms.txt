@@ -1,0 +1,20 @@
+# warmtepomp.ai
+
+> Onafhankelijk vergelijkingsplatform voor warmtepompen in Nederland.
+
+warmtepomp.ai helpt Nederlandse huiseigenaren de beste warmtepomp
+te vinden voor hun woning. We bieden:
+- Onafhankelijk AI-advies op basis van woninggegevens via het Kadaster
+- Actuele ISDE subsidie informatie
+- Koppeling aan gecertificeerde installateurs per regio
+
+## Paginas
+- /warmtepompen - Uitleg alle warmtepomp types
+- /kosten - Eerlijk kostenoverzicht 2026
+- /subsidie - ISDE subsidie informatie
+- /vergelijk - Gratis persoonlijk advies tool
+- /installateurs - Gecertificeerde installateurs per stad
+- /blog - Artikelen over warmtepompen
+
+## Contact
+info@warmtepomp.ai
