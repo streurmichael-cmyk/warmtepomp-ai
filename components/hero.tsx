@@ -73,10 +73,10 @@ export function Hero() {
         <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
           <div className="aspect-[4/3] max-h-[300px] overflow-hidden rounded-xl shadow-[0_24px_64px_rgba(13,31,22,0.15)] sm:max-h-none">
             <Image
-              src="/images/rijtjeshuizen-buitenunit.png"
-              alt="Warmtepomp buitenunit bij een modern huis"
-              width={1200}
-              height={900}
+              src="/images/hero-warmtepomp.webp"
+              alt="Warmtepomp buitenunit naast een rijtjeswoning"
+              width={1600}
+              height={893}
               priority
               className="h-full w-full object-cover"
             />
