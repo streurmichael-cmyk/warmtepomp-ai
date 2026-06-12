@@ -251,7 +251,7 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
       ${adviesHtml}
       <div style="margin: 24px 0;">
         <h2 style="font-size: 18px; color: #0d1f16;">Wat gebeurt er nu?</h2>
-        <p>We zoeken voor jou de beste installateurs in jouw regio op. Je ontvangt binnen 24 uur een overzicht van geschikte installateurs bij jou in de buurt — dan kun jij zelf de beste keuze maken.</p>
+        <p>We zoeken voor jou de beste installateurs in jouw regio op. Zodra we een passende installateur bij jou in de buurt hebben gevonden, nemen we contact op.</p>
       </div>
       <p>Groeten,<br>Michael<br><span style="color: #22b572; font-weight: bold;">warmtepomp.ai</span></p>
     </div>
