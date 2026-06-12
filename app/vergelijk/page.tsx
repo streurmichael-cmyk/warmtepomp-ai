@@ -718,10 +718,6 @@ export default function VergelijkPage() {
                   )}
 
                   <p className="mt-6 text-xs leading-relaxed text-muted-light">
-                    Dit is een eerste indicatie op basis van de gegevens die je net invulde. Je
-                    definitieve advies — met een berekening op maat — ontvang je per e-mail.
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-muted-light">
                     Dit advies is gebaseerd op: BAG-woningdata, RVO subsidiebedragen 2026 en
                     gemiddelden van Milieu Centraal. Aannames: energielabel op basis van bouwjaar,
                     gemiddeld verbruik voor jouw woningtype.
