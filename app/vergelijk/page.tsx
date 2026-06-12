@@ -12,7 +12,6 @@ import {
   MailIcon,
   MapPinIcon,
   NetworkIcon,
-  PhoneIcon,
   QuestionIcon,
   UserIcon,
 } from "@/components/icons";
@@ -83,7 +82,6 @@ type FormData = {
   heeftZonnepanelen: string;
   aantalZonnepanelen: number;
   voornaam: string;
-  telefoon: string;
   email: string;
 };
 
@@ -100,12 +98,11 @@ const initialData: FormData = {
   heeftZonnepanelen: "",
   aantalZonnepanelen: 10,
   voornaam: "",
-  telefoon: "",
   email: "",
 };
 
 type AdresErrors = Partial<Record<"postcode" | "huisnummer" | "algemeen", string>>;
-type LeadErrors = Partial<Record<"voornaam" | "telefoon" | "email", string>>;
+type LeadErrors = Partial<Record<"voornaam" | "email", string>>;
 
 function leesAdresParams() {
   const params = new URLSearchParams(window.location.search);
@@ -123,7 +120,6 @@ export default function VergelijkPage() {
   const [editMode, setEditMode] = useState(false);
   const [adresErrors, setAdresErrors] = useState<AdresErrors>({});
   const [leadErrors, setLeadErrors] = useState<LeadErrors>({});
-  const [wantsInstallateur, setWantsInstallateur] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const lookupGestart = useRef(false);
@@ -279,9 +275,6 @@ export default function VergelijkPage() {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
       errors.email = "Vul een geldig e-mailadres in";
     }
-    if (wantsInstallateur && !/^[\d\s+()-]{9,}$/.test(data.telefoon.trim())) {
-      errors.telefoon = "Vul een geldig telefoonnummer in";
-    }
 
     if (Object.keys(errors).length > 0) {
       setLeadErrors(errors);
@@ -305,9 +298,7 @@ export default function VergelijkPage() {
       huisnummer: data.huisnummer,
       voornaam: data.voornaam.trim(),
       email: data.email.trim(),
-      telefoon: wantsInstallateur ? data.telefoon.trim() : undefined,
       adviesType: advies.type,
-      wantsInstallateur,
     };
 
     try {
@@ -724,23 +715,21 @@ export default function VergelijkPage() {
                   </p>
 
                   <div className="mt-10 space-y-3">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setWantsInstallateur(true);
-                        setStep("contact");
-                      }}
+                    <a
+                      href="https://lt45.net/c/?si=12392&li=1544210&wi=422172&ws=&dl=warmtepomp%2F"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
                     >
                       Vraag vrijblijvend offertes aan
                       <ArrowRight className="h-5 w-5" />
-                    </button>
+                    </a>
+                    <p className="text-center text-xs text-muted-light">
+                      Je wordt doorgestuurd naar Eneco — een van onze partners.
+                    </p>
                     <button
                       type="button"
-                      onClick={() => {
-                        setWantsInstallateur(false);
-                        setStep("contact");
-                      }}
+                      onClick={() => setStep("contact")}
                       className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border-2 border-green/20 px-7 py-3.5 text-base font-bold text-dark transition-colors hover:border-action hover:text-action"
                     >
                       Stuur dit advies naar mijn e-mail
@@ -765,16 +754,10 @@ export default function VergelijkPage() {
           )}
 
           {step === "contact" && (
-            <Step
-              heading={
-                wantsInstallateur ? "Waar mogen installateurs je bereiken?" : "Waar sturen we je advies naartoe?"
-              }
-              onBack={() => setStep("advies")}
-            >
+            <Step heading="Waar sturen we je advies naartoe?" onBack={() => setStep("advies")}>
               <p className="mb-6 text-base leading-relaxed text-muted">
-                {wantsInstallateur
-                  ? "We koppelen je aan maximaal 3 onafhankelijke installateurs in jouw regio. Zij nemen vrijblijvend contact met je op."
-                  : "We sturen je het volledige advies, inclusief kosten, subsidie en terugverdientijd, per e-mail."}
+                We sturen je het volledige advies, inclusief kosten, subsidie en terugverdientijd, per
+                e-mail.
               </p>
               <form onSubmit={handleLeadSubmit} noValidate className="space-y-4">
                 <FormField
@@ -799,20 +782,6 @@ export default function VergelijkPage() {
                   onChange={(v) => update("email", v)}
                   error={leadErrors.email}
                 />
-                {wantsInstallateur && (
-                  <FormField
-                    name="telefoon"
-                    label="Telefoonnummer"
-                    icon={PhoneIcon}
-                    type="tel"
-                    placeholder="06 12345678"
-                    autoComplete="tel"
-                    value={data.telefoon}
-                    onChange={(v) => update("telefoon", v)}
-                    error={leadErrors.telefoon}
-                  />
-                )}
-
                 {submitError && (
                   <p role="alert" className="text-sm text-error">
                     {submitError}
@@ -824,14 +793,11 @@ export default function VergelijkPage() {
                   disabled={submitting}
                   className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44] disabled:opacity-60"
                 >
-                  {submitting ? "Versturen..." : wantsInstallateur ? "Vraag offertes aan" : "Stuur mijn advies"}
+                  {submitting ? "Versturen..." : "Stuur mijn advies"}
                   {!submitting && <ArrowRight className="h-5 w-5" />}
                 </button>
                 <p className="text-center text-xs text-muted-light">
-                  Je gegevens worden nooit doorverkocht.{" "}
-                  {wantsInstallateur
-                    ? "Maximaal 3 installateurs nemen contact op."
-                    : "Geen telefoontjes, alleen een e-mail."}
+                  Je gegevens worden nooit doorverkocht. Geen telefoontjes, alleen een e-mail.
                 </p>
               </form>
             </Step>
@@ -846,9 +812,7 @@ export default function VergelijkPage() {
                 Bedankt, {data.voornaam}!
               </h1>
               <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-muted">
-                {wantsInstallateur
-                  ? "We hebben je gegevens doorgestuurd. Binnen 24 uur nemen maximaal 3 onafhankelijke installateurs in jouw regio contact met je op."
-                  : "Check je inbox — we hebben het volledige advies naar je e-mailadres gestuurd."}
+                Check je inbox — we hebben het volledige advies naar je e-mailadres gestuurd.
               </p>
               <Link
                 href="/"

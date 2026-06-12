@@ -15,10 +15,8 @@ type LeadData = {
   postcode?: string;
   huisnummer?: string;
   voornaam?: string;
-  telefoon?: string;
   email?: string;
   adviesType?: string;
-  wantsInstallateur?: boolean;
 };
 
 function isLeadData(value: unknown): value is LeadData {
@@ -293,7 +291,6 @@ async function sendNotificationEmail(lead: LeadData) {
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
       <ul>
         <li><strong>Naam:</strong> ${lead.voornaam ?? "-"}</li>
-        <li><strong>Telefoon:</strong> ${lead.telefoon ?? "-"}</li>
         <li><strong>Email:</strong> ${lead.email ?? "-"}</li>
         <li><strong>Woningtype:</strong> ${lead.woningtype ?? "-"}</li>
         <li><strong>Oppervlakte:</strong> ${lead.oppervlakte ?? "-"}</li>
