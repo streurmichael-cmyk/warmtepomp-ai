@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
@@ -10,7 +12,12 @@ export const metadata = buildMetadata({
   path: "/privacy",
 });
 
-const sections = [
+type PrivacySection = {
+  heading: string;
+  paragraphs: ReactNode[];
+};
+
+const sections: PrivacySection[] = [
   {
     heading: "Wie is verantwoordelijk",
     paragraphs: [
@@ -35,14 +42,30 @@ const sections = [
   {
     heading: "Hoe lang bewaren we je gegevens",
     paragraphs: [
-      "We bewaren jouw gegevens niet langer dan nodig is, en in ieder geval niet langer dan 12 maanden na jouw laatste contact met ons.",
+      "We bewaren je aanvraaggegevens (naam, e-mailadres, telefoonnummer, postcode en woninggegevens) maximaal 3 maanden.",
+      "Ben je via ons gekoppeld aan een installateur, dan bewaren we je gegevens tot maximaal 1 jaar na die koppeling, zodat we kunnen nagaan of alles goed is verlopen.",
+      "Na deze termijn worden je gegevens automatisch en permanent verwijderd.",
+    ],
+  },
+  {
+    heading: "Hoe beveiligen we je gegevens",
+    paragraphs: [
+      "Je naam, e-mailadres en telefoonnummer worden versleuteld opgeslagen in onze database (AES-256), zodat deze ook bij ongeautoriseerde toegang niet leesbaar zijn.",
     ],
   },
   {
     heading: "Delen we jouw gegevens",
     paragraphs: [
       "Ja. Om je te kunnen koppelen aan een geschikte installateur, delen we jouw gegevens met gecertificeerde installateurs uit ons netwerk, zodat zij contact met je kunnen opnemen voor een offerte.",
+      "Daarnaast gebruikt onze e-maildienst Resend je naam en e-mailadres om de bevestigings- en notificatiemails te versturen die bij je aanvraag horen.",
       "We verkopen jouw gegevens nooit aan derden voor marketingdoeleinden.",
+      <>
+        Lees in onze{" "}
+        <Link href="/verwerkersovereenkomst" className="font-bold text-action hover:underline">
+          verwerkersovereenkomst
+        </Link>{" "}
+        meer over de afspraken die we met deze partijen maken.
+      </>,
     ],
   },
   {
