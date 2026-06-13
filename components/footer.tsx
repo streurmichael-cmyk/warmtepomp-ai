@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/hoe-het-werkt", label: "Hoe het werkt" },
   { href: "/installateurs", label: "Installateurs" },
   { href: "/subsidie", label: "Subsidie" },
+  { href: "/aardgasvrij", label: "Aardgasvrij" },
   { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ" },
   { href: "/over-ons", label: "Over ons" },

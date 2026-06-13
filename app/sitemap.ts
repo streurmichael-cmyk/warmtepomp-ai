@@ -10,6 +10,7 @@ const staticPages: { path: string; changeFrequency: MetadataRoute.Sitemap[number
   { path: "/subsidie", changeFrequency: "monthly", priority: 0.8 },
   { path: "/vergelijk", changeFrequency: "monthly", priority: 0.8 },
   { path: "/installateurs", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/aardgasvrij", changeFrequency: "monthly", priority: 0.7 },
   { path: "/hoe-het-werkt", changeFrequency: "monthly", priority: 0.6 },
   { path: "/voorbeeld-advies", changeFrequency: "monthly", priority: 0.6 },
   { path: "/faq", changeFrequency: "monthly", priority: 0.6 },
