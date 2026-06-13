@@ -3,6 +3,7 @@ import { Resend } from "resend";
 import { pingIndexNow } from "@/lib/indexnow";
 import { berekenAdvies } from "@/lib/advies";
 import { saveLead } from "@/lib/leads-repository";
+import { getClientIp, isRateLimited } from "@/lib/rate-limit";
 
 type LeadData = {
   woningtype?: string;
@@ -329,6 +330,15 @@ async function sendNotificationEmail(lead: LeadData) {
 }
 
 export async function POST(request: Request) {
+  const ip = getClientIp(request);
+  if (isRateLimited(ip)) {
+    console.warn(`Rate limit overschreden voor ${ip}`);
+    return NextResponse.json(
+      { error: "Te veel aanvragen vanaf dit adres. Probeer het over een uur opnieuw." },
+      { status: 429 }
+    );
+  }
+
   let data: unknown;
 
   try {

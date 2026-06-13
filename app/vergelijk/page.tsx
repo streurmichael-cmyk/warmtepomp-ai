@@ -316,10 +316,17 @@ export default function VergelijkPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error || "Request failed");
+      }
       setStep("bedankt");
-    } catch {
-      setSubmitError("Er ging iets mis bij het versturen. Probeer het opnieuw.");
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error && err.message !== "Request failed"
+          ? err.message
+          : "Er ging iets mis bij het versturen. Probeer het opnieuw."
+      );
     } finally {
       setSubmitting(false);
     }
