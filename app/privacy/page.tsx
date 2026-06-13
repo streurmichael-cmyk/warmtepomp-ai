@@ -42,7 +42,7 @@ const sections = [
     heading: "Delen we jouw gegevens",
     paragraphs: [
       "Ja. Om je te kunnen koppelen aan een geschikte installateur, delen we jouw gegevens met gecertificeerde installateurs uit ons netwerk, zodat zij contact met je kunnen opnemen voor een offerte.",
-      "We verkopen jouw gegevens nooit aan derden.",
+      "We verkopen jouw gegevens nooit aan derden voor marketingdoeleinden.",
     ],
   },
   {

@@ -828,7 +828,8 @@ export default function VergelijkPage() {
                   {!submitting && <ArrowRight className="h-5 w-5" />}
                 </button>
                 <p className="text-center text-xs text-muted-light">
-                  Je gegevens worden nooit doorverkocht.{" "}
+                  Je gegevens worden gedeeld met gecertificeerde installateurs om je offerte te
+                  kunnen versturen. We verkopen ze nooit aan derden voor marketingdoeleinden.{" "}
                   {wantsInstallateur
                     ? "Maximaal 3 installateurs nemen contact op."
                     : "Geen telefoontjes, alleen een e-mail."}

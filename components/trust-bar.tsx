@@ -15,7 +15,7 @@ const items = [
     : []),
   "100% onafhankelijk — geen commissie van merken",
   "Gratis advies, geen verplichtingen",
-  "Je gegevens worden nooit doorverkocht",
+  "Je gegevens gaan nooit naar derden voor marketing",
 ];
 
 export function TrustBar() {
