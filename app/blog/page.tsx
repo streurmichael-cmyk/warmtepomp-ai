@@ -86,7 +86,7 @@ export default function BlogPage() {
               Benieuwd wat een warmtepomp jou oplevert?
             </h2>
             <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white/85">
-              Beantwoord een paar vragen en ontvang direct een persoonlijk advies, op maat van
+              Beantwoord een paar vragen en ontvang direct een persoonlijke indicatie, op maat van
               jouw situatie.
             </p>
             <Link

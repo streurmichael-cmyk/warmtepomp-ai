@@ -16,7 +16,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Over ons | warmtepomp.ai",
   description:
-    "Maak kennis met warmtepomp.ai: onafhankelijk advies over warmtepompen, opgericht door Michael Streur. Lees wie we zijn, waarom we dit doen en hoe we geld verdienen.",
+    "Maak kennis met warmtepomp.ai: onafhankelijke vergelijking van warmtepompen, opgericht door Michael Streur. Lees wie we zijn, waarom we dit doen en hoe we geld verdienen.",
   path: "/over-ons",
 });
 
@@ -61,7 +61,7 @@ export default function OverOnsPage() {
                   </p>
                   <p className="mt-3 text-base leading-relaxed text-muted">
                     Daarom bouwde ik warmtepomp.ai: een keuzehulp die in een paar minuten een
-                    eerlijk, persoonlijk advies geeft — zonder dat er één verkoper aan te pas komt.
+                    eerlijke, persoonlijke indicatie geeft — zonder dat er één verkoper aan te pas komt.
                     Ik werk er in mijn eentje aan, vanuit de regio Amsterdam, en lees ook echt elke
                     aanvraag die binnenkomt.
                   </p>
@@ -95,7 +95,7 @@ export default function OverOnsPage() {
                   </h2>
                   <p className="mt-2 text-base leading-relaxed text-muted">
                     Wij ontvangen een vergoeding van installateurs wanneer zij via ons platform
-                    een klant begeleiden. Dit heeft geen invloed op ons advies — wij zijn altijd
+                    een klant begeleiden. Dit heeft geen invloed op onze indicatie — wij zijn altijd
                     aan jouw kant.
                   </p>
                 </div>
@@ -159,7 +159,7 @@ export default function OverOnsPage() {
             </h2>
             <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white/85">
               Beantwoord een paar vragen over je woning en ontvang gratis en vrijblijvend
-              advies.
+              een indicatie.
             </p>
             <Link
               href="/vergelijk"

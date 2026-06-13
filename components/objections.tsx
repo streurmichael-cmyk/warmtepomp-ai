@@ -27,7 +27,7 @@ const objections = [
   {
     question: "De terugverdientijd is te lang, ik woon hier niet zo lang meer",
     answer:
-      "Een eerlijk punt. Bij een terugverdientijd van 7-12 jaar heeft een warmtepomp vooral zin als je van plan bent langer te blijven wonen. Ga je over een paar jaar verhuizen? Dan is de winst vooral dat je huis met een warmtepomp makkelijker en voor een betere prijs verkoopt — energielabel telt steeds zwaarder mee. Maar als investering voor jezelf is het dan minder logisch. Ons advies in dat geval: wacht hiermee tot je volgende huis.",
+      "Een eerlijk punt. Bij een terugverdientijd van 7-12 jaar heeft een warmtepomp vooral zin als je van plan bent langer te blijven wonen. Ga je over een paar jaar verhuizen? Dan is de winst vooral dat je huis met een warmtepomp makkelijker en voor een betere prijs verkoopt — energielabel telt steeds zwaarder mee. Maar als investering voor jezelf is het dan minder logisch. Onze tip in dat geval: wacht hiermee tot je volgende huis.",
   },
 ];
 

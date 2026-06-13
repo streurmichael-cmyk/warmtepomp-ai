@@ -3,7 +3,7 @@ export type FaqItem = { q: string; a: string };
 export const faqs: FaqItem[] = [
   {
     q: "Welk type warmtepomp past bij mijn woning?",
-    a: "Dat hangt af van je isolatieniveau, verwarmingsoppervlak en budget. Een hybride warmtepomp werkt goed in oudere, slecht geïsoleerde woningen. Een volledig elektrische lucht/water-warmtepomp is efficiënter maar vereist betere isolatie. Onze keuzehulp stelt de juiste vragen en geeft je een persoonlijk advies.",
+    a: "Dat hangt af van je isolatieniveau, verwarmingsoppervlak en budget. Een hybride warmtepomp werkt goed in oudere, slecht geïsoleerde woningen. Een volledig elektrische lucht/water-warmtepomp is efficiënter maar vereist betere isolatie. Onze keuzehulp stelt de juiste vragen en geeft je een persoonlijke indicatie.",
   },
   {
     q: "Hoeveel subsidie kan ik krijgen voor een warmtepomp?",
@@ -23,7 +23,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Is warmtepomp.ai echt onafhankelijk?",
-    a: "Ja. Wij zijn niet in dienst van één merk of installateur en ontvangen geen provisie op verkopen. Wij geven onafhankelijk advies over welk type warmtepomp het beste bij jouw woning past en koppelen je aan meerdere gecertificeerde installateurs bij jou in de buurt, zodat je zelf offertes kunt vergelijken. Onze inkomsten komen uit een kleine verwijzingsvergoeding bij offerteaanvragen — alleen als jij tevreden bent.",
+    a: "Ja. Wij zijn niet in dienst van één merk of installateur en ontvangen geen provisie op verkopen. Wij maken een onafhankelijke vergelijking van welk type warmtepomp het beste bij jouw woning past en koppelen je aan meerdere gecertificeerde installateurs bij jou in de buurt, zodat je zelf offertes kunt vergelijken. Onze inkomsten komen uit een kleine verwijzingsvergoeding bij offerteaanvragen — alleen als jij tevreden bent.",
   },
   {
     q: "Wat is het verschil tussen lucht/water en bodemwarmtepomp?",
@@ -39,7 +39,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Heb ik vloerverwarming nodig voor een warmtepomp?",
-    a: "Nee, dat hoeft niet. Vloerverwarming helpt omdat een warmtepomp het beste werkt met water op een lagere temperatuur, maar moderne warmtepompen kunnen ook prima samenwerken met (grotere) radiatoren. Onze keuzehulp houdt hier rekening mee bij het advies.",
+    a: "Nee, dat hoeft niet. Vloerverwarming helpt omdat een warmtepomp het beste werkt met water op een lagere temperatuur, maar moderne warmtepompen kunnen ook prima samenwerken met (grotere) radiatoren. Onze keuzehulp houdt hier rekening mee bij de indicatie.",
   },
   {
     q: "Wat gebeurt er als het buiten vriest?",

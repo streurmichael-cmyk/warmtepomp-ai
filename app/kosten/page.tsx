@@ -238,7 +238,7 @@ export default function KostenPage() {
               Bereken jouw persoonlijke besparing
             </h2>
             <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white/85">
-              Vul een paar gegevens over je woning in en ontvang een advies op maat, inclusief
+              Vul een paar gegevens over je woning in en ontvang een indicatie op maat, inclusief
               kosten, subsidie en besparing.
             </p>
             <Link

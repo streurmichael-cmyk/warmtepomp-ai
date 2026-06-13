@@ -38,7 +38,7 @@ const sections = [
   {
     heading: "Hoe we verdienen",
     paragraphs: [
-      "Warmtepomp.ai ontvangt een vergoeding van installateurs voor elke lead die wij doorverwijzen. Dit heeft geen invloed op de onafhankelijkheid van ons advies en kost jou niets extra.",
+      "Warmtepomp.ai ontvangt een vergoeding van installateurs voor elke lead die wij doorverwijzen. Dit heeft geen invloed op de onafhankelijkheid van onze vergelijking en kost jou niets extra.",
     ],
   },
   {

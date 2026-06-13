@@ -16,7 +16,7 @@ const steps = [
   {
     number: "3",
     icon: ConversationIcon,
-    title: "Je ontvangt een persoonlijk advies",
+    title: "Je ontvangt een persoonlijke indicatie",
     body: "Welk type warmtepomp bij jouw huis past, met een inschatting van kosten, subsidie en besparing.",
   },
   {
@@ -36,7 +36,7 @@ export function HowItWorks() {
             Transparant
           </p>
           <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
-            Hoe komt jouw advies tot stand?
+            Hoe komt jouw indicatie tot stand?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
             Volledig transparant — dit is precies wat er met jouw antwoorden gebeurt.

@@ -2,9 +2,9 @@ import Image from "next/image";
 import { AddressLookupForm } from "./address-lookup-form";
 
 const stats = [
-  { value: "5 min", label: "tijd om je advies te krijgen" },
+  { value: "5 min", label: "tijd om je indicatie te krijgen" },
   { value: "Gratis", label: "geen kosten, geen verplichtingen" },
-  { value: "100%", label: "onafhankelijk advies" },
+  { value: "100%", label: "onafhankelijke vergelijking" },
 ];
 
 type HeroVariant = {
@@ -18,14 +18,14 @@ type HeroVariant = {
 const heroVariants: HeroVariant[] = [
   {
     // Variant 1 — voor twijfelaars
-    badge: "Gratis & onafhankelijk advies",
+    badge: "Gratis & onafhankelijke vergelijking",
     headlinePrefix: "Is een warmtepomp slim voor ",
     headlineHighlight: "jouw woning?",
     subline: "Eerlijk antwoord in 5 minuten. Geen verkooppraatje, geen verplichting.",
   },
   {
     // Variant 2 — voor beslissers
-    badge: "Gratis & onafhankelijk advies",
+    badge: "Gratis & onafhankelijke vergelijking",
     headlinePrefix: "Bespaar tot ",
     headlineHighlight: "€1.200 per jaar",
     headlineSuffix: " op je energierekening",
@@ -33,7 +33,7 @@ const heroVariants: HeroVariant[] = [
   },
   {
     // Variant 3 — voor sceptici
-    badge: "Gratis & onafhankelijk advies",
+    badge: "Gratis & onafhankelijke vergelijking",
     headlinePrefix: "Warmtepomp: ",
     headlineHighlight: "geschikt voor jou of niet?",
     subline: "We zeggen het eerlijk. Soms is het antwoord nee. Maar dan weet je het zeker.",

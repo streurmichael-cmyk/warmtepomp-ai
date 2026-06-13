@@ -18,7 +18,7 @@ const sourceSans = Source_Sans_3({
 });
 
 const description =
-  "Onafhankelijke keuzehulp voor warmtepompen in Nederland. Persoonlijk advies over het beste type warmtepomp, actuele subsidie-informatie en gekoppeld aan gecertificeerde installateurs bij jou in de buurt.";
+  "Onafhankelijke keuzehulp voor warmtepompen in Nederland. Persoonlijke indicatie van het beste type warmtepomp, actuele subsidie-informatie en gekoppeld aan gecertificeerde installateurs bij jou in de buurt.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.warmtepomp.ai"),

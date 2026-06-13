@@ -29,10 +29,10 @@ export function Reviews() {
           >
             <div>
               <p className="font-display text-lg font-bold text-dark">
-                Bekijk een voorbeeldadvies
+                Bekijk een voorbeeldindicatie
               </p>
               <p className="mt-1 text-sm text-muted">
-                Een echt (geanonimiseerd) advies, zoals jij dat ook krijgt.
+                Een echte (geanonimiseerde) indicatie, zoals jij die ook krijgt.
               </p>
             </div>
             <ArrowRight className="h-5 w-5 flex-shrink-0 text-action transition-transform group-hover:translate-x-1" />

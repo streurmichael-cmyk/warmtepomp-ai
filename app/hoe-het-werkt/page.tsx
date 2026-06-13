@@ -12,9 +12,9 @@ import {
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Hoe werkt warmtepomp.ai? In 4 stappen naar jouw advies | warmtepomp.ai",
+  title: "Hoe werkt warmtepomp.ai? In 4 stappen naar jouw indicatie | warmtepomp.ai",
   description:
-    "Zo werkt warmtepomp.ai: vul je gegevens in, ontvang persoonlijk advies, vergelijk gecertificeerde installateurs en plan je installatie. Gratis en vrijblijvend.",
+    "Zo werkt warmtepomp.ai: vul je gegevens in, ontvang persoonlijke indicatie, vergelijk gecertificeerde installateurs en plan je installatie. Gratis en vrijblijvend.",
   path: "/hoe-het-werkt",
 });
 
@@ -26,7 +26,7 @@ const steps = [
   },
   {
     icon: ConversationIcon,
-    title: "Ontvang persoonlijk advies",
+    title: "Ontvang persoonlijke indicatie",
     body: "Op basis van jouw antwoorden berekent de tool direct welk type warmtepomp het beste past, inclusief een inschatting van kosten en subsidie.",
   },
   {

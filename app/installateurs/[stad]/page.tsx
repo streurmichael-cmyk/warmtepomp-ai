@@ -64,8 +64,8 @@ export default async function StadPage({
     },
     {
       icon: ShieldIcon,
-      title: "Onafhankelijk advies",
-      body: "Wij zijn niet gebonden aan één merk of installateur. Je krijgt eerlijk advies over het beste type warmtepomp voor jouw situatie.",
+      title: "Onafhankelijke vergelijking",
+      body: "Wij zijn niet gebonden aan één merk of installateur. Je krijgt een eerlijke vergelijking van het beste type warmtepomp voor jouw situatie.",
     },
     {
       icon: ConversationIcon,
@@ -119,7 +119,7 @@ export default async function StadPage({
               <p>
                 Voordat je een installateur kiest, is het slim om eerst te weten welk type
                 warmtepomp het beste bij jouw woning past. Onze gratis keuzehulp geeft je in een
-                paar minuten persoonlijk advies over het beste type, de geschatte kosten en de
+                paar minuten een persoonlijke indicatie van het beste type, de geschatte kosten en de
                 ISDE-subsidie. Daarna plan je een gratis adviesgesprek met een installateur in{" "}
                 {city.name} en omgeving, die op basis daarvan een offerte op maat opstelt.
               </p>

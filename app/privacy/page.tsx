@@ -28,7 +28,7 @@ const sections = [
   {
     heading: "Waarvoor gebruiken we je gegevens",
     paragraphs: [
-      "We gebruiken jouw gegevens om je te koppelen aan gecertificeerde installateurs bij jou in de buurt en om je persoonlijke advies per e-mail te sturen.",
+      "We gebruiken jouw gegevens om je te koppelen aan gecertificeerde installateurs bij jou in de buurt en om je persoonlijke indicatie per e-mail te sturen.",
       "We gebruiken je gegevens niet voor andere doeleinden dan hierboven beschreven, en we sturen je geen ongevraagde reclame.",
     ],
   },

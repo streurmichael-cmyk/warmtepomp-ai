@@ -9,16 +9,16 @@ export function ExampleAdviceCta() {
           <FlameIcon className="h-7 w-7" />
         </div>
         <h2 className="mt-6 font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
-          Zo ziet jouw advies eruit
+          Zo ziet jouw indicatie eruit
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
-          Benieuwd wat je krijgt? Bekijk een voorbeeldadvies voor een tussenwoning van 95 m².
+          Benieuwd wat je krijgt? Bekijk een voorbeeldindicatie voor een tussenwoning van 95 m².
         </p>
         <Link
           href="/voorbeeld-advies"
           className="mt-8 inline-flex items-center gap-2 rounded-xl bg-action px-8 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5"
         >
-          Bekijk voorbeeldadvies
+          Bekijk voorbeeldindicatie
           <ArrowRight className="h-5 w-5" />
         </Link>
       </div>

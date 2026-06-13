@@ -11,12 +11,12 @@ const benefits = [
     icon: ConversationIcon,
     title: "Geen verkooppraatjes",
     body: "Onze AI-keuzehulp stelt gerichte vragen over jouw woning en situatie. Geen generieke antwoorden of opdringerige verkoop, maar een aanbeveling die op jou is afgestemd.",
-    note: "Persoonlijk advies",
+    note: "Persoonlijke indicatie",
   },
   {
     icon: ShieldIcon,
-    title: "Eerlijk advies",
-    body: "Geen verborgen belangen of provisie-afspraken met fabrikanten. De tool analyseert jouw situatie en geeft onafhankelijk advies over het beste type warmtepomp. Daarna koppelen we je aan meerdere installateurs om te vergelijken.",
+    title: "Eerlijke vergelijking",
+    body: "Geen verborgen belangen of provisie-afspraken met fabrikanten. De tool analyseert jouw situatie en geeft een onafhankelijke indicatie van het beste type warmtepomp. Daarna koppelen we je aan meerdere installateurs om te vergelijken.",
     note: "100% onafhankelijk",
   },
 ];
@@ -30,11 +30,11 @@ export function Benefits() {
             Waarom warmtepomp.ai
           </p>
           <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
-            Eerlijk advies zonder haken en ogen
+            Eerlijke vergelijking zonder haken en ogen
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted">
-            Wij zijn niet gebonden aan één merk of installateur. Jij krijgt het
-            advies dat écht bij jou past.
+            Wij zijn niet gebonden aan één merk of installateur. Jij krijgt de
+            indicatie die écht bij jou past.
           </p>
         </div>
 

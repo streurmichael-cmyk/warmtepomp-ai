@@ -93,7 +93,7 @@ Berekende zonnepanelen-impact (gebruik deze cijfers exact, reken niet zelf opnie
 - Terugverdientijd zonder zonnepanelen: ${advies.terugverdientijd}
 - Terugverdientijd met ${lead.aantalZonnepanelen} zonnepanelen: ${zon.terugverdientijdMetZon}
 
-Verwerk dit in het advies met een zin in de vorm van:
+Verwerk dit in de indicatie met een zin in de vorm van:
 "Met jouw ${lead.aantalZonnepanelen} zonnepanelen wek je ±${zon.eigenOpwekKwh} kWh per jaar op. Daarmee dek je ±${zon.dekkingPercentage}% van het stroomverbruik van je warmtepomp. Dit bespaart je extra €${zon.extraBesparingPerJaar} per jaar."
 
 Noem bij de terugverdientijd beide scenario's: "Terugverdientijd zonder zonnepanelen: ${advies.terugverdientijd}" en "Terugverdientijd met ${lead.aantalZonnepanelen} zonnepanelen: ${zon.terugverdientijdMetZon}".`.trim();
@@ -113,7 +113,7 @@ Noem bij de terugverdientijd beide scenario's: "Terugverdientijd zonder zonnepan
     const dekking = voorbeeld.zonnepanelen?.dekkingPercentage ?? 0;
 
     return `
-Geef de volgende tip mee in het advies:
+Geef de volgende tip mee in de indicatie:
 "Tip: Combineer je warmtepomp met zonnepanelen voor maximale besparing. Met 10 panelen dek je al ±${dekking}% van je stroomkosten."`.trim();
   }
 
@@ -123,13 +123,13 @@ Geef de volgende tip mee in het advies:
 async function generateAdvies(lead: LeadData, subsidieInfo: string): Promise<string | null> {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
-    console.warn("ANTHROPIC_API_KEY niet ingesteld, persoonlijk advies wordt overgeslagen");
+    console.warn("ANTHROPIC_API_KEY niet ingesteld, persoonlijke indicatie wordt overgeslagen");
     return null;
   }
 
   const zonnepanelenInfo = berekenZonnepanelenInfo(lead);
 
-  const prompt = `Je bent een onafhankelijk warmtepomp-adviseur voor warmtepomp.ai. Schrijf een persoonlijk, vriendelijk advies in het Nederlands voor onderstaande aanvrager, op basis van hun woninggegevens en de actuele ISDE-subsidie-informatie.
+  const prompt = `Je bent de onafhankelijke warmtepomp-keuzehulp van warmtepomp.ai. Schrijf een persoonlijke, vriendelijke indicatie in het Nederlands voor onderstaande aanvrager, op basis van hun woninggegevens en de actuele ISDE-subsidie-informatie.
 
 Gegevens van de aanvrager:
 - Woningtype: ${lead.woningtype ?? "onbekend"}
@@ -140,12 +140,12 @@ Gegevens van de aanvrager:
 - Geschat jaarlijks gasverbruik: ${lead.gasverbruik ? `${lead.gasverbruik} m³` : "onbekend"}
 - Zonnepanelen: ${beschrijfZonnepanelen(lead)}
 - Postcode: ${lead.postcode ?? "onbekend"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}
-- Voorlopig advies uit de website-tool: ${lead.adviesType ?? "onbekend"}
+- Voorlopige indicatie uit de website-tool: ${lead.adviesType ?? "onbekend"}
 
 Actuele ISDE-subsidie-informatie (afkomstig van rvo.nl):
 ${subsidieInfo}
 ${zonnepanelenInfo ? `\n${zonnepanelenInfo}\n` : ""}
-Schrijf het advies als een stuk HTML (alleen de inhoud, geen <html>/<head>/<body> tags, gebruik <h2>, <p>, <ul>/<li> waar passend) met de volgende onderdelen:
+Schrijf de indicatie als een stuk HTML (alleen de inhoud, geen <html>/<head>/<body> tags, gebruik <h2>, <p>, <ul>/<li> waar passend) met de volgende onderdelen:
 1. Aanbevolen warmtepomp type voor deze situatie, met een korte onderbouwing
 2. Geschatte kosten (aanschaf + installatie), als bandbreedte
 3. Actuele ISDE-subsidie die van toepassing is
@@ -159,7 +159,7 @@ Belangrijke regels:
 - Gebruik geen hyperlinks of verwijzingen naar andere websites.
 - Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het indicaties zijn. Houd het beknopt: maximaal 2-3 zinnen per onderdeel, behalve punt 5 als er twee terugverdientijd-scenario's genoemd moeten worden. Geef alleen de kale HTML terug, zonder markdown code block (geen \`\`\`).`;
 
-  console.log("Anthropic API aanroepen voor persoonlijk advies...");
+  console.log("Anthropic API aanroepen voor persoonlijke indicatie...");
 
   try {
     const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -200,13 +200,13 @@ Belangrijke regels:
 
     console.log(
       text
-        ? `Persoonlijk advies ontvangen van Anthropic (${text.length} tekens)`
-        : "Anthropic API gaf een leeg advies terug"
+        ? `Persoonlijke indicatie ontvangen van Anthropic (${text.length} tekens)`
+        : "Anthropic API gaf een lege indicatie terug"
     );
 
     return text || null;
   } catch (err) {
-    console.error("Genereren van persoonlijk advies via Anthropic mislukt:", err);
+    console.error("Genereren van persoonlijke indicatie via Anthropic mislukt:", err);
     return null;
   }
 }
@@ -225,11 +225,11 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
   const adviesHtml = advies
     ? `
         <div style="margin: 24px 0;">
-          <h2 style="font-size: 18px; color: #0d1f16;">Jouw persoonlijke warmtepompadvies</h2>
+          <h2 style="font-size: 18px; color: #0d1f16;">Jouw persoonlijke warmtepomp-indicatie</h2>
           ${advies}
         </div>
         <p style="margin-top: 24px; font-size: 12px; color: #5a7264; border-top: 1px solid #e5e5e5; padding-top: 12px;">
-          Let op: subsidiebedragen kunnen wijzigen, dit advies is een indicatie.
+          Let op: subsidiebedragen kunnen wijzigen, deze indicatie is een schatting.
         </p>
       `
     : "";
@@ -237,7 +237,7 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
   const html = `
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
       <p>Hoi ${voornaam},</p>
-      <p>Bedankt voor je aanvraag! Hieronder vind je direct je persoonlijke warmtepompadvies.</p>
+      <p>Bedankt voor je aanvraag! Hieronder vind je direct je persoonlijke warmtepomp-indicatie.</p>
       <p><strong>Jouw gegevens:</strong></p>
       <ul>
         <li>Woningtype: ${lead.woningtype ?? "-"}</li>
@@ -266,7 +266,7 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
     const { data, error } = await resend.emails.send({
       from,
       to,
-      subject: `Bedankt ${voornaam} — jouw warmtepomp advies is onderweg`,
+      subject: `Bedankt ${voornaam} — jouw warmtepomp-indicatie is onderweg`,
       html,
     });
 

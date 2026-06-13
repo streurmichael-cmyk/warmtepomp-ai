@@ -319,7 +319,7 @@ export default function WarmtepompenPage() {
               <QuestionIcon className="mt-0.5 h-5 w-5 flex-shrink-0 text-green" />
               <p className="text-sm leading-relaxed text-muted">
                 Twijfel je nog? Geen probleem. Onze keuzehulp stelt een paar simpele vragen over
-                jouw woning en geeft je direct een persoonlijk advies — inclusief geschatte
+                jouw woning en geeft je direct een persoonlijke indicatie — inclusief geschatte
                 kosten, subsidie en besparing.
               </p>
             </div>
@@ -334,7 +334,7 @@ export default function WarmtepompenPage() {
               Welke warmtepomp past bij jouw woning?
             </h2>
             <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white/85">
-              Beantwoord een paar vragen en ontvang direct een persoonlijk advies, op maat van
+              Beantwoord een paar vragen en ontvang direct een persoonlijke indicatie, op maat van
               jouw situatie.
             </p>
             <Link

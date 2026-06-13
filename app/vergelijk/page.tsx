@@ -46,7 +46,7 @@ const PROGRESS_STEPS: { steps: StepName[]; label: string }[] = [
   { steps: ["adres"], label: "Jouw adres" },
   { steps: ["zoeken", "bevestig"], label: "Jouw woning" },
   { steps: ["systeem", "gasverbruik", "zonnepanelen"], label: "Verwarmingssysteem" },
-  { steps: ["verwerken", "advies"], label: "Jouw advies" },
+  { steps: ["verwerken", "advies"], label: "Jouw indicatie" },
   { steps: ["contact"], label: "Gegevens" },
 ];
 
@@ -54,7 +54,7 @@ const VERWERKING_TEKSTEN = [
   "De AI analyseert jouw woning...",
   "Subsidies worden berekend...",
   "Beste warmtepomp types worden bepaald...",
-  "Persoonlijk advies wordt opgesteld...",
+  "Persoonlijke indicatie wordt opgesteld...",
 ];
 
 const woningtypeOpties = ["Tussenwoning", "Hoekwoning", "Twee-onder-een-kap", "Vrijstaand", "Appartement"];
@@ -618,7 +618,7 @@ export default function VergelijkPage() {
                     onClick={() => setStep("verwerken")}
                     className="mt-8 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
                   >
-                    Bekijk mijn advies
+                    Bekijk mijn indicatie
                     <ArrowRight className="h-5 w-5" />
                   </button>
                 </div>
@@ -718,7 +718,7 @@ export default function VergelijkPage() {
                   )}
 
                   <p className="mt-6 text-xs leading-relaxed text-muted-light">
-                    Dit advies is gebaseerd op: BAG-woningdata, RVO subsidiebedragen 2026 en
+                    Deze indicatie is gebaseerd op: BAG-woningdata, RVO subsidiebedragen 2026 en
                     gemiddelden van Milieu Centraal. Aannames: energielabel op basis van bouwjaar,
                     gemiddeld verbruik voor jouw woningtype.
                   </p>
@@ -743,7 +743,7 @@ export default function VergelijkPage() {
                       }}
                       className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border-2 border-green/20 px-7 py-3.5 text-base font-bold text-dark transition-colors hover:border-action hover:text-action"
                     >
-                      Stuur dit advies naar mijn e-mail
+                      Stuur deze indicatie naar mijn e-mail
                     </button>
                   </div>
                 </>
@@ -767,14 +767,14 @@ export default function VergelijkPage() {
           {step === "contact" && (
             <Step
               heading={
-                wantsInstallateur ? "Waar mogen installateurs je bereiken?" : "Waar sturen we je advies naartoe?"
+                wantsInstallateur ? "Waar mogen installateurs je bereiken?" : "Waar sturen we je indicatie naartoe?"
               }
               onBack={() => setStep("advies")}
             >
               <p className="mb-6 text-base leading-relaxed text-muted">
                 {wantsInstallateur
                   ? "We koppelen je aan maximaal 3 onafhankelijke installateurs in jouw regio. Zij nemen vrijblijvend contact met je op."
-                  : "We sturen je het volledige advies, inclusief kosten, subsidie en terugverdientijd, per e-mail."}
+                  : "We sturen je de volledige indicatie, inclusief kosten, subsidie en terugverdientijd, per e-mail."}
               </p>
               <form onSubmit={handleLeadSubmit} noValidate className="space-y-4">
                 <FormField
@@ -824,7 +824,7 @@ export default function VergelijkPage() {
                   disabled={submitting}
                   className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44] disabled:opacity-60"
                 >
-                  {submitting ? "Versturen..." : wantsInstallateur ? "Vraag offertes aan" : "Stuur mijn advies"}
+                  {submitting ? "Versturen..." : wantsInstallateur ? "Vraag offertes aan" : "Stuur mijn indicatie"}
                   {!submitting && <ArrowRight className="h-5 w-5" />}
                 </button>
                 <p className="text-center text-xs text-muted-light">
@@ -849,7 +849,7 @@ export default function VergelijkPage() {
               <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-muted">
                 {wantsInstallateur
                   ? "We hebben je gegevens doorgestuurd. Binnen 24 uur nemen maximaal 3 onafhankelijke installateurs in jouw regio contact met je op."
-                  : "Check je inbox — we hebben het volledige advies naar je e-mailadres gestuurd."}
+                  : "Check je inbox — we hebben de volledige indicatie naar je e-mailadres gestuurd."}
               </p>
               <Link
                 href="/"

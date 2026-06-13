@@ -14,7 +14,7 @@ const items = [
       ]
     : []),
   "100% onafhankelijk — geen commissie van merken",
-  "Gratis advies, geen verplichtingen",
+  "Gratis indicatie, geen verplichtingen",
   "Je gegevens gaan nooit naar derden voor marketing",
 ];
 
