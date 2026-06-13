@@ -51,3 +51,27 @@ export async function saveLead(lead: LeadRecord): Promise<void> {
     )
   `;
 }
+
+/**
+ * Verwijdert leads die de bewaartermijn uit de privacyverklaring hebben
+ * overschreden: niet-gekoppelde leads ouder dan 3 maanden, en gekoppelde
+ * leads waarvan de koppeling met een installateur ouder is dan 1 jaar.
+ * Geeft het aantal verwijderde leads en hun id's terug, zodat dit gelogd
+ * kan worden.
+ */
+export async function deleteExpiredLeads(): Promise<{ count: number; ids: string[] }> {
+  if (!isDbConfigured()) {
+    console.warn("POSTGRES_URL niet ingesteld, opschonen van leads wordt overgeslagen");
+    return { count: 0, ids: [] };
+  }
+
+  const result = await sql`
+    delete from leads
+    where
+      (matched_at is null and created_at < now() - interval '3 months')
+      or (matched_at is not null and matched_at < now() - interval '1 year')
+    returning id
+  `;
+
+  return { count: result.rowCount ?? 0, ids: result.rows.map((row) => row.id as string) };
+}
