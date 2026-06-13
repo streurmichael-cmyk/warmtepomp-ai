@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { pingIndexNow } from "@/lib/indexnow";
 import { berekenAdvies } from "@/lib/advies";
+import { saveLead } from "@/lib/leads-repository";
 
 type LeadData = {
   woningtype?: string;
@@ -341,11 +342,22 @@ export async function POST(request: Request) {
   if (isLeadData(data)) {
     const subsidieInfo = await getRvoSubsidieInfo();
     const advies = await generateAdvies(data, subsidieInfo);
+    const adviesResultaat = berekenAdvies({
+      woningtype: data.woningtype ?? "",
+      oppervlakte: data.oppervlakte ?? "",
+      bouwjaar: data.bouwjaar ?? "",
+      isolatie: data.isolatie ?? "",
+      huidigSysteem: data.huidigSysteem ?? "",
+      gasverbruik: data.gasverbruik ?? 0,
+      heeftZonnepanelen: data.heeftZonnepanelen,
+      aantalZonnepanelen: data.aantalZonnepanelen,
+    });
 
     await Promise.all([
       sendConfirmationEmail(data, advies),
       sendNotificationEmail(data),
       pingIndexNow(),
+      saveLead({ ...data, advies: adviesResultaat }),
     ]);
   }
 
