@@ -68,6 +68,9 @@ export function Footer() {
             <Link href="/disclaimer" className="hover:text-action">
               Disclaimer
             </Link>
+            <Link href="/verwerkersovereenkomst" className="hover:text-action">
+              Verwerkersovereenkomst
+            </Link>
           </span>
         </div>
       </div>
