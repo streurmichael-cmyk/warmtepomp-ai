@@ -23,6 +23,17 @@ export const systeemOpties = [
   "Anders",
 ] as const;
 
+export const cvKetelLeeftijdOpties = [
+  "Jonger dan 5 jaar",
+  "5 – 10 jaar",
+  "10 – 15 jaar",
+  "Ouder dan 15 jaar",
+  "Weet ik niet",
+] as const;
+
+/** Indicatieve kosten van een nieuwe cv-ketel — uitgespaard als je toch al moet vervangen. */
+export const CV_VERVANGINGSKOSTEN = 3000;
+
 export const energielabelOpties = [
   "A of hoger",
   "B",
@@ -120,6 +131,8 @@ export type AdviesInput = {
   jaarlijkseOpwekKwh?: number;
   /** Voorkeur bij gas/overig: in één keer volledig elektrisch, of eerst een hybride tussenstap. */
   overstapVoorkeur?: "volledig" | "hybride";
+  /** Cv-ketel ouder dan 15 jaar: vervanging is toch al nodig, dus die kosten vallen weg. */
+  cvKetelOuderDan15?: boolean;
 };
 
 export type ZonnepanelenImpact = {
@@ -244,7 +257,10 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
   const kostenGetallen = kostenRange.match(/[\d.]+/g)?.map((n) => Number(n.replace(/\./g, ""))) ?? [8000, 10000];
   const gemKosten = (kostenGetallen[0] + kostenGetallen[1]) / 2;
   const subsidieGetal = Number(subsidie.match(/[\d.]+/)?.[0]?.replace(/\./g, "") ?? 0);
-  const nettoInvestering = Math.max(gemKosten - subsidieGetal, 1000);
+  // Is de cv-ketel ouder dan 15 jaar, dan moet die toch al vervangen worden; die
+  // uitgespaarde vervangingskosten halen we van de netto investering af.
+  const cvVervangingsbesparing = input.cvKetelOuderDan15 ? CV_VERVANGINGSKOSTEN : 0;
+  const nettoInvestering = Math.max(gemKosten - subsidieGetal - cvVervangingsbesparing, 1000);
 
   const terugverdientijd =
     besparingPerJaar > 0

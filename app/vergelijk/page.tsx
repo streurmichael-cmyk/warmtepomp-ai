@@ -21,6 +21,7 @@ import {
   type AdviesResultaat,
   berekenAdvies,
   bouwjaarOpties,
+  cvKetelLeeftijdOpties,
   energielabelNaarIsolatie,
   energielabelOpties,
   KWH_PER_ZONNEPANEEL,
@@ -38,6 +39,7 @@ type StepName =
   | "bevestig"
   | "energielabel"
   | "systeem"
+  | "cvketel"
   | "aanpak"
   | "stadsverwarming"
   | "gasverbruik"
@@ -50,7 +52,7 @@ type StepName =
 const PROGRESS_STEPS: { steps: StepName[]; label: string }[] = [
   { steps: ["adres"], label: "Jouw adres" },
   { steps: ["zoeken", "bevestig", "energielabel"], label: "Jouw woning" },
-  { steps: ["systeem", "aanpak", "gasverbruik", "zonnepanelen"], label: "Verwarmingssysteem" },
+  { steps: ["systeem", "cvketel", "aanpak", "gasverbruik", "zonnepanelen"], label: "Verwarmingssysteem" },
   { steps: ["verwerken", "advies"], label: "Jouw indicatie" },
   { steps: ["contact"], label: "Gegevens" },
 ];
@@ -100,6 +102,7 @@ type FormData = {
   energielabelGeschat: boolean;
   isolatie: string;
   huidigSysteem: string;
+  cvKetelLeeftijd: string;
   overstapVoorkeur: "" | "volledig" | "hybride";
   gasverbruik: number;
   heeftZonnepanelen: string;
@@ -121,6 +124,7 @@ const initialData: FormData = {
   energielabelGeschat: false,
   isolatie: "",
   huidigSysteem: "",
+  cvKetelLeeftijd: "",
   overstapVoorkeur: "",
   gasverbruik: 0,
   heeftZonnepanelen: "",
@@ -283,11 +287,20 @@ export default function VergelijkPage() {
     const geschat = schatGasverbruik(data.oppervlakte, data.bouwjaar);
     setData((d) => ({ ...d, huidigSysteem: label, gasverbruik: d.gasverbruik || geschat }));
 
-    if (label === "CV-ketel op gas" || label === "Anders") {
+    if (label === "CV-ketel op gas") {
+      setStep("cvketel");
+      return;
+    }
+    if (label === "Anders") {
       setStep("aanpak");
       return;
     }
     setStep("gasverbruik");
+  }
+
+  function selectCvKetel(label: string) {
+    update("cvKetelLeeftijd", label);
+    setStep("aanpak");
   }
 
   function selectAanpak(waarde: "volledig" | "hybride") {
@@ -302,6 +315,8 @@ export default function VergelijkPage() {
     }
   }
 
+  const cvKetelOuderDan15 = data.cvKetelLeeftijd === "Ouder dan 15 jaar";
+
   const advies = useMemo<AdviesResultaat>(
     () =>
       berekenAdvies({
@@ -315,6 +330,7 @@ export default function VergelijkPage() {
         aantalZonnepanelen: data.aantalZonnepanelen,
         jaarlijkseOpwekKwh: data.jaarlijkseOpwekKwh,
         overstapVoorkeur: data.overstapVoorkeur || undefined,
+        cvKetelOuderDan15,
       }),
     [
       data.woningtype,
@@ -327,6 +343,7 @@ export default function VergelijkPage() {
       data.aantalZonnepanelen,
       data.jaarlijkseOpwekKwh,
       data.overstapVoorkeur,
+      cvKetelOuderDan15,
     ]
   );
 
@@ -358,6 +375,7 @@ export default function VergelijkPage() {
       energielabel: data.energielabel || undefined,
       isolatie: data.isolatie,
       huidigSysteem: data.huidigSysteem,
+      cvKetelLeeftijd: data.cvKetelLeeftijd || undefined,
       overstapVoorkeur: data.overstapVoorkeur || undefined,
       gasverbruik: data.gasverbruik,
       heeftZonnepanelen: data.heeftZonnepanelen,
@@ -617,8 +635,38 @@ export default function VergelijkPage() {
             </Step>
           )}
 
+          {step === "cvketel" && (
+            <Step heading="Hoe oud is je cv-ketel?" onBack={() => setStep("systeem")}>
+              <p className="mb-6 text-base leading-relaxed text-muted">
+                Een cv-ketel gaat gemiddeld zo'n 15 jaar mee. Is die van jou aan vervanging toe, dan
+                wordt de overstap naar een warmtepomp een stuk aantrekkelijker — die vervangingskosten
+                bespaar je dan namelijk uit.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {cvKetelLeeftijdOpties.map((opt) => (
+                  <button
+                    key={opt}
+                    type="button"
+                    onClick={() => selectCvKetel(opt)}
+                    aria-pressed={data.cvKetelLeeftijd === opt}
+                    className={`min-h-[48px] rounded-full border-2 px-4 py-3 text-sm font-semibold transition-colors ${
+                      data.cvKetelLeeftijd === opt
+                        ? "border-action bg-action/10 text-action"
+                        : "border-green/15 bg-white text-dark hover:border-action/40"
+                    }`}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+            </Step>
+          )}
+
           {step === "aanpak" && (
-            <Step heading="Hoe wil je overstappen?" onBack={() => setStep("systeem")}>
+            <Step
+              heading="Hoe wil je overstappen?"
+              onBack={() => setStep(data.huidigSysteem === "CV-ketel op gas" ? "cvketel" : "systeem")}
+            >
               <p className="mb-6 text-base leading-relaxed text-muted">
                 Je kunt in één keer volledig van het gas af, of het stap voor stap doen met een
                 hybride warmtepomp die samenwerkt met je cv-ketel. We houden hier rekening mee in je
@@ -908,6 +956,17 @@ export default function VergelijkPage() {
                         isoleren? Dan verdien je de warmtepomp sneller terug en heb je minder vermogen
                         nodig. Goede isolatie maakt op termijn ook een volledige overstap naar
                         all-electric mogelijk.
+                      </p>
+                    </div>
+                  )}
+
+                  {cvKetelOuderDan15 && (
+                    <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                      <p className="text-base text-muted">
+                        <span className="font-bold text-dark">Let op:</span> je cv-ketel is ouder dan
+                        15 jaar en is dus sowieso binnenkort aan vervanging toe. We hebben de
+                        uitgespaarde vervangingskosten (±€3.000) al meegerekend in de terugverdientijd
+                        hierboven — daardoor is overstappen nu extra aantrekkelijk.
                       </p>
                     </div>
                   )}

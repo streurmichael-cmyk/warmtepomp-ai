@@ -12,6 +12,7 @@ type LeadData = {
   energielabel?: string;
   isolatie?: string;
   huidigSysteem?: string;
+  cvKetelLeeftijd?: string;
   overstapVoorkeur?: "volledig" | "hybride";
   gasverbruik?: number;
   heeftZonnepanelen?: string;
@@ -160,6 +161,8 @@ Gegevens van de aanvrager:
 - Energielabel: ${lead.energielabel ?? "onbekend"}
 - Isolatieniveau: ${lead.isolatie ?? "onbekend"}
 - Huidig verwarmingssysteem: ${lead.huidigSysteem ?? "onbekend"}${
+    lead.cvKetelLeeftijd ? `\n- Leeftijd cv-ketel: ${lead.cvKetelLeeftijd}` : ""
+  }${
     lead.overstapVoorkeur
       ? `\n- Voorkeur voor overstappen: ${
           lead.overstapVoorkeur === "volledig"
@@ -417,6 +420,7 @@ export async function POST(request: Request) {
       aantalZonnepanelen: data.aantalZonnepanelen,
       jaarlijkseOpwekKwh: data.jaarlijkseOpwekKwh,
       overstapVoorkeur: data.overstapVoorkeur,
+      cvKetelOuderDan15: data.cvKetelLeeftijd === "Ouder dan 15 jaar",
     });
 
     await Promise.all([
