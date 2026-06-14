@@ -19,7 +19,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Werkt een warmtepomp ook in een slecht geïsoleerde woning?",
-    a: "Ja, maar dan is een hybride warmtepomp de betere keuze. De warmtepomp neemt het verwarmingswerk over zodra het buiten niet te koud is; de cv-ketel springt bij bij extreme kou. Zo bespaar je toch 30–50% op je gasverbruik, ook zonder extra isolatie.",
+    a: "Ja, maar dan is een hybride warmtepomp een slimme tussenstap. De warmtepomp neemt het verwarmingswerk over zodra het buiten niet te koud is; de cv-ketel springt bij bij extreme kou. Zo bespaar je toch 30–50% op je gasverbruik, ook zonder extra isolatie. Tip: heb je de mogelijkheid om te isoleren? Dan verdien je de warmtepomp sneller terug en heb je minder vermogen nodig.",
   },
   {
     q: "Is warmtepomp.ai echt onafhankelijk?",

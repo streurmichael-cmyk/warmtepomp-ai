@@ -835,6 +835,17 @@ export default function VergelijkPage() {
                     </div>
                   )}
 
+                  {data.isolatie === "Matig of oud" && (
+                    <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                      <p className="text-base text-muted">
+                        <span className="font-bold text-dark">Tip:</span> heb je de mogelijkheid om te
+                        isoleren? Dan verdien je de warmtepomp sneller terug en heb je minder vermogen
+                        nodig. Goede isolatie maakt op termijn ook een volledige overstap naar
+                        all-electric mogelijk.
+                      </p>
+                    </div>
+                  )}
+
                   <p className="mt-6 text-xs leading-relaxed text-muted-light">
                     Deze indicatie is gebaseerd op: BAG-woningdata, RVO subsidiebedragen 2026 en
                     gemiddelden van Milieu Centraal. Aannames: energielabel op basis van bouwjaar,
