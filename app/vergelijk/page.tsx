@@ -46,7 +46,16 @@ declare global {
 
 /** Haalt een reCAPTCHA v3-token op; geeft undefined als reCAPTCHA niet geconfigureerd of geladen is. */
 async function getRecaptchaToken(): Promise<string | undefined> {
-  if (!RECAPTCHA_SITE_KEY || typeof window === "undefined" || !window.grecaptcha) {
+  if (!RECAPTCHA_SITE_KEY || typeof window === "undefined") {
+    return undefined;
+  }
+  // Wacht tot het reCAPTCHA-script geladen is (max ~3s) zodat we geen token
+  // missen door een race tussen het laden van het script en het verzenden.
+  for (let i = 0; i < 30 && !window.grecaptcha; i++) {
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  if (!window.grecaptcha) {
+    console.warn("reCAPTCHA-script niet geladen; aanvraag wordt zonder token verstuurd.");
     return undefined;
   }
   try {
