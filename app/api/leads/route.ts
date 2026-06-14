@@ -1,4 +1,4 @@
-import { createHash } from "crypto";
+import { createHash, randomBytes } from "crypto";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { pingIndexNow } from "@/lib/indexnow";
@@ -284,7 +284,7 @@ Belangrijke regels:
   }
 }
 
-async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
+async function sendConfirmationEmail(lead: LeadData, advies: string | null, verifyUrl: string) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.warn("RESEND_API_KEY niet ingesteld, bevestigingsmail wordt overgeslagen");
@@ -294,6 +294,18 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
 
   const voornaam = lead.voornaam ?? "";
   const from = process.env.RESEND_FROM_EMAIL ?? "Warmtepomp.ai <noreply@warmtepomp.ai>";
+
+  const verifyCta = `
+        <div style="margin: 24px 0; padding: 20px; border: 1px solid #e5e5e5; border-radius: 12px; background: #f7faf8;">
+          <p style="margin: 0 0 12px; font-weight: bold; color: #0d1f16;">Bevestig je aanvraag</p>
+          <p style="margin: 0 0 16px; font-size: 14px; color: #5a7264;">
+            Klik op de knop om te bevestigen dat dit jouw e-mailadres is. Pas daarna activeren we je
+            aanvraag definitief. Niets gedaan? Dan verwijderen we je gegevens automatisch binnen 24 uur.
+          </p>
+          <a href="${verifyUrl}" style="display: inline-block; padding: 12px 24px; background: #0e7a4f; color: #ffffff; text-decoration: none; border-radius: 10px; font-weight: bold;">
+            Bevestig mijn aanvraag
+          </a>
+        </div>`;
 
   const adviesHtml = advies
     ? `
@@ -321,6 +333,7 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
       <p>Hoi ${voornaam},</p>
       <p>${introTekst}</p>
+      ${verifyCta}
       <p><strong>Jouw gegevens:</strong></p>
       <ul>
         <li>Woningtype: ${lead.woningtype ?? "-"}</li>
@@ -356,72 +369,6 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
     }
   } catch (err) {
     console.error("Versturen van bevestigingsmail mislukt:", err);
-  }
-}
-
-async function sendNotificationEmail(lead: LeadData) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.warn("RESEND_API_KEY niet ingesteld, notificatiemail wordt overgeslagen");
-    return;
-  }
-
-  const from = process.env.RESEND_FROM_EMAIL ?? "Warmtepomp.ai <noreply@warmtepomp.ai>";
-
-  const wantsInstallateur = lead.wantsInstallateur ?? false;
-  const postcodeVeld = `${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}`;
-
-  const subject = wantsInstallateur
-    ? `🔥 Nieuwe lead: ${lead.voornaam ?? "Onbekend"} - ${lead.woningtype ?? "Onbekend"} - ${lead.postcode ?? "-"}`
-    : `📧 Indicatie-aanvraag: ${lead.voornaam ?? "Onbekend"} - ${lead.postcode ?? "-"}`;
-
-  const html = wantsInstallateur
-    ? `
-    <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
-      <ul>
-        <li><strong>Naam:</strong> ${lead.voornaam ?? "-"}</li>
-        <li><strong>Telefoon:</strong> ${lead.telefoon ?? "-"}</li>
-        <li><strong>Email:</strong> ${lead.email ?? "-"}</li>
-        <li><strong>Woningtype:</strong> ${lead.woningtype ?? "-"}</li>
-        <li><strong>Oppervlakte:</strong> ${lead.oppervlakte ?? "-"}</li>
-        <li><strong>Postcode:</strong> ${postcodeVeld}</li>
-        <li><strong>Huidig systeem:</strong> ${lead.huidigSysteem ?? "-"}</li>
-      </ul>
-      <p style="margin-top: 24px; font-weight: bold;">Nieuwe offerte-aanvraag — volg op zodra je een installateur hebt.</p>
-    </div>
-  `
-    : `
-    <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
-      <ul>
-        <li><strong>Naam:</strong> ${lead.voornaam ?? "-"}</li>
-        <li><strong>Email:</strong> ${lead.email ?? "-"}</li>
-        <li><strong>Woningtype:</strong> ${lead.woningtype ?? "-"}</li>
-        <li><strong>Postcode:</strong> ${postcodeVeld}</li>
-      </ul>
-      <p style="margin-top: 24px; font-weight: bold;">Gebruiker wil alleen de indicatie per mail, geen installateur-koppeling.</p>
-    </div>
-  `;
-
-  const to = "info@warmtepomp.ai";
-
-  console.log(`Notificatiemail versturen naar ${to}...`);
-
-  try {
-    const resend = new Resend(apiKey);
-    const { data, error } = await resend.emails.send({
-      from,
-      to,
-      subject,
-      html,
-    });
-
-    if (error) {
-      console.error("Versturen van notificatiemail mislukt:", error);
-    } else {
-      console.log(`Notificatiemail verstuurd naar ${to} (id: ${data?.id})`);
-    }
-  } catch (err) {
-    console.error("Versturen van notificatiemail mislukt:", err);
   }
 }
 
@@ -486,6 +433,12 @@ export async function POST(request: Request) {
     console.error("Tellen van leads per IP mislukt, aanvraag wordt toch verwerkt:", err);
   }
 
+  // Double opt-in: genereer een verificatietoken en stuur een bevestigingsmail.
+  // De interne notificatie naar info@ volgt pas nadat de aanvrager bevestigt.
+  const verifyToken = randomBytes(32).toString("hex");
+  const verifyUrl = new URL("/api/leads/verify", request.url);
+  verifyUrl.searchParams.set("token", verifyToken);
+
   {
     const subsidieInfo = await getRvoSubsidieInfo();
     const advies = await generateAdvies(data, subsidieInfo);
@@ -504,10 +457,9 @@ export async function POST(request: Request) {
     });
 
     await Promise.all([
-      sendConfirmationEmail(data, advies),
-      sendNotificationEmail(data),
+      sendConfirmationEmail(data, advies, verifyUrl.toString()),
       pingIndexNow(),
-      saveLead({ ...data, advies: adviesResultaat, ipHash }),
+      saveLead({ ...data, advies: adviesResultaat, ipHash, verifyToken }),
     ]);
   }
 
