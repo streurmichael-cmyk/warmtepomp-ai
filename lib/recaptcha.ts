@@ -1,28 +1,36 @@
-/** Minimale score (0–1) die we van reCAPTCHA v3 accepteren. Lager = waarschijnlijker een bot. */
+/** Minimale score (0–1) die we van reCAPTCHA Enterprise accepteren. Lager = waarschijnlijker een bot. */
 const RECAPTCHA_THRESHOLD = 0.5;
+/** De actie die de frontend meegeeft bij execute(); wordt gecontroleerd in de assessment. */
+const EXPECTED_ACTION = "lead";
 
 /**
- * Verifieert een reCAPTCHA v3-token bij Google.
+ * Verifieert een reCAPTCHA Enterprise-token via de Assessment API van Google
+ * Cloud (https://recaptchaenterprise.googleapis.com).
  *
- * Beleid (reCAPTCHA is hier defense-in-depth naast de IP-limiet en de
- * e-mailverificatie, dus we blokkeren echte gebruikers liever niet onterecht):
- * - RECAPTCHA_SECRET_KEY niet ingesteld → controle overslaan (return true).
+ * Configuratie (alle drie nodig om de controle te activeren):
+ * - NEXT_PUBLIC_RECAPTCHA_SITE_KEY — de Enterprise site key (ook client-side).
+ * - RECAPTCHA_PROJECT_ID — het Google Cloud project-ID (niet de weergavenaam).
+ * - RECAPTCHA_SECRET_KEY — hergebruikt als de Google Cloud API key.
+ *
+ * Beleid (reCAPTCHA is defense-in-depth naast de IP-limiet en e-mailverificatie):
+ * - Niet volledig geconfigureerd → controle overslaan (return true).
  * - Geen token ontvangen → 'fail open' (return true) met waarschuwing. Een
- *   ontbrekend token komt in de praktijk vrijwel altijd door een client-/
- *   configuratieprobleem (site key niet in de build, script geblokkeerd,
- *   netwerk), niet door een bot. Onterecht alle aanvragen blokkeren is erger.
- * - Token aanwezig maar door Google afgekeurd (success=false) of te lage score
- *   → blokkeren (return false). Dit is reCAPTCHA die echt zijn werk doet.
- * - Netwerk-/serverfout bij Google → 'fail open' (return true).
+ *   ontbrekend token komt vrijwel altijd door een client-/configuratieprobleem,
+ *   niet door een bot; echte gebruikers onterecht blokkeren is erger.
+ * - Token aanwezig maar ongeldig of te lage score → blokkeren (return false).
+ * - Netwerk-/API-fout → 'fail open' (return true).
  */
 export async function verifyRecaptcha(token: string | undefined): Promise<boolean> {
-  const secret = process.env.RECAPTCHA_SECRET_KEY;
-  if (!secret) {
+  const apiKey = process.env.RECAPTCHA_SECRET_KEY;
+  const projectId = process.env.RECAPTCHA_PROJECT_ID;
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  if (!apiKey || !projectId || !siteKey) {
     return true;
   }
   if (!token) {
     console.warn(
-      "reCAPTCHA: geen token ontvangen terwijl er een secret is ingesteld — " +
+      "reCAPTCHA: geen token ontvangen terwijl Enterprise is geconfigureerd — " +
         "controleer of NEXT_PUBLIC_RECAPTCHA_SITE_KEY in de build zit (redeploy na het zetten). " +
         "Aanvraag wordt toegestaan."
     );
@@ -30,36 +38,53 @@ export async function verifyRecaptcha(token: string | undefined): Promise<boolea
   }
 
   try {
-    const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ secret, response: token }),
-      signal: AbortSignal.timeout(5000),
-    });
+    const res = await fetch(
+      `https://recaptchaenterprise.googleapis.com/v1/projects/${projectId}/assessments?key=${apiKey}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event: {
+            token,
+            siteKey,
+            expectedAction: EXPECTED_ACTION,
+          },
+        }),
+        signal: AbortSignal.timeout(5000),
+      }
+    );
 
     if (!res.ok) {
-      console.error("reCAPTCHA-verificatie gaf foutstatus:", res.status);
+      console.error(
+        "reCAPTCHA Enterprise assessment gaf foutstatus:",
+        res.status,
+        await res.text().catch(() => "")
+      );
       return true;
     }
 
     const data = (await res.json()) as {
-      success?: boolean;
-      score?: number;
-      "error-codes"?: string[];
+      tokenProperties?: { valid?: boolean; action?: string; invalidReason?: string };
+      riskAnalysis?: { score?: number };
     };
-    if (!data.success) {
-      // error-codes helpt diagnosticeren: bv. 'hostname-mismatch' (domein niet
-      // whitelisted), 'invalid-input-secret' (verkeerde secret), 'timeout-or-duplicate'.
-      console.warn("reCAPTCHA-verificatie mislukt (success=false):", data["error-codes"]);
+
+    const tokenProps = data.tokenProperties;
+    if (!tokenProps?.valid) {
+      // invalidReason helpt diagnosticeren, bv. UNKNOWN_INVALID_REASON,
+      // EXPIRED, DUPE, of een hostname-/site key-mismatch.
+      console.warn("reCAPTCHA Enterprise token ongeldig:", tokenProps?.invalidReason);
       return false;
     }
-    if (typeof data.score === "number" && data.score < RECAPTCHA_THRESHOLD) {
-      console.warn(`reCAPTCHA-score te laag: ${data.score}`);
+
+    const score = data.riskAnalysis?.score;
+    if (typeof score === "number" && score < RECAPTCHA_THRESHOLD) {
+      console.warn(`reCAPTCHA Enterprise score te laag: ${score}`);
       return false;
     }
+
     return true;
   } catch (err) {
-    console.error("reCAPTCHA-verificatie mislukt door fout, aanvraag wordt toch toegestaan:", err);
+    console.error("reCAPTCHA Enterprise verificatie mislukt door fout, aanvraag wordt toegestaan:", err);
     return true;
   }
 }

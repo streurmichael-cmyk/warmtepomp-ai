@@ -35,33 +35,38 @@ type IconComponent = React.ComponentType<{ className?: string }>;
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
+type GrecaptchaApi = {
+  ready: (cb: () => void) => void;
+  execute: (siteKey: string, options: { action: string }) => Promise<string>;
+};
+
 declare global {
   interface Window {
     grecaptcha?: {
-      ready: (cb: () => void) => void;
-      execute: (siteKey: string, options: { action: string }) => Promise<string>;
-    };
+      enterprise?: GrecaptchaApi;
+    } & Partial<GrecaptchaApi>;
   }
 }
 
-/** Haalt een reCAPTCHA v3-token op; geeft undefined als reCAPTCHA niet geconfigureerd of geladen is. */
+/** Haalt een reCAPTCHA Enterprise-token op; geeft undefined als het niet geconfigureerd of geladen is. */
 async function getRecaptchaToken(): Promise<string | undefined> {
   if (!RECAPTCHA_SITE_KEY || typeof window === "undefined") {
     return undefined;
   }
-  // Wacht tot het reCAPTCHA-script geladen is (max ~3s) zodat we geen token
+  // Wacht tot het Enterprise-script geladen is (max ~3s) zodat we geen token
   // missen door een race tussen het laden van het script en het verzenden.
-  for (let i = 0; i < 30 && !window.grecaptcha; i++) {
+  for (let i = 0; i < 30 && !window.grecaptcha?.enterprise; i++) {
     await new Promise((resolve) => setTimeout(resolve, 100));
   }
-  if (!window.grecaptcha) {
-    console.warn("reCAPTCHA-script niet geladen; aanvraag wordt zonder token verstuurd.");
+  const enterprise = window.grecaptcha?.enterprise;
+  if (!enterprise) {
+    console.warn("reCAPTCHA Enterprise-script niet geladen; aanvraag wordt zonder token verstuurd.");
     return undefined;
   }
   try {
     return await new Promise<string>((resolve, reject) => {
-      window.grecaptcha!.ready(() => {
-        window.grecaptcha!.execute(RECAPTCHA_SITE_KEY!, { action: "lead" }).then(resolve, reject);
+      enterprise.ready(() => {
+        enterprise.execute(RECAPTCHA_SITE_KEY!, { action: "lead" }).then(resolve, reject);
       });
     });
   } catch {
@@ -267,11 +272,11 @@ export default function VergelijkPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Laad het reCAPTCHA v3-script (onzichtbaar) als er een site key is geconfigureerd.
+  // Laad het reCAPTCHA Enterprise-script (onzichtbaar) als er een site key is geconfigureerd.
   useEffect(() => {
     if (!RECAPTCHA_SITE_KEY || document.querySelector("script[data-recaptcha]")) return;
     const script = document.createElement("script");
-    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    script.src = `https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`;
     script.async = true;
     script.defer = true;
     script.dataset.recaptcha = "true";
