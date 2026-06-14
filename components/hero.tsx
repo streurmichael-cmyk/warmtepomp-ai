@@ -78,9 +78,9 @@ export function Hero() {
           <div className="aspect-[4/3] max-h-[300px] overflow-hidden rounded-xl shadow-[0_24px_64px_rgba(13,31,22,0.15)] sm:max-h-none">
             <Image
               src="/images/hero-warmtepomp.webp"
-              alt="Warmtepomp buitenunit naast een rijtjeswoning"
-              width={1600}
-              height={893}
+              alt="Warmtepomp buitenunit naast een Hollandse rijtjeswoning"
+              width={1377}
+              height={768}
               priority
               className="h-full w-full object-cover"
             />
