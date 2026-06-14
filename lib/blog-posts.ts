@@ -840,6 +840,105 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "beste-all-electric-warmtepomp-2026",
+    title: "Beste All-Electric Warmtepomp 2026: Vergelijking, Voor- en Nadelen",
+    description:
+      "Welke all-electric warmtepomp past het best bij jouw woning in 2026? We vergelijken lucht-water en bodem-water systemen, bespreken kosten, subsidie, geschiktheid en de belangrijkste voor- en nadelen.",
+    publishedAt: "2026-06-13",
+    intro:
+      "Een all-electric warmtepomp verwarmt je woning volledig zonder aardgas en is daarmee de meest vergaande stap in de verduurzaming van je huis. Maar welke variant past het beste bij jouw situatie, en waar moet je op letten voordat je de gasaansluiting de deur uit doet? In dit artikel vergelijken we de belangrijkste all-electric warmtepompen voor 2026, met hun kosten, subsidie, geschiktheid en de voor- en nadelen op een rij.",
+    sections: [
+      {
+        type: "text",
+        heading: "Wat is een all-electric warmtepomp precies?",
+        paragraphs: [
+          "Een all-electric warmtepomp — ook wel een volledig elektrische warmtepomp genoemd — verzorgt in zijn eentje de volledige verwarming van je woning en de productie van warm tapwater, zonder dat er nog een cv-ketel op gas aan te pas komt. Het verschil met een hybride warmtepomp is dus wezenlijk: bij een hybride systeem blijft je cv-ketel als back-up aanwezig voor de koudste dagen, terwijl een all-electric warmtepomp je gasaansluiting volledig overbodig maakt.",
+          "Omdat het systeem alle warmte elektrisch opwekt — door warmte uit de buitenlucht of de bodem te onttrekken en op te waarderen — is een all-electric warmtepomp het meest geschikt voor woningen die goed geïsoleerd zijn en bij voorkeur lage-temperatuurverwarming hebben, zoals vloer- of wandverwarming. In zo'n woning haalt de warmtepomp zijn hoogste rendement en blijven je stroomkosten beheersbaar.",
+          "De grote winst zit hem in de efficiëntie: een goede all-electric warmtepomp levert voor elke kilowattuur stroom die hij verbruikt al snel drie tot vier kilowattuur aan warmte. Die verhouding heet de COP (Coefficient of Performance) en is dé maatstaf om warmtepompen met elkaar te vergelijken.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Lucht-water versus bodem-water: de twee hoofdtypen",
+        paragraphs: [
+          "De meest gekozen all-electric warmtepomp in Nederland is de lucht-water warmtepomp. Deze haalt warmte uit de buitenlucht en geeft die af aan het water van je verwarmingssysteem. Het grote voordeel is de relatief lage aanschafprijs en het feit dat er geen ingrijpende werkzaamheden in je tuin nodig zijn. Het nadeel is dat het rendement iets daalt op de koudste winterdagen, juist wanneer je de meeste warmte nodig hebt, en dat de buitenunit een zeker geluid maakt.",
+          "De bodem-water warmtepomp (ook wel geothermische of bodemgebonden warmtepomp) haalt warmte uit de grond via een lus of een bron. Omdat de bodemtemperatuur het hele jaar door vrij stabiel is, werkt dit type systeem zeer efficiënt en gelijkmatig, ook in de winter. Daar staat tegenover dat de aanschaf en installatie fors duurder zijn, omdat er een boring of een bodemlus in de tuin nodig is.",
+          "Voor appartementen en woningen waar je vooral een of twee ruimtes wilt verwarmen, bestaat daarnaast de lucht-lucht warmtepomp, die warmte via de lucht in plaats van via water verspreidt. Deze is goedkoop en kan ook koelen, maar verwarmt je hele huis minder gelijkmatig en komt doorgaans niet in aanmerking voor ISDE-subsidie.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/warmtepompen",
+        label: "Bekijk alle warmtepomptypen op een rij",
+        description:
+          "Op onze overzichtspagina vergelijken we de verschillende warmtepomptypen op kosten, geschiktheid en rendement.",
+      },
+      {
+        type: "text",
+        heading: "Wat kost een all-electric warmtepomp in 2026?",
+        paragraphs: [
+          "De kosten van een all-electric warmtepomp lopen flink uiteen, afhankelijk van het type, het benodigde vermogen en je woning. Voor een lucht-water warmtepomp in een gemiddelde rij- of tussenwoning moet je inclusief installatie rekenen op grofweg €8.500 tot €11.000. Voor grotere, vrijstaande woningen kan dit oplopen tot €14.000 of meer, omdat er een krachtiger systeem nodig is.",
+          "Een bodem-water warmtepomp is duurder: door de noodzakelijke bodemboring of -lus liggen de totale kosten al snel tussen de €12.000 en €20.000. Die hogere investering verdient zich op de lange termijn deels terug door het hogere rendement en de lagere stroomkosten, vooral in grotere woningen met een hoge warmtevraag.",
+          "Naast de warmtepomp zelf moet je soms rekening houden met bijkomende kosten, zoals het aanpassen van je radiatoren naar lage-temperatuurradiatoren of het aanleggen van vloerverwarming, en eventueel het verzwaren van je elektriciteitsaansluiting. Deze kosten worden vaak onderschat, maar zijn bepalend voor hoe goed je all-electric warmtepomp uiteindelijk presteert.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/kosten",
+        label: "Lees meer over de kosten van een warmtepomp",
+        description:
+          "Een gedetailleerd overzicht van aanschaf-, installatie- en gebruikskosten van de verschillende warmtepompen.",
+      },
+      {
+        type: "text",
+        heading: "Subsidie op een all-electric warmtepomp",
+        paragraphs: [
+          "Voor een all-electric warmtepomp kun je via de ISDE-regeling een aanzienlijk subsidiebedrag terugkrijgen. Voor een lucht-water warmtepomp gaat het doorgaans om een bedrag tot ongeveer €2.500 à €3.500, afhankelijk van het thermisch vermogen van de installatie. Voor bodem-water warmtepompen ligt het subsidiebedrag vaak hoger, omdat deze systemen duurder en efficiënter zijn.",
+          "Juist omdat een all-electric warmtepomp je gasaansluiting volledig vervangt, valt deze in een gunstiger subsidiecategorie dan een hybride systeem. Dat maakt de netto-investering een stuk aantrekkelijker. Houd er wel rekening mee dat de exacte bedragen jaarlijks worden vastgesteld en dat het subsidiebudget op kan raken — vraag de subsidie dus tijdig aan.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "De belangrijkste voordelen",
+        paragraphs: [
+          "Het grootste voordeel van een all-electric warmtepomp is dat je volledig van het aardgas af bent. Je bent niet langer afhankelijk van de gasprijs en de vaste kosten van een gasaansluiting, en je woning is klaar voor een toekomst zonder gas. In combinatie met zonnepanelen kun je een groot deel van je warmte zelfs met je eigen opgewekte stroom verzorgen.",
+          "Daarnaast levert een all-electric warmtepomp in een geschikte woning de grootste besparing op je energierekening op van alle warmtepompvarianten, omdat je je volledige gasverbruik vervangt door efficiënt opgewekte warmte. Veel all-electric warmtepompen kunnen in de zomer bovendien koelen, wat een prettig extra comfort geeft tijdens warme dagen.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "De nadelen en aandachtspunten",
+        paragraphs: [
+          "Tegenover de voordelen staan een paar belangrijke aandachtspunten. Een all-electric warmtepomp werkt alleen optimaal in een goed geïsoleerde woning met lage-temperatuurafgifte. Is je woning matig geïsoleerd, dan moet de warmtepomp harder werken, daalt het rendement en stijgt je stroomverbruik — en daarmee je rekening. In zo'n geval is eerst isoleren, of voorlopig kiezen voor een hybride warmtepomp, vaak verstandiger.",
+          "Ook de investering is hoger dan bij een hybride systeem, en de buitenunit van een lucht-water warmtepomp maakt geluid, waar je rekening mee moet houden in verband met je buren en de regelgeving. Tot slot vervang je je gasverbruik door stroomverbruik: bij een ongunstige verhouding tussen gas- en stroomprijs kan de besparing tegenvallen, zeker zonder zonnepanelen.",
+          "Het is daarom essentieel om vooraf goed te laten beoordelen of jouw woning echt geschikt is voor een volledig elektrisch systeem. Een eerlijke inschatting voorkomt teleurstellingen achteraf.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Is een all-electric warmtepomp iets voor jou?",
+        paragraphs: [
+          "Kort samengevat: een all-electric warmtepomp is de beste keuze als je woning goed geïsoleerd is, je beschikt over of kunt overstappen op lage-temperatuurverwarming, en je definitief van het gas af wilt. Heb je bovendien zonnepanelen of overweeg je die aan te schaffen, dan wordt het plaatje nog gunstiger.",
+          "Twijfel je of je woning er klaar voor is, of zit je nog in een tussenfase qua isolatie? Dan kan een hybride warmtepomp een verstandige eerste stap zijn, waarna je later alsnog volledig elektrisch gaat. De juiste keuze hangt sterk af van de specifieke kenmerken van jouw woning.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/vergelijk",
+        label: "Ontdek welke warmtepomp bij jouw woning past",
+        description:
+          "Beantwoord een paar vragen over je woning en ontvang een gratis, persoonlijke indicatie inclusief het meest geschikte type, de kosten en de subsidie.",
+      },
+      {
+        type: "text",
+        heading: "Conclusie",
+        paragraphs: [
+          "De beste all-electric warmtepomp voor 2026 bestaat niet in algemene zin — het beste systeem is het systeem dat past bij jouw woning, isolatieniveau en budget. Voor de meeste goed geïsoleerde woningen is een lucht-water warmtepomp de logische en betaalbare keuze, terwijl een bodem-water warmtepomp interessant wordt bij grotere woningen met een hoge warmtevraag en ruimte in de tuin. Wil je zeker weten welke variant in jouw situatie het meest oplevert? Vul de gratis keuzehulp in en ontvang binnen een paar minuten een persoonlijke indicatie.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
