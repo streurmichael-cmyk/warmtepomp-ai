@@ -31,6 +31,33 @@ function isLeadData(value: unknown): value is LeadData {
   return typeof value === "object" && value !== null;
 }
 
+const POSTCODE_REGEX = /^\d{4}[A-Z]{2}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const TELEFOON_REGEX = /^[\d\s+()-]{9,}$/;
+
+/** Server-side validatie van de verplichte velden. Geeft per leeg/ongeldig veld een melding. */
+function valideerLead(lead: LeadData): Record<string, string> {
+  const fouten: Record<string, string> = {};
+
+  if (!lead.voornaam || !lead.voornaam.trim()) {
+    fouten.voornaam = "Vul je voornaam in.";
+  }
+  if (!lead.email || !EMAIL_REGEX.test(lead.email.trim())) {
+    fouten.email = "Vul een geldig e-mailadres in.";
+  }
+  if (!lead.postcode || !POSTCODE_REGEX.test(lead.postcode.replace(/\s/g, "").toUpperCase())) {
+    fouten.postcode = "Vul een geldige postcode in.";
+  }
+  if (!lead.woningtype || !lead.woningtype.trim()) {
+    fouten.woningtype = "Kies een woningtype.";
+  }
+  if (lead.wantsInstallateur && (!lead.telefoon || !TELEFOON_REGEX.test(lead.telefoon.trim()))) {
+    fouten.telefoon = "Vul een geldig telefoonnummer in.";
+  }
+
+  return fouten;
+}
+
 const RVO_FALLBACK_INFO = `
 Indicatieve ISDE-subsidiebedragen (2026, onder voorbehoud van wijzigingen):
 - Lucht-water warmtepomp: tot €2.500
@@ -406,7 +433,22 @@ export async function POST(request: Request) {
 
   console.log("Nieuwe lead ontvangen:", data);
 
-  if (isLeadData(data)) {
+  if (!isLeadData(data)) {
+    return NextResponse.json({ error: "Ongeldige aanvraag" }, { status: 400 });
+  }
+
+  const veldFouten = valideerLead(data);
+  if (Object.keys(veldFouten).length > 0) {
+    return NextResponse.json(
+      {
+        error: "Niet alle verplichte velden zijn correct ingevuld.",
+        fields: veldFouten,
+      },
+      { status: 400 }
+    );
+  }
+
+  {
     const subsidieInfo = await getRvoSubsidieInfo();
     const advies = await generateAdvies(data, subsidieInfo);
     const adviesResultaat = berekenAdvies({
