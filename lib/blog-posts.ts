@@ -939,6 +939,94 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "warmtepomp-kosten-2026",
+    title: "Warmtepomp Kosten 2026: Aanschaf, Installatie, Subsidie en Terugverdientijd",
+    description:
+      "Wat kost een warmtepomp in 2026? Een compleet en eerlijk overzicht van de aanschaf- en installatiekosten per type, de subsidie, de gebruikskosten en hoe je de terugverdientijd berekent.",
+    publishedAt: "2026-06-14",
+    intro:
+      "De kosten van een warmtepomp zijn voor veel huiseigenaren de doorslaggevende factor bij de keuze om over te stappen. Maar 'wat kost een warmtepomp?' is lastig in één bedrag te vangen: het hangt af van het type, je woning en de bijkomende werkzaamheden. In dit artikel zetten we alle kosten voor 2026 op een rij — van aanschaf en installatie tot subsidie, gebruikskosten en de terugverdientijd — zodat je weet waar je financieel aan toe bent.",
+    sections: [
+      {
+        type: "text",
+        heading: "Waar bestaan de kosten van een warmtepomp uit?",
+        paragraphs: [
+          "De totale kosten van een warmtepomp vallen uiteen in drie onderdelen: de aanschaf van het apparaat zelf, de installatiekosten, en de bijkomende aanpassingen aan je woning. Daar tegenover staan de subsidie die je terugkrijgt en de jaarlijkse besparing op je energierekening. Pas als je al deze posten bij elkaar optelt, krijg je een eerlijk beeld van wat een warmtepomp je werkelijk kost — en oplevert.",
+          "Het is belangrijk om onderscheid te maken tussen de eenmalige investering en de jaarlijkse gebruikskosten. Een goedkoop systeem kan op de lange termijn duurder uitpakken als het minder efficiënt is, terwijl een duurder maar zuiniger systeem zich juist sneller terugverdient. Kijk dus nooit alleen naar de aanschafprijs.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Aanschaf- en installatiekosten per type",
+        paragraphs: [
+          "Een hybride warmtepomp is de goedkoopste manier om met een warmtepomp te beginnen. Inclusief installatie kost zo'n systeem doorgaans tussen de €5.500 en €9.500, afhankelijk van je woning. Je houdt je cv-ketel als back-up, waardoor de installatie eenvoudiger is en er minder hoeft te worden aangepast aan je verwarmingssysteem.",
+          "Een all-electric lucht-water warmtepomp, die je gasaansluiting volledig vervangt, ligt hoger: reken op ongeveer €8.500 tot €14.000 inclusief installatie, afhankelijk van de grootte van je woning en het benodigde vermogen. Voor een appartement met een lucht-lucht systeem ben je vaak goedkoper uit, met bedragen vanaf circa €4.000.",
+          "De duurste optie is de bodem-water warmtepomp, die warmte uit de grond haalt. Door de noodzakelijke bodemboring of -lus liggen de totale kosten tussen de €12.000 en €20.000. Dit systeem is vooral interessant voor grotere, vrijstaande woningen met een hoge warmtevraag, waar het hoge rendement de investering deels terugverdient.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/warmtepompen",
+        label: "Vergelijk de warmtepomptypen en hun kosten",
+        description:
+          "Een overzicht van alle warmtepomptypen met hun prijsklasse, geschiktheid en sterke en zwakke punten.",
+      },
+      {
+        type: "text",
+        heading: "Vergeet de bijkomende kosten niet",
+        paragraphs: [
+          "Naast de warmtepomp en de installatie zijn er vaak bijkomende kosten die mensen onderschatten. Het belangrijkste aandachtspunt is je warmteafgifte: een warmtepomp werkt het efficiëntst bij lage temperaturen, dus in woningen zonder vloerverwarming kunnen aanpassingen aan de radiatoren nodig zijn. Het vervangen door lage-temperatuurradiatoren of het aanleggen van vloerverwarming kan een aanzienlijke extra investering betekenen.",
+          "Daarnaast kan het nodig zijn om je elektriciteitsaansluiting te verzwaren, zeker bij een all-electric systeem in combinatie met bijvoorbeeld een elektrische auto. Ook isolatiemaatregelen, die de warmtepomp efficiënter laten werken, horen eigenlijk in het kostenplaatje thuis. Een goede installateur neemt deze posten mee in de offerte, zodat je niet voor verrassingen komt te staan.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Hoeveel subsidie haal je van de kosten af?",
+        paragraphs: [
+          "De ISDE-subsidie verlaagt je netto-investering flink. Voor een all-electric lucht-water warmtepomp kun je doorgaans tot €2.500 à €3.500 terugkrijgen, afhankelijk van het vermogen. Voor een hybride warmtepomp ligt het subsidiebedrag lager, en voor bodem-water warmtepompen vaak hoger. Lucht-lucht systemen komen meestal niet in aanmerking.",
+          "Belangrijk is dat de subsidie wordt uitgekeerd als een vast bedrag per installatie en niet als percentage van de factuur. Je weet dus vooraf vrij precies hoeveel er van je investering afgaat. De bedragen worden jaarlijks vastgesteld en het budget kan opraken, dus vraag de subsidie tijdig aan nadat je warmtepomp is geïnstalleerd.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/subsidie",
+        label: "Bekijk de actuele ISDE-subsidiebedragen",
+        description:
+          "Een overzicht van de indicatieve subsidiebedragen per type warmtepomp voor 2026.",
+      },
+      {
+        type: "text",
+        heading: "De gebruikskosten: wat verandert er op je energierekening?",
+        paragraphs: [
+          "Een warmtepomp verlaagt je gasverbruik fors — bij een all-electric systeem zelfs tot nul — maar verhoogt tegelijk je stroomverbruik. Het netto-effect op je energierekening is in vrijwel alle geschikte woningen positief, maar hoe groot de besparing is, hangt af van de verhouding tussen de gas- en stroomprijs en van de efficiëntie van je systeem.",
+          "Een gemiddeld huishouden bespaart met een warmtepomp doorgaans enkele honderden euro's per jaar op de energierekening. In goed geïsoleerde woningen en bij een hoog rendement loopt dit verder op. Heb je zonnepanelen, dan kun je een deel van de stroom voor je warmtepomp zelf opwekken, waardoor je nog meer bespaart en je terugverdientijd korter wordt.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/vergelijk",
+        label: "Bereken jouw kosten, subsidie en besparing",
+        description:
+          "Beantwoord een paar vragen over je woning en ontvang een persoonlijke indicatie van de kosten, de subsidie en je jaarlijkse besparing.",
+      },
+      {
+        type: "text",
+        heading: "Zo bereken je de terugverdientijd",
+        paragraphs: [
+          "De terugverdientijd is misschien wel het belangrijkste getal om de kosten van een warmtepomp in perspectief te plaatsen. Je berekent hem door je netto-investering — de totale kosten min de subsidie — te delen door je jaarlijkse besparing op de energierekening. Kost je warmtepomp na subsidie bijvoorbeeld €7.000 en bespaar je €700 per jaar, dan is de terugverdientijd ongeveer tien jaar.",
+          "Voor een hybride warmtepomp is de terugverdientijd vaak korter, omdat de investering lager is, terwijl een all-electric systeem in een goed geïsoleerde woning op de lange termijn de grootste totale besparing oplevert. Zonnepanelen kunnen de terugverdientijd aanzienlijk verkorten doordat ze de stroomkosten van de warmtepomp drukken. Omdat elke woning anders is, is een persoonlijke berekening de enige manier om echt te weten waar jij aan toe bent.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Conclusie",
+        paragraphs: [
+          "Een warmtepomp is in 2026 een serieuze investering die varieert van zo'n €5.500 voor een hybride systeem tot €20.000 voor een bodem-water warmtepomp, maar door de ISDE-subsidie en de jaarlijkse besparing op je energierekening verdient die investering zich na verloop van tijd terug. De werkelijke kosten — en de terugverdientijd — hangen sterk af van jouw woning, je isolatie en het gekozen systeem. Wil je een concreet beeld van wat een warmtepomp jou kost en oplevert? Vul de gratis keuzehulp in en ontvang een persoonlijke indicatie op maat.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
