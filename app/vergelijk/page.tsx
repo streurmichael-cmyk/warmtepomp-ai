@@ -971,6 +971,79 @@ export default function VergelijkPage() {
                     </div>
                   )}
 
+                  {advies.hemsPakket && (
+                    <div className="mt-8 rounded-2xl border border-green/15 bg-white p-6 sm:p-7">
+                      <h2 className="font-display text-lg font-bold text-dark sm:text-xl">
+                        In één keer helemaal toekomstklaar?
+                      </h2>
+                      <p className="mt-2 text-sm leading-relaxed text-muted">
+                        Combineer je warmtepomp met zonnepanelen, een thuisbatterij en een HEMS (Home
+                        Energy Management System). Een HEMS stuurt slim aan wanneer je stroom opwekt,
+                        opslaat en verbruikt — dat verlaagt je rekening én helpt tegen{" "}
+                        <span className="font-semibold text-dark">netcongestie</span>, doordat je
+                        minder op piekmomenten van het stroomnet afhankelijk bent.
+                      </p>
+
+                      <div className="mt-5 divide-y divide-green/10">
+                        {advies.hemsPakket.componenten.map((c) => (
+                          <div
+                            key={c.naam}
+                            className="flex items-center justify-between gap-3 py-2.5 text-sm"
+                          >
+                            <span className="text-dark">
+                              {c.naam}
+                              {c.aanwezig && (
+                                <span className="text-muted-light"> · al aanwezig</span>
+                              )}
+                            </span>
+                            <span className="text-right text-muted">
+                              {c.investering > 0
+                                ? `€${c.investering.toLocaleString("nl-NL")}`
+                                : "—"}{" "}
+                              · bespaart €{c.besparingPerJaar.toLocaleString("nl-NL")}/jaar
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                        <div className="rounded-xl border border-green/15 p-4">
+                          <p className="text-xs font-bold uppercase tracking-wide text-muted-light">
+                            Los aangeschaft
+                          </p>
+                          <p className="mt-1.5 font-display text-lg font-bold text-dark">
+                            €{advies.hemsPakket.losInvestering.toLocaleString("nl-NL")}
+                          </p>
+                          <p className="text-sm text-muted">
+                            terugverdientijd {advies.hemsPakket.losTerugverdientijd}
+                          </p>
+                        </div>
+                        <div className="rounded-xl border-2 border-action/40 bg-action/5 p-4">
+                          <p className="text-xs font-bold uppercase tracking-wide text-action">
+                            Als gecombineerd pakket
+                          </p>
+                          <p className="mt-1.5 font-display text-lg font-bold text-dark">
+                            €{advies.hemsPakket.pakketInvestering.toLocaleString("nl-NL")}
+                          </p>
+                          <p className="text-sm text-muted">
+                            terugverdientijd {advies.hemsPakket.pakketTerugverdientijd}
+                          </p>
+                        </div>
+                      </div>
+                      <p className="mt-3 text-sm text-muted">
+                        Samen aanschaffen scheelt ongeveer{" "}
+                        <span className="font-bold text-dark">
+                          €{advies.hemsPakket.pakketvoordeel.toLocaleString("nl-NL")}
+                        </span>{" "}
+                        aan installatiekosten, en samen besparen de systemen circa{" "}
+                        <span className="font-bold text-dark">
+                          €{advies.hemsPakket.besparingPerJaar.toLocaleString("nl-NL")} per jaar
+                        </span>
+                        .
+                      </p>
+                    </div>
+                  )}
+
                   <p className="mt-6 text-xs leading-relaxed text-muted-light">
                     Deze indicatie is gebaseerd op: BAG-woningdata, RVO subsidiebedragen 2026 en
                     gemiddelden van Milieu Centraal. Aannames:{" "}

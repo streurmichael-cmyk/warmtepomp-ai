@@ -142,6 +142,24 @@ export type ZonnepanelenImpact = {
   terugverdientijdMetZon: string;
 };
 
+export type HemsComponent = {
+  naam: string;
+  investering: number;
+  besparingPerJaar: number;
+  /** Al aanwezig in de woning — telt niet meer mee in de investering. */
+  aanwezig?: boolean;
+};
+
+export type HemsPakket = {
+  componenten: HemsComponent[];
+  losInvestering: number;
+  besparingPerJaar: number;
+  losTerugverdientijd: string;
+  pakketInvestering: number;
+  pakketvoordeel: number;
+  pakketTerugverdientijd: string;
+};
+
 export type AdviesResultaat = {
   passend: boolean;
   type: string;
@@ -151,9 +169,24 @@ export type AdviesResultaat = {
   besparingPerJaar: number;
   terugverdientijd: string;
   zonnepanelen?: ZonnepanelenImpact;
+  hemsPakket?: HemsPakket;
 };
 
 const BESPARING_PER_M3 = 0.56;
+
+// Indicatieve bedragen voor het gecombineerde pakket (incl. installatie).
+const ZONNEPANELEN_PAKKET_INVESTERING = 4500;
+const ZONNEPANELEN_PAKKET_BESPARING = 800;
+const BATTERIJ_INVESTERING = 5000;
+const BATTERIJ_BESPARING = 350;
+const HEMS_INVESTERING = 1500;
+const HEMS_BESPARING = 250;
+/** Pakketvoordeel bij gecombineerde installatie van meerdere systemen tegelijk. */
+const PAKKET_KORTING = 0.1;
+
+function jaarLabel(investering: number, besparing: number): string {
+  return besparing > 0 ? `${Math.max(1, Math.round((investering / besparing) * 10) / 10)} jaar` : "—";
+}
 
 /** Gemiddelde jaaropbrengst van één zonnepaneel (400 Wp) in kWh. */
 export const KWH_PER_ZONNEPANEEL = 350;
@@ -292,6 +325,35 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
     };
   }
 
+  // Gecombineerd pakket: warmtepomp + zonnepanelen + thuisbatterij + HEMS.
+  const heeftZon = input.heeftZonnepanelen === "Ja";
+  const zonBesparing = heeftZon
+    ? zonnepanelen?.extraBesparingPerJaar ?? ZONNEPANELEN_PAKKET_BESPARING
+    : ZONNEPANELEN_PAKKET_BESPARING;
+  const componenten: HemsComponent[] = [
+    { naam: "Warmtepomp", investering: Math.round(nettoInvestering), besparingPerJaar },
+    {
+      naam: "Zonnepanelen",
+      investering: heeftZon ? 0 : ZONNEPANELEN_PAKKET_INVESTERING,
+      besparingPerJaar: zonBesparing,
+      aanwezig: heeftZon,
+    },
+    { naam: "Thuisbatterij", investering: BATTERIJ_INVESTERING, besparingPerJaar: BATTERIJ_BESPARING },
+    { naam: "HEMS (slimme energieregelaar)", investering: HEMS_INVESTERING, besparingPerJaar: HEMS_BESPARING },
+  ];
+  const losInvestering = componenten.reduce((s, c) => s + c.investering, 0);
+  const pakketBesparingPerJaar = componenten.reduce((s, c) => s + c.besparingPerJaar, 0);
+  const pakketInvestering = Math.round(losInvestering * (1 - PAKKET_KORTING));
+  const hemsPakket: HemsPakket = {
+    componenten,
+    losInvestering,
+    besparingPerJaar: pakketBesparingPerJaar,
+    losTerugverdientijd: jaarLabel(losInvestering, pakketBesparingPerJaar),
+    pakketInvestering,
+    pakketvoordeel: losInvestering - pakketInvestering,
+    pakketTerugverdientijd: jaarLabel(pakketInvestering, pakketBesparingPerJaar),
+  };
+
   return {
     passend: true,
     type,
@@ -301,5 +363,6 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
     besparingPerJaar,
     terugverdientijd,
     zonnepanelen,
+    hemsPakket,
   };
 }
