@@ -11,7 +11,21 @@ type LeadRecord = {
   woningtype?: string;
   adviesType?: string;
   advies?: AdviesResultaat;
+  ipHash?: string;
 };
+
+/**
+ * Telt hoeveel leads er al van dit IP-adres (gehasht) zijn opgeslagen.
+ * Gebruikt om maximaal 2 aanvragen per IP toe te staan. Zonder database
+ * geconfigureerd geven we 0 terug zodat de flow niet breekt.
+ */
+export async function countLeadsByIpHash(ipHash: string): Promise<number> {
+  if (!isDbConfigured() || !ipHash) {
+    return 0;
+  }
+  const result = await sql`select count(*)::int as n from leads where ip_hash = ${ipHash}`;
+  return result.rows[0]?.n ?? 0;
+}
 
 /**
  * Slaat een lead versleuteld op in de database. Naam, e-mailadres en
@@ -38,7 +52,8 @@ export async function saveLead(lead: LeadRecord): Promise<void> {
       huisnummer,
       woningtype,
       advies_type,
-      advies
+      advies,
+      ip_hash
     ) values (
       ${nameEncrypted},
       ${emailEncrypted},
@@ -47,7 +62,8 @@ export async function saveLead(lead: LeadRecord): Promise<void> {
       ${lead.huisnummer ?? null},
       ${lead.woningtype ?? null},
       ${lead.adviesType ?? null},
-      ${lead.advies ? JSON.stringify(lead.advies) : null}
+      ${lead.advies ? JSON.stringify(lead.advies) : null},
+      ${lead.ipHash ?? null}
     )
   `;
 }

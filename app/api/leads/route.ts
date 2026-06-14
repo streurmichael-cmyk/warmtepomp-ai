@@ -1,9 +1,19 @@
+import { createHash } from "crypto";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { pingIndexNow } from "@/lib/indexnow";
 import { berekenAdvies } from "@/lib/advies";
-import { saveLead } from "@/lib/leads-repository";
+import { countLeadsByIpHash, saveLead } from "@/lib/leads-repository";
 import { getClientIp, isRateLimited } from "@/lib/rate-limit";
+
+/** Maximaal aantal leads dat één IP-adres ooit mag indienen. */
+const MAX_LEADS_PER_IP = 2;
+
+/** Hash een IP-adres (met pepper) zodat we per IP kunnen tellen zonder ruwe IP's op te slaan. */
+function hashIp(ip: string): string {
+  const pepper = process.env.IP_HASH_SALT ?? "warmtepomp-ai";
+  return createHash("sha256").update(`${pepper}:${ip}`).digest("hex");
+}
 
 type LeadData = {
   woningtype?: string;
@@ -448,6 +458,23 @@ export async function POST(request: Request) {
     );
   }
 
+  const ipHash = hashIp(ip);
+  try {
+    const aantalLeads = await countLeadsByIpHash(ipHash);
+    if (aantalLeads >= MAX_LEADS_PER_IP) {
+      console.warn(`IP-limiet bereikt (${aantalLeads} leads) voor hash ${ipHash.slice(0, 12)}…`);
+      return NextResponse.json(
+        {
+          error:
+            "Je hebt al een aanvraag ingediend. Neem contact op via info@warmtepomp.ai als je een vraag hebt.",
+        },
+        { status: 429 }
+      );
+    }
+  } catch (err) {
+    console.error("Tellen van leads per IP mislukt, aanvraag wordt toch verwerkt:", err);
+  }
+
   {
     const subsidieInfo = await getRvoSubsidieInfo();
     const advies = await generateAdvies(data, subsidieInfo);
@@ -469,7 +496,7 @@ export async function POST(request: Request) {
       sendConfirmationEmail(data, advies),
       sendNotificationEmail(data),
       pingIndexNow(),
-      saveLead({ ...data, advies: adviesResultaat }),
+      saveLead({ ...data, advies: adviesResultaat, ipHash }),
     ]);
   }
 
