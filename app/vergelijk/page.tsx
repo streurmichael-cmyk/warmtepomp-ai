@@ -33,6 +33,33 @@ import {
 
 type IconComponent = React.ComponentType<{ className?: string }>;
 
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+declare global {
+  interface Window {
+    grecaptcha?: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
+
+/** Haalt een reCAPTCHA v3-token op; geeft undefined als reCAPTCHA niet geconfigureerd of geladen is. */
+async function getRecaptchaToken(): Promise<string | undefined> {
+  if (!RECAPTCHA_SITE_KEY || typeof window === "undefined" || !window.grecaptcha) {
+    return undefined;
+  }
+  try {
+    return await new Promise<string>((resolve, reject) => {
+      window.grecaptcha!.ready(() => {
+        window.grecaptcha!.execute(RECAPTCHA_SITE_KEY!, { action: "lead" }).then(resolve, reject);
+      });
+    });
+  } catch {
+    return undefined;
+  }
+}
+
 type StepName =
   | "adres"
   | "zoeken"
@@ -231,6 +258,17 @@ export default function VergelijkPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Laad het reCAPTCHA v3-script (onzichtbaar) als er een site key is geconfigureerd.
+  useEffect(() => {
+    if (!RECAPTCHA_SITE_KEY || document.querySelector("script[data-recaptcha]")) return;
+    const script = document.createElement("script");
+    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    script.defer = true;
+    script.dataset.recaptcha = "true";
+    document.head.appendChild(script);
+  }, []);
+
   async function handleAdresSubmit(e: React.FormEvent) {
     e.preventDefault();
 
@@ -368,6 +406,8 @@ export default function VergelijkPage() {
     setSubmitting(true);
     setSubmitError("");
 
+    const recaptchaToken = await getRecaptchaToken();
+
     const payload = {
       woningtype: data.woningtype,
       oppervlakte: data.oppervlakte,
@@ -389,6 +429,7 @@ export default function VergelijkPage() {
       telefoon: wantsInstallateur ? data.telefoon.trim() : undefined,
       adviesType: advies.type,
       wantsInstallateur,
+      recaptchaToken,
     };
 
     try {

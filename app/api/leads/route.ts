@@ -5,6 +5,7 @@ import { pingIndexNow } from "@/lib/indexnow";
 import { berekenAdvies } from "@/lib/advies";
 import { countLeadsByIpHash, saveLead } from "@/lib/leads-repository";
 import { getClientIp, isRateLimited } from "@/lib/rate-limit";
+import { verifyRecaptcha } from "@/lib/recaptcha";
 
 /** Maximaal aantal leads dat één IP-adres ooit mag indienen. */
 const MAX_LEADS_PER_IP = 2;
@@ -35,6 +36,7 @@ type LeadData = {
   email?: string;
   adviesType?: string;
   wantsInstallateur?: boolean;
+  recaptchaToken?: string;
 };
 
 function isLeadData(value: unknown): value is LeadData {
@@ -455,6 +457,15 @@ export async function POST(request: Request) {
         fields: veldFouten,
       },
       { status: 400 }
+    );
+  }
+
+  const recaptchaOk = await verifyRecaptcha(data.recaptchaToken);
+  if (!recaptchaOk) {
+    console.warn("Aanvraag geweigerd door reCAPTCHA");
+    return NextResponse.json(
+      { error: "We konden niet verifiëren dat je geen robot bent. Probeer het opnieuw." },
+      { status: 403 }
     );
   }
 
