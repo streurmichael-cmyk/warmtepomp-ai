@@ -1020,9 +1020,57 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "text",
+        heading: "Is je cv-ketel aan vervanging toe? Dan verandert de rekensom",
+        paragraphs: [
+          "Een belangrijk kostenaspect dat vaak over het hoofd wordt gezien: de leeftijd van je huidige cv-ketel. Een cv-ketel gaat gemiddeld zo'n 15 jaar mee. Is die van jou aan vervanging toe, dan zou je sowieso al snel zo'n €3.000 uitgeven aan een nieuwe ketel.",
+          "In dat geval is de eerlijke vergelijking niet 'warmtepomp versus niets', maar 'warmtepomp versus een nieuwe cv-ketel'. Die uitgespaarde vervangingskosten mag je van de investering in je warmtepomp aftrekken, waardoor de netto-meerprijs — en dus de terugverdientijd — flink lager uitvalt. Loopt je ketel tegen het einde van zijn levensduur, dan is het moment om over te stappen dus juist extra gunstig.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Energielabel: hoe het je kosten beïnvloedt",
+        paragraphs: [
+          "Het energielabel van je woning (A tot en met G) zegt veel over hoe goed je woning geïsoleerd is, en dat werkt direct door in de kosten. Hoe beter het label, hoe lager de aanvoertemperatuur die je warmtepomp hoeft te leveren — en hoe efficiënter (en goedkoper) hij draait.",
+          "Bij een goed label (A of B) kan een all-electric warmtepomp vaak zonder grote aanpassingen worden geïnstalleerd en haalt hij een hoog rendement. Bij een lager label (E, F of G) moet de warmtepomp harder werken, stijgt het stroomverbruik en zijn soms extra maatregelen nodig, zoals grotere radiatoren. Je officiële energielabel vind je gratis op EP-online; weet je het niet, dan is het bouwjaar een goede eerste indicatie.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Waarom een warmtepomp goedkoper draait dan een cv-ketel",
+        paragraphs: [
+          "Dat een warmtepomp lagere gebruikskosten heeft, komt door een simpel natuurkundig principe. Een warmtepomp maakt geen warmte, hij verplaatst het: hij haalt warmte uit de buitenlucht en pompt die naar binnen, net als een koelkast maar dan omgekeerd. Daarvoor is maar een klein beetje stroom nodig.",
+          "Het resultaat is dat 1 eenheid stroom 3 à 4 eenheden warmte oplevert — een COP van 3 of 4. Een cv-ketel haalt dat nooit, want die zet gas om in warmte en verliest altijd een deel van de energie bij de verbranding. Juist die efficiëntie maakt dat je maandelijkse energiekosten dalen, ook al verbruik je wat meer stroom.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Alles in één keer: warmtepomp, zonnepanelen en HEMS",
+        paragraphs: [
+          "Steeds meer huishoudens kiezen ervoor om de warmtepomp te combineren met zonnepanelen, een thuisbatterij en een HEMS (Home Energy Management System). De zonnepanelen leveren de stroom voor je warmtepomp, de batterij slaat overschotten op, en de HEMS stuurt slim aan wanneer je opwekt, opslaat en verbruikt.",
+          "Los van elkaar tellen die investeringen flink op, maar als gecombineerd pakket valt de prijs vaak lager uit doordat de installatie in één keer gebeurt. Bovendien versterken de systemen elkaar: samen verlagen ze je rekening méér dan de som der delen, wat de gezamenlijke terugverdientijd verkort. Een HEMS heeft nog een bijkomend voordeel: door slim met piekmomenten om te gaan, helpt het tegen netcongestie — een groeiend probleem op het Nederlandse stroomnet.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Hybride warmtepomp: een tussenstap, geen eindbestemming",
+        paragraphs: [
+          "Een hybride warmtepomp wordt vaak gepresenteerd als dé oplossing voor oudere woningen, maar het is beter om hem te zien als een slimme tussenstap op weg naar volledig gasloos. Hij werkt samen met je bestaande cv-ketel en bespaart nu al 30 tot 50% op je gasverbruik, met een lagere investering dan een volledig elektrisch systeem.",
+          "De uiteindelijke richting is all-electric: helemaal van het gas af. Een hybride maakt die overgang makkelijker en betaalbaarder, doordat je in stappen kunt verduurzamen. Verbeter je intussen je isolatie, dan kun je later vaak zonder problemen doorgroeien naar een volledig elektrische warmtepomp.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Tip: eerst isoleren verdient zich dubbel terug",
+        paragraphs: [
+          "Tot slot een tip die op de kosten van je warmtepomp grote invloed heeft: isoleer eerst, als je de mogelijkheid hebt. Een beter geïsoleerde woning heeft minder warmte nodig, waardoor je met een lichtere — en dus goedkopere — warmtepomp toekunt en hij efficiënter draait.",
+          "Daarmee verdien je je warmtepomp sneller terug én maak je op termijn een volledige overstap naar all-electric mogelijk. Isolatie en warmtepomp versterken elkaar dus: samen leveren ze de laagste energierekening en de kortste terugverdientijd op.",
+        ],
+      },
+      {
+        type: "text",
         heading: "Conclusie",
         paragraphs: [
-          "Een warmtepomp is in 2026 een serieuze investering die varieert van zo'n €5.500 voor een hybride systeem tot €20.000 voor een bodem-water warmtepomp, maar door de ISDE-subsidie en de jaarlijkse besparing op je energierekening verdient die investering zich na verloop van tijd terug. De werkelijke kosten — en de terugverdientijd — hangen sterk af van jouw woning, je isolatie en het gekozen systeem. Wil je een concreet beeld van wat een warmtepomp jou kost en oplevert? Vul de gratis keuzehulp in en ontvang een persoonlijke indicatie op maat.",
+          "Een warmtepomp is in 2026 een serieuze investering die varieert van zo'n €5.500 voor een hybride systeem tot €20.000 voor een bodem-water warmtepomp, maar door de ISDE-subsidie en de jaarlijkse besparing op je energierekening verdient die investering zich na verloop van tijd terug. De werkelijke kosten — en de terugverdientijd — hangen sterk af van jouw woning, je isolatie, het energielabel, de leeftijd van je cv-ketel en het gekozen systeem. Wil je een concreet beeld van wat een warmtepomp jou kost en oplevert? Vul de gratis keuzehulp in en ontvang een persoonlijke indicatie op maat.",
         ],
       },
     ],
