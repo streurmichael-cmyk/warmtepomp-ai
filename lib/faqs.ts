@@ -50,6 +50,14 @@ export const faqs: FaqItem[] = [
     a: "Dat hangt af van je woning en het type warmtepomp, maar gemiddeld komt het neer op zo'n 2.000 tot 4.000 kWh extra per jaar. Daar staat tegenover dat je veel minder of geen gas meer gebruikt, waardoor je totale energierekening vaak lager uitvalt.",
   },
   {
+    q: "Hoe kan een warmtepomp zo zuinig zijn? (COP uitgelegd)",
+    a: "Een warmtepomp maakt geen warmte — hij verplaatst het. Net zoals een koelkast warmte van binnen naar buiten pompt, haalt een warmtepomp warmte uit de buitenlucht en brengt die naar binnen. Daarvoor is maar een klein beetje elektriciteit nodig. Resultaat: 1 eenheid stroom levert 3 à 4 eenheden warmte op. Dat noemen we een COP van 3 of 4. Een cv-ketel kan dat nooit — die zet gas om in warmte en verliest altijd energie bij de verbranding.",
+  },
+  {
+    q: "Hoe kan een warmtepomp 4x meer warmte leveren dan de stroom die hij gebruikt? Die energie moet toch ergens vandaan komen?",
+    a: "Klopt — en die energie komt uit de buitenlucht. Zelfs bij -10°C zit er nog warmte in de lucht. De warmtepomp 'steelt' die warmte en pompt die naar binnen. De elektriciteit gebruikt hij alleen om die warmte te verplaatsen, niet om het te maken. Vergelijk het met een koelkast: die gebruikt ook weinig stroom maar verplaatst veel warmte. Geen magie, gewoon natuurkunde.",
+  },
+  {
     q: "Is een warmtepomp stil?",
     a: "Een moderne warmtepomp is vergelijkbaar met het geluid van een ventilator of een koelkast — meestal tussen de 35 en 60 decibel. De buitenunit maakt het meeste geluid, daarom adviseren installateurs vaak een goede plek in de tuin of tegen de gevel, uit de buurt van slaapkamerramen.",
   },

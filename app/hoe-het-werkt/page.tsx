@@ -97,6 +97,37 @@ export default function HoeHetWerktPage() {
             </div>
           </div>
         </section>
+
+        <section className="bg-light-bg py-20 sm:py-24">
+          <div className="mx-auto max-w-3xl px-5 sm:px-8">
+            <div className="mb-10 text-center">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
+                De techniek in het kort
+              </p>
+              <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
+                Hoe kan een warmtepomp zo zuinig zijn?
+              </h2>
+            </div>
+
+            <div className="space-y-4 rounded-2xl border border-green/10 bg-white p-8 text-base leading-relaxed text-muted sm:p-10">
+              <p>
+                Een warmtepomp maakt geen warmte — hij <strong className="text-dark">verplaatst</strong>{" "}
+                het. Net zoals een koelkast warmte van binnen naar buiten pompt, haalt een warmtepomp
+                warmte uit de buitenlucht en brengt die naar binnen. Daarvoor is maar een klein beetje
+                elektriciteit nodig.
+              </p>
+              <p>
+                Het resultaat: <strong className="text-dark">1 eenheid stroom levert 3 à 4 eenheden
+                warmte op</strong>. Dat noemen we een COP van 3 of 4. Een cv-ketel kan dat nooit — die
+                zet gas om in warmte en verliest altijd energie bij de verbranding.
+              </p>
+              <p>
+                En die extra warmte? Die komt gewoon uit de buitenlucht. Zelfs bij -10°C zit er nog
+                warmte in de lucht die de warmtepomp naar binnen pompt. Geen magie, gewoon natuurkunde.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
