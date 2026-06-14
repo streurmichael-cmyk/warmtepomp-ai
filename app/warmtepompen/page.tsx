@@ -43,7 +43,7 @@ const types = [
   {
     icon: ShieldIcon,
     naam: "Hybride warmtepomp",
-    uitleg: "Combineert een warmtepomp met je bestaande cv-ketel, ideale tussenstap.",
+    uitleg: "Combineert een warmtepomp met je bestaande cv-ketel: een slimme tussenstap op weg naar volledig gasloos.",
     geschiktVoor: "Woningen die nog niet (volledig) geïsoleerd zijn.",
     voordelen: [
       "Lage instapkosten",

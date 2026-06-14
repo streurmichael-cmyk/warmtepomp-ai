@@ -153,7 +153,7 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
     kostenRange = appartement ? "€5.500 – €7.500" : groteWoning ? "€8.500 – €11.000" : "€7.000 – €9.500";
     subsidie = "tot €1.225";
     toelichting =
-      "Bij matige isolatie werkt een hybride warmtepomp het best: hij neemt het grootste deel van het stookjaar over en je cv-ketel springt alleen bij op de koudste dagen. Volledig overstappen kan vaak pas nadat je beter geïsoleerd hebt.";
+      "Een hybride warmtepomp is een slimme tussenstap op weg naar volledig gasloos: hij neemt het grootste deel van het stookjaar over en je cv-ketel springt alleen bij op de koudste dagen. Zo bespaar je nu al 30–50% op gas en ben je klaar voor de toekomst. De uiteindelijke richting is all-electric; een hybride maakt die overgang makkelijker en kun je doen zodra je woning beter geïsoleerd is.";
     if (overstapVoorkeur === "volledig") {
       toelichting +=
         " Een meteen volledige overstap is met de huidige isolatie nog niet aan te raden — verbeter eerst de isolatie, dan kun je daarna alsnog overstappen op volledig elektrisch.";
@@ -170,7 +170,7 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
       kostenRange = groteWoning ? "€8.500 – €11.000" : "€7.000 – €9.500";
       subsidie = "tot €1.225";
       toelichting =
-        "Met een redelijke isolatie en jouw voorkeur om in stappen over te gaan, is een hybride warmtepomp een mooie eerste stap: hij neemt het grootste deel van het stookjaar over en je cv-ketel blijft als back-up. Een volledige overstap naar all-electric kan altijd nog.";
+        "Een hybride warmtepomp is een slimme tussenstap op weg naar volledig gasloos: hij neemt het grootste deel van het stookjaar over en je cv-ketel blijft als back-up. Zo bespaar je nu al 30–50% op gas en ben je klaar voor de toekomst. De uiteindelijke richting is all-electric; de overstap daarnaartoe kun je later makkelijk zetten.";
     } else if (overstapVoorkeur === "volledig") {
       type = "Lucht/water warmtepomp (volledig elektrisch)";
       kostenRange = groteWoning ? "€10.500 – €14.000" : "€9.500 – €13.000";

@@ -63,7 +63,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Wat is het verschil tussen een hybride en een volledig elektrische warmtepomp?",
-    a: "Een hybride warmtepomp werkt samen met je bestaande cv-ketel: de warmtepomp doet het meeste werk, en de ketel springt bij op de koudste dagen. Een volledig elektrische warmtepomp vervangt je cv-ketel helemaal en verwarmt je huis het hele jaar door zonder gas. Hybride is goedkoper en een fijne tussenstap; volledig elektrisch bespaart het meest, maar vraagt om een beter geïsoleerde woning.",
+    a: "Een hybride warmtepomp werkt samen met je bestaande cv-ketel: de warmtepomp doet het meeste werk, en de ketel springt bij op de koudste dagen. Een volledig elektrische warmtepomp vervangt je cv-ketel helemaal en verwarmt je huis het hele jaar door zonder gas. De uiteindelijke richting is all-electric; een hybride is een slimme tussenstap op weg naar volledig gasloos, die nu al 30–50% op gas bespaart en de overgang makkelijker maakt. Volledig elektrisch bespaart het meest, maar vraagt om een beter geïsoleerde woning.",
   },
   {
     q: "Wanneer is een warmtepomp niet geschikt?",
