@@ -263,10 +263,20 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
       `
     : "";
 
+  const wantsInstallateur = lead.wantsInstallateur ?? false;
+
+  const subject = wantsInstallateur
+    ? `Bedankt ${voornaam} — we gaan voor je aan de slag`
+    : "Jouw warmtepomp-indicatie van warmtepomp.ai";
+
+  const introTekst = wantsInstallateur
+    ? "Hieronder vind je jouw warmtepomp-indicatie. We zoeken een passende installateur in jouw regio en nemen zo snel mogelijk contact op."
+    : "Hieronder vind je jouw persoonlijke warmtepomp-indicatie. Geen verplichtingen, geen telefoontjes. Heb je vragen? Mail ons op info@warmtepomp.ai.";
+
   const html = `
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
       <p>Hoi ${voornaam},</p>
-      <p>Bedankt voor je aanvraag! Hieronder vind je direct je persoonlijke warmtepomp-indicatie.</p>
+      <p>${introTekst}</p>
       <p><strong>Jouw gegevens:</strong></p>
       <ul>
         <li>Woningtype: ${lead.woningtype ?? "-"}</li>
@@ -278,10 +288,6 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
         <li>Postcode: ${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}</li>
       </ul>
       ${adviesHtml}
-      <div style="margin: 24px 0;">
-        <h2 style="font-size: 18px; color: #0d1f16;">Wat gebeurt er nu?</h2>
-        <p>We zoeken voor jou de beste installateurs in jouw regio op. Zodra we een passende installateur bij jou in de buurt hebben gevonden, nemen we contact op.</p>
-      </div>
       <p>Groeten,<br>Michael<br><span style="color: #22b572; font-weight: bold;">warmtepomp.ai</span></p>
     </div>
   `;
@@ -295,7 +301,7 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
     const { data, error } = await resend.emails.send({
       from,
       to,
-      subject: `Bedankt ${voornaam} — jouw warmtepomp-indicatie is onderweg`,
+      subject,
       html,
     });
 
@@ -318,7 +324,15 @@ async function sendNotificationEmail(lead: LeadData) {
 
   const from = process.env.RESEND_FROM_EMAIL ?? "Warmtepomp.ai <noreply@warmtepomp.ai>";
 
-  const html = `
+  const wantsInstallateur = lead.wantsInstallateur ?? false;
+  const postcodeVeld = `${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}`;
+
+  const subject = wantsInstallateur
+    ? `🔥 Nieuwe lead: ${lead.voornaam ?? "Onbekend"} - ${lead.woningtype ?? "Onbekend"} - ${lead.postcode ?? "-"}`
+    : `📧 Indicatie-aanvraag: ${lead.voornaam ?? "Onbekend"} - ${lead.postcode ?? "-"}`;
+
+  const html = wantsInstallateur
+    ? `
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
       <ul>
         <li><strong>Naam:</strong> ${lead.voornaam ?? "-"}</li>
@@ -326,10 +340,21 @@ async function sendNotificationEmail(lead: LeadData) {
         <li><strong>Email:</strong> ${lead.email ?? "-"}</li>
         <li><strong>Woningtype:</strong> ${lead.woningtype ?? "-"}</li>
         <li><strong>Oppervlakte:</strong> ${lead.oppervlakte ?? "-"}</li>
-        <li><strong>Postcode:</strong> ${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}</li>
+        <li><strong>Postcode:</strong> ${postcodeVeld}</li>
         <li><strong>Huidig systeem:</strong> ${lead.huidigSysteem ?? "-"}</li>
       </ul>
-      <p style="margin-top: 24px; font-weight: bold;">Reageer binnen 24 uur</p>
+      <p style="margin-top: 24px; font-weight: bold;">Nieuwe offerte-aanvraag — volg op zodra je een installateur hebt.</p>
+    </div>
+  `
+    : `
+    <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
+      <ul>
+        <li><strong>Naam:</strong> ${lead.voornaam ?? "-"}</li>
+        <li><strong>Email:</strong> ${lead.email ?? "-"}</li>
+        <li><strong>Woningtype:</strong> ${lead.woningtype ?? "-"}</li>
+        <li><strong>Postcode:</strong> ${postcodeVeld}</li>
+      </ul>
+      <p style="margin-top: 24px; font-weight: bold;">Gebruiker wil alleen de indicatie per mail, geen installateur-koppeling.</p>
     </div>
   `;
 
@@ -342,7 +367,7 @@ async function sendNotificationEmail(lead: LeadData) {
     const { data, error } = await resend.emails.send({
       from,
       to,
-      subject: `🔥 Nieuwe lead: ${lead.voornaam ?? "Onbekend"} - ${lead.woningtype ?? "Onbekend"} - ${lead.postcode ?? "-"}`,
+      subject,
       html,
     });
 
