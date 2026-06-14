@@ -15,7 +15,13 @@ export const isolatieOpties = [
   "Weet ik niet",
 ] as const;
 
-export const systeemOpties = ["CV-ketel op gas", "Stadsverwarming", "Elektrisch", "Anders"] as const;
+export const systeemOpties = [
+  "CV-ketel op gas",
+  "Stadsverwarming",
+  "Elektrisch",
+  "Hybride warmtepomp",
+  "Anders",
+] as const;
 
 const OPPERVLAKTE_MIDDEN: Record<string, number> = {
   "< 75 m²": 60,
@@ -65,6 +71,9 @@ export type AdviesInput = {
   gasverbruik: number;
   heeftZonnepanelen?: string;
   aantalZonnepanelen?: number;
+  jaarlijkseOpwekKwh?: number;
+  /** Voorkeur bij gas/overig: in één keer volledig elektrisch, of eerst een hybride tussenstap. */
+  overstapVoorkeur?: "volledig" | "hybride";
 };
 
 export type ZonnepanelenImpact = {
@@ -97,7 +106,7 @@ export const STROOMPRIJS_PER_KWH = 0.32;
 /** Eenvoudige, lokale indicatie-berekening — geen AI nodig, draait direct in de browserflow
  * zodat de bezoeker zijn advies ziet vóórdat hij contactgegevens achterlaat. */
 export function berekenAdvies(input: AdviesInput): AdviesResultaat {
-  const { woningtype, isolatie, huidigSysteem, gasverbruik } = input;
+  const { woningtype, isolatie, huidigSysteem, gasverbruik, overstapVoorkeur } = input;
 
   if (huidigSysteem === "Stadsverwarming") {
     return {
@@ -115,23 +124,66 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
   const groteWoning = woningtype === "Vrijstaand" || woningtype === "Twee-onder-een-kap";
   const appartement = woningtype === "Appartement";
 
+  if (huidigSysteem === "Hybride warmtepomp" && isolatie === "Matig of oud") {
+    return {
+      passend: false,
+      type: "Je hybride warmtepomp is nu nog de beste keuze",
+      toelichting:
+        "Met de huidige isolatie van je woning is een volledig elektrische warmtepomp nog niet de beste stap: je hybride warmtepomp blijft het grootste deel van het jaar de efficiëntste oplossing. Verbeter eerst je isolatie — daarna wordt een volledige overstap pas echt interessant.",
+      kostenRange: "—",
+      subsidie: "—",
+      besparingPerJaar: 0,
+      terugverdientijd: "—",
+    };
+  }
+
   let type: string;
   let kostenRange: string;
   let subsidie: string;
   let toelichting: string;
 
-  if (isolatie === "Matig of oud") {
+  if (huidigSysteem === "Hybride warmtepomp") {
+    type = appartement ? "Lucht/lucht warmtepomp" : "Volledig elektrische warmtepomp (upgrade)";
+    kostenRange = appartement ? "€2.500 – €4.500" : groteWoning ? "€5.500 – €8.000" : "€4.500 – €6.500";
+    subsidie = appartement ? "doorgaans niet subsidiabel via ISDE" : "tot €3.500";
+    toelichting =
+      "Je hebt al een hybride warmtepomp die het grootste deel van het jaar verwarmt. De volgende stap is een volledig elektrische warmtepomp die de cv-ketel helemaal vervangt. Omdat een deel van de installatie er al staat, zijn de extra kosten vaak lager dan bij een eerste installatie.";
+  } else if (isolatie === "Matig of oud") {
     type = "Hybride warmtepomp";
     kostenRange = appartement ? "€5.500 – €7.500" : groteWoning ? "€8.500 – €11.000" : "€7.000 – €9.500";
     subsidie = "tot €1.225";
     toelichting =
       "Bij matige isolatie werkt een hybride warmtepomp het best: hij neemt het grootste deel van het stookjaar over en je cv-ketel springt alleen bij op de koudste dagen. Volledig overstappen kan vaak pas nadat je beter geïsoleerd hebt.";
+    if (overstapVoorkeur === "volledig") {
+      toelichting +=
+        " Een meteen volledige overstap is met de huidige isolatie nog niet aan te raden — verbeter eerst de isolatie, dan kun je daarna alsnog overstappen op volledig elektrisch.";
+    }
   } else if (isolatie === "Redelijk geïsoleerd") {
-    type = appartement ? "Lucht/lucht warmtepomp" : "Hybride of volledig elektrische warmtepomp";
-    kostenRange = appartement ? "€4.000 – €6.000" : groteWoning ? "€9.500 – €13.000" : "€7.500 – €10.500";
-    subsidie = appartement ? "doorgaans niet subsidiabel via ISDE" : "tot €2.500";
-    toelichting =
-      "Met een redelijke isolatie kun je vaak al volledig elektrisch verwarmen, maar een hybride variant is een veiligere én goedkopere eerste stap. Welke het beste past hangt af van je budget en je radiatoren.";
+    if (appartement) {
+      type = "Lucht/lucht warmtepomp";
+      kostenRange = "€4.000 – €6.000";
+      subsidie = "doorgaans niet subsidiabel via ISDE";
+      toelichting =
+        "Met een redelijke isolatie kun je vaak al volledig elektrisch verwarmen, maar een hybride variant is een veiligere én goedkopere eerste stap. Welke het beste past hangt af van je budget en je radiatoren.";
+    } else if (overstapVoorkeur === "hybride") {
+      type = "Hybride warmtepomp";
+      kostenRange = groteWoning ? "€8.500 – €11.000" : "€7.000 – €9.500";
+      subsidie = "tot €1.225";
+      toelichting =
+        "Met een redelijke isolatie en jouw voorkeur om in stappen over te gaan, is een hybride warmtepomp een mooie eerste stap: hij neemt het grootste deel van het stookjaar over en je cv-ketel blijft als back-up. Een volledige overstap naar all-electric kan altijd nog.";
+    } else if (overstapVoorkeur === "volledig") {
+      type = "Lucht/water warmtepomp (volledig elektrisch)";
+      kostenRange = groteWoning ? "€10.500 – €14.000" : "€9.500 – €13.000";
+      subsidie = "tot €2.500";
+      toelichting =
+        "Met een redelijke isolatie en jouw voorkeur om in één keer volledig van het gas af te gaan, is een volledig elektrische warmtepomp goed mogelijk. Let goed op je radiatoren — bij lage temperaturen werkt een warmtepomp het efficiëntst.";
+    } else {
+      type = "Hybride of volledig elektrische warmtepomp";
+      kostenRange = groteWoning ? "€9.500 – €13.000" : "€7.500 – €10.500";
+      subsidie = "tot €2.500";
+      toelichting =
+        "Met een redelijke isolatie kun je vaak al volledig elektrisch verwarmen, maar een hybride variant is een veiligere én goedkopere eerste stap. Welke het beste past hangt af van je budget en je radiatoren.";
+    }
   } else {
     type = appartement ? "Lucht/lucht warmtepomp" : "Lucht/water warmtepomp (volledig elektrisch)";
     kostenRange = appartement ? "€4.000 – €6.000" : groteWoning ? "€10.500 – €14.000" : "€8.500 – €11.000";
@@ -154,8 +206,11 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
       : "—";
 
   let zonnepanelen: ZonnepanelenImpact | undefined;
-  if (input.heeftZonnepanelen === "Ja" && input.aantalZonnepanelen) {
-    const eigenOpwekKwh = input.aantalZonnepanelen * KWH_PER_ZONNEPANEEL;
+  if (input.heeftZonnepanelen === "Ja" && (input.jaarlijkseOpwekKwh || input.aantalZonnepanelen)) {
+    const eigenOpwekKwh =
+      input.jaarlijkseOpwekKwh && input.jaarlijkseOpwekKwh > 0
+        ? input.jaarlijkseOpwekKwh
+        : (input.aantalZonnepanelen ?? 0) * KWH_PER_ZONNEPANEEL;
     const dekkingPercentage = Math.min(
       Math.round((eigenOpwekKwh / WARMTEPOMP_VERBRUIK_KWH) * 100),
       100

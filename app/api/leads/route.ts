@@ -11,9 +11,11 @@ type LeadData = {
   bouwjaar?: string;
   isolatie?: string;
   huidigSysteem?: string;
+  overstapVoorkeur?: "volledig" | "hybride";
   gasverbruik?: number;
   heeftZonnepanelen?: string;
   aantalZonnepanelen?: number;
+  jaarlijkseOpwekKwh?: number;
   postcode?: string;
   huisnummer?: string;
   voornaam?: string;
@@ -66,14 +68,21 @@ async function getRvoSubsidieInfo(): Promise<string> {
 }
 
 function beschrijfZonnepanelen(lead: LeadData): string {
-  if (lead.heeftZonnepanelen === "Ja" && lead.aantalZonnepanelen) {
-    return `${lead.aantalZonnepanelen} panelen`;
+  if (lead.heeftZonnepanelen === "Ja") {
+    if (lead.jaarlijkseOpwekKwh && lead.jaarlijkseOpwekKwh > 0) {
+      return `ja, opbrengst ${lead.jaarlijkseOpwekKwh} kWh per jaar${
+        lead.aantalZonnepanelen ? ` (${lead.aantalZonnepanelen} panelen)` : ""
+      }`;
+    }
+    if (lead.aantalZonnepanelen) {
+      return `${lead.aantalZonnepanelen} panelen`;
+    }
   }
   return lead.heeftZonnepanelen ?? "onbekend";
 }
 
 function berekenZonnepanelenInfo(lead: LeadData): string {
-  if (lead.heeftZonnepanelen === "Ja" && lead.aantalZonnepanelen) {
+  if (lead.heeftZonnepanelen === "Ja" && (lead.jaarlijkseOpwekKwh || lead.aantalZonnepanelen)) {
     const advies = berekenAdvies({
       woningtype: lead.woningtype ?? "",
       oppervlakte: lead.oppervlakte ?? "",
@@ -83,9 +92,19 @@ function berekenZonnepanelenInfo(lead: LeadData): string {
       gasverbruik: lead.gasverbruik ?? 0,
       heeftZonnepanelen: lead.heeftZonnepanelen,
       aantalZonnepanelen: lead.aantalZonnepanelen,
+      jaarlijkseOpwekKwh: lead.jaarlijkseOpwekKwh,
     });
     const zon = advies.zonnepanelen;
     if (!zon) return "";
+
+    const opwekZin =
+      lead.jaarlijkseOpwekKwh && lead.jaarlijkseOpwekKwh > 0
+        ? `Met jouw zonnepanelen wek je ${zon.eigenOpwekKwh} kWh per jaar op`
+        : `Met jouw ${lead.aantalZonnepanelen} zonnepanelen wek je ±${zon.eigenOpwekKwh} kWh per jaar op`;
+    const terugverdienLabel =
+      lead.jaarlijkseOpwekKwh && lead.jaarlijkseOpwekKwh > 0
+        ? "met jouw zonnepanelen"
+        : `met ${lead.aantalZonnepanelen} zonnepanelen`;
 
     return `
 Berekende zonnepanelen-impact (gebruik deze cijfers exact, reken niet zelf opnieuw):
@@ -93,12 +112,12 @@ Berekende zonnepanelen-impact (gebruik deze cijfers exact, reken niet zelf opnie
 - Dekking van het stroomverbruik van de warmtepomp: ${zon.dekkingPercentage}%
 - Extra besparing op de energierekening: €${zon.extraBesparingPerJaar} per jaar
 - Terugverdientijd zonder zonnepanelen: ${advies.terugverdientijd}
-- Terugverdientijd met ${lead.aantalZonnepanelen} zonnepanelen: ${zon.terugverdientijdMetZon}
+- Terugverdientijd ${terugverdienLabel}: ${zon.terugverdientijdMetZon}
 
 Verwerk dit in de indicatie met een zin in de vorm van:
-"Met jouw ${lead.aantalZonnepanelen} zonnepanelen wek je ±${zon.eigenOpwekKwh} kWh per jaar op. Daarmee dek je ±${zon.dekkingPercentage}% van het stroomverbruik van je warmtepomp. Dit bespaart je extra €${zon.extraBesparingPerJaar} per jaar."
+"${opwekZin}. Daarmee dek je ±${zon.dekkingPercentage}% van het stroomverbruik van je warmtepomp. Dit bespaart je extra €${zon.extraBesparingPerJaar} per jaar."
 
-Noem bij de terugverdientijd beide scenario's: "Terugverdientijd zonder zonnepanelen: ${advies.terugverdientijd}" en "Terugverdientijd met ${lead.aantalZonnepanelen} zonnepanelen: ${zon.terugverdientijdMetZon}".`.trim();
+Noem bij de terugverdientijd beide scenario's: "Terugverdientijd zonder zonnepanelen: ${advies.terugverdientijd}" en "Terugverdientijd ${terugverdienLabel}: ${zon.terugverdientijdMetZon}".`.trim();
   }
 
   if (lead.heeftZonnepanelen === "Nog niet, maar ik overweeg het") {
@@ -138,7 +157,15 @@ Gegevens van de aanvrager:
 - Oppervlakte: ${lead.oppervlakte ?? "onbekend"}
 - Bouwjaar: ${lead.bouwjaar ?? "onbekend"}
 - Isolatieniveau: ${lead.isolatie ?? "onbekend"}
-- Huidig verwarmingssysteem: ${lead.huidigSysteem ?? "onbekend"}
+- Huidig verwarmingssysteem: ${lead.huidigSysteem ?? "onbekend"}${
+    lead.overstapVoorkeur
+      ? `\n- Voorkeur voor overstappen: ${
+          lead.overstapVoorkeur === "volledig"
+            ? "in één keer volledig elektrisch (van het gas af)"
+            : "in stappen, eerst een hybride warmtepomp naast de cv-ketel"
+        }`
+      : ""
+  }
 - Geschat jaarlijks gasverbruik: ${lead.gasverbruik ? `${lead.gasverbruik} m³` : "onbekend"}
 - Zonnepanelen: ${beschrijfZonnepanelen(lead)}
 - Postcode: ${lead.postcode ?? "onbekend"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}
@@ -361,6 +388,8 @@ export async function POST(request: Request) {
       gasverbruik: data.gasverbruik ?? 0,
       heeftZonnepanelen: data.heeftZonnepanelen,
       aantalZonnepanelen: data.aantalZonnepanelen,
+      jaarlijkseOpwekKwh: data.jaarlijkseOpwekKwh,
+      overstapVoorkeur: data.overstapVoorkeur,
     });
 
     await Promise.all([

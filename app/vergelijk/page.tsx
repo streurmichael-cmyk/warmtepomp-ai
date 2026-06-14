@@ -14,6 +14,7 @@ import {
   NetworkIcon,
   PhoneIcon,
   QuestionIcon,
+  ShieldIcon,
   UserIcon,
 } from "@/components/icons";
 import {
@@ -34,6 +35,7 @@ type StepName =
   | "zoeken"
   | "bevestig"
   | "systeem"
+  | "aanpak"
   | "stadsverwarming"
   | "gasverbruik"
   | "zonnepanelen"
@@ -45,7 +47,7 @@ type StepName =
 const PROGRESS_STEPS: { steps: StepName[]; label: string }[] = [
   { steps: ["adres"], label: "Jouw adres" },
   { steps: ["zoeken", "bevestig"], label: "Jouw woning" },
-  { steps: ["systeem", "gasverbruik", "zonnepanelen"], label: "Verwarmingssysteem" },
+  { steps: ["systeem", "aanpak", "gasverbruik", "zonnepanelen"], label: "Verwarmingssysteem" },
   { steps: ["verwerken", "advies"], label: "Jouw indicatie" },
   { steps: ["contact"], label: "Gegevens" },
 ];
@@ -63,7 +65,21 @@ const systemen: { label: string; icon: IconComponent }[] = [
   { label: "CV-ketel op gas", icon: FlameIcon },
   { label: "Stadsverwarming", icon: NetworkIcon },
   { label: "Elektrisch", icon: BoltIcon },
+  { label: "Hybride warmtepomp", icon: ShieldIcon },
   { label: "Anders", icon: QuestionIcon },
+];
+
+const aanpakOpties: { label: string; waarde: "volledig" | "hybride"; beschrijving: string }[] = [
+  {
+    label: "In één keer volledig elektrisch",
+    waarde: "volledig",
+    beschrijving: "Cv-ketel verdwijnt helemaal, je gaat direct van het gas af.",
+  },
+  {
+    label: "In stappen, eerst een hybride warmtepomp",
+    waarde: "hybride",
+    beschrijving: "Cv-ketel blijft als back-up, je warmtepomp neemt het grootste deel over.",
+  },
 ];
 
 const zonnepanelenOpties = ["Nee", "Ja", "Nog niet, maar ik overweeg het"] as const;
@@ -79,9 +95,11 @@ type FormData = {
   bouwjaarJaar?: number;
   isolatie: string;
   huidigSysteem: string;
+  overstapVoorkeur: "" | "volledig" | "hybride";
   gasverbruik: number;
   heeftZonnepanelen: string;
   aantalZonnepanelen: number;
+  jaarlijkseOpwekKwh?: number;
   voornaam: string;
   telefoon: string;
   email: string;
@@ -96,6 +114,7 @@ const initialData: FormData = {
   bouwjaar: "",
   isolatie: "",
   huidigSysteem: "",
+  overstapVoorkeur: "",
   gasverbruik: 0,
   heeftZonnepanelen: "",
   aantalZonnepanelen: 10,
@@ -237,6 +256,16 @@ export default function VergelijkPage() {
     }
     const geschat = schatGasverbruik(data.oppervlakte, data.bouwjaar);
     setData((d) => ({ ...d, huidigSysteem: label, gasverbruik: d.gasverbruik || geschat }));
+
+    if (label === "CV-ketel op gas" || label === "Anders") {
+      setStep("aanpak");
+      return;
+    }
+    setStep("gasverbruik");
+  }
+
+  function selectAanpak(waarde: "volledig" | "hybride") {
+    update("overstapVoorkeur", waarde);
     setStep("gasverbruik");
   }
 
@@ -258,6 +287,8 @@ export default function VergelijkPage() {
         gasverbruik: data.gasverbruik,
         heeftZonnepanelen: data.heeftZonnepanelen,
         aantalZonnepanelen: data.aantalZonnepanelen,
+        jaarlijkseOpwekKwh: data.jaarlijkseOpwekKwh,
+        overstapVoorkeur: data.overstapVoorkeur || undefined,
       }),
     [
       data.woningtype,
@@ -268,6 +299,8 @@ export default function VergelijkPage() {
       data.gasverbruik,
       data.heeftZonnepanelen,
       data.aantalZonnepanelen,
+      data.jaarlijkseOpwekKwh,
+      data.overstapVoorkeur,
     ]
   );
 
@@ -298,9 +331,12 @@ export default function VergelijkPage() {
       bouwjaar: data.bouwjaar,
       isolatie: data.isolatie,
       huidigSysteem: data.huidigSysteem,
+      overstapVoorkeur: data.overstapVoorkeur || undefined,
       gasverbruik: data.gasverbruik,
       heeftZonnepanelen: data.heeftZonnepanelen,
       aantalZonnepanelen: data.heeftZonnepanelen === "Ja" ? data.aantalZonnepanelen : undefined,
+      jaarlijkseOpwekKwh:
+        data.heeftZonnepanelen === "Ja" ? data.jaarlijkseOpwekKwh : undefined,
       postcode: data.postcode,
       huisnummer: data.huisnummer,
       voornaam: data.voornaam.trim(),
@@ -501,7 +537,7 @@ export default function VergelijkPage() {
 
           {step === "systeem" && (
             <Step heading="Hoe verwarm je nu?" onBack={() => setStep("bevestig")}>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
                 {systemen.map((opt) => (
                   <OptionCard
                     key={opt.label}
@@ -510,6 +546,34 @@ export default function VergelijkPage() {
                     selected={data.huidigSysteem === opt.label}
                     onClick={() => selectSysteem(opt.label)}
                   />
+                ))}
+              </div>
+            </Step>
+          )}
+
+          {step === "aanpak" && (
+            <Step heading="Hoe wil je overstappen?" onBack={() => setStep("systeem")}>
+              <p className="mb-6 text-base leading-relaxed text-muted">
+                Je kunt in één keer volledig van het gas af, of het stap voor stap doen met een
+                hybride warmtepomp die samenwerkt met je cv-ketel. We houden hier rekening mee in je
+                indicatie.
+              </p>
+              <div className="space-y-4">
+                {aanpakOpties.map((opt) => (
+                  <button
+                    key={opt.waarde}
+                    type="button"
+                    onClick={() => selectAanpak(opt.waarde)}
+                    aria-pressed={data.overstapVoorkeur === opt.waarde}
+                    className={`flex w-full flex-col items-start gap-1 rounded-2xl border-2 px-6 py-5 text-left transition-colors ${
+                      data.overstapVoorkeur === opt.waarde
+                        ? "border-action bg-action/10"
+                        : "border-green/10 bg-white hover:border-action/40"
+                    }`}
+                  >
+                    <span className="font-display text-lg font-bold text-dark">{opt.label}</span>
+                    <span className="text-sm text-muted">{opt.beschrijving}</span>
+                  </button>
                 ))}
               </div>
             </Step>
@@ -555,7 +619,16 @@ export default function VergelijkPage() {
           )}
 
           {step === "gasverbruik" && (
-            <Step heading="Hoeveel gas verbruik je per jaar?" onBack={() => setStep("systeem")}>
+            <Step
+              heading="Hoeveel gas verbruik je per jaar?"
+              onBack={() =>
+                setStep(
+                  data.huidigSysteem === "CV-ketel op gas" || data.huidigSysteem === "Anders"
+                    ? "aanpak"
+                    : "systeem"
+                )
+              }
+            >
               <p className="mb-6 text-base leading-relaxed text-muted">
                 De tool heeft dit alvast geschat op basis van je woning. Klopt het ongeveer? Het
                 exacte getal vind je op de jaarafrekening van je energieleverancier.
@@ -619,6 +692,40 @@ export default function VergelijkPage() {
                   <p className="mt-2 text-center text-xs text-muted-light">
                     Gemiddeld paneel levert 400 Wp = ±350 kWh/jaar
                   </p>
+
+                  <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                    <label htmlFor="jaarlijkseOpwekKwh" className="block text-sm font-bold text-dark">
+                      Weet je je jaaropbrengst? (optioneel)
+                    </label>
+                    <p className="mt-1 text-xs text-muted">
+                      Vul je werkelijke opbrengst in kWh per jaar in voor een nauwkeurigere
+                      berekening — die vind je op je jaarafrekening of in de app van je
+                      omvormer. Laat leeg om de schatting hierboven te gebruiken.
+                    </p>
+                    <div className="relative mt-3">
+                      <input
+                        id="jaarlijkseOpwekKwh"
+                        type="number"
+                        inputMode="numeric"
+                        min={0}
+                        max={20000}
+                        step={50}
+                        placeholder={`±${(data.aantalZonnepanelen * KWH_PER_ZONNEPANEEL).toLocaleString("nl-NL")}`}
+                        value={data.jaarlijkseOpwekKwh ?? ""}
+                        onChange={(e) =>
+                          update(
+                            "jaarlijkseOpwekKwh",
+                            e.target.value ? Number(e.target.value) : undefined
+                          )
+                        }
+                        className="min-h-[48px] w-full rounded-xl border-2 border-green/15 bg-white py-3.5 pl-4 pr-16 text-base text-dark placeholder:text-muted-light outline-none transition-colors focus:border-action"
+                        aria-label="Jaarlijkse opbrengst zonnepanelen in kWh"
+                      />
+                      <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted">
+                        kWh/jaar
+                      </span>
+                    </div>
+                  </div>
 
                   <button
                     type="button"
@@ -692,7 +799,9 @@ export default function VergelijkPage() {
                   {advies.zonnepanelen && (
                     <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
                       <p className="text-base text-muted">
-                        Met jouw {data.aantalZonnepanelen} zonnepanelen wek je ±
+                        {data.jaarlijkseOpwekKwh && data.jaarlijkseOpwekKwh > 0
+                          ? "Met jouw zonnepanelen wek je "
+                          : `Met jouw ${data.aantalZonnepanelen} zonnepanelen wek je ±`}
                         {advies.zonnepanelen.eigenOpwekKwh.toLocaleString("nl-NL")} kWh per jaar op. Daarmee dek
                         je ±{advies.zonnepanelen.dekkingPercentage}% van het stroomverbruik van je warmtepomp
                         en bespaar je extra{" "}
@@ -705,7 +814,9 @@ export default function VergelijkPage() {
                         Terugverdientijd zonder zonnepanelen:{" "}
                         <span className="font-bold text-dark">{advies.terugverdientijd}</span>
                         <br />
-                        Terugverdientijd met {data.aantalZonnepanelen} zonnepanelen:{" "}
+                        {data.jaarlijkseOpwekKwh && data.jaarlijkseOpwekKwh > 0
+                          ? "Terugverdientijd met jouw zonnepanelen: "
+                          : `Terugverdientijd met ${data.aantalZonnepanelen} zonnepanelen: `}
                         <span className="font-bold text-dark">
                           {advies.zonnepanelen.terugverdientijdMetZon}
                         </span>
