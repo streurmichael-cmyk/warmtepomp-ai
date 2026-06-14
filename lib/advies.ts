@@ -23,6 +23,52 @@ export const systeemOpties = [
   "Anders",
 ] as const;
 
+export const energielabelOpties = [
+  "A of hoger",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "Weet ik niet",
+] as const;
+
+/** Schat het energielabel op basis van bouwjaar en woningtype als de bewoner het niet weet. */
+export function schatEnergielabel(bouwjaar: string, woningtype: string): string {
+  const groteWoning = woningtype === "Vrijstaand" || woningtype === "Twee-onder-een-kap";
+  switch (bouwjaar) {
+    case "Na 2015":
+      return "A of hoger";
+    case "1992 - 2015":
+      return groteWoning ? "C" : "B";
+    case "1975 - 1992":
+      return groteWoning ? "F" : "E";
+    case "Voor 1975":
+      return groteWoning ? "G" : "F";
+    default:
+      return "D";
+  }
+}
+
+/** Vertaalt een energielabel naar het isolatieniveau dat de indicatieberekening gebruikt. */
+export function energielabelNaarIsolatie(label: string): string {
+  switch (label) {
+    case "A of hoger":
+    case "B":
+      return "Goed geïsoleerd";
+    case "C":
+    case "D":
+      return "Redelijk geïsoleerd";
+    case "E":
+    case "F":
+    case "G":
+      return "Matig of oud";
+    default:
+      return "Redelijk geïsoleerd";
+  }
+}
+
 const OPPERVLAKTE_MIDDEN: Record<string, number> = {
   "< 75 m²": 60,
   "75 - 100 m²": 87,

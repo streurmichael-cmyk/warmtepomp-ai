@@ -9,6 +9,7 @@ type LeadData = {
   woningtype?: string;
   oppervlakte?: string;
   bouwjaar?: string;
+  energielabel?: string;
   isolatie?: string;
   huidigSysteem?: string;
   overstapVoorkeur?: "volledig" | "hybride";
@@ -156,6 +157,7 @@ Gegevens van de aanvrager:
 - Woningtype: ${lead.woningtype ?? "onbekend"}
 - Oppervlakte: ${lead.oppervlakte ?? "onbekend"}
 - Bouwjaar: ${lead.bouwjaar ?? "onbekend"}
+- Energielabel: ${lead.energielabel ?? "onbekend"}
 - Isolatieniveau: ${lead.isolatie ?? "onbekend"}
 - Huidig verwarmingssysteem: ${lead.huidigSysteem ?? "onbekend"}${
     lead.overstapVoorkeur

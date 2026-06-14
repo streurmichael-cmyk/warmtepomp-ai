@@ -21,10 +21,12 @@ import {
   type AdviesResultaat,
   berekenAdvies,
   bouwjaarOpties,
+  energielabelNaarIsolatie,
+  energielabelOpties,
   KWH_PER_ZONNEPANEEL,
   oppervlakteOpties,
+  schatEnergielabel,
   schatGasverbruik,
-  standaardIsolatie,
   WARMTEPOMP_VERBRUIK_KWH,
 } from "@/lib/advies";
 
@@ -34,6 +36,7 @@ type StepName =
   | "adres"
   | "zoeken"
   | "bevestig"
+  | "energielabel"
   | "systeem"
   | "aanpak"
   | "stadsverwarming"
@@ -46,7 +49,7 @@ type StepName =
 
 const PROGRESS_STEPS: { steps: StepName[]; label: string }[] = [
   { steps: ["adres"], label: "Jouw adres" },
-  { steps: ["zoeken", "bevestig"], label: "Jouw woning" },
+  { steps: ["zoeken", "bevestig", "energielabel"], label: "Jouw woning" },
   { steps: ["systeem", "aanpak", "gasverbruik", "zonnepanelen"], label: "Verwarmingssysteem" },
   { steps: ["verwerken", "advies"], label: "Jouw indicatie" },
   { steps: ["contact"], label: "Gegevens" },
@@ -93,6 +96,8 @@ type FormData = {
   oppervlakteM2?: number;
   bouwjaar: string;
   bouwjaarJaar?: number;
+  energielabel: string;
+  energielabelGeschat: boolean;
   isolatie: string;
   huidigSysteem: string;
   overstapVoorkeur: "" | "volledig" | "hybride";
@@ -112,6 +117,8 @@ const initialData: FormData = {
   woningtype: "",
   oppervlakte: "",
   bouwjaar: "",
+  energielabel: "",
+  energielabelGeschat: false,
   isolatie: "",
   huidigSysteem: "",
   overstapVoorkeur: "",
@@ -244,7 +251,26 @@ export default function VergelijkPage() {
   }
 
   function bevestigWoning() {
-    update("isolatie", standaardIsolatie(data.bouwjaar));
+    setStep("energielabel");
+  }
+
+  function selectEnergielabel(label: string) {
+    if (label === "Weet ik niet") {
+      const geschat = schatEnergielabel(data.bouwjaar, data.woningtype);
+      setData((d) => ({
+        ...d,
+        energielabel: geschat,
+        energielabelGeschat: true,
+        isolatie: energielabelNaarIsolatie(geschat),
+      }));
+    } else {
+      setData((d) => ({
+        ...d,
+        energielabel: label,
+        energielabelGeschat: false,
+        isolatie: energielabelNaarIsolatie(label),
+      }));
+    }
     setStep("systeem");
   }
 
@@ -329,6 +355,7 @@ export default function VergelijkPage() {
       woningtype: data.woningtype,
       oppervlakte: data.oppervlakte,
       bouwjaar: data.bouwjaar,
+      energielabel: data.energielabel || undefined,
       isolatie: data.isolatie,
       huidigSysteem: data.huidigSysteem,
       overstapVoorkeur: data.overstapVoorkeur || undefined,
@@ -535,8 +562,47 @@ export default function VergelijkPage() {
             </Step>
           )}
 
+          {step === "energielabel" && (
+            <Step heading="Wat is het energielabel van je woning?" onBack={() => setStep("bevestig")}>
+              <p className="mb-6 text-base leading-relaxed text-muted">
+                Het energielabel zegt veel over hoe goed je woning geïsoleerd is en bepaalt mee welk
+                type warmtepomp het beste past. Weet je het niet zeker? Kies dan &ldquo;Weet ik
+                niet&rdquo; — dan schatten we het in op basis van je woning.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {energielabelOpties.map((opt) => (
+                  <button
+                    key={opt}
+                    type="button"
+                    onClick={() => selectEnergielabel(opt)}
+                    aria-pressed={data.energielabel === opt}
+                    className={`min-h-[48px] rounded-full border-2 px-4 py-3 text-sm font-semibold transition-colors ${
+                      data.energielabel === opt
+                        ? "border-action bg-action/10 text-action"
+                        : "border-green/15 bg-white text-dark hover:border-action/40"
+                    }`}
+                  >
+                    {opt}
+                  </button>
+                ))}
+              </div>
+              <p className="mt-6 text-xs leading-relaxed text-muted-light">
+                Je officiële energielabel vind je gratis op{" "}
+                <a
+                  href="https://www.ep-online.nl/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-action hover:underline"
+                >
+                  EP-online
+                </a>
+                , de officiële database van de Rijksoverheid.
+              </p>
+            </Step>
+          )}
+
           {step === "systeem" && (
-            <Step heading="Hoe verwarm je nu?" onBack={() => setStep("bevestig")}>
+            <Step heading="Hoe verwarm je nu?" onBack={() => setStep("energielabel")}>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
                 {systemen.map((opt) => (
                   <OptionCard
@@ -848,8 +914,11 @@ export default function VergelijkPage() {
 
                   <p className="mt-6 text-xs leading-relaxed text-muted-light">
                     Deze indicatie is gebaseerd op: BAG-woningdata, RVO subsidiebedragen 2026 en
-                    gemiddelden van Milieu Centraal. Aannames: energielabel op basis van bouwjaar,
-                    gemiddeld verbruik voor jouw woningtype.
+                    gemiddelden van Milieu Centraal. Aannames:{" "}
+                    {data.energielabel
+                      ? `energielabel ${data.energielabel}${data.energielabelGeschat ? " (geschat op basis van je woning)" : ""}`
+                      : "energielabel op basis van bouwjaar"}
+                    , gemiddeld verbruik voor jouw woningtype.
                   </p>
 
                   <div className="mt-10 space-y-3">
