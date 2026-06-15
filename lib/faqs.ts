@@ -51,11 +51,19 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Hoe kan een warmtepomp zo zuinig zijn? (COP uitgelegd)",
-    a: "Een warmtepomp maakt geen warmte — hij verplaatst het. Net zoals een koelkast warmte van binnen naar buiten pompt, haalt een warmtepomp warmte uit de buitenlucht en brengt die naar binnen. Daarvoor is maar een klein beetje elektriciteit nodig. Resultaat: 1 eenheid stroom levert 3 à 4 eenheden warmte op. Dat noemen we een COP van 3 of 4. Een cv-ketel kan dat nooit — die zet gas om in warmte en verliest altijd energie bij de verbranding.",
+    a: "Een warmtepomp máákt geen warmte, hij verplaatst het. Hij haalt warmte uit de buitenlucht — die er zelfs bij vorst nog in zit — en pompt die naar binnen. De stroom gebruikt hij alleen om die warmte te verplaatsen, net als een koelkast die warmte van binnen naar buiten brengt. Daardoor levert 1 kWh stroom ongeveer 3 tot 4 kWh warmte op. Dat getal heet de COP. Hoe kouder het buiten is en hoe warmer het water moet worden (bijvoorbeeld bij oude radiatoren), hoe lager de COP. Over een heel jaar gemeten — de SCOP — zit een goed systeem op vloerverwarming rond de 3,5 à 4.",
+  },
+  {
+    q: "Verspilt een cv-ketel energie vergeleken met een warmtepomp?",
+    a: "Nee, een moderne hr-ketel is juist heel efficiënt: die zet zo'n 95% van het gas om in warmte. Een ketel is dus niet verspillend. Het verschil zit hem hierin: een ketel máákt warmte uit gas en komt daardoor nooit boven ongeveer 1 kWh warmte per kWh gas. Een warmtepomp haalt warmte uit de lucht en komt daardoor wél boven de 1. Je vergelijkt dus eigenlijk twee verschillende dingen: warmte per kWh stroom versus warmte per kWh gas.",
+  },
+  {
+    q: "Ben je met een warmtepomp echt goedkoper uit dan met gas?",
+    a: "Let op: een COP van 3-4 betekent niet dat je 3 tot 4 keer goedkoper uit bent. Stroom is per kWh een stuk duurder dan gas. Die hogere stroomprijs wordt grotendeels gecompenseerd door de hoge COP, waardoor je netto meestal goedkoper uit bent dan met gas — en flink goedkoper als je zonnepanelen hebt. De grootste winst zit in CO₂: een warmtepomp stoot veel minder uit, en dat wordt elk jaar beter naarmate de stroom groener wordt.",
   },
   {
     q: "Hoe kan een warmtepomp 4x meer warmte leveren dan de stroom die hij gebruikt? Die energie moet toch ergens vandaan komen?",
-    a: "Klopt — en die energie komt uit de buitenlucht. Zelfs bij -10°C zit er nog warmte in de lucht. De warmtepomp 'steelt' die warmte en pompt die naar binnen. De elektriciteit gebruikt hij alleen om die warmte te verplaatsen, niet om het te maken. Vergelijk het met een koelkast: die gebruikt ook weinig stroom maar verplaatst veel warmte. Geen magie, gewoon natuurkunde.",
+    a: "Klopt — en die energie komt uit de buitenlucht. Zelfs bij vorst zit er nog warmte in de lucht. De warmtepomp haalt die warmte naar binnen; de elektriciteit gebruikt hij alleen om die warmte te verplaatsen, niet om het te maken. Vergelijk het met een koelkast: die gebruikt ook weinig stroom maar verplaatst veel warmte. De verhouding (de COP) varieert wel: hoe kouder het buiten is en hoe warmer het water moet worden, bijvoorbeeld bij oude radiatoren, hoe lager de COP. Geen magie, gewoon natuurkunde.",
   },
   {
     q: "Is een warmtepomp stil?",
