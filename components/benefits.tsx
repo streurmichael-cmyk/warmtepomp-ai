@@ -16,7 +16,7 @@ const benefits = [
   {
     icon: ShieldIcon,
     title: "Eerlijke vergelijking",
-    body: "Geen verborgen belangen of provisie-afspraken met fabrikanten. De tool analyseert jouw situatie en geeft een onafhankelijke indicatie van het beste type warmtepomp. Daarna helpen we je de beste optie voor jouw woning te vinden — we bouwen aan een netwerk van gecertificeerde installateurs.",
+    body: "Geen verborgen belangen of provisie-afspraken met fabrikanten. De tool analyseert jouw situatie en geeft een onafhankelijke indicatie van het beste type warmtepomp. Daarna helpen we je verder richting een gecertificeerde installateur, zodat je offertes kunt vergelijken.",
     note: "100% onafhankelijk",
   },
 ];

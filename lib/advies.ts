@@ -172,7 +172,7 @@ export type AdviesResultaat = {
   hemsPakket?: HemsPakket;
 };
 
-const BESPARING_PER_M3 = 0.56;
+const BESPARING_PER_M3 = 0.45;
 
 // Indicatieve bedragen voor het gecombineerde pakket (incl. installatie).
 const ZONNEPANELEN_PAKKET_INVESTERING = 4500;
