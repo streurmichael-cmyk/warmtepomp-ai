@@ -23,7 +23,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Is warmtepomp.ai echt onafhankelijk?",
-    a: "Ja. Wij zijn niet in dienst van één merk of installateur en ontvangen geen provisie op verkopen. Wij maken een onafhankelijke vergelijking van welk type warmtepomp het beste bij jouw woning past en koppelen je aan meerdere gecertificeerde installateurs bij jou in de buurt, zodat je zelf offertes kunt vergelijken. Onze inkomsten komen uit een kleine verwijzingsvergoeding bij offerteaanvragen — alleen als jij tevreden bent.",
+    a: "Ja. Wij zijn niet in dienst van één merk of installateur en ontvangen geen provisie op verkopen. Wij maken een onafhankelijke vergelijking van welk type warmtepomp het beste bij jouw woning past en helpen je vervolgens de beste optie te vinden. We bouwen aan een netwerk van gecertificeerde installateurs, zodat je straks zelf offertes kunt vergelijken. Onze inkomsten komen uit een kleine verwijzingsvergoeding bij offerteaanvragen — alleen als jij tevreden bent.",
   },
   {
     q: "Wat is het verschil tussen lucht/water en bodemwarmtepomp?",

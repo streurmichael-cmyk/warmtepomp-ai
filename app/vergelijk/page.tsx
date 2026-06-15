@@ -1227,7 +1227,7 @@ export default function VergelijkPage() {
             >
               <p className="mb-6 text-base leading-relaxed text-muted">
                 {wantsInstallateur
-                  ? "We koppelen je aan maximaal 3 onafhankelijke installateurs in jouw regio. Zij nemen vrijblijvend contact met je op."
+                  ? "We gaan voor je op zoek naar een passende installateur voor jouw woning en nemen zo snel mogelijk vrijblijvend contact met je op."
                   : "We sturen je de volledige indicatie, inclusief kosten, subsidie en terugverdientijd, per e-mail."}
               </p>
               <form onSubmit={handleLeadSubmit} noValidate className="space-y-4">
@@ -1302,7 +1302,7 @@ export default function VergelijkPage() {
               </h1>
               <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-muted">
                 {wantsInstallateur
-                  ? "We hebben je gegevens doorgestuurd. Binnen 24 uur nemen maximaal 3 onafhankelijke installateurs in jouw regio contact met je op."
+                  ? "We hebben je aanvraag ontvangen. We gaan voor je op zoek naar een passende installateur voor jouw woning en nemen zo snel mogelijk contact met je op."
                   : "Check je inbox — we hebben de volledige indicatie naar je e-mailadres gestuurd."}
               </p>
               <Link

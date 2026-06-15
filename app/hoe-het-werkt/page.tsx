@@ -32,7 +32,7 @@ const steps = [
   {
     icon: NetworkIcon,
     title: "Vergelijk installateurs",
-    body: "We koppelen je aan gecertificeerde installateurs bij jou in de buurt, zodat je eenvoudig offertes kunt vergelijken.",
+    body: "We helpen je de beste optie voor jouw woning te vinden en bouwen aan een netwerk van gecertificeerde installateurs, zodat je straks eenvoudig offertes kunt vergelijken.",
   },
   {
     icon: CheckCircleIcon,

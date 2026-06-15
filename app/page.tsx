@@ -17,7 +17,7 @@ import { SITE_URL, buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Welke warmtepomp past bij jouw woning? | warmtepomp.ai",
   description:
-    "Onafhankelijke keuzehulp voor warmtepompen in Nederland. Persoonlijke indicatie van het beste type warmtepomp, actuele subsidie-informatie en gekoppeld aan gecertificeerde installateurs bij jou in de buurt.",
+    "Onafhankelijke keuzehulp voor warmtepompen in Nederland. Persoonlijke indicatie van het beste type warmtepomp, actuele subsidie-informatie en hulp bij het vinden van de beste optie voor jouw woning.",
   path: "/",
 });
 
