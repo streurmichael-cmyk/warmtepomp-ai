@@ -11,7 +11,7 @@ export function Faq({ showHeading = true }: { showHeading?: boolean }) {
     <section id="faq" className="bg-light-bg py-20 sm:py-24">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         {showHeading && (
-          <div className="mb-12 text-center">
+          <div className="mb-12 max-w-2xl">
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
               Veelgestelde vragen
             </p>

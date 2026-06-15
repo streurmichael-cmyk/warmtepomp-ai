@@ -6,14 +6,14 @@ export function CitiesSection({ className = "bg-white" }: { className?: string }
   return (
     <section className={`${className} py-20 sm:py-24`}>
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="mb-14 max-w-2xl text-center sm:mx-auto">
+        <div className="mb-14 max-w-2xl">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
             Per stad
           </p>
           <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
             Warmtepomp installateur zoeken per stad?
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
+          <p className="mt-4 max-w-lg text-base leading-relaxed text-muted">
             Bekijk gemiddelde kosten, ISDE-subsidie en gecertificeerde installateurs bij jou in
             de buurt.
           </p>

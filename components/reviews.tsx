@@ -10,19 +10,19 @@ export function Reviews() {
 
   return (
     <section id="transparantie" className="bg-light-bg py-20 sm:py-24">
-      <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-green/10 text-action">
+      <div className="mx-auto max-w-3xl px-5 sm:px-8">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green/10 text-action">
           <ShieldIcon className="h-7 w-7" />
         </div>
         <h2 className="mt-6 font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
           Wat andere huiseigenaren zeggen
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
           Warmtepomp.ai is net gestart, dus we hebben nog geen stapel reviews — en die gaan we
           ook niet verzinnen. Dit kunnen we wel laten zien:
         </p>
 
-        <div className="mx-auto mt-8 grid max-w-2xl gap-4 text-left">
+        <div className="mt-8 grid max-w-2xl gap-4 text-left">
           <Link
             href="/voorbeeld-advies"
             className="group flex items-center justify-between gap-4 rounded-2xl border border-green/15 bg-white p-6 transition-colors hover:border-action"

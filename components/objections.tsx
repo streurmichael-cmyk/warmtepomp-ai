@@ -37,14 +37,14 @@ export function Objections() {
   return (
     <section className="bg-white py-20 sm:py-24">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
-        <div className="mb-12 text-center">
+        <div className="mb-12 max-w-2xl">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
             Eerlijke twijfels
           </p>
           <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
             Is een warmtepomp wel iets voor mij?
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-muted">
+          <p className="mt-4 max-w-lg text-lg leading-relaxed text-muted">
             De meest gehoorde twijfels — en het eerlijke antwoord. Soms is dat antwoord
             &ldquo;nee, nu nog niet&rdquo;.
           </p>

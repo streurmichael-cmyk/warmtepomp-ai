@@ -4,15 +4,15 @@ import { ArrowRight, FlameIcon } from "./icons";
 export function ExampleAdviceCta() {
   return (
     <section className="bg-light-bg py-20 sm:py-24">
-      <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-green/10 text-action">
+      <div className="mx-auto max-w-3xl px-5 sm:px-8">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green/10 text-action">
           <FlameIcon className="h-7 w-7" />
         </div>
         <h2 className="mt-6 font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
           Zo ziet jouw indicatie eruit
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
-          Benieuwd wat je krijgt? Bekijk een voorbeeldindicatie voor een tussenwoning van 95 m².
+        <p className="mt-4 max-w-xl text-balance text-base leading-relaxed text-muted">
+          Benieuwd wat je krijgt? Bekijk een voorbeeldindicatie voor een tussenwoning van 95&nbsp;m².
         </p>
         <Link
           href="/voorbeeld-advies"
