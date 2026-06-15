@@ -30,8 +30,8 @@ const cijfers = [
   { label: "Geschatte kosten", value: "€4.500 – €6.500" },
   { label: "ISDE-subsidie", value: "€1.875" },
   { label: "Netto investering", value: "€2.625 – €4.625" },
-  { label: "Terugverdientijd", value: "4 – 6 jaar" },
-  { label: "Maandelijkse besparing", value: "€45 – €65" },
+  { label: "Terugverdientijd", value: "10 – 15 jaar" },
+  { label: "Maandelijkse besparing", value: "€25 – €35" },
 ];
 
 export default function VoorbeeldAdviesPage() {
@@ -127,7 +127,7 @@ export default function VoorbeeldAdviesPage() {
                 <h3 className="mb-4 font-display text-lg font-bold text-dark">Volgende stap</h3>
                 <ul className="space-y-2.5">
                   {[
-                    "Vraag offertes aan bij 2-3 gecertificeerde installateurs in jouw regio",
+                    "Vraag offertes aan bij gecertificeerde installateurs",
                     "Vergelijk prijs, levertijd en beoordelingen",
                     "Dien na installatie de ISDE-subsidie in via mijn.rvo.nl",
                   ].map((stap) => (
