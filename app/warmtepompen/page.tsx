@@ -48,7 +48,7 @@ const types = [
     voordelen: [
       "Lage instapkosten",
       "Cv-ketel blijft als back-up bij strenge vorst",
-      "Snel terugverdiend dankzij gasbesparing",
+      "Directe besparing op je gasverbruik",
     ],
     nadelen: ["Je gebruikt nog steeds een beetje gas", "Minder besparing dan volledig elektrisch"],
     kosten: "€3.500 – €7.000",

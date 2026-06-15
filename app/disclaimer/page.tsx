@@ -32,7 +32,7 @@ const sections = [
   {
     heading: "Onafhankelijk platform",
     paragraphs: [
-      "Warmtepomp.ai is een onafhankelijk platform en geen installateur. Wij voeren zelf geen installaties uit, maar koppelen je aan gecertificeerde installateurs bij jou in de buurt.",
+      "Warmtepomp.ai is een onafhankelijk platform en geen installateur. Wij voeren zelf geen installaties uit, maar helpen je verder richting gecertificeerde installateurs en bouwen aan een netwerk daarvan.",
     ],
   },
   {
