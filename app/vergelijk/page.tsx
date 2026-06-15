@@ -950,13 +950,9 @@ export default function VergelijkPage() {
                         Terugverdientijd
                       </p>
                       <p className="mt-2 font-display text-xl font-bold text-dark">
-                        {advies.zonnepanelen
-                          ? advies.zonnepanelen.terugverdientijdMetZon
-                          : advies.terugverdientijd}
+                        {advies.terugverdientijd}
                       </p>
-                      {advies.zonnepanelen && (
-                        <p className="mt-1 text-xs text-muted-light">incl. zonnepanelen</p>
-                      )}
+                      <p className="mt-1 text-xs text-muted-light">warmtepomp op zichzelf</p>
                     </div>
                   </div>
 
@@ -985,18 +981,82 @@ export default function VergelijkPage() {
                         .
                       </p>
                       <p className="mt-3 text-base text-muted">
-                        Terugverdientijd zonder zonnepanelen:{" "}
+                        Warmtepomp op zichzelf:{" "}
                         <span className="font-bold text-dark">{advies.terugverdientijd}</span>
                         <br />
-                        {data.jaarlijkseOpwekKwh && data.jaarlijkseOpwekKwh > 0
-                          ? "Terugverdientijd met jouw zonnepanelen: "
-                          : `Terugverdientijd met ${data.aantalZonnepanelen} zonnepanelen: `}
+                        Met je eigen zonnestroom (vanaf 2027):{" "}
                         <span className="font-bold text-dark">
                           {advies.zonnepanelen.terugverdientijdMetZon}
                         </span>
                       </p>
+                      <p className="mt-2 text-xs text-muted-light">
+                        Zolang salderen bestaat (tot naar verwachting 1 januari 2027) maakt het weinig
+                        uit of je je zonnestroom zelf gebruikt of teruglevert. Dáárna wordt zelf
+                        gebruiken — bijvoorbeeld met je warmtepomp — een stuk voordeliger.
+                      </p>
                     </div>
                   )}
+
+                  <details className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                    <summary className="cursor-pointer font-bold text-dark">
+                      Wat betekent terugverdientijd? (uitleg in gewone taal)
+                    </summary>
+                    <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted">
+                      <div>
+                        <p className="font-bold text-dark">Wat betekent terugverdientijd?</p>
+                        <p>
+                          Het aantal jaren dat het duurt voordat je de aanschaf hebt terugverdiend met
+                          wat je elk jaar bespaart. Kost een warmtepomp €5.800 en bespaar je €353 per
+                          jaar, dan sta je na ongeveer 16 jaar quitte. Daarna is het pure winst.
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-dark">Waarom duurt dat bij een hybride zo lang?</p>
+                        <p>
+                          Een hybride warmtepomp neemt een deel van je verwarming over, maar op de
+                          koudste dagen gebruik je nog wat gas. De besparing is dus echt, maar niet
+                          enorm, terwijl de aanschaf een flink bedrag is. Daarom duurt het terugverdienen
+                          langer dan veel reclames je doen geloven. Wij vertellen je dat liever eerlijk.
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-dark">Wat doen mijn zonnepanelen hierbij?</p>
+                        <p>
+                          Belangrijk: zonnepanelen besparen geen gas — dat doet de warmtepomp. Panelen
+                          wekken stroom op, en een warmtepomp draait op stroom. Met je eigen panelen kun
+                          je de warmtepomp dus deels op je eigen, gratis stroom laten draaien in plaats
+                          van stroom te kopen bij je energieleverancier.
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-dark">Wat is salderen, en waarom maakt het uit?</p>
+                        <p>
+                          Salderen is de regeling waarmee je de stroom die je teruglevert aan het net mag
+                          wegstrepen tegen de stroom die je verbruikt. Simpel gezegd: een kWh die je
+                          teruglevert is nu evenveel waard als een kWh die je zelf gebruikt. Daardoor
+                          maakt het op dit moment weinig uit of je je zonnestroom zelf gebruikt of
+                          teruglevert.
+                        </p>
+                        <p className="mt-2">
+                          Maar de salderingsregeling stopt naar verwachting op 1 januari 2027. Vanaf dan
+                          krijg je veel minder geld voor stroom die je teruglevert. Je eigen stroom zélf
+                          gebruiken wordt dan ineens veel waardevoller. En een warmtepomp gebruikt nu juist
+                          veel stroom — perfect om je eigen zonnestroom in te steken. Daarom wordt de
+                          combinatie zonnepanelen + warmtepomp vanaf 2027 een stuk aantrekkelijker, en kan
+                          je terugverdientijd dan flink korter worden.
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-bold text-dark">Waarom zien we twee getallen?</p>
+                        <p>
+                          Omdat ze allebei een eerlijk verhaal vertellen. Het eerste getal laat zien wat
+                          de warmtepomp je op zichzelf kost en bespaart. Het tweede laat zien wat het extra
+                          oplevert als je 'm slim combineert met je eigen zonnepanelen — vooral vanaf 2027.
+                          Zo verstoppen we niets en zie je precies waar je aan toe bent.
+                        </p>
+                      </div>
+                    </div>
+                  </details>
 
                   {data.heeftZonnepanelen === "Nog niet, maar ik overweeg het" && (
                     <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
