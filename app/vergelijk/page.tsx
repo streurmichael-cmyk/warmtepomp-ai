@@ -956,6 +956,18 @@ export default function VergelijkPage() {
                     </div>
                   </div>
 
+                  {advies.zonnepanelen && (
+                    <div className="mt-6 rounded-2xl border-2 border-action/40 bg-action/5 p-6 text-center sm:p-7">
+                      <p className="font-display text-2xl font-bold leading-snug text-dark sm:text-3xl">
+                        Vanaf 2027 met je eigen zonnestroom: {advies.zonnepanelen.terugverdientijdMetZon}
+                      </p>
+                      <p className="mt-3 text-base text-muted sm:text-lg">
+                        Warmtepomp op zichzelf (nu, zonder zonnestroom):{" "}
+                        <span className="font-semibold text-dark">{advies.terugverdientijd}</span>
+                      </p>
+                    </div>
+                  )}
+
                   {advies.besparingPerJaar > 0 && (
                     <p className="mt-6 text-base text-muted">
                       Geschatte besparing op je energierekening:{" "}
@@ -980,19 +992,11 @@ export default function VergelijkPage() {
                         </span>
                         .
                       </p>
-                      <p className="mt-3 text-base text-muted">
-                        Warmtepomp op zichzelf:{" "}
-                        <span className="font-bold text-dark">{advies.terugverdientijd}</span>
-                        <br />
-                        Met je eigen zonnestroom (vanaf 2027):{" "}
-                        <span className="font-bold text-dark">
-                          {advies.zonnepanelen.terugverdientijdMetZon}
-                        </span>
-                      </p>
-                      <p className="mt-2 text-xs text-muted-light">
+                      <p className="mt-3 text-xs text-muted-light">
                         Zolang salderen bestaat (tot naar verwachting 1 januari 2027) maakt het weinig
                         uit of je je zonnestroom zelf gebruikt of teruglevert. Dáárna wordt zelf
-                        gebruiken — bijvoorbeeld met je warmtepomp — een stuk voordeliger.
+                        gebruiken — bijvoorbeeld met je warmtepomp — een stuk voordeliger, en daalt je
+                        terugverdientijd richting de waarde hierboven.
                       </p>
                     </div>
                   )}
