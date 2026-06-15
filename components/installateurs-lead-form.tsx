@@ -169,8 +169,8 @@ export function InstallateursLeadForm({
       {step === "lead" && (
         <form onSubmit={handleLeadSubmit} noValidate className="space-y-4">
           <p className="text-sm text-muted">
-            We hebben installateurs gevonden in {postcode}. Vul je gegevens in voor een
-            vrijblijvend adviesgesprek.
+            {postcode} is genoteerd. Vul je gegevens in, dan gaan we voor je op zoek naar een
+            passende installateur voor jouw woning.
           </p>
           <div>
             <div className="relative">
@@ -238,7 +238,7 @@ export function InstallateursLeadForm({
             disabled={submitting}
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white shadow-[0_4px_28px_rgba(34,181,114,0.35)] transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
           >
-            {submitting ? "Versturen..." : "Plan adviesgesprek"}
+            {submitting ? "Versturen..." : "Verstuur mijn aanvraag"}
             {!submitting && <ArrowRight className="h-5 w-5" />}
           </button>
         </form>
@@ -251,9 +251,9 @@ export function InstallateursLeadForm({
           </div>
           <h2 className="font-display text-xl font-bold text-dark">Bedankt, {voornaam}!</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            We hebben je een bevestigingsmail gestuurd. Een installateur bij jou in de buurt
-            neemt binnen 24 uur contact op voor een vrijblijvend adviesgesprek. Is een
-            warmtepomp geschikt voor jouw woning? Dan volgt een opname bij je thuis, waarna je
+            We hebben je een bevestigingsmail gestuurd. We gaan voor je op zoek naar een passende
+            installateur voor jouw woning en nemen zo snel mogelijk vrijblijvend contact met je op.
+            Is een warmtepomp geschikt voor jouw woning? Dan volgt een opname bij je thuis, waarna je
             een offerte op maat ontvangt.
           </p>
         </div>

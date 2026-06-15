@@ -6,9 +6,9 @@ import { ConversationIcon, NetworkIcon, ShieldIcon } from "@/components/icons";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Gecertificeerde warmtepomp installateurs bij jou in de buurt | warmtepomp.ai",
+  title: "Een gecertificeerde warmtepomp installateur vinden | warmtepomp.ai",
   description:
-    "Vind een gecertificeerde warmtepomp installateur bij jou in de buurt. Plan een gratis adviesgesprek en ontvang binnen 24 uur reactie.",
+    "Op zoek naar een gecertificeerde warmtepomp installateur? Vul je gegevens in, dan helpen we je de beste optie voor jouw woning te vinden. Gratis en vrijblijvend.",
   path: "/installateurs",
 });
 
@@ -16,7 +16,7 @@ const benefits = [
   {
     icon: ShieldIcon,
     title: "Gecertificeerde installateurs",
-    body: "Wij werken alleen samen met gescreende en gecertificeerde installateurs in jouw regio.",
+    body: "We bouwen aan een netwerk van gescreende en gecertificeerde installateurs, zodat we je straks de beste optie voor jouw woning kunnen bieden.",
   },
   {
     icon: NetworkIcon,
@@ -51,11 +51,11 @@ export default function InstallateursPage() {
               Installateurs
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
-              Vind een gecertificeerde warmtepomp installateur bij jou in de buurt
+              Op zoek naar een gecertificeerde warmtepomp installateur?
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted">
-              Vul je postcode en woningtype in. Een installateur uit jouw regio neemt contact op
-              voor een gratis en vrijblijvend adviesgesprek.
+              Vul je postcode en woningtype in. We gaan voor je op zoek naar een passende
+              installateur en nemen zo snel mogelijk vrijblijvend contact met je op.
             </p>
 
             <InstallateursLeadForm />

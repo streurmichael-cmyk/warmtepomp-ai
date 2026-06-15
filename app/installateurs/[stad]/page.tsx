@@ -36,7 +36,7 @@ export async function generateMetadata({
 
   return buildMetadata({
     title: `Warmtepomp installateur ${city.name} | Gratis vergelijken | warmtepomp.ai`,
-    description: `Vind een gecertificeerde warmtepomp installateur in ${city.name}. Plan een gratis adviesgesprek. ISDE subsidie tot €2.500.`,
+    description: `Op zoek naar een gecertificeerde warmtepomp installateur in ${city.name}? Krijg eerst een gratis, onafhankelijke indicatie voor jouw woning. ISDE subsidie tot €2.500.`,
     path: `/installateurs/${city.slug}`,
   });
 }
@@ -60,7 +60,7 @@ export default async function StadPage({
     {
       icon: MapPinIcon,
       title: "Lokale installateurs",
-      body: `Wij koppelen je aan gecertificeerde installateurs die actief zijn in ${city.name} en de regio, en jouw type woning kennen.`,
+      body: `We helpen je de beste optie voor jouw woning te vinden en bouwen aan een netwerk van gecertificeerde installateurs die actief zijn in ${city.name} en de regio.`,
     },
     {
       icon: ShieldIcon,
@@ -70,7 +70,7 @@ export default async function StadPage({
     {
       icon: ConversationIcon,
       title: "Gratis en vrijblijvend",
-      body: "Het invullen van de keuzehulp en het adviesgesprek met een installateur zijn volledig gratis en je zit nergens aan vast.",
+      body: "Het invullen van de keuzehulp en een eventueel adviesgesprek met een installateur zijn volledig gratis en je zit nergens aan vast.",
     },
   ];
 
@@ -106,22 +106,23 @@ export default async function StadPage({
               Installateurs in {city.name}
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
-              Warmtepomp installateur in {city.name} — Gratis offertes vergelijken
+              Warmtepomp installateur in {city.name} — vind de beste optie voor jouw woning
             </h1>
 
             <div className="mx-auto mt-6 max-w-2xl space-y-4 text-left text-base leading-relaxed text-muted sm:text-center">
               <p>
                 Op zoek naar een betrouwbare warmtepomp installateur in {city.name}? Via
-                warmtepomp.ai vergelijk je gratis en vrijblijvend installateurs bij jou in de
-                buurt. {city.context} — wij koppelen je aan gecertificeerde installateurs die
-                bekend zijn met {city.woningType.toLowerCase()} in {city.name}.
+                warmtepomp.ai krijg je eerst gratis en vrijblijvend een onafhankelijke indicatie
+                voor jouw woning. {city.context} — we helpen je de beste optie te vinden en bouwen
+                aan een netwerk van gecertificeerde installateurs die bekend zijn met{" "}
+                {city.woningType.toLowerCase()} in {city.name}.
               </p>
               <p>
                 Voordat je een installateur kiest, is het slim om eerst te weten welk type
                 warmtepomp het beste bij jouw woning past. Onze gratis keuzehulp geeft je in een
                 paar minuten een persoonlijke indicatie van het beste type, de geschatte kosten en de
-                ISDE-subsidie. Daarna plan je een gratis adviesgesprek met een installateur in{" "}
-                {city.name} en omgeving, die op basis daarvan een offerte op maat opstelt.
+                ISDE-subsidie. Daarna helpen we je verder richting een gecertificeerde installateur
+                in {city.name} en omgeving, die op basis daarvan een offerte op maat kan opstellen.
               </p>
             </div>
 
