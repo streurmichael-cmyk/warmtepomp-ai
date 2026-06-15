@@ -950,8 +950,13 @@ export default function VergelijkPage() {
                         Terugverdientijd
                       </p>
                       <p className="mt-2 font-display text-xl font-bold text-dark">
-                        {advies.terugverdientijd}
+                        {advies.zonnepanelen
+                          ? advies.zonnepanelen.terugverdientijdMetZon
+                          : advies.terugverdientijd}
                       </p>
+                      {advies.zonnepanelen && (
+                        <p className="mt-1 text-xs text-muted-light">incl. zonnepanelen</p>
+                      )}
                     </div>
                   </div>
 
