@@ -142,7 +142,7 @@ export const blogPosts: BlogPost[] = [
           "De aanschaf- en installatiekosten van een hybride warmtepomp liggen doorgaans tussen de €3.500 en €7.000, afhankelijk van het merk, vermogen en de complexiteit van de installatie. Dit is aanzienlijk lager dan de €6.000 tot €12.000 die je vaak betaalt voor een volledig elektrische lucht-water warmtepomp.",
           "Met de ISDE-subsidie kun je een deel van deze kosten terugkrijgen, al ligt het subsidiebedrag voor hybride installaties doorgaans lager dan voor volledig elektrische warmtepompen.",
           "Wat de besparing betreft: huiseigenaren met een hybride warmtepomp zien in de praktijk vaak een gasbesparing van 30 tot 50%, afhankelijk van de woning en het stookgedrag. Dit vertaalt zich naar een maandelijkse besparing op de energierekening, al stijgt het stroomverbruik enigszins doordat de warmtepomp elektriciteit gebruikt. Per saldo houden de meeste huishoudens een netto besparing over, vooral bij de huidige gasprijzen.",
-          "De terugverdientijd van een hybride warmtepomp ligt voor veel woningen tussen de 4 en 7 jaar, afhankelijk van de subsidie, de gasprijs en het isolatieniveau van de woning.",
+          "Wees realistisch over de terugverdientijd: een hybride warmtepomp op zichzelf verdient zich voor veel woningen pas in zo'n 12 tot 18 jaar terug, afhankelijk van de subsidie, de gasprijs en het isolatieniveau. Heb je eigen zonnepanelen, dan kan dat korter — zeker vanaf 2027, wanneer de salderingsregeling stopt en het zelf gebruiken van je zonnestroom (bijvoorbeeld voor je warmtepomp) waardevoller wordt.",
         ],
       },
       {
@@ -151,7 +151,7 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           "De belangrijkste voordelen van een hybride warmtepomp zijn de lage instapkosten, de eenvoudige installatie (vaak in één dag), het behoud van je cv-ketel als back-up, en een directe besparing op je gasverbruik zonder dat je je woning eerst hoeft te verbouwen.",
           "Daar staan een paar nadelen tegenover. Je gebruikt nog steeds een beetje gas, dus je bent niet volledig 'van het gas af'. De besparing is doorgaans lager dan bij een volledig elektrische warmtepomp, en je hebt nog steeds twee systemen die onderhoud nodig hebben (de ketel en de warmtepomp).",
-          "Voor de meeste huiseigenaren wegen de voordelen — vooral de lage drempel en snelle terugverdientijd — ruimschoots op tegen de nadelen, zeker als eerste stap richting een duurzamere woning.",
+          "Voor de meeste huiseigenaren wegen de voordelen — vooral de lage instapdrempel en de directe gasbesparing — op tegen de nadelen, zeker als eerste stap richting een duurzamere woning.",
         ],
       },
       {
@@ -218,7 +218,7 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           "Voor een gemiddelde tussenwoning liggen de kosten van een hybride warmtepomp doorgaans tussen €3.500 en €7.000, inclusief installatie. Een volledig elektrische lucht-water warmtepomp kost voor een tussenwoning meestal tussen €6.000 en €12.000, waarbij het lagere vermogen dat vaak volstaat voor een tussenwoning de prijs gunstig kan beïnvloeden ten opzichte van grotere woningtypes.",
           "Via de ISDE-subsidie kun je voor een lucht-water warmtepomp tot €2.500 terugkrijgen, afhankelijk van het vermogen. Voor een hybride warmtepomp is het subsidiebedrag wisselend, maar ook hier kan een deel van de kosten worden terugverdiend.",
-          "Reken je de aanschafkosten, subsidie en de maandelijkse besparing op je gasrekening bij elkaar op, dan kom je voor veel tussenwoningen op een terugverdientijd van ongeveer 4 tot 6 jaar voor een hybride warmtepomp. Dat maakt het een van de meest kosteneffectieve verduurzamingsmaatregelen voor dit woningtype.",
+          "Reken je de aanschafkosten, subsidie en de netto besparing op je energierekening bij elkaar op, dan kom je voor veel tussenwoningen op een terugverdientijd van zo'n 12 tot 18 jaar voor de warmtepomp op zichzelf. Heb je eigen zonnepanelen, dan kan dat korter, zeker vanaf 2027 wanneer de salderingsregeling stopt. Het blijft een van de meest impactvolle verduurzamingsmaatregelen voor dit woningtype, maar wees realistisch over de terugverdientijd.",
         ],
       },
       {
@@ -251,7 +251,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Conclusie",
         paragraphs: [
-          "Een tussenwoning is in veel opzichten een ideaal startpunt voor een warmtepomp: het beperkte buitenmuuroppervlak zorgt voor een relatief lage warmtevraag, en zowel hybride als volledig elektrische warmtepompen zijn doorgaans goed te realiseren. Met de juiste voorbereiding — van het bepalen van het juiste type tot het vergelijken van offertes — is de overstap voor de meeste tussenwoningen binnen een paar jaar terugverdiend. Wil je weten wat dit voor jouw woning betekent? Start de gratis keuzehulp en ontvang direct een persoonlijke indicatie.",
+          "Een tussenwoning is in veel opzichten een ideaal startpunt voor een warmtepomp: het beperkte buitenmuuroppervlak zorgt voor een relatief lage warmtevraag, en zowel hybride als volledig elektrische warmtepompen zijn doorgaans goed te realiseren. Met de juiste voorbereiding — van het bepalen van het juiste type tot het vergelijken van offertes — verdient de overstap zich voor de meeste tussenwoningen op de lange termijn terug, en sneller als je 'm combineert met eigen zonnestroom. Wil je weten wat dit voor jouw woning betekent? Start de gratis keuzehulp en ontvang direct een persoonlijke indicatie.",
         ],
       },
     ],
@@ -321,7 +321,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Wat levert het op? Terugverdientijd en maandlasten",
         paragraphs: [
-          "De terugverdientijd van een warmtepomp hangt af van de aanschafprijs, de subsidie, je huidige energierekening en hoeveel je bespaart op gas. Voor een hybride warmtepomp ligt de terugverdientijd voor veel woningen tussen de 4 en 7 jaar. Voor een volledig elektrische warmtepomp duurt dit vaak iets langer, maar daar staat tegenover dat je helemaal van het gas af bent en minder afhankelijk bent van gasprijsschommelingen.",
+          "De terugverdientijd van een warmtepomp hangt af van de aanschafprijs, de subsidie, je huidige energierekening en hoeveel je netto bespaart. Wees realistisch: een warmtepomp op zichzelf — hybride of volledig elektrisch — verdient zich voor veel woningen pas in zo'n 15 tot 20 jaar terug. Gebruik je je eigen zonnestroom, dan kan dat flink korter, vooral vanaf 2027 wanneer de salderingsregeling stopt en je eigen stroom waardevoller wordt. Bij een volledig elektrische warmtepomp staat tegenover de langere terugverdientijd dat je helemaal van het gas af bent en minder afhankelijk bent van gasprijsschommelingen.",
           "Qua maandlasten zien veel huishoudens dat hun gasrekening flink daalt, terwijl de stroomrekening iets stijgt. Per saldo houden de meeste mensen een netto besparing over, zeker met de huidige energieprijzen. Hoeveel dat precies is, hangt sterk af van je woning, je stookgedrag en het elektriciteitscontract dat je hebt.",
           "Wil je niet zelf gaan rekenen, maar gewoon weten wat een warmtepomp voor jouw specifieke woning ongeveer gaat kosten en opleveren? Onze gratis keuzehulp geeft je in een paar minuten een persoonlijk overzicht van de kosten, subsidie en geschatte besparing.",
         ],
