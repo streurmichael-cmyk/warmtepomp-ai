@@ -2,8 +2,11 @@
 
 import { useState } from "react";
 
-const BESPARING_PER_M3 = 0.56; // indicatieve besparing per m³ gas bij overstap op warmtepomp
-const GEMIDDELDE_INVESTERING_NA_SUBSIDIE = 6500; // lucht-water, gemiddelde kosten min. ISDE-subsidie
+// Netto besparing per m³ gas: de bespaarde gaskosten minus de extra stroomkosten
+// die de warmtepomp maakt. Bewust conservatief — een warmtepomp draait op stroom,
+// en stroom is per eenheid duurder dan gas.
+const BESPARING_PER_M3 = 0.35;
+const GEMIDDELDE_INVESTERING_NA_SUBSIDIE = 8000; // lucht-water, gemiddelde kosten min. ISDE-subsidie
 
 export function SavingsCalculator() {
   const [gasverbruik, setGasverbruik] = useState(1500);
@@ -58,12 +61,16 @@ export function SavingsCalculator() {
           <p className="mt-2 font-display text-2xl font-bold text-action">
             {terugverdientijd.toLocaleString("nl-NL")} jaar
           </p>
+          <p className="mt-1 text-[0.7rem] text-muted">warmtepomp op zichzelf</p>
         </div>
       </div>
 
       <p className="mt-6 text-xs leading-relaxed text-muted">
-        Dit is een indicatie op basis van gemiddelde gas- en stroomprijzen en een gemiddelde
-        investering van circa €6.500 (na ISDE-subsidie) voor een lucht-water warmtepomp. Jouw
+        Dit is een eerlijke indicatie op basis van gemiddelde gas- en stroomprijzen en een gemiddelde
+        investering van circa €8.000 (na ISDE-subsidie) voor een lucht-water warmtepomp — de besparing
+        is netto, dus ná de extra stroomkosten van de warmtepomp. Een warmtepomp op zichzelf verdient
+        zich doorgaans in 15 tot 20 jaar terug. Gebruik je je eigen zonnestroom — vooral vanaf 2027,
+        wanneer de salderingsregeling stopt — dan kan die terugverdientijd flink korter uitvallen. Jouw
         werkelijke besparing hangt af van je woning, isolatie en energieprijzen.
       </p>
     </div>
