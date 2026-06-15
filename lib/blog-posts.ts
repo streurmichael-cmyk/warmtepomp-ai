@@ -1036,10 +1036,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "text",
-        heading: "Waarom een warmtepomp goedkoper draait dan een cv-ketel",
+        heading: "COP uitgelegd: wat het wél en niet over je kosten zegt",
         paragraphs: [
-          "Dat een warmtepomp lagere gebruikskosten heeft, komt door een simpel natuurkundig principe. Een warmtepomp maakt geen warmte, hij verplaatst het: hij haalt warmte uit de buitenlucht en pompt die naar binnen, net als een koelkast maar dan omgekeerd. Daarvoor is maar een klein beetje stroom nodig.",
-          "Het resultaat is dat 1 eenheid stroom 3 à 4 eenheden warmte oplevert — een COP van 3 of 4. Een cv-ketel haalt dat nooit, want die zet gas om in warmte en verliest altijd een deel van de energie bij de verbranding. Juist die efficiëntie maakt dat je maandelijkse energiekosten dalen, ook al verbruik je wat meer stroom.",
+          "Een warmtepomp máákt geen warmte, hij verplaatst het: hij haalt warmte uit de buitenlucht — die er zelfs bij vorst nog in zit — en pompt die naar binnen, net als een koelkast maar dan omgekeerd. De stroom gebruikt hij alleen om die warmte te verplaatsen. Daardoor levert 1 kWh stroom ongeveer 3 tot 4 kWh warmte op. Dat getal heet de COP. Hoe kouder het buiten is en hoe warmer het water moet worden (bijvoorbeeld bij oude radiatoren), hoe lager de COP; over een heel jaar gemeten — de SCOP — zit een goed systeem op vloerverwarming rond de 3,5 à 4.",
+          "Een veelgehoord misverstand is dat een cv-ketel energie verspilt. Dat klopt niet: een moderne hr-ketel zet zo'n 95% van het gas om in warmte. Het verschil is dat een ketel warmte máákt uit gas en daardoor nooit boven ongeveer 1 kWh warmte per kWh gas komt, terwijl een warmtepomp warmte uit de lucht haalt en daardoor wél boven de 1 komt. Je vergelijkt dus warmte per kWh stroom met warmte per kWh gas.",
+          "Belangrijk voor je portemonnee: een COP van 3-4 betekent niet dat je 3 tot 4 keer goedkoper uit bent. Stroom is per kWh een stuk duurder dan gas. Die hogere stroomprijs wordt grotendeels gecompenseerd door de hoge COP, waardoor je netto meestal goedkoper uit bent dan met gas — en flink goedkoper als je zonnepanelen hebt. De grootste winst zit in CO₂: een warmtepomp stoot veel minder uit, en dat wordt elk jaar beter naarmate de stroom groener wordt.",
         ],
       },
       {
