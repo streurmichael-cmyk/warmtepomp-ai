@@ -7,16 +7,20 @@ export function buildMetadata({
   title,
   description,
   path,
+  noindex = false,
 }: {
   title: string;
   description: string;
   path: string;
+  /** Zet op true om <meta name="robots" content="noindex, follow"> toe te voegen. */
+  noindex?: boolean;
 }): Metadata {
   const url = path === "/" ? SITE_URL : `${SITE_URL}${path}`;
 
   return {
     title,
     description,
+    ...(noindex ? { robots: { index: false, follow: true } } : {}),
     alternates: {
       canonical: path,
       languages: { "nl-NL": path },

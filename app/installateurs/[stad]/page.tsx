@@ -17,7 +17,7 @@ import {
 } from "@/components/icons";
 import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
 import { getBlogPost } from "@/lib/blog-posts";
-import { cities, getCity } from "@/lib/cities";
+import { cities, getCity, isCityIndexed } from "@/lib/cities";
 import { buildMetadata } from "@/lib/seo";
 
 // Evergreen blogartikelen die op elke stadpagina relevant zijn als verdieping.
@@ -46,6 +46,7 @@ export async function generateMetadata({
     title: `Warmtepomp installateur ${city.name} | Gratis vergelijken | warmtepomp.ai`,
     description: `Op zoek naar een gecertificeerde warmtepomp installateur in ${city.name}? Krijg eerst een gratis, onafhankelijke indicatie voor jouw woning. ISDE subsidie tot €2.500.`,
     path: `/installateurs/${city.slug}`,
+    noindex: !isCityIndexed(city.slug),
   });
 }
 
@@ -145,6 +146,32 @@ export default async function StadPage({
             />
           </div>
         </section>
+
+        {city.localFacts && city.localFacts.length > 0 && (
+          <section className="bg-white py-16 sm:py-20">
+            <div className="mx-auto max-w-3xl px-5 sm:px-8">
+              <div className="mb-8">
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
+                  Lokaal
+                </p>
+                <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
+                  Warmtepomp in {city.name}: wat je lokaal moet weten
+                </h2>
+              </div>
+              <ul className="space-y-4">
+                {city.localFacts.map((fact) => (
+                  <li
+                    key={fact}
+                    className="flex items-start gap-3 rounded-2xl border border-green/10 bg-light-bg p-5 text-base leading-relaxed text-muted"
+                  >
+                    <CheckCircleIcon className="mt-0.5 h-5 w-5 flex-shrink-0 text-green" />
+                    <span>{fact}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         <section className="bg-light-bg py-20 sm:py-24">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">

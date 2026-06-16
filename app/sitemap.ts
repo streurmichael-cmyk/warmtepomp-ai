@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { cities } from "@/lib/cities";
+import { cities, isCityIndexed } from "@/lib/cities";
 import { blogPosts } from "@/lib/blog-posts";
 import { SITE_URL } from "@/lib/seo";
 
@@ -31,12 +31,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority,
   }));
 
-  const cityEntries: MetadataRoute.Sitemap = cities.map((city) => ({
-    url: `${SITE_URL}/installateurs/${city.slug}`,
-    lastModified: now,
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
+  // Alleen geïndexeerde steden in de sitemap; noindex-steden laten we weg.
+  const cityEntries: MetadataRoute.Sitemap = cities
+    .filter((city) => isCityIndexed(city.slug))
+    .map((city) => ({
+      url: `${SITE_URL}/installateurs/${city.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    }));
 
   const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,

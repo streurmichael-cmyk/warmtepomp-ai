@@ -13,8 +13,31 @@ export type City = {
   woningType: string;
   /** Unieke paragraaf over de lokale woningvoorraad voor de "Waarom warmtepomp.ai" sectie. */
   localParagraph: string;
+  /** Unieke lokale feiten (subsidie, warmtenet, woningbestand) — alleen voor de grote steden. */
+  localFacts?: string[];
   faqs: CityFaq[];
 };
+
+/**
+ * Steden die geïndexeerd mogen worden door zoekmachines. Alle andere
+ * stadspagina's krijgen <meta name="robots" content="noindex, follow">.
+ */
+export const INDEXED_CITY_SLUGS = [
+  "amsterdam",
+  "rotterdam",
+  "utrecht",
+  "den-haag",
+  "eindhoven",
+  "tilburg",
+  "groningen",
+  "almere",
+  "breda",
+  "nijmegen",
+] as const;
+
+export function isCityIndexed(slug: string): boolean {
+  return (INDEXED_CITY_SLUGS as readonly string[]).includes(slug);
+}
 
 export const cities: City[] = [
   {
@@ -26,6 +49,13 @@ export const cities: City[] = [
     woningType: "grachtenpanden, jaren '30-woningen en moderne nieuwbouwappartementen",
     localParagraph:
       "Amsterdam heeft een opvallend gevarieerde woningvoorraad: van monumentale grachtenpanden in de binnenstad tot jaren '30-woningen in West en Zuid, en moderne nieuwbouw in IJburg en Amsterdam-Noord. Voor grachtenpanden en jaren '30-woningen is de isolatiegraad vaak wisselend, waardoor een hybride warmtepomp meestal de meest praktische eerste stap is: je bespaart direct op gas, terwijl je cv-ketel als back-up dient bij strenge vorst. Nieuwbouwwoningen in IJburg en Amsterdam-Noord zijn doorgaans al goed geïsoleerd en daardoor vaak geschikt voor een volledig elektrische lucht-water warmtepomp. Mijn keuzehulp houdt rekening met dit verschil en helpt je verder richting gecertificeerde installateurs die bekend zijn met zowel monumentale panden als moderne nieuwbouw in en om de hoofdstad.",
+    localFacts: [
+      "Gemeente Amsterdam geeft €2.500 extra subsidie per woning (bovenop de landelijke ISDE), aan te vragen van 1 januari 2026 t/m 31 december 2027, met een totaalbudget van €7,5 miljoen.",
+      "Deze gemeentelijke subsidie geldt alleen voor eengezinswoningen (geen appartementen) met een WOZ-waarde van maximaal €666.000 (peiljaar 2024). Vraag de subsidie aan vóór de installatie.",
+      "Het Amsterdamse warmtenet reikt al naar 90.000+ woningen in Noord, Oost en Zuidoost. Controleer eerst of jouw adres in een warmtenet-zone valt — als dat zo is, is een warmtepomp misschien niet de beste keuze.",
+      "Amsterdam onderzoekt in 2026 ook leaseconstructies voor warmtepompen.",
+      "Woon je in een VvE-complex? Het plaatsen van een buitenunit vereist toestemming van de VvE.",
+    ],
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Amsterdam?",
@@ -50,6 +80,12 @@ export const cities: City[] = [
     woningType: "portiekwoningen, jaren '50-woningen en moderne nieuwbouwappartementen",
     localParagraph:
       "Rotterdam is een echte rijtjeswoningenstad: van de naoorlogse portiekwoningen in Zuidwijk en Pendrecht tot de talloze rijtjeswoningen in wijken als Overschie en Hillegersberg. Deze woningen hebben vaak een vergelijkbaar bouwjaar en isolatieniveau, waardoor installateurs goed kunnen inschatten welk vermogen warmtepomp nodig is — dat scheelt in de offerte. Voor rijtjeswoningen uit de jaren '50-60 is een hybride warmtepomp vaak een logische eerste stap, omdat de cv-ketel als back-up blijft dienen tijdens koude periodes. In nieuwbouwwijken zoals de Kop van Zuid en delen van Feyenoord City zijn woningen vaak al volledig elektrisch verwarmd. Via warmtepomp.ai vind je snel een installateur die ervaring heeft met jouw specifieke type rijtjeswoning in Rotterdam.",
+    localFacts: [
+      "Typisch Rotterdams woningbestand: veel tussenwoningen uit de jaren '70 en '80, vaak met spouwmuurisolatie maar zonder vloerverwarming — een hybride warmtepomp is dan de meest praktische tussenstap.",
+      "Rotterdampas-houders krijgen korting op energiebesparende maatregelen.",
+      "De gemeente Rotterdam heeft een eigen energiefonds voor bewoners die niet in aanmerking komen voor andere subsidies; je kunt ook een energiecoach aanvragen via de gemeente.",
+      "ISDE-subsidie voor een hybride warmtepomp ligt tussen €875 en €2.300, afhankelijk van het vermogen en de SCOP-waarde.",
+    ],
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Rotterdam?",
@@ -74,6 +110,12 @@ export const cities: City[] = [
     woningType: "jaren '30-woningen, compacte stadswoningen en nieuwbouw in Leidsche Rijn",
     localParagraph:
       "Utrecht combineert compacte jaren '30-woningen in wijken als Lombok en Tuindorp met de grootschalige nieuwbouw van Leidsche Rijn. De compacte stadswoningen binnen de Singel hebben vaak een kleinere warmtevraag, waardoor een warmtepomp met minder vermogen — en dus een lagere prijs — vaak al voldoet. Voor deze woningen is een hybride warmtepomp meestal de slimste eerste stap, zeker als de spouwmuur- of vloerisolatie nog niet optimaal is. Nieuwbouwwoningen in Leidsche Rijn voldoen vrijwel altijd aan de eisen voor een volledig elektrische lucht-water warmtepomp, vaak zelfs met vloerverwarming als standaard. Mijn keuzehulp stemt de indicatie af op jouw woningtype en bouwjaar, en helpt je verder richting gecertificeerde installateurs die zowel in de binnenstad als in Leidsche Rijn actief zijn.",
+    localFacts: [
+      "Overvecht, Zuilen en Ondiep zijn de eerste wijken die vóór 2028 aardgasvrij worden. Woon je hier? Begin nu met oriënteren.",
+      "Provincie Utrecht: via Warm Thuis Utrecht is er aanvullende isolatiesubsidie tot €2.500 per woning, stapelbaar met de ISDE.",
+      "Een hybride warmtepomp is geschikt voor de jaren-'70-woningen in Zuilen, Ondiep en Hoograven — ook zonder vloerverwarming.",
+      "In aangewezen wijken kan stadsverwarming het alternatief zijn; controleer dit via de gemeente Utrecht.",
+    ],
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Utrecht?",
@@ -98,6 +140,12 @@ export const cities: City[] = [
     woningType: "jaren '30-woningen, rijtjeswoningen en Vinex-nieuwbouw",
     localParagraph:
       "Den Haag kent een sterke mix van karakteristieke jaren '30-wijken zoals Bezuidenhout en Voorburg, en de grootschalige Vinex-wijken Ypenburg en Leidschenveen. In de oudere wijken zijn woningen vaak voorzien van radiatoren met een hogere aanvoertemperatuur, waardoor een hybride warmtepomp — die de cv-ketel aanvult op de koudste dagen — vaak de beste keuze is. In Ypenburg en Leidschenveen zijn de meeste woningen na 2000 gebouwd met goede isolatie en vaak al lage-temperatuurverwarming, wat ze geschikt maakt voor een volledig elektrische lucht-water warmtepomp. Of je nu in een rijtjeswoning in Bezuidenhout woont of in een moderne eengezinswoning in Ypenburg, mijn keuzehulp geeft binnen enkele minuten een indicatie die is afgestemd op jouw specifieke situatie en helpt je verder richting gecertificeerde installateurs in de regio Haaglanden.",
+    localFacts: [
+      "In delen van Escamp en Laak wordt het stadsverwarmingsnetwerk actief uitgebreid — controleer of jouw adres in een warmtenet-zone valt voordat je een warmtepomp aanschaft.",
+      "Woon je in een VvE-complex? Het plaatsen van een buitenunit vereist toestemming van de VvE.",
+      "Kies een installateur met STEK-certificaat (voor koelmiddelen) en bij voorkeur het ISSO-kwaliteitskeurmerk voor warmtepompen.",
+      "ISDE-subsidie voor een hybride warmtepomp in 2026: tot €2.700.",
+    ],
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Den Haag?",
@@ -122,6 +170,11 @@ export const cities: City[] = [
     woningType: "nieuwbouwwoningen en jaren '70-woningen",
     localParagraph:
       "Eindhoven groeit hard, en dat is goed te zien aan de woningvoorraad: naast de jaren '70-woningen rond Woensel en Tongelre staan er steeds meer goed geïsoleerde nieuwbouwwoningen in wijken als Meerhoven en Strijp. Voor de oudere jaren '70-woningen geldt vaak dat de spouwmuurisolatie en het glas verouderd zijn, waardoor een hybride warmtepomp een verstandige eerste stap is — je bespaart direct op gas zonder dat je meteen hoeft te investeren in extra isolatie. De nieuwbouwwoningen in Meerhoven en de Brainport-regio zijn vaak al uitgerust met vloerverwarming en een lage warmtevraag, ideaal voor een volledig elektrische lucht-water warmtepomp. Mijn keuzehulp houdt rekening met deze verschillen en helpt je verder richting gecertificeerde installateurs die de regio Eindhoven en Brainport goed kennen.",
+    localFacts: [
+      "Eindhoven is koploper in Noord-Brabant: 3.115 woningen ontvingen al ISDE-subsidie voor een warmtepomp — een stijging van 31% in 2025.",
+      "Noord-Brabant als geheel: 1 op de 11 koopwoningen heeft al een warmtepomp, een van de hoogste percentages van Nederland.",
+      "Technische regio met relatief veel nieuwere woningen en een modern woningbestand, goed geschikt voor lucht-water warmtepompen.",
+    ],
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Eindhoven?",
@@ -146,6 +199,11 @@ export const cities: City[] = [
     woningType: "moderne, goed geïsoleerde woningen",
     localParagraph:
       "Almere is een van de jongste steden van Nederland, en dat is goed nieuws als je nadenkt over een warmtepomp. De meeste woningen in wijken als Almere Poort, Almere Buiten en Almere Hout zijn na 1990 gebouwd volgens moderne isolatienormen, vaak met vloerverwarming als standaard verwarmingssysteem. Dat maakt deze woningen meestal direct geschikt voor een volledig elektrische lucht-water warmtepomp, zonder dat er eerst dure isolatiemaatregelen nodig zijn. De terugverdientijd is daardoor in Almere vaak gunstiger dan in steden met veel oudere woningbouw. Toch verschilt het per wijk en bouwjaar hoeveel vermogen je nodig hebt en wat de exacte kosten zijn. Mijn gratis keuzehulp rekent dit voor jouw specifieke woning in Almere uit en helpt je verder richting gecertificeerde installateurs die de stad goed kennen.",
+    localFacts: [
+      "Almere is de jongste grote stad van Nederland (eerste woning in 1976) — een relatief modern woningbestand, waarvan veel woningen zonder grote aanpassingen geschikt zijn voor een lucht-water warmtepomp.",
+      "Groeiende stad met veel jonge gezinnen en koopwoningen, en een actieve markt voor verduurzaming.",
+      "ISDE-subsidie loopt via de landelijke regeling; er is geen aparte gemeentelijke subsidie bekend (controleer dit via almere.nl).",
+    ],
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Almere?",
@@ -265,6 +323,11 @@ export const cities: City[] = [
     woningType: "jaren '30-woningen, studentenwoningen en nieuwbouw rond Meerstad",
     localParagraph:
       "Groningen heeft een grote variatie aan woningen: van karakteristieke jaren '30-woningen in de Korrewegwijk en Helpman, via compacte studentenwoningen rond de binnenstad, tot moderne nieuwbouw in de groeiwijk Meerstad. De oudere stadswoningen hebben vaak nog originele radiatoren en wisselende isolatie, waardoor een hybride warmtepomp meestal de beste eerste stap is om te beginnen met besparen op gas. Studentenwoningen zijn vaak kleiner van oppervlakte, wat betekent dat een warmtepomp met minder vermogen — en dus lagere kosten — al voldoende kan zijn. Nieuwbouw in Meerstad is daarentegen vaak al volledig voorbereid op een elektrische warmtepomp met vloerverwarming. Mijn keuzehulp stemt de indicatie af op jouw specifieke woning en bouwjaar, en helpt je verder richting gecertificeerde installateurs die actief zijn in de hele provincie Groningen.",
+    localFacts: [
+      "Provincie Groningen: het programma 'Aardgasvrij Groningen' ondersteunt isolatiemaatregelen als voorbereiding op het plaatsen van een warmtepomp.",
+      "Aardbevingsgebied: sommige woningen hebben specifieke bouwkundige aandachtspunten bij het plaatsen van de buitenunit — vraag je installateur hierop te letten.",
+      "Groningen loopt voorop in aardgasvrij-beleid vanwege de gasproblematiek, met extra aandacht voor alternatieve verwarmingsoplossingen.",
+    ],
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Groningen?",
@@ -289,6 +352,11 @@ export const cities: City[] = [
     woningType: "jaren '60-70 woningen en moderne nieuwbouw in de Reeshof",
     localParagraph:
       "Tilburg heeft veel naoorlogse wijken met jaren '60-70-woningen rond het centrum en Tilburg-Noord, naast de uitgebreide nieuwbouwwijk de Reeshof. De jaren '60-70 woningen zijn vaak voorzien van enkel of dubbel glas van de eerste generatie en spouwmuren die niet altijd goed geïsoleerd zijn. Voor deze woningen is een hybride warmtepomp doorgaans de verstandigste keuze: hij werkt samen met je bestaande cv-ketel en levert direct besparing op je gasrekening. In de Reeshof zijn de meeste woningen na 1990 gebouwd met betere isolatie en vaak vloerverwarming, waardoor een volledig elektrische lucht-water warmtepomp hier vaak al een prima optie is zonder extra aanpassingen. Mijn gratis keuzehulp berekent voor jouw specifieke Tilburgse woning wat het beste past, en helpt je verder richting gecertificeerde installateurs in de regio Hart van Brabant.",
+    localFacts: [
+      "Tilburg valt onder de Energiesubsidiewijzer (energiesubsidiewijzer.nl), die een volledig lokaal overzicht geeft van subsidies en leningen.",
+      "Noord-Brabantse markt met een actief warmtepompenlandschap en meerdere gecertificeerde installateurs in de regio.",
+      "Ook hier is de hybride warmtepomp de populairste keuze voor bestaande bouw.",
+    ],
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Tilburg?",
@@ -313,6 +381,11 @@ export const cities: City[] = [
     woningType: "jaren '30-woningen en moderne nieuwbouw",
     localParagraph:
       "Breda combineert karakteristieke jaren '30-wijken zoals Belcrum en Brabantpark met moderne nieuwbouw in onder meer Nieuw Wolfslaar en Gageldonk. In de jaren '30-woningen is de spouwmuurisolatie vaak summier of afwezig, en zijn de radiatoren ontworpen voor een hogere aanvoertemperatuur. Een hybride warmtepomp is hier vaak de meest logische eerste stap: hij vermindert je gasverbruik aanzienlijk, terwijl de cv-ketel bijspringt op echt koude dagen. Voor woningen die al zijn voorzien van spouwmuur- en dakisolatie kan een volledig elektrische warmtepomp ook al haalbaar zijn. Nieuwbouwwoningen in Nieuw Wolfslaar voldoen vrijwel altijd aan de eisen voor een volledig elektrische lucht-water warmtepomp. Via mijn keuzehulp ontvang je een indicatie die is toegespitst op jouw woning in Breda, en help ik je verder richting gecertificeerde installateurs die de regio goed kennen.",
+    localFacts: [
+      "Breda staat in de top 3 van Noord-Brabant: 2.893 woningen ontvingen al ISDE-subsidie voor een warmtepomp.",
+      "Actieve installateursmarkt in de regio, met relatief korte wachttijden vergeleken met de Randstad.",
+      "Mix van jaren-'70-woningen en nieuwbouw; voor het oudere deel van het woningbestand is een hybride warmtepomp geschikt.",
+    ],
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Breda?",
@@ -337,6 +410,11 @@ export const cities: City[] = [
     woningType: "jaren '20-30 woningen en nieuwbouw in de Waalsprong",
     localParagraph:
       "Nijmegen-Oost staat bekend om zijn sfeervolle jaren '20-30-woningen met karakteristieke details, terwijl aan de overkant van de Waal de nieuwbouwwijk de Waalsprong steeds verder uitbreidt. De woningen in Nijmegen-Oost hebben vaak monumentale of beeldbepalende gevels, waardoor aanpassingen aan de buitenkant — zoals gevelisolatie — niet altijd mogelijk of wenselijk zijn. Een hybride warmtepomp is dan een uitkomst: je bespaart op gas zonder de uitstraling van je woning aan te tasten, en je cv-ketel blijft als back-up beschikbaar. In de Waalsprong zijn woningen vaak al voorbereid op duurzame verwarming met lage-temperatuurafgifte, wat ze geschikt maakt voor een volledig elektrische lucht-water warmtepomp. Mijn keuzehulp houdt rekening met dit verschil tussen de oude stad en de nieuwbouw, en helpt je verder richting gecertificeerde installateurs in de regio Nijmegen.",
+    localFacts: [
+      "Nijmegen heeft als oudste stad van Nederland ambitieuze duurzaamheidsdoelen en voert actief beleid rondom aardgasvrije wijken.",
+      "Veel studenten- en huurwoningen in het centrum — warmtepomp-subsidie is alleen voor eigenaar-bewoners, dus vooral relevant voor koopwoningen in de omliggende wijken.",
+      "Regio Arnhem-Nijmegen: actieve installateursmarkt met meerdere gecertificeerde bedrijven in de regio.",
+    ],
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Nijmegen?",
