@@ -12,6 +12,7 @@ import { Objections } from "@/components/objections";
 import { PricingRanges } from "@/components/pricing-ranges";
 import { Reviews } from "@/components/reviews";
 import { TrustBar } from "@/components/trust-bar";
+import { faqs } from "@/lib/faqs";
 import { SITE_URL, buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -45,6 +46,20 @@ const websiteJsonLd = {
   inLanguage: "nl-NL",
 };
 
+// Komt overeen met de FAQ die onderaan de homepage zichtbaar is (<Faq />).
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
+
 export default function Home() {
   return (
     <>
@@ -55,6 +70,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Header />
       <TrustBar />

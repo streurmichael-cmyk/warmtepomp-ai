@@ -45,7 +45,7 @@ export default function OverOnsPage() {
             <div className="rounded-2xl border border-green/10 bg-white p-8 sm:p-10">
               <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:items-start sm:text-left">
                 <Image
-                  src="/portret-michael.jpg"
+                  src="/portret-michael.webp"
                   alt="Michael Streur, oprichter warmtepomp.ai"
                   width={112}
                   height={112}

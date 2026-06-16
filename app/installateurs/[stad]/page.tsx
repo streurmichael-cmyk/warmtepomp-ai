@@ -16,8 +16,16 @@ import {
   SubsidyIcon,
 } from "@/components/icons";
 import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
+import { getBlogPost } from "@/lib/blog-posts";
 import { cities, getCity } from "@/lib/cities";
 import { buildMetadata } from "@/lib/seo";
+
+// Evergreen blogartikelen die op elke stadpagina relevant zijn als verdieping.
+const relatedArticleSlugs = [
+  "warmtepomp-geschikt-voor-mijn-woning",
+  "warmtepomp-kosten-2026-compleet-overzicht",
+  "warmtepomp-besparing-berekenen",
+];
 
 export function generateStaticParams() {
   return cities.map((city) => ({ stad: city.slug }));
@@ -55,6 +63,10 @@ export default async function StadPage({
   const { stad } = await params;
   const city = getCity(stad);
   if (!city) notFound();
+
+  const relatedArticles = relatedArticleSlugs
+    .map((articleSlug) => getBlogPost(articleSlug))
+    .filter((post): post is NonNullable<typeof post> => Boolean(post));
 
   const waarom = [
     {
@@ -320,6 +332,28 @@ export default async function StadPage({
                 <ArrowRight className="h-5 w-5 flex-shrink-0 text-green" />
               </Link>
             </div>
+
+            {relatedArticles.length > 0 && (
+              <div className="mt-10">
+                <p className="mb-4 text-center text-sm font-bold text-dark">
+                  Lees verder op de blog
+                </p>
+                <div className="space-y-3">
+                  {relatedArticles.map((article) => (
+                    <Link
+                      key={article.slug}
+                      href={`/blog/${article.slug}`}
+                      className="flex items-center justify-between gap-4 rounded-2xl border border-green/10 bg-white p-5 transition-all hover:-translate-y-1 hover:border-green/35 hover:shadow-[0_16px_48px_rgba(34,181,114,0.08)]"
+                    >
+                      <span className="font-display text-sm font-bold text-dark sm:text-base">
+                        {article.title}
+                      </span>
+                      <ArrowRight className="h-5 w-5 flex-shrink-0 text-green" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
       </main>

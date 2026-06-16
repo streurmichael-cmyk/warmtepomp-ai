@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { faqs } from "@/lib/faqs";
-import { ChevronDownIcon } from "./icons";
+import { ArrowRight, ChevronDownIcon } from "./icons";
 
 export function Faq({ showHeading = true }: { showHeading?: boolean }) {
   const [open, setOpen] = useState<number | null>(null);
@@ -51,6 +52,15 @@ export function Faq({ showHeading = true }: { showHeading?: boolean }) {
                 {isOpen && (
                   <dd className="px-6 pb-6 text-sm leading-relaxed text-muted">
                     {faq.a}
+                    {faq.link && (
+                      <Link
+                        href={faq.link.href}
+                        className="mt-3 inline-flex items-center gap-1.5 font-bold text-action hover:underline"
+                      >
+                        {faq.link.label}
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    )}
                   </dd>
                 )}
               </div>

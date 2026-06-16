@@ -59,7 +59,7 @@ export default function KostenPage() {
             </p>
             <div className="mt-10 aspect-[16/9] max-h-[300px] overflow-hidden rounded-xl sm:max-h-none">
               <Image
-                src="/images/stel-met-papieren.png"
+                src="/images/stel-met-papieren.webp"
                 alt="Stel dat thuis de energierekening en besparingen bekijkt"
                 width={1200}
                 height={675}

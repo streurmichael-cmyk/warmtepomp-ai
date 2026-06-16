@@ -1,17 +1,34 @@
-export type FaqItem = { q: string; a: string };
+export type FaqItem = {
+  q: string;
+  a: string;
+  /** Optionele link naar een verdiepend blogartikel. */
+  link?: { href: string; label: string };
+};
 
 export const faqs: FaqItem[] = [
   {
     q: "Welk type warmtepomp past bij mijn woning?",
     a: "Dat hangt af van je isolatieniveau, verwarmingsoppervlak en budget. Een hybride warmtepomp werkt goed in oudere, slecht geïsoleerde woningen. Een volledig elektrische lucht/water-warmtepomp is efficiënter maar vereist betere isolatie. Onze keuzehulp stelt de juiste vragen en geeft je een persoonlijke indicatie.",
+    link: {
+      href: "/blog/warmtepomp-geschikt-voor-mijn-woning",
+      label: "Lees de complete checklist: is een warmtepomp geschikt voor jouw woning?",
+    },
   },
   {
     q: "Hoeveel subsidie kan ik krijgen voor een warmtepomp?",
     a: "Via de ISDE-regeling (Investeringssubsidie Duurzame Energie) kun je in 2026 tot €3.500 subsidie ontvangen voor een warmtepomp. Het exacte bedrag hangt af van het type warmtepomp en het vermogen. Wij berekenen jouw subsidie automatisch op basis van jouw situatie.",
+    link: {
+      href: "/blog/warmtepomp-subsidie-2026-complete-gids",
+      label: "Lees de complete ISDE-subsidiegids voor 2026",
+    },
   },
   {
     q: "Wat kost een warmtepomp gemiddeld?",
     a: "Een hybride warmtepomp kost inclusief installatie gemiddeld €7.000 – €9.500. Een volledige lucht/water-warmtepomp kost €8.500 – €14.000 afhankelijk van je woningtype. Na ISDE-subsidie en eventuele BTW-teruggave kan dit aanzienlijk lager uitvallen.",
+    link: {
+      href: "/blog/warmtepomp-kosten-2026-compleet-overzicht",
+      label: "Bekijk het complete kostenoverzicht voor 2026",
+    },
   },
   {
     q: "Hoe lang duurt de installatie van een warmtepomp?",
@@ -80,5 +97,9 @@ export const faqs: FaqItem[] = [
   {
     q: "Hoe vraag ik ISDE-subsidie aan?",
     a: "Je vraagt de ISDE-subsidie zelf aan via mijn.rvo.nl, nadat je warmtepomp is gekocht en geïnstalleerd. Je hebt hiervoor de offerte, de factuur en het betaalbewijs nodig. De aanvraag moet binnen 12 maanden na installatie worden ingediend. Veel installateurs helpen je hier graag bij.",
+    link: {
+      href: "/blog/warmtepomp-subsidie-aanvragen-stap-voor-stap",
+      label: "Bekijk de ISDE-aanvraag stap voor stap",
+    },
   },
 ];

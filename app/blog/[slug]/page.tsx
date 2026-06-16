@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import { ArrowLeft, ArrowRight } from "@/components/icons";
-import { blogPosts, getBlogPost } from "@/lib/blog-posts";
+import { blogPosts, getBlogPost, getRelatedPosts } from "@/lib/blog-posts";
 import { buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -46,6 +46,8 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) notFound();
+
+  const relatedPosts = getRelatedPosts(slug);
 
   return (
     <>
@@ -119,6 +121,38 @@ export default async function BlogPostPage({
             </div>
           </div>
         </section>
+
+        {relatedPosts.length > 0 && (
+          <section className="bg-white py-16 sm:py-20">
+            <div className="mx-auto max-w-3xl px-5 sm:px-8">
+              <div className="mb-8 text-center">
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
+                  Meer lezen
+                </p>
+                <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
+                  Gerelateerde artikelen
+                </h2>
+              </div>
+              <div className="space-y-4">
+                {relatedPosts.map((related) => (
+                  <Link
+                    key={related.slug}
+                    href={`/blog/${related.slug}`}
+                    className="flex items-center justify-between gap-4 rounded-2xl border border-green/15 bg-light-bg p-6 transition-all hover:-translate-y-1 hover:border-green/35 hover:shadow-[0_16px_48px_rgba(34,181,114,0.08)]"
+                  >
+                    <span>
+                      <span className="block font-display text-base font-bold text-dark">
+                        {related.title}
+                      </span>
+                      <span className="mt-1 block text-sm text-muted">{related.description}</span>
+                    </span>
+                    <ArrowRight className="h-5 w-5 flex-shrink-0 text-green" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="bg-action py-20 text-center sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">

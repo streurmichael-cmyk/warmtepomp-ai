@@ -1091,3 +1091,11 @@ export const blogPosts: BlogPost[] = [
 export function getBlogPost(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
 }
+
+/** Geeft tot `count` andere blogartikelen terug voor interne links onderaan een artikel. */
+export function getRelatedPosts(slug: string, count = 3): BlogPost[] {
+  const index = blogPosts.findIndex((post) => post.slug === slug);
+  if (index === -1) return blogPosts.slice(0, count);
+  const ordered = [...blogPosts.slice(index + 1), ...blogPosts.slice(0, index)];
+  return ordered.slice(0, count);
+}
