@@ -22,12 +22,12 @@ const objections = [
   {
     question: "Ik zie op tegen vergunningen en gedoe",
     answer:
-      "Voor de meeste woningen heb je voor een warmtepomp geen vergunning nodig — de buitenunit valt meestal onder vergunningsvrij bouwen. Uitzonderingen: monumenten, sommige beschermde dorps- of stadsgezichten, en als de unit aan de voorgevel of op het dak komt. Onze keuzehulp checkt dit niet automatisch, maar je gemeente kan dit meestal in 5 minuten bevestigen.",
+      "Voor de meeste woningen heb je voor een warmtepomp geen vergunning nodig — de buitenunit valt meestal onder vergunningsvrij bouwen. Uitzonderingen: monumenten, sommige beschermde dorps- of stadsgezichten, en als de unit aan de voorgevel of op het dak komt. Mijn keuzehulp checkt dit niet automatisch, maar je gemeente kan dit meestal in 5 minuten bevestigen.",
   },
   {
     question: "De terugverdientijd is te lang, ik woon hier niet zo lang meer",
     answer:
-      "Een eerlijk punt. Een warmtepomp op zichzelf verdient zich vaak pas in 15 tot 20 jaar terug, dus hij heeft vooral zin als je van plan bent langer te blijven wonen. Ga je over een paar jaar verhuizen? Dan is de winst vooral dat je huis met een warmtepomp makkelijker en voor een betere prijs verkoopt — energielabel telt steeds zwaarder mee. Maar als investering voor jezelf is het dan minder logisch. Onze tip in dat geval: wacht hiermee tot je volgende huis.",
+      "Een eerlijk punt. Een warmtepomp op zichzelf verdient zich vaak pas in 15 tot 20 jaar terug, dus hij heeft vooral zin als je van plan bent langer te blijven wonen. Ga je over een paar jaar verhuizen? Dan is de winst vooral dat je huis met een warmtepomp makkelijker en voor een betere prijs verkoopt — energielabel telt steeds zwaarder mee. Maar als investering voor jezelf is het dan minder logisch. Mijn tip in dat geval: wacht hiermee tot je volgende huis.",
   },
 ];
 

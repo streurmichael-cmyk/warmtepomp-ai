@@ -12,7 +12,7 @@ const navLinks = [
   { href: "/aardgasvrij", label: "Aardgasvrij" },
   { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ" },
-  { href: "/over-ons", label: "Over ons" },
+  { href: "/over-ons", label: "Over mij" },
 ];
 
 export function Footer() {

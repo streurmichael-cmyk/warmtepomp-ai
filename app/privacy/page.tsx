@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Privacyverklaring | warmtepomp.ai",
   description:
-    "Lees hoe warmtepomp.ai omgaat met jouw persoonsgegevens: welke gegevens we verzamelen, waarvoor we ze gebruiken en welke rechten je hebt.",
+    "Lees hoe warmtepomp.ai omgaat met jouw persoonsgegevens: welke gegevens ik verzamel, waarvoor ik ze gebruik en welke rechten je hebt.",
   path: "/privacy",
 });
 
@@ -21,64 +21,64 @@ const sections: PrivacySection[] = [
   {
     heading: "Wie is verantwoordelijk",
     paragraphs: [
-      "Warmtepomp.ai is een onafhankelijk platform van Michael Streur. Wij zijn verantwoordelijk voor de verwerking van jouw persoonsgegevens zoals beschreven in deze privacyverklaring.",
-      "Heb je vragen over je gegevens? Mail ons op info@warmtepomp.ai.",
+      "Warmtepomp.ai is een onafhankelijk platform van Michael Streur. Ik ben verantwoordelijk voor de verwerking van jouw persoonsgegevens zoals beschreven in deze privacyverklaring.",
+      "Heb je vragen over je gegevens? Mail mij op info@warmtepomp.ai.",
     ],
   },
   {
-    heading: "Welke gegevens verzamelen we",
+    heading: "Welke gegevens verzamel ik",
     paragraphs: [
-      "Wanneer je het formulier op onze website invult, vragen we om de volgende gegevens: je naam, e-mailadres, telefoonnummer, postcode en woningtype.",
-      "We verzamelen alleen de gegevens die nodig zijn om je goed te kunnen helpen.",
+      "Wanneer je het formulier op mijn website invult, vraag ik om de volgende gegevens: je naam, e-mailadres, telefoonnummer, postcode en woningtype.",
+      "Ik verzamel alleen de gegevens die nodig zijn om je goed te kunnen helpen.",
     ],
   },
   {
-    heading: "Waarvoor gebruiken we je gegevens",
+    heading: "Waarvoor gebruik ik je gegevens",
     paragraphs: [
-      "We gebruiken jouw gegevens om je te koppelen aan gecertificeerde installateurs bij jou in de buurt en om je persoonlijke indicatie per e-mail te sturen.",
-      "We gebruiken je gegevens niet voor andere doeleinden dan hierboven beschreven, en we sturen je geen ongevraagde reclame.",
+      "Ik gebruik jouw gegevens om je te koppelen aan gecertificeerde installateurs bij jou in de buurt en om je persoonlijke indicatie per e-mail te sturen.",
+      "Ik gebruik je gegevens niet voor andere doeleinden dan hierboven beschreven, en ik stuur je geen ongevraagde reclame.",
     ],
   },
   {
-    heading: "Hoe lang bewaren we je gegevens",
+    heading: "Hoe lang bewaar ik je gegevens",
     paragraphs: [
-      "We bewaren je aanvraaggegevens (naam, e-mailadres, telefoonnummer, postcode en woninggegevens) maximaal 3 maanden.",
-      "Ben je via ons gekoppeld aan een installateur, dan bewaren we je gegevens tot maximaal 1 jaar na die koppeling, zodat we kunnen nagaan of alles goed is verlopen.",
+      "Ik bewaar je aanvraaggegevens (naam, e-mailadres, telefoonnummer, postcode en woninggegevens) maximaal 3 maanden.",
+      "Ben je via mij gekoppeld aan een installateur, dan bewaar ik je gegevens tot maximaal 1 jaar na die koppeling, zodat ik kan nagaan of alles goed is verlopen.",
       "Na deze termijn worden je gegevens automatisch en permanent verwijderd.",
     ],
   },
   {
-    heading: "Hoe beveiligen we je gegevens",
+    heading: "Hoe beveilig ik je gegevens",
     paragraphs: [
-      "Je naam, e-mailadres en telefoonnummer worden versleuteld opgeslagen in onze database (AES-256), zodat deze ook bij ongeautoriseerde toegang niet leesbaar zijn.",
+      "Je naam, e-mailadres en telefoonnummer worden versleuteld opgeslagen in mijn database (AES-256), zodat deze ook bij ongeautoriseerde toegang niet leesbaar zijn.",
     ],
   },
   {
-    heading: "Delen we jouw gegevens",
+    heading: "Deel ik jouw gegevens",
     paragraphs: [
-      "Ja. Om je te kunnen koppelen aan een geschikte installateur, delen we jouw gegevens met gecertificeerde installateurs uit ons netwerk, zodat zij contact met je kunnen opnemen voor een offerte.",
-      "Daarnaast gebruikt onze e-maildienst Resend je naam en e-mailadres om de bevestigings- en notificatiemails te versturen die bij je aanvraag horen.",
-      "We verkopen jouw gegevens nooit aan derden voor marketingdoeleinden.",
+      "Ja. Om je te kunnen koppelen aan een geschikte installateur, deel ik jouw gegevens met gecertificeerde installateurs uit mijn netwerk, zodat zij contact met je kunnen opnemen voor een offerte.",
+      "Daarnaast gebruikt mijn e-maildienst Resend je naam en e-mailadres om de bevestigings- en notificatiemails te versturen die bij je aanvraag horen.",
+      "Ik verkoop jouw gegevens nooit aan derden voor marketingdoeleinden.",
       <>
-        Lees in onze{" "}
+        Lees in mijn{" "}
         <Link href="/verwerkersovereenkomst" className="font-bold text-action hover:underline">
           verwerkersovereenkomst
         </Link>{" "}
-        meer over de afspraken die we met deze partijen maken.
+        meer over de afspraken die ik met deze partijen maak.
       </>,
     ],
   },
   {
     heading: "Jouw rechten",
     paragraphs: [
-      "Je hebt altijd het recht om in te zien welke gegevens we van je hebben, deze te laten corrigeren of te laten verwijderen.",
-      "Wil je hier gebruik van maken? Stuur een e-mail naar info@warmtepomp.ai en we helpen je zo snel mogelijk.",
+      "Je hebt altijd het recht om in te zien welke gegevens ik van je heb, deze te laten corrigeren of te laten verwijderen.",
+      "Wil je hier gebruik van maken? Stuur een e-mail naar info@warmtepomp.ai en ik help je zo snel mogelijk.",
     ],
   },
   {
     heading: "Cookies",
     paragraphs: [
-      "Warmtepomp.ai gebruikt alleen functionele cookies die nodig zijn om de website goed te laten werken. We gebruiken geen tracking- of advertentiecookies.",
+      "Warmtepomp.ai gebruikt alleen functionele cookies die nodig zijn om de website goed te laten werken. Ik gebruik geen tracking- of advertentiecookies.",
     ],
   },
 ];
@@ -98,7 +98,7 @@ export default function PrivacyPage() {
               Privacyverklaring
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted">
-              Hier lees je in begrijpelijke taal hoe wij omgaan met jouw persoonsgegevens.
+              Hier lees je in begrijpelijke taal hoe ik omga met jouw persoonsgegevens.
             </p>
             <p className="mt-2 text-sm text-muted">Laatst bijgewerkt: juni 2026</p>
           </div>

@@ -72,12 +72,12 @@ export default async function StadPage({
     {
       icon: MapPinIcon,
       title: "Lokale installateurs",
-      body: `We helpen je de beste optie voor jouw woning te vinden en bouwen aan een netwerk van gecertificeerde installateurs die actief zijn in ${city.name} en de regio.`,
+      body: `Ik help je de beste optie voor jouw woning te vinden en bouw aan een netwerk van gecertificeerde installateurs die actief zijn in ${city.name} en de regio.`,
     },
     {
       icon: ShieldIcon,
       title: "Onafhankelijke vergelijking",
-      body: "Wij zijn niet gebonden aan één merk of installateur. Je krijgt een eerlijke vergelijking van het beste type warmtepomp voor jouw situatie.",
+      body: "Ik ben niet gebonden aan één merk of installateur. Je krijgt een eerlijke vergelijking van het beste type warmtepomp voor jouw situatie.",
     },
     {
       icon: ConversationIcon,
@@ -125,15 +125,15 @@ export default async function StadPage({
               <p>
                 Op zoek naar een betrouwbare warmtepomp installateur in {city.name}? Via
                 warmtepomp.ai krijg je eerst gratis en vrijblijvend een onafhankelijke indicatie
-                voor jouw woning. {city.context} — we helpen je de beste optie te vinden en bouwen
+                voor jouw woning. {city.context} — ik help je de beste optie te vinden en bouw
                 aan een netwerk van gecertificeerde installateurs die bekend zijn met{" "}
                 {city.woningType.toLowerCase()} in {city.name}.
               </p>
               <p>
                 Voordat je een installateur kiest, is het slim om eerst te weten welk type
-                warmtepomp het beste bij jouw woning past. Onze gratis keuzehulp geeft je in een
+                warmtepomp het beste bij jouw woning past. Mijn gratis keuzehulp geeft je in een
                 paar minuten een persoonlijke indicatie van het beste type, de geschatte kosten en de
-                ISDE-subsidie. Daarna helpen we je verder richting een gecertificeerde installateur
+                ISDE-subsidie. Daarna help ik je verder richting een gecertificeerde installateur
                 in {city.name} en omgeving, die op basis daarvan een offerte op maat kan opstellen.
               </p>
             </div>
@@ -241,7 +241,7 @@ export default async function StadPage({
                   <p className="mt-3 text-xs text-muted">
                     Bekijk ook{" "}
                     <Link href="/subsidie" className="font-bold text-action hover:underline">
-                      onze subsidiepagina
+                      mijn subsidiepagina
                     </Link>
                     .
                   </p>

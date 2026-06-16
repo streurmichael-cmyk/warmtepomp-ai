@@ -18,8 +18,8 @@ export function Reviews() {
           Wat andere huiseigenaren zeggen
         </h2>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
-          Warmtepomp.ai is net gestart, dus we hebben nog geen stapel reviews — en die gaan we
-          ook niet verzinnen. Dit kunnen we wel laten zien:
+          Warmtepomp.ai is net gestart, dus ik heb nog geen stapel reviews — en die ga ik
+          ook niet verzinnen. Dit kan ik wel laten zien:
         </p>
 
         <div className="mt-8 grid max-w-2xl gap-4 text-left">
@@ -39,7 +39,7 @@ export function Reviews() {
           </Link>
 
           <div className="rounded-2xl border border-green/15 bg-white p-6">
-            <p className="font-display text-lg font-bold text-dark">Onze cijfers komen van</p>
+            <p className="font-display text-lg font-bold text-dark">Mijn cijfers komen van</p>
             <p className="mt-1 text-sm text-muted">
               Geen interne marketingcijfers, maar erkende bronnen:
             </p>
@@ -61,10 +61,10 @@ export function Reviews() {
           >
             <div>
               <p className="font-display text-lg font-bold text-dark">
-                Hoe we verdienen staat gewoon online
+                Hoe ik verdien staat gewoon online
               </p>
               <p className="mt-1 text-sm text-muted">
-                We ontvangen een vergoeding van installateurs per doorverwezen aanvraag — nooit
+                Ik ontvang een vergoeding van installateurs per doorverwezen aanvraag — nooit
                 van fabrikanten, en het kost jou niets extra.
               </p>
             </div>
@@ -83,10 +83,10 @@ export function Reviews() {
               </div>
               <div>
                 <p className="font-display text-lg font-bold text-dark">
-                  Heb je al een warmtepomp via ons gevonden?
+                  Heb je al een warmtepomp via mij gevonden?
                 </p>
                 <p className="mt-1 text-sm text-muted">
-                  Laat ons weten hoe het is gegaan — jouw ervaring helpt andere huiseigenaren.
+                  Laat me weten hoe het is gegaan — jouw ervaring helpt andere huiseigenaren.
                 </p>
               </div>
             </div>

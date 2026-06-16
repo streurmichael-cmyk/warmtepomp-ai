@@ -91,7 +91,7 @@ export function GemeenteLookupTool() {
 
       {resultaat && !resultaat.found && (
         <p className="mt-4 text-sm text-muted">
-          We konden deze postcode niet vinden. Controleer of je de postcode goed hebt ingevoerd.
+          Ik kon deze postcode niet vinden. Controleer of je de postcode goed hebt ingevoerd.
         </p>
       )}
     </div>

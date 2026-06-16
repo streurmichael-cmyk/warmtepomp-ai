@@ -32,7 +32,7 @@ const steps = [
   {
     icon: NetworkIcon,
     title: "Vergelijk installateurs",
-    body: "We helpen je de beste optie voor jouw woning te vinden en bouwen aan een netwerk van gecertificeerde installateurs, zodat je straks eenvoudig offertes kunt vergelijken.",
+    body: "Ik help je de beste optie voor jouw woning te vinden en bouw aan een netwerk van gecertificeerde installateurs, zodat je straks eenvoudig offertes kunt vergelijken.",
   },
   {
     icon: CheckCircleIcon,
@@ -57,7 +57,7 @@ export default function HoeHetWerktPage() {
                 In 4 stappen naar jouw warmtepomp
               </h1>
               <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-muted">
-                Van eerste vraag tot werkende warmtepomp — wij begeleiden je bij elke stap.
+                Van eerste vraag tot werkende warmtepomp — ik begeleid je bij elke stap.
               </p>
             </div>
 

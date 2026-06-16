@@ -8,7 +8,7 @@ export type FaqItem = {
 export const faqs: FaqItem[] = [
   {
     q: "Welk type warmtepomp past bij mijn woning?",
-    a: "Dat hangt af van je isolatieniveau, verwarmingsoppervlak en budget. Een hybride warmtepomp werkt goed in oudere, slecht geïsoleerde woningen. Een volledig elektrische lucht/water-warmtepomp is efficiënter maar vereist betere isolatie. Onze keuzehulp stelt de juiste vragen en geeft je een persoonlijke indicatie.",
+    a: "Dat hangt af van je isolatieniveau, verwarmingsoppervlak en budget. Een hybride warmtepomp werkt goed in oudere, slecht geïsoleerde woningen. Een volledig elektrische lucht/water-warmtepomp is efficiënter maar vereist betere isolatie. Mijn keuzehulp stelt de juiste vragen en geeft je een persoonlijke indicatie.",
     link: {
       href: "/blog/warmtepomp-geschikt-voor-mijn-woning",
       label: "Lees de complete checklist: is een warmtepomp geschikt voor jouw woning?",
@@ -16,7 +16,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Hoeveel subsidie kan ik krijgen voor een warmtepomp?",
-    a: "Via de ISDE-regeling (Investeringssubsidie Duurzame Energie) kun je in 2026 tot €3.500 subsidie ontvangen voor een warmtepomp. Het exacte bedrag hangt af van het type warmtepomp en het vermogen. Wij berekenen jouw subsidie automatisch op basis van jouw situatie.",
+    a: "Via de ISDE-regeling (Investeringssubsidie Duurzame Energie) kun je in 2026 tot €3.500 subsidie ontvangen voor een warmtepomp. Het exacte bedrag hangt af van het type warmtepomp en het vermogen. Ik bereken jouw subsidie automatisch op basis van jouw situatie.",
     link: {
       href: "/blog/warmtepomp-subsidie-2026-complete-gids",
       label: "Lees de complete ISDE-subsidiegids voor 2026",
@@ -40,7 +40,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Is warmtepomp.ai echt onafhankelijk?",
-    a: "Ja. Wij zijn niet in dienst van één merk of installateur en ontvangen geen provisie op verkopen. Wij maken een onafhankelijke vergelijking van welk type warmtepomp het beste bij jouw woning past en helpen je vervolgens de beste optie te vinden. We bouwen aan een netwerk van gecertificeerde installateurs, zodat je straks zelf offertes kunt vergelijken. Onze inkomsten komen uit een kleine verwijzingsvergoeding bij offerteaanvragen — alleen als jij tevreden bent.",
+    a: "Ja. Ik ben niet in dienst van één merk of installateur en ontvang geen provisie op verkopen. Ik maak een onafhankelijke vergelijking van welk type warmtepomp het beste bij jouw woning past en help je vervolgens de beste optie te vinden. Ik bouw aan een netwerk van gecertificeerde installateurs, zodat je straks zelf offertes kunt vergelijken. Mijn inkomsten komen uit een kleine verwijzingsvergoeding bij offerteaanvragen — alleen als jij tevreden bent.",
   },
   {
     q: "Wat is het verschil tussen lucht/water en bodemwarmtepomp?",
@@ -56,7 +56,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Heb ik vloerverwarming nodig voor een warmtepomp?",
-    a: "Nee, dat hoeft niet. Vloerverwarming helpt omdat een warmtepomp het beste werkt met water op een lagere temperatuur, maar moderne warmtepompen kunnen ook prima samenwerken met (grotere) radiatoren. Onze keuzehulp houdt hier rekening mee bij de indicatie.",
+    a: "Nee, dat hoeft niet. Vloerverwarming helpt omdat een warmtepomp het beste werkt met water op een lagere temperatuur, maar moderne warmtepompen kunnen ook prima samenwerken met (grotere) radiatoren. Mijn keuzehulp houdt hier rekening mee bij de indicatie.",
   },
   {
     q: "Wat gebeurt er als het buiten vriest?",
@@ -92,7 +92,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Wanneer is een warmtepomp niet geschikt?",
-    a: "Een warmtepomp is minder geschikt als je woning slecht geïsoleerd is én je niet kiest voor een hybride variant, of als er simpelweg geen ruimte is voor een buitenunit of bodemlus. Ook bij zeer beperkt budget en geen mogelijkheid tot financiering kan het lastig zijn. In bijna alle andere gevallen is er een passend type warmtepomp — onze keuzehulp laat zien welke dat is.",
+    a: "Een warmtepomp is minder geschikt als je woning slecht geïsoleerd is én je niet kiest voor een hybride variant, of als er simpelweg geen ruimte is voor een buitenunit of bodemlus. Ook bij zeer beperkt budget en geen mogelijkheid tot financiering kan het lastig zijn. In bijna alle andere gevallen is er een passend type warmtepomp — mijn keuzehulp laat zien welke dat is.",
   },
   {
     q: "Hoe vraag ik ISDE-subsidie aan?",

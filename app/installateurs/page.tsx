@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Een gecertificeerde warmtepomp installateur vinden | warmtepomp.ai",
   description:
-    "Op zoek naar een gecertificeerde warmtepomp installateur? Vul je gegevens in, dan helpen we je de beste optie voor jouw woning te vinden. Gratis en vrijblijvend.",
+    "Op zoek naar een gecertificeerde warmtepomp installateur? Vul je gegevens in, dan help ik je de beste optie voor jouw woning te vinden. Gratis en vrijblijvend.",
   path: "/installateurs",
 });
 
@@ -16,7 +16,7 @@ const benefits = [
   {
     icon: ShieldIcon,
     title: "Gecertificeerde installateurs",
-    body: "We bouwen aan een netwerk van gescreende en gecertificeerde installateurs, zodat we je straks de beste optie voor jouw woning kunnen bieden.",
+    body: "Ik bouw aan een netwerk van gescreende en gecertificeerde installateurs, zodat ik je straks de beste optie voor jouw woning kan bieden.",
   },
   {
     icon: NetworkIcon,
@@ -26,7 +26,7 @@ const benefits = [
   {
     icon: ConversationIcon,
     title: "Gratis en onafhankelijk",
-    body: "Geen verplichtingen en geen kosten. Wij zijn niet gebonden aan één installateur of merk.",
+    body: "Geen verplichtingen en geen kosten. Ik ben niet gebonden aan één installateur of merk.",
   },
 ];
 
@@ -54,8 +54,8 @@ export default function InstallateursPage() {
               Op zoek naar een gecertificeerde warmtepomp installateur?
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted">
-              Vul je postcode en woningtype in. We gaan voor je op zoek naar een passende
-              installateur en nemen zo snel mogelijk vrijblijvend contact met je op.
+              Vul je postcode en woningtype in. Ik ga voor je op zoek naar een passende
+              installateur en neem zo snel mogelijk vrijblijvend contact met je op.
             </p>
 
             <InstallateursLeadForm />

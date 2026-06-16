@@ -19,7 +19,7 @@ export const blogPosts: BlogPost[] = [
       "Alles over de ISDE-subsidie voor warmtepompen in 2026: bedragen per type, voorwaarden, het aanvraagproces en praktische tips om je aanvraag soepel te laten verlopen.",
     publishedAt: "2026-06-03",
     intro:
-      "Een warmtepomp is een flinke investering, maar de overheid betaalt via de ISDE-regeling een aanzienlijk deel mee. In deze gids leggen we in gewone taal uit hoe de ISDE-subsidie voor warmtepompen in 2026 werkt, hoeveel je kunt krijgen, aan welke voorwaarden je moet voldoen en hoe je de aanvraag stap voor stap doet.",
+      "Een warmtepomp is een flinke investering, maar de overheid betaalt via de ISDE-regeling een aanzienlijk deel mee. In deze gids leg ik in gewone taal uit hoe de ISDE-subsidie voor warmtepompen in 2026 werkt, hoeveel je kunt krijgen, aan welke voorwaarden je moet voldoen en hoe je de aanvraag stap voor stap doet.",
     sections: [
       {
         type: "text",
@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
         href: "/subsidie",
         label: "Bekijk de actuele subsidiebedragen",
         description:
-          "Op onze subsidiepagina vind je een overzicht van de indicatieve ISDE-bedragen per type warmtepomp.",
+          "Op mijn subsidiepagina vind je een overzicht van de indicatieve ISDE-bedragen per type warmtepomp.",
       },
       {
         type: "text",
@@ -96,7 +96,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Conclusie",
         paragraphs: [
-          "De ISDE-subsidie maakt de overstap naar een warmtepomp voor veel huishoudens een stuk aantrekkelijker. Door op tijd te starten, een erkend installatiebedrijf te kiezen en je administratie op orde te hebben, verloopt de aanvraag meestal soepel. Twijfel je nog welk type warmtepomp het beste bij jouw woning past, of wil je weten op hoeveel subsidie jij ongeveer kunt rekenen? Onze gratis keuzehulp geeft je binnen een paar minuten een persoonlijke indicatie, inclusief een inschatting van de kosten, subsidie en besparing.",
+          "De ISDE-subsidie maakt de overstap naar een warmtepomp voor veel huishoudens een stuk aantrekkelijker. Door op tijd te starten, een erkend installatiebedrijf te kiezen en je administratie op orde te hebben, verloopt de aanvraag meestal soepel. Twijfel je nog welk type warmtepomp het beste bij jouw woning past, of wil je weten op hoeveel subsidie jij ongeveer kunt rekenen? Mijn gratis keuzehulp geeft je binnen een paar minuten een persoonlijke indicatie, inclusief een inschatting van de kosten, subsidie en besparing.",
         ],
       },
     ],
@@ -108,7 +108,7 @@ export const blogPosts: BlogPost[] = [
       "Een eerlijk verhaal over de hybride warmtepomp: hoe het werkt, voor wie het geschikt is, wat het kost en wat huiseigenaren in de praktijk merken van hun besparing.",
     publishedAt: "2026-06-10",
     intro:
-      "De hybride warmtepomp is al jaren de meest verkochte warmtepomp in Nederland, en niet zonder reden. In dit artikel leggen we uit wat een hybride warmtepomp is, voor wie hij geschikt is, wat de kosten en besparingen in de praktijk zijn, en waar je op moet letten voordat je de overstap maakt.",
+      "De hybride warmtepomp is al jaren de meest verkochte warmtepomp in Nederland, en niet zonder reden. In dit artikel leg ik uit wat een hybride warmtepomp is, voor wie hij geschikt is, wat de kosten en besparingen in de praktijk zijn, en waar je op moet letten voordat je de overstap maakt.",
     sections: [
       {
         type: "text",
@@ -124,7 +124,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Voor wie is een hybride warmtepomp geschikt?",
         paragraphs: [
           "Een hybride warmtepomp is vooral interessant voor woningen die nog niet (volledig) zijn geïsoleerd, of waar de radiatoren nog niet zijn afgestemd op de lagere aanvoertemperaturen die volledig elektrische warmtepompen het liefst gebruiken.",
-          "In de praktijk zien we dat veel jaren '30-woningen, naoorlogse rijtjeswoningen en tussenwoningen met standaard radiatoren goed uit de voeten kunnen met een hybride warmtepomp. De warmtepomp doet het meeste werk bij milde temperaturen — en in Nederland is dat het grootste deel van het stookseizoen — terwijl de ketel alleen bijspringt tijdens vorstperiodes.",
+          "In de praktijk zie ik dat veel jaren '30-woningen, naoorlogse rijtjeswoningen en tussenwoningen met standaard radiatoren goed uit de voeten kunnen met een hybride warmtepomp. De warmtepomp doet het meeste werk bij milde temperaturen — en in Nederland is dat het grootste deel van het stookseizoen — terwijl de ketel alleen bijspringt tijdens vorstperiodes.",
           "Ook voor huiseigenaren die stap voor stap willen verduurzamen is een hybride warmtepomp een logische eerste stap: je bespaart direct op gas, en als je later (extra) isoleert, kun je eventueel alsnog overstappen op een volledig elektrische warmtepomp.",
         ],
       },
@@ -167,7 +167,7 @@ export const blogPosts: BlogPost[] = [
         href: "/vergelijk",
         label: "Ontdek wat bij jouw woning past",
         description:
-          "Onze gratis keuzehulp vergelijkt hybride en volledig elektrische warmtepompen voor jouw specifieke situatie.",
+          "Mijn gratis keuzehulp vergelijkt hybride en volledig elektrische warmtepompen voor jouw specifieke situatie.",
       },
       {
         type: "text",
@@ -185,7 +185,7 @@ export const blogPosts: BlogPost[] = [
       "De tussenwoning is het meest voorkomende woningtype in Nederland. Alles over welk type warmtepomp het beste past, wat het kost, en waar je op moet letten.",
     publishedAt: "2026-06-17",
     intro:
-      "De tussenwoning is veruit het meest voorkomende woningtype in Nederland, en dat zie je terug in de vragen die we krijgen: 'past een warmtepomp wel bij mijn tussenwoning?' Het korte antwoord is: in vrijwel alle gevallen wel. In dit artikel lopen we door wat er allemaal komt kijken bij het plaatsen van een warmtepomp in een tussenwoning.",
+      "De tussenwoning is veruit het meest voorkomende woningtype in Nederland, en dat zie je terug in de vragen die ik krijg: 'past een warmtepomp wel bij mijn tussenwoning?' Het korte antwoord is: in vrijwel alle gevallen wel. In dit artikel loop ik door wat er allemaal komt kijken bij het plaatsen van een warmtepomp in een tussenwoning.",
     sections: [
       {
         type: "text",
@@ -242,7 +242,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Stappenplan: zo pak je het aan",
         paragraphs: [
           "Stap 1: breng je huidige situatie in kaart — woningtype en oppervlakte, bouwjaar, isolatieniveau en je huidige verwarmingssysteem. Dit bepaalt grotendeels welk type warmtepomp het beste past.",
-          "Stap 2: vraag een gratis en vrijblijvende indicatie aan via onze keuzehulp. Op basis van je antwoorden krijg je een aanbeveling voor het type warmtepomp, een inschatting van de kosten, de ISDE-subsidie en je maandelijkse besparing.",
+          "Stap 2: vraag een gratis en vrijblijvende indicatie aan via mijn keuzehulp. Op basis van je antwoorden krijg je een aanbeveling voor het type warmtepomp, een inschatting van de kosten, de ISDE-subsidie en je maandelijkse besparing.",
           "Stap 3: vraag offertes aan bij twee tot drie gecertificeerde installateurs in jouw regio. Vergelijk niet alleen de prijs, maar ook de levertijd, het merk, de garantievoorwaarden en de ervaring van de installateur met tussenwoningen.",
           "Stap 4: na installatie vraag je de ISDE-subsidie aan via mijn.rvo.nl, met de offerte, factuur en betaalbewijs binnen handbereik.",
         ],
@@ -263,7 +263,7 @@ export const blogPosts: BlogPost[] = [
       "Alle kosten van een warmtepomp op een rij: aanschaf, installatie, bijkomende kosten, subsidie en de invloed van je woning. Het complete kostenoverzicht voor 2026.",
     publishedAt: "2026-06-24",
     intro:
-      "Wat kost een warmtepomp nu eigenlijk echt? Niet alleen het apparaat zelf, maar ook de installatie, eventuele aanpassingen aan je woning en de jaarlijkse kosten daarna. In dit artikel zetten we alle kostenposten voor 2026 op een rij, zodat je vooraf weet waar je rekening mee moet houden — en hoeveel je dankzij subsidie kunt terugkrijgen.",
+      "Wat kost een warmtepomp nu eigenlijk echt? Niet alleen het apparaat zelf, maar ook de installatie, eventuele aanpassingen aan je woning en de jaarlijkse kosten daarna. In dit artikel zet ik alle kostenposten voor 2026 op een rij, zodat je vooraf weet waar je rekening mee moet houden — en hoeveel je dankzij subsidie kunt terugkrijgen.",
     sections: [
       {
         type: "text",
@@ -323,7 +323,7 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           "De terugverdientijd van een warmtepomp hangt af van de aanschafprijs, de subsidie, je huidige energierekening en hoeveel je netto bespaart. Wees realistisch: een warmtepomp op zichzelf — hybride of volledig elektrisch — verdient zich voor veel woningen pas in zo'n 15 tot 20 jaar terug. Dat wordt korter bij een hoger gasverbruik, met een hybride als tussenstap, of als je cv-ketel toch al aan vervanging toe was. Zonnepanelen verkorten dat nauwelijks: die wekken vooral 's zomers op, terwijl een warmtepomp voor verwarming in de winter draait. Bij een volledig elektrische warmtepomp staat tegenover de langere terugverdientijd dat je helemaal van het gas af bent en minder afhankelijk bent van gasprijsschommelingen.",
           "Qua maandlasten zien veel huishoudens dat hun gasrekening flink daalt, terwijl de stroomrekening iets stijgt. Per saldo houden de meeste mensen een netto besparing over, zeker met de huidige energieprijzen. Hoeveel dat precies is, hangt sterk af van je woning, je stookgedrag en het elektriciteitscontract dat je hebt.",
-          "Wil je niet zelf gaan rekenen, maar gewoon weten wat een warmtepomp voor jouw specifieke woning ongeveer gaat kosten en opleveren? Onze gratis keuzehulp geeft je in een paar minuten een persoonlijk overzicht van de kosten, subsidie en geschatte besparing.",
+          "Wil je niet zelf gaan rekenen, maar gewoon weten wat een warmtepomp voor jouw specifieke woning ongeveer gaat kosten en opleveren? Mijn gratis keuzehulp geeft je in een paar minuten een persoonlijk overzicht van de kosten, subsidie en geschatte besparing.",
         ],
       },
       {
@@ -349,7 +349,7 @@ export const blogPosts: BlogPost[] = [
       "Een praktische stap-voor-stap handleiding voor het aanvragen van de ISDE-subsidie voor je warmtepomp in 2026, inclusief documenten, deadlines en veelgemaakte fouten.",
     publishedAt: "2026-06-26",
     intro:
-      "De ISDE-subsidie kan honderden tot duizenden euro's schelen op de aanschaf van je warmtepomp, maar de aanvraag voelt voor veel mensen onnodig ingewikkeld. In dit artikel lopen we stap voor stap door het hele proces: van de voorbereiding tot het moment dat het geld op je rekening staat.",
+      "De ISDE-subsidie kan honderden tot duizenden euro's schelen op de aanschaf van je warmtepomp, maar de aanvraag voelt voor veel mensen onnodig ingewikkeld. In dit artikel loop ik stap voor stap door het hele proces: van de voorbereiding tot het moment dat het geld op je rekening staat.",
     sections: [
       {
         type: "text",
@@ -438,13 +438,13 @@ export const blogPosts: BlogPost[] = [
       "Een eerlijke vergelijking van populaire warmtepompmerken in 2026: Daikin, Vaillant, Bosch en meer. Wat zijn de verschillen en waar moet je op letten bij je keuze?",
     publishedAt: "2026-06-29",
     intro:
-      "Bij het kiezen van een warmtepomp kom je al snel een aantal bekende merknamen tegen: Daikin, Vaillant, Bosch, en nog een paar anderen. Maar wat zijn nu eigenlijk de verschillen, en hoe belangrijk is het merk eigenlijk voor jouw uiteindelijke keuze? In dit artikel zetten we de meest gekozen merken op een rij en geven we praktische tips voor het maken van je keuze.",
+      "Bij het kiezen van een warmtepomp kom je al snel een aantal bekende merknamen tegen: Daikin, Vaillant, Bosch, en nog een paar anderen. Maar wat zijn nu eigenlijk de verschillen, en hoe belangrijk is het merk eigenlijk voor jouw uiteindelijke keuze? In dit artikel zet ik de meest gekozen merken op een rij en geef ik praktische tips voor het maken van je keuze.",
     sections: [
       {
         type: "text",
         heading: "Hoe belangrijk is het merk eigenlijk?",
         paragraphs: [
-          "Voordat we de merken bespreken, eerst een belangrijke nuance: het merk is niet het enige — en vaak ook niet het belangrijkste — onderdeel van een goede warmtepompinstallatie. Minstens zo belangrijk is of het vermogen van de warmtepomp goed is afgestemd op jouw woning, en of de installateur de installatie vakkundig uitvoert en goed afstelt.",
+          "Voordat ik de merken bespreek, eerst een belangrijke nuance: het merk is niet het enige — en vaak ook niet het belangrijkste — onderdeel van een goede warmtepompinstallatie. Minstens zo belangrijk is of het vermogen van de warmtepomp goed is afgestemd op jouw woning, en of de installateur de installatie vakkundig uitvoert en goed afstelt.",
           "Een topmerk dat verkeerd is gedimensioneerd of slecht is afgesteld, presteert in de praktijk vaak slechter dan een minder bekend merk dat wél goed is geïnstalleerd. Toch hebben de grote merken wel degelijk verschillen in geluidsniveau, efficiëntie (uitgedrukt in COP- en SCOP-waarden), garantievoorwaarden en de beschikbaarheid van onderdelen en servicemonteurs.",
         ],
       },
@@ -501,7 +501,7 @@ export const blogPosts: BlogPost[] = [
         href: "/vergelijk",
         label: "Ontvang een indicatie zonder gebonden te zijn aan één merk",
         description:
-          "Onze keuzehulp is onafhankelijk van merk en installateur — je krijgt een indicatie die past bij jouw woning, niet bij een specifiek merk.",
+          "Mijn keuzehulp is onafhankelijk van merk en installateur — je krijgt een indicatie die past bij jouw woning, niet bij een specifiek merk.",
       },
       {
         type: "text",
@@ -519,7 +519,7 @@ export const blogPosts: BlogPost[] = [
       "Twijfel je of een warmtepomp geschikt is voor jouw woning? Deze complete checklist helpt je op basis van bouwjaar, isolatie, radiatoren en woningtype.",
     publishedAt: "2026-07-01",
     intro:
-      "Een van de meest gestelde vragen die we krijgen is: 'is een warmtepomp wel geschikt voor mijn woning?' Het goede nieuws is dat voor vrijwel elke woning een passende oplossing bestaat — de vraag is vooral wélk type warmtepomp het beste past. Met deze checklist loop je zelf de belangrijkste punten na.",
+      "Een van de meest gestelde vragen die ik krijg is: 'is een warmtepomp wel geschikt voor mijn woning?' Het goede nieuws is dat voor vrijwel elke woning een passende oplossing bestaat — de vraag is vooral wélk type warmtepomp het beste past. Met deze checklist loop je zelf de belangrijkste punten na.",
     sections: [
       {
         type: "text",
@@ -534,7 +534,7 @@ export const blogPosts: BlogPost[] = [
         heading: "2. Hoe is je woning geïsoleerd?",
         paragraphs: [
           "Isolatie is misschien wel de belangrijkste factor. Heeft je woning dubbel glas, dakisolatie, vloerisolatie en spouwmuurisolatie? Dan is de kans groot dat een volledig elektrische warmtepomp goed werkt, omdat je woning de warmte goed vasthoudt.",
-          "Is je woning nog niet (volledig) geïsoleerd, dan raden we vaak aan om eerst te kijken naar de meest voor de hand liggende isolatiemaatregelen — zoals dakisolatie of het vervangen van enkel glas — voordat je overstapt op een volledig elektrische warmtepomp. Een hybride warmtepomp kan in de tussentijd al wel voor een flinke besparing zorgen, zonder dat isolatie een vereiste is.",
+          "Is je woning nog niet (volledig) geïsoleerd, dan raad ik vaak aan om eerst te kijken naar de meest voor de hand liggende isolatiemaatregelen — zoals dakisolatie of het vervangen van enkel glas — voordat je overstapt op een volledig elektrische warmtepomp. Een hybride warmtepomp kan in de tussentijd al wel voor een flinke besparing zorgen, zonder dat isolatie een vereiste is.",
         ],
       },
       {
@@ -605,7 +605,7 @@ export const blogPosts: BlogPost[] = [
       "Reken zelf uit hoeveel je kunt besparen met een warmtepomp: van gasverbruik en energieprijzen tot subsidie en terugverdientijd. Met praktische rekenvoorbeelden voor 2026.",
     publishedAt: "2026-07-03",
     intro:
-      "Een warmtepomp kan flink besparen op je energierekening, maar hoeveel precies hangt af van jouw situatie. In dit artikel laten we zien welke factoren de besparing bepalen en geven we praktische rekenvoorbeelden, zodat je voor jouw eigen woning een goede inschatting kunt maken.",
+      "Een warmtepomp kan flink besparen op je energierekening, maar hoeveel precies hangt af van jouw situatie. In dit artikel laat ik zien welke factoren de besparing bepalen en geef ik praktische rekenvoorbeelden, zodat je voor jouw eigen woning een goede inschatting kunt maken.",
     sections: [
       {
         type: "text",
@@ -627,7 +627,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Stap 2: schat de besparing met een hybride warmtepomp",
         paragraphs: [
-          "Een hybride warmtepomp neemt typisch 70 tot 90% van de verwarmingsvraag over, wat in de praktijk vaak neerkomt op een gasbesparing van 30 tot 50%. Bij ons voorbeeld van €1.560 aan gaskosten zou dit een besparing van ongeveer €470 tot €780 per jaar betekenen op je gasrekening.",
+          "Een hybride warmtepomp neemt typisch 70 tot 90% van de verwarmingsvraag over, wat in de praktijk vaak neerkomt op een gasbesparing van 30 tot 50%. Bij mijn voorbeeld van €1.560 aan gaskosten zou dit een besparing van ongeveer €470 tot €780 per jaar betekenen op je gasrekening.",
           "Daar staat een stijging van je stroomverbruik tegenover, omdat de warmtepomp elektriciteit gebruikt. Voor een gemiddelde hybride warmtepomp komt dit neer op extra stroomkosten van ongeveer €200 tot €400 per jaar, afhankelijk van je stroomtarief en de hoeveelheid warmte die de warmtepomp levert.",
           "Per saldo kom je voor een hybride warmtepomp dan vaak uit op een netto besparing van €200 tot €450 per jaar, bovenop het comfort van een modern verwarmingssysteem.",
         ],
@@ -643,7 +643,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Stap 3: schat de besparing met een volledig elektrische warmtepomp",
         paragraphs: [
-          "Bij een volledig elektrische lucht-water warmtepomp ga je (vrijwel) helemaal van het gas af. In ons voorbeeld zou je dus de volledige €1.560 aan gaskosten besparen — minus een klein bedrag voor eventueel resterend gasverbruik, bijvoorbeeld voor koken.",
+          "Bij een volledig elektrische lucht-water warmtepomp ga je (vrijwel) helemaal van het gas af. In mijn voorbeeld zou je dus de volledige €1.560 aan gaskosten besparen — minus een klein bedrag voor eventueel resterend gasverbruik, bijvoorbeeld voor koken.",
           "Daar staat een grotere stijging van je stroomverbruik tegenover dan bij een hybride warmtepomp, omdat de warmtepomp nu al jouw verwarming voor zijn rekening neemt. Voor een gemiddelde woning kan dit neerkomen op extra stroomkosten van ongeveer €700 tot €1.100 per jaar.",
           "Per saldo houd je dan vaak een netto besparing over van €400 tot €700 per jaar, afhankelijk van je woning, isolatie en stroomtarief — plus dat je niet langer afhankelijk bent van de gasprijs.",
         ],
@@ -694,7 +694,7 @@ export const blogPosts: BlogPost[] = [
       "Waarom warmtepompen en vloerverwarming zo goed samengaan, of het ook zonder kan, wat vloerverwarming aanleggen kost en wat dit betekent voor je terugverdientijd.",
     publishedAt: "2026-06-12",
     intro:
-      "Warmtepomp en vloerverwarming worden vaak in één adem genoemd, en dat is niet zonder reden. Deze twee technieken versterken elkaar enorm: een warmtepomp werkt het meest efficiënt bij lage temperaturen, en vloerverwarming is daar precies op gebouwd. Maar betekent dit dat je eerst vloerverwarming moet aanleggen voordat een warmtepomp zin heeft? In dit artikel leggen we uit waarom deze combinatie zo goed werkt, wat je alternatieven zijn als je geen vloerverwarming hebt, wat het aanleggen ervan kost en hoe dit je terugverdientijd beïnvloedt.",
+      "Warmtepomp en vloerverwarming worden vaak in één adem genoemd, en dat is niet zonder reden. Deze twee technieken versterken elkaar enorm: een warmtepomp werkt het meest efficiënt bij lage temperaturen, en vloerverwarming is daar precies op gebouwd. Maar betekent dit dat je eerst vloerverwarming moet aanleggen voordat een warmtepomp zin heeft? In dit artikel leg ik uit waarom deze combinatie zo goed werkt, wat je alternatieven zijn als je geen vloerverwarming hebt, wat het aanleggen ervan kost en hoe dit je terugverdientijd beïnvloedt.",
     sections: [
       {
         type: "text",
@@ -763,10 +763,10 @@ export const blogPosts: BlogPost[] = [
     slug: "warmtepomp-zonnepanelen-besparing-berekenen",
     title: "Warmtepomp + Zonnepanelen: Hoe Veel (en Weinig) Ze Samen Doen (2026)",
     description:
-      "Verlagen zonnepanelen echt de kosten van je warmtepomp? We leggen eerlijk uit waarom dat tegenvalt door de seizoensmismatch, wat het einde van de salderingsregeling per 2027 betekent, en hoe je panelen en warmtepomp wél slim combineert.",
+      "Verlagen zonnepanelen echt de kosten van je warmtepomp? Ik leg eerlijk uit waarom dat tegenvalt door de seizoensmismatch, wat het einde van de salderingsregeling per 2027 betekent, en hoe je panelen en warmtepomp wél slim combineert.",
     publishedAt: "2026-06-15",
     intro:
-      "Een warmtepomp draait op stroom, en zonnepanelen wekken stroom op — dus die twee versterken elkaar perfect, toch? Dat wordt vaak beweerd, maar het ligt genuanceerder. Voor de verwarming verlagen zonnepanelen de kosten van je warmtepomp namelijk maar beperkt, en met het einde van de salderingsregeling per 2027 verandert er nog meer. In dit artikel leggen we eerlijk uit hoe het echt zit — en hoe je panelen en warmtepomp wél slim combineert.",
+      "Een warmtepomp draait op stroom, en zonnepanelen wekken stroom op — dus die twee versterken elkaar perfect, toch? Dat wordt vaak beweerd, maar het ligt genuanceerder. Voor de verwarming verlagen zonnepanelen de kosten van je warmtepomp namelijk maar beperkt, en met het einde van de salderingsregeling per 2027 verandert er nog meer. In dit artikel leg ik eerlijk uit hoe het echt zit — en hoe je panelen en warmtepomp wél slim combineert.",
     sections: [
       {
         type: "text",
@@ -854,10 +854,10 @@ export const blogPosts: BlogPost[] = [
     slug: "beste-all-electric-warmtepomp-2026",
     title: "Beste All-Electric Warmtepomp 2026: Vergelijking, Voor- en Nadelen",
     description:
-      "Welke all-electric warmtepomp past het best bij jouw woning in 2026? We vergelijken lucht-water en bodem-water systemen, bespreken kosten, subsidie, geschiktheid en de belangrijkste voor- en nadelen.",
+      "Welke all-electric warmtepomp past het best bij jouw woning in 2026? Ik vergelijk lucht-water en bodem-water systemen en bespreek kosten, subsidie, geschiktheid en de belangrijkste voor- en nadelen.",
     publishedAt: "2026-06-13",
     intro:
-      "Een all-electric warmtepomp verwarmt je woning volledig zonder aardgas en is daarmee de meest vergaande stap in de verduurzaming van je huis. Maar welke variant past het beste bij jouw situatie, en waar moet je op letten voordat je de gasaansluiting de deur uit doet? In dit artikel vergelijken we de belangrijkste all-electric warmtepompen voor 2026, met hun kosten, subsidie, geschiktheid en de voor- en nadelen op een rij.",
+      "Een all-electric warmtepomp verwarmt je woning volledig zonder aardgas en is daarmee de meest vergaande stap in de verduurzaming van je huis. Maar welke variant past het beste bij jouw situatie, en waar moet je op letten voordat je de gasaansluiting de deur uit doet? In dit artikel vergelijk ik de belangrijkste all-electric warmtepompen voor 2026, met hun kosten, subsidie, geschiktheid en de voor- en nadelen op een rij.",
     sections: [
       {
         type: "text",
@@ -882,7 +882,7 @@ export const blogPosts: BlogPost[] = [
         href: "/warmtepompen",
         label: "Bekijk alle warmtepomptypen op een rij",
         description:
-          "Op onze overzichtspagina vergelijken we de verschillende warmtepomptypen op kosten, geschiktheid en rendement.",
+          "Op mijn overzichtspagina vergelijk ik de verschillende warmtepomptypen op kosten, geschiktheid en rendement.",
       },
       {
         type: "text",

@@ -107,7 +107,7 @@ export default function AardgasvrijPage() {
               Meld je aan voor een collectieve aanpak in jouw buurt
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
-              Laat je gegevens achter en we brengen je in contact met buurtgenoten en
+              Laat je gegevens achter en ik breng je in contact met buurtgenoten en
               gecertificeerde installateurs zodra er voldoende belangstelling is voor een
               collectieve actie in jouw postcodegebied.
             </p>

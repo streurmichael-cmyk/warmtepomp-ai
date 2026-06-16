@@ -318,7 +318,7 @@ export default function WarmtepompenPage() {
             <div className="mt-8 flex items-start gap-3 rounded-2xl border border-green/10 bg-white p-6">
               <QuestionIcon className="mt-0.5 h-5 w-5 flex-shrink-0 text-green" />
               <p className="text-sm leading-relaxed text-muted">
-                Twijfel je nog? Geen probleem. Onze keuzehulp stelt een paar simpele vragen over
+                Twijfel je nog? Geen probleem. Mijn keuzehulp stelt een paar simpele vragen over
                 jouw woning en geeft je direct een persoonlijke indicatie — inclusief geschatte
                 kosten, subsidie en besparing.
               </p>

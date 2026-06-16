@@ -57,6 +57,7 @@ export default function KostenPage() {
               Geen verborgen kosten, geen kleine lettertjes. Hier zie je precies wat je kunt
               verwachten — van aanschaf tot subsidie en maandelijkse besparing.
             </p>
+            <SubsidyDisclaimer className="mx-auto mt-8 max-w-xl text-left" />
             <div className="mt-10 aspect-[16/9] max-h-[300px] overflow-hidden rounded-xl sm:max-h-none">
               <Image
                 src="/images/stel-met-papieren.webp"
@@ -157,8 +158,6 @@ export default function KostenPage() {
                     </tbody>
                   </table>
                 </div>
-
-                <SubsidyDisclaimer className="mt-4" />
               </div>
 
               <div className="mt-8">
@@ -178,7 +177,7 @@ export default function KostenPage() {
               <p className="mt-8 text-xs text-muted">
                 Bekijk ook{" "}
                 <Link href="/subsidie" className="font-bold text-action hover:underline">
-                  onze subsidiepagina
+                  mijn subsidiepagina
                 </Link>
                 .
               </p>

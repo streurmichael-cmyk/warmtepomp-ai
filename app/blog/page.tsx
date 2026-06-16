@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Blog: gidsen, kosten en ervaringen met warmtepompen | warmtepomp.ai",
   description:
-    "Lees onze artikelen over ISDE-subsidie, hybride warmtepompen en warmtepompen in tussenwoningen. Praktische, eerlijke informatie om je op weg te helpen.",
+    "Lees mijn artikelen over ISDE-subsidie, hybride warmtepompen en warmtepompen in tussenwoningen. Praktische, eerlijke informatie om je op weg te helpen.",
   path: "/blog",
 });
 

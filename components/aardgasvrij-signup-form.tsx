@@ -58,7 +58,7 @@ export function AardgasvrijSignupForm() {
         <CheckCircleIcon className="h-10 w-10 text-green" />
         <h3 className="font-display text-lg font-bold text-dark">Bedankt voor je aanmelding!</h3>
         <p className="text-sm leading-relaxed text-muted">
-          We houden je op de hoogte zodra er voldoende belangstelling is in jouw buurt voor een
+          Ik houd je op de hoogte zodra er voldoende belangstelling is in jouw buurt voor een
           collectieve actie.
         </p>
       </div>

@@ -36,7 +36,7 @@ const heroVariants: HeroVariant[] = [
     badge: "Gratis & onafhankelijke vergelijking",
     headlinePrefix: "Warmtepomp: ",
     headlineHighlight: "geschikt voor jou of niet?",
-    subline: "We zeggen het eerlijk. Soms is het antwoord nee. Maar dan weet je het zeker.",
+    subline: "Ik zeg het eerlijk. Soms is het antwoord nee. Maar dan weet je het zeker.",
   },
 ];
 

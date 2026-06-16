@@ -10,13 +10,13 @@ const benefits = [
   {
     icon: ConversationIcon,
     title: "Geen verkooppraatjes",
-    body: "Onze AI-keuzehulp stelt gerichte vragen over jouw woning en situatie. Geen generieke antwoorden of opdringerige verkoop, maar een aanbeveling die op jou is afgestemd.",
+    body: "Mijn AI-keuzehulp stelt gerichte vragen over jouw woning en situatie. Geen generieke antwoorden of opdringerige verkoop, maar een aanbeveling die op jou is afgestemd.",
     note: "Persoonlijke indicatie",
   },
   {
     icon: ShieldIcon,
     title: "Eerlijke vergelijking",
-    body: "Geen verborgen belangen of provisie-afspraken met fabrikanten. De tool analyseert jouw situatie en geeft een onafhankelijke indicatie van het beste type warmtepomp. Daarna helpen we je verder richting een gecertificeerde installateur, zodat je offertes kunt vergelijken.",
+    body: "Geen verborgen belangen of provisie-afspraken met fabrikanten. De tool analyseert jouw situatie en geeft een onafhankelijke indicatie van het beste type warmtepomp. Daarna help ik je verder richting een gecertificeerde installateur, zodat je offertes kunt vergelijken.",
     note: "100% onafhankelijk",
   },
 ];
@@ -33,7 +33,7 @@ export function Benefits() {
             Eerlijke vergelijking zonder haken en ogen
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted">
-            Wij zijn niet gebonden aan één merk of installateur. Jij krijgt de
+            Ik ben niet gebonden aan één merk of installateur. Jij krijgt de
             indicatie die écht bij jou past.
           </p>
         </div>

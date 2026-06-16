@@ -169,7 +169,7 @@ export function InstallateursLeadForm({
       {step === "lead" && (
         <form onSubmit={handleLeadSubmit} noValidate className="space-y-4">
           <p className="text-sm text-muted">
-            {postcode} is genoteerd. Vul je gegevens in, dan gaan we voor je op zoek naar een
+            {postcode} is genoteerd. Vul je gegevens in, dan ga ik voor je op zoek naar een
             passende installateur voor jouw woning.
           </p>
           <div>
@@ -251,8 +251,8 @@ export function InstallateursLeadForm({
           </div>
           <h2 className="font-display text-xl font-bold text-dark">Bedankt, {voornaam}!</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            We hebben je een bevestigingsmail gestuurd. We gaan voor je op zoek naar een passende
-            installateur voor jouw woning en nemen zo snel mogelijk vrijblijvend contact met je op.
+            Ik heb je een bevestigingsmail gestuurd. Ik ga voor je op zoek naar een passende
+            installateur voor jouw woning en neem zo snel mogelijk vrijblijvend contact met je op.
             Is een warmtepomp geschikt voor jouw woning? Dan volgt een opname bij je thuis, waarna je
             een offerte op maat ontvangt.
           </p>

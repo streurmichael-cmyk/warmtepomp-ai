@@ -222,7 +222,8 @@ Schrijf de indicatie als een stuk HTML (alleen de inhoud, geen <html>/<head>/<bo
 Belangrijke regels:
 - Begin meteen met de inhoud van punt 1. Geen aanhef of begroeting (dus niet "Hallo", "Hoi [naam]", "Beste lezer" of iets dergelijks) en geen ondertekening of afsluitende groet aan het einde — dat staat al in de rest van de e-mail.
 - Schrijf informeel en persoonlijk: gebruik altijd "je", "jij" en "jouw", nooit "u" of "uw". Geen corporate of stijve taal.
-- Noem geen volgende stappen zoals zelf een installateur zoeken, het installateurregister, het STEK-keurmerk, de RVO-meldcodelijst, of het aanvragen van offertes — dat regelen wij voor de klant en staat al elders in de e-mail.
+- Schrijf in de ik-vorm namens Michael (gebruik "ik", "mij" en "mijn"), nooit "wij", "we" of "ons".
+- Noem geen volgende stappen zoals zelf een installateur zoeken, het installateurregister, het STEK-keurmerk, de RVO-meldcodelijst, of het aanvragen van offertes — dat regel ik voor de klant en staat al elders in de e-mail.
 - Gebruik geen hyperlinks of verwijzingen naar andere websites.
 - Schrijf in gewone, begrijpelijke taal, geen jargon. Wees eerlijk over dat het indicaties zijn. Houd het beknopt: maximaal 2-3 zinnen per onderdeel, behalve punt 5 als er twee terugverdientijd-scenario's genoemd moeten worden. Geef alleen de kale HTML terug, zonder markdown code block (geen \`\`\`).`;
 
@@ -293,8 +294,8 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null, veri
         <div style="margin: 24px 0; padding: 20px; border: 1px solid #e5e5e5; border-radius: 12px; background: #f7faf8;">
           <p style="margin: 0 0 12px; font-weight: bold; color: #0d1f16;">Bevestig je aanvraag</p>
           <p style="margin: 0 0 16px; font-size: 14px; color: #5a7264;">
-            Klik op de knop om te bevestigen dat dit jouw e-mailadres is. Pas daarna activeren we je
-            aanvraag definitief. Niets gedaan? Dan verwijderen we je gegevens automatisch binnen 24 uur.
+            Klik op de knop om te bevestigen dat dit jouw e-mailadres is. Pas daarna activeer ik je
+            aanvraag definitief. Niets gedaan? Dan verwijder ik je gegevens automatisch binnen 24 uur.
           </p>
           <a href="${verifyUrl}" style="display: inline-block; padding: 12px 24px; background: #0e7a4f; color: #ffffff; text-decoration: none; border-radius: 10px; font-weight: bold;">
             Bevestig mijn aanvraag
@@ -316,12 +317,12 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null, veri
   const wantsInstallateur = lead.wantsInstallateur ?? false;
 
   const subject = wantsInstallateur
-    ? `Bedankt ${voornaam} — we gaan voor je aan de slag`
+    ? `Bedankt ${voornaam} — ik ga voor je aan de slag`
     : "Jouw warmtepomp-indicatie van warmtepomp.ai";
 
   const introTekst = wantsInstallateur
-    ? "Hieronder vind je jouw warmtepomp-indicatie. We zoeken een passende installateur in jouw regio en nemen zo snel mogelijk contact op."
-    : "Hieronder vind je jouw persoonlijke warmtepomp-indicatie. Geen verplichtingen, geen telefoontjes. Heb je vragen? Mail ons op info@warmtepomp.ai.";
+    ? "Hieronder vind je jouw warmtepomp-indicatie. Ik zoek een passende installateur in jouw regio en neem zo snel mogelijk contact op."
+    : "Hieronder vind je jouw persoonlijke warmtepomp-indicatie. Geen verplichtingen, geen telefoontjes. Heb je vragen? Mail mij op info@warmtepomp.ai.";
 
   const html = `
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
@@ -405,7 +406,7 @@ export async function POST(request: Request) {
   if (!recaptchaOk) {
     console.warn("Aanvraag geweigerd door reCAPTCHA");
     return NextResponse.json(
-      { error: "We konden niet verifiëren dat je geen robot bent. Probeer het opnieuw." },
+      { error: "Ik kon niet verifiëren dat je geen robot bent. Probeer het opnieuw." },
       { status: 403 }
     );
   }

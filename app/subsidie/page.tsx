@@ -168,7 +168,7 @@ export default function SubsidiePage() {
             <p className="mt-4 text-center text-xs text-muted">
               Benieuwd wat een warmtepomp je in totaal kost? Bekijk{" "}
               <Link href="/kosten" className="font-bold text-action hover:underline">
-                ons kostenoverzicht
+                mijn kostenoverzicht
               </Link>
               .
             </p>

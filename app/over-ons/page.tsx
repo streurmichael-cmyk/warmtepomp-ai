@@ -14,9 +14,9 @@ import {
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Over ons | warmtepomp.ai",
+  title: "Over mij | warmtepomp.ai",
   description:
-    "Maak kennis met warmtepomp.ai: onafhankelijke vergelijking van warmtepompen, opgericht door Michael Streur. Lees wie we zijn, waarom we dit doen en hoe we geld verdienen.",
+    "Maak kennis met warmtepomp.ai: onafhankelijke vergelijking van warmtepompen, opgericht door Michael Streur. Lees wie ik ben, waarom ik dit doe en hoe ik geld verdien.",
   path: "/over-ons",
 });
 
@@ -29,13 +29,13 @@ export default function OverOnsPage() {
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
-              Over ons
+              Over mij
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
               Wie zit er achter warmtepomp.ai?
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted">
-              Warmtepomp.ai is nieuw, klein en transparant over wie we zijn en hoe we werken.
+              Warmtepomp.ai is nieuw, klein en transparant over wie ik ben en hoe ik werk.
             </p>
           </div>
         </section>
@@ -91,11 +91,11 @@ export default function OverOnsPage() {
                 </div>
                 <div>
                   <h2 className="font-display text-lg font-bold text-dark">
-                    Hoe we geld verdienen
+                    Hoe ik geld verdien
                   </h2>
                   <p className="mt-2 text-base leading-relaxed text-muted">
-                    Wij ontvangen een vergoeding van installateurs wanneer zij via ons platform
-                    een klant begeleiden. Dit heeft geen invloed op onze indicatie — wij zijn altijd
+                    Ik ontvang een vergoeding van installateurs wanneer zij via mijn platform
+                    een klant begeleiden. Dit heeft geen invloed op mijn indicatie — ik ben altijd
                     aan jouw kant.
                   </p>
                 </div>
@@ -155,7 +155,7 @@ export default function OverOnsPage() {
         <section className="bg-action py-20 text-center sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Benieuwd wat wij voor jou kunnen doen?
+              Benieuwd wat ik voor jou kan doen?
             </h2>
             <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white/85">
               Beantwoord een paar vragen over je woning en ontvang gratis en vrijblijvend

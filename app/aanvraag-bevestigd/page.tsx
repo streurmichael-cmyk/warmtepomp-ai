@@ -45,7 +45,7 @@ export default async function AanvraagBevestigdPage({
                 </h1>
                 <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-muted">
                   Mogelijk heb je je aanvraag al bevestigd, of is de link verlopen. Twijfel je? Vul
-                  gerust opnieuw de keuzehulp in of mail ons op{" "}
+                  gerust opnieuw de keuzehulp in of mail mij op{" "}
                   <a href="mailto:info@warmtepomp.ai" className="font-semibold text-action hover:underline">
                     info@warmtepomp.ai
                   </a>
@@ -59,7 +59,7 @@ export default async function AanvraagBevestigdPage({
                 </h1>
                 <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-muted">
                   Bedankt voor het bevestigen van je e-mailadres. Je aanvraag is nu definitief
-                  geactiveerd — we gaan ermee aan de slag en nemen waar nodig contact met je op.
+                  geactiveerd — ik ga ermee aan de slag en neem waar nodig contact met je op.
                 </p>
               </>
             )}

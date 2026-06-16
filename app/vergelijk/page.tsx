@@ -531,8 +531,8 @@ export default function VergelijkPage() {
                   <ArrowRight className="h-5 w-5" />
                 </button>
                 <p className="text-center text-xs text-muted-light">
-                  We halen woninggegevens op via de BAG (Basisregistratie Adressen en Gebouwen) van de
-                  overheid. We slaan je adres niet op en verkopen het nooit door.
+                  Ik haal woninggegevens op via de BAG (Basisregistratie Adressen en Gebouwen) van de
+                  overheid. Ik sla je adres niet op en verkoop het nooit door.
                 </p>
               </form>
             </Step>
@@ -545,14 +545,14 @@ export default function VergelijkPage() {
                 aria-hidden="true"
               />
               <p className="font-display text-lg font-bold text-dark">
-                Even geduld... we zoeken jouw woning op in het Kadaster
+                Even geduld... ik zoek jouw woning op in het Kadaster
               </p>
             </div>
           )}
 
           {step === "bevestig" && (
             <Step
-              heading={adresGevonden ? "We hebben jouw woning gevonden!" : "We konden je woning niet automatisch vinden"}
+              heading={adresGevonden ? "Ik heb jouw woning gevonden!" : "Ik kon je woning niet automatisch vinden"}
               onBack={() => setStep("adres")}
             >
               <div className="mb-6 flex items-start gap-3 rounded-xl border border-green/15 bg-white p-4">
@@ -640,7 +640,7 @@ export default function VergelijkPage() {
               <p className="mb-6 text-base leading-relaxed text-muted">
                 Het energielabel zegt veel over hoe goed je woning geïsoleerd is en bepaalt mee welk
                 type warmtepomp het beste past. Weet je het niet zeker? Kies dan &ldquo;Weet ik
-                niet&rdquo; — dan schatten we het in op basis van je woning.
+                niet&rdquo; — dan schat ik het in op basis van je woning.
               </p>
               <div className="flex flex-wrap gap-2">
                 {energielabelOpties.map((opt) => (
@@ -724,7 +724,7 @@ export default function VergelijkPage() {
             >
               <p className="mb-6 text-base leading-relaxed text-muted">
                 Je kunt in één keer volledig van het gas af, of het stap voor stap doen met een
-                hybride warmtepomp die samenwerkt met je cv-ketel. We houden hier rekening mee in je
+                hybride warmtepomp die samenwerkt met je cv-ketel. Ik houd hier rekening mee in je
                 indicatie.
               </p>
               <div className="space-y-4">
@@ -980,7 +980,7 @@ export default function VergelijkPage() {
                         In de praktijk verlagen zonnepanelen de kosten van je warmtepomp maar beperkt: je
                         panelen wekken het meest op in de zomer, terwijl je warmtepomp voor verwarming juist
                         in de winter draait — als de panelen weinig opleveren. De stroom voor je warmtepomp
-                        komt daardoor grotendeels van het net. Daarom rekenen we de terugverdientijd hierboven
+                        komt daardoor grotendeels van het net. Daarom reken ik de terugverdientijd hierboven
                         op de warmtepomp zelf, zonder zonnestroom mee te tellen.
                       </p>
                       <p className="mt-3 text-xs text-muted-light">
@@ -1012,7 +1012,7 @@ export default function VergelijkPage() {
                           Een hybride warmtepomp neemt een deel van je verwarming over, maar op de
                           koudste dagen gebruik je nog wat gas. De besparing is dus echt, maar niet
                           enorm, terwijl de aanschaf een flink bedrag is. Daarom duurt het terugverdienen
-                          langer dan veel reclames je doen geloven. Wij vertellen je dat liever eerlijk.
+                          langer dan veel reclames je doen geloven. Ik vertel je dat liever eerlijk.
                         </p>
                       </div>
                       <div>
@@ -1023,7 +1023,7 @@ export default function VergelijkPage() {
                           verlagen zonnepanelen de warmtepompkosten maar beperkt: je panelen wekken het
                           meest op in de zomer, terwijl je warmtepomp juist in de winter verwarmt — als de
                           panelen weinig opleveren. De stroom voor je warmtepomp komt dan grotendeels van
-                          het net. Daarom rekenen we de terugverdientijd op de warmtepomp zelf, zonder
+                          het net. Daarom reken ik de terugverdientijd op de warmtepomp zelf, zonder
                           zonnestroom mee te tellen.
                         </p>
                       </div>
@@ -1076,7 +1076,7 @@ export default function VergelijkPage() {
                     <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
                       <p className="text-base text-muted">
                         <span className="font-bold text-dark">Let op:</span> je cv-ketel is ouder dan
-                        15 jaar en is dus sowieso binnenkort aan vervanging toe. We hebben de
+                        15 jaar en is dus sowieso binnenkort aan vervanging toe. Ik heb de
                         uitgespaarde vervangingskosten (±€3.000) al meegerekend in de terugverdientijd
                         hierboven — daardoor is overstappen nu extra aantrekkelijk.
                       </p>
@@ -1209,14 +1209,14 @@ export default function VergelijkPage() {
           {step === "contact" && (
             <Step
               heading={
-                wantsInstallateur ? "Waar mogen installateurs je bereiken?" : "Waar sturen we je indicatie naartoe?"
+                wantsInstallateur ? "Waar mogen installateurs je bereiken?" : "Waar stuur ik je indicatie naartoe?"
               }
               onBack={() => setStep("advies")}
             >
               <p className="mb-6 text-base leading-relaxed text-muted">
                 {wantsInstallateur
-                  ? "We gaan voor je op zoek naar een passende installateur voor jouw woning en nemen zo snel mogelijk vrijblijvend contact met je op."
-                  : "We sturen je de volledige indicatie, inclusief kosten, subsidie en terugverdientijd, per e-mail."}
+                  ? "Ik ga voor je op zoek naar een passende installateur voor jouw woning en neem zo snel mogelijk vrijblijvend contact met je op."
+                  : "Ik stuur je de volledige indicatie, inclusief kosten, subsidie en terugverdientijd, per e-mail."}
               </p>
               <form onSubmit={handleLeadSubmit} noValidate className="space-y-4">
                 <FormField
@@ -1271,7 +1271,7 @@ export default function VergelijkPage() {
                 </button>
                 <p className="text-center text-xs text-muted-light">
                   Je gegevens worden gedeeld met gecertificeerde installateurs om je offerte te
-                  kunnen versturen. We verkopen ze nooit aan derden voor marketingdoeleinden.{" "}
+                  kunnen versturen. Ik verkoop ze nooit aan derden voor marketingdoeleinden.{" "}
                   {wantsInstallateur
                     ? "Maximaal 3 installateurs nemen contact op."
                     : "Geen telefoontjes, alleen een e-mail."}
@@ -1290,8 +1290,8 @@ export default function VergelijkPage() {
               </h1>
               <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-muted">
                 {wantsInstallateur
-                  ? "We hebben je aanvraag ontvangen. We gaan voor je op zoek naar een passende installateur voor jouw woning en nemen zo snel mogelijk contact met je op."
-                  : "Check je inbox — we hebben de volledige indicatie naar je e-mailadres gestuurd."}
+                  ? "Ik heb je aanvraag ontvangen. Ik ga voor je op zoek naar een passende installateur voor jouw woning en neem zo snel mogelijk contact met je op."
+                  : "Check je inbox — ik heb de volledige indicatie naar je e-mailadres gestuurd."}
               </p>
               <Link
                 href="/"

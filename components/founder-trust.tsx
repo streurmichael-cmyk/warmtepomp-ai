@@ -25,7 +25,7 @@ export function FounderTrust() {
                 href="/over-ons"
                 className="font-semibold text-action underline underline-offset-2 hover:text-dark"
               >
-                Lees meer over ons
+                Lees meer over mij
               </Link>
             </div>
           </div>

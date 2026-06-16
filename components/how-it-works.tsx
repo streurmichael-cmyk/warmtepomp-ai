@@ -22,7 +22,7 @@ const steps = [
   {
     number: "4",
     icon: NetworkIcon,
-    title: "Wij zoeken passende installateurs",
+    title: "Ik zoek passende installateurs",
     body: "Gecertificeerde installateurs bij jou in de regio, zodat je eenvoudig offertes kunt vergelijken.",
   },
 ];

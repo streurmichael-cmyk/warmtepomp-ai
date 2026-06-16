@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Disclaimer | warmtepomp.ai",
   description:
-    "Lees de disclaimer van warmtepomp.ai over de informatie op onze website, subsidiebedragen, prijsindicaties en onze rol als onafhankelijk platform.",
+    "Lees de disclaimer van warmtepomp.ai over de informatie op mijn website, subsidiebedragen, prijsindicaties en mijn rol als onafhankelijk platform.",
   path: "/disclaimer",
 });
 
@@ -20,31 +20,31 @@ const sections = [
   {
     heading: "Subsidiebedragen",
     paragraphs: [
-      "Genoemde subsidiebedragen, zoals de ISDE-subsidie, kunnen wijzigen. Voor de meest actuele en officiële bedragen en voorwaarden verwijzen we je naar rvo.nl.",
+      "Genoemde subsidiebedragen, zoals de ISDE-subsidie, kunnen wijzigen. Voor de meest actuele en officiële bedragen en voorwaarden verwijs ik je naar rvo.nl.",
     ],
   },
   {
     heading: "Prijsindicaties",
     paragraphs: [
-      "De prijzen die wij noemen zijn gemiddelden, gebaseerd op marktdata. Het zijn geen offertes en de uiteindelijke prijs kan per situatie verschillen.",
+      "De prijzen die ik noem zijn gemiddelden, gebaseerd op marktdata. Het zijn geen offertes en de uiteindelijke prijs kan per situatie verschillen.",
     ],
   },
   {
     heading: "Onafhankelijk platform",
     paragraphs: [
-      "Warmtepomp.ai is een onafhankelijk platform en geen installateur. Wij voeren zelf geen installaties uit, maar helpen je verder richting gecertificeerde installateurs en bouwen aan een netwerk daarvan.",
+      "Warmtepomp.ai is een onafhankelijk platform en geen installateur. Ik voer zelf geen installaties uit, maar help je verder richting gecertificeerde installateurs en bouw aan een netwerk daarvan.",
     ],
   },
   {
-    heading: "Hoe we verdienen",
+    heading: "Hoe ik verdien",
     paragraphs: [
-      "Warmtepomp.ai ontvangt een vergoeding van installateurs voor elke lead die wij doorverwijzen. Dit heeft geen invloed op de onafhankelijkheid van onze vergelijking en kost jou niets extra.",
+      "Warmtepomp.ai ontvangt een vergoeding van installateurs voor elke lead die ik doorverwijs. Dit heeft geen invloed op de onafhankelijkheid van mijn vergelijking en kost jou niets extra.",
     ],
   },
   {
     heading: "Aansprakelijkheid",
     paragraphs: [
-      "Warmtepomp.ai is niet aansprakelijk voor beslissingen die je neemt op basis van de informatie op deze website. Voor een definitief advies en offerte raden we je aan contact op te nemen met een installateur.",
+      "Warmtepomp.ai is niet aansprakelijk voor beslissingen die je neemt op basis van de informatie op deze website. Voor een definitief advies en offerte raad ik je aan contact op te nemen met een installateur.",
     ],
   },
 ];
