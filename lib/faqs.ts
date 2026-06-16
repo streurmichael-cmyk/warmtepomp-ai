@@ -35,6 +35,10 @@ export const faqs: FaqItem[] = [
     a: "De meeste warmtepompen worden in één dag geïnstalleerd. Bij een hybride warmtepomp blijft je cv-ketel als backup, waardoor de installatie eenvoudiger is. Voor een volledige warmtepomp kan de installatie soms twee dagen in beslag nemen.",
   },
   {
+    q: "Heb ik een vergunning nodig voor een warmtepomp?",
+    a: "Dat hangt af van waar de buitenunit komt te staan — en van de regels in jouw gemeente. Plaats je 'm op de grond, dan is het meestal vergunningvrij: zolang de unit niet hoger is dan 1 meter en niet groter dan 2 m², en dat is bij de meeste buitenunits het geval. Komt de unit aan de gevel of op het dak, dan gelden de regels uit het omgevingsplan van je gemeente en is er vaak wél een vergunning nodig. Woon je in een monument, dan is bijna altijd een vergunning nodig, ook voor een kleine unit. En in een appartementencomplex met een VvE heb je sowieso toestemming van de Vereniging van Eigenaren nodig, los van de gemeentelijke vergunning. Mijn advies: doe eerst de gratis Vergunningcheck op het Omgevingsloket (omgevingswet.overheid.nl/thema/airco) en vraag het bij twijfel even na bij je gemeente — de regels kunnen per gemeente verschillen. (Bron: Informatiepunt Leefomgeving / Rijksoverheid.)",
+  },
+  {
     q: "Werkt een warmtepomp ook in een slecht geïsoleerde woning?",
     a: "Ja, maar dan is een hybride warmtepomp een slimme tussenstap. De warmtepomp neemt het verwarmingswerk over zodra het buiten niet te koud is; de cv-ketel springt bij bij extreme kou. Zo bespaar je toch 30–50% op je gasverbruik, ook zonder extra isolatie. Tip: heb je de mogelijkheid om te isoleren? Dan verdien je de warmtepomp sneller terug en heb je minder vermogen nodig.",
   },

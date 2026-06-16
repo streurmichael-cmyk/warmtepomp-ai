@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { InstallateursLeadForm } from "@/components/installateurs-lead-form";
+import { PermitsInfo } from "@/components/permits-info";
 import { TrustBar } from "@/components/trust-bar";
 import {
   ArrowRight,
@@ -307,6 +308,8 @@ export default async function StadPage({
             </dl>
           </div>
         </section>
+
+        <PermitsInfo />
 
         <section className="bg-light-bg py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
