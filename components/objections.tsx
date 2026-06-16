@@ -7,7 +7,7 @@ const objections = [
   {
     question: "Een warmtepomp is veel te duur",
     answer:
-      "Klopt, de aanschaf is een flinke uitgave: tussen de €7.000 en €14.000, afhankelijk van het type. Met de ISDE-subsidie (tot €3.500) en de besparing op je gasrekening verdien je dat — eerlijk gezegd — niet in een paar jaar terug: een warmtepomp op zichzelf doet daar al snel 15 tot 20 jaar over. Heb je eigen zonnepanelen, dan kan dat flink korter, zeker vanaf 2027 wanneer de salderingsregeling stopt en je eigen zonnestroom waardevoller wordt. Is je woning slecht geïsoleerd én is je budget krap? Dan is een hybride warmtepomp vaak een betaalbaardere eerste stap dan in één keer volledig overstappen.",
+      "Klopt, de aanschaf is een flinke uitgave: tussen de €7.000 en €14.000, afhankelijk van het type. Met de ISDE-subsidie (tot €3.500) en de besparing op je gasrekening verdien je dat — eerlijk gezegd — niet in een paar jaar terug: een warmtepomp op zichzelf doet daar al snel 15 tot 20 jaar over. Dat wordt korter bij een hoger gasverbruik, met een hybride als tussenstap, of als je cv-ketel toch al aan vervanging toe was (dan telt alleen het prijsverschil). Is je woning slecht geïsoleerd én is je budget krap? Dan is een hybride warmtepomp vaak een betaalbaardere eerste stap dan in één keer volledig overstappen.",
   },
   {
     question: "Een warmtepomp maakt te veel herrie",
@@ -27,7 +27,7 @@ const objections = [
   {
     question: "De terugverdientijd is te lang, ik woon hier niet zo lang meer",
     answer:
-      "Een eerlijk punt. Een warmtepomp op zichzelf verdient zich vaak pas in 15 tot 20 jaar terug (met eigen zonnestroom, vooral vanaf 2027, kan dat korter), dus hij heeft vooral zin als je van plan bent langer te blijven wonen. Ga je over een paar jaar verhuizen? Dan is de winst vooral dat je huis met een warmtepomp makkelijker en voor een betere prijs verkoopt — energielabel telt steeds zwaarder mee. Maar als investering voor jezelf is het dan minder logisch. Onze tip in dat geval: wacht hiermee tot je volgende huis.",
+      "Een eerlijk punt. Een warmtepomp op zichzelf verdient zich vaak pas in 15 tot 20 jaar terug, dus hij heeft vooral zin als je van plan bent langer te blijven wonen. Ga je over een paar jaar verhuizen? Dan is de winst vooral dat je huis met een warmtepomp makkelijker en voor een betere prijs verkoopt — energielabel telt steeds zwaarder mee. Maar als investering voor jezelf is het dan minder logisch. Onze tip in dat geval: wacht hiermee tot je volgende huis.",
   },
 ];
 

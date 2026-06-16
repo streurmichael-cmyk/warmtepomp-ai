@@ -69,8 +69,9 @@ export function SavingsCalculator() {
         Dit is een eerlijke indicatie op basis van gemiddelde gas- en stroomprijzen en een gemiddelde
         investering van circa €8.000 (na ISDE-subsidie) voor een lucht-water warmtepomp — de besparing
         is netto, dus ná de extra stroomkosten van de warmtepomp. Een warmtepomp op zichzelf verdient
-        zich doorgaans in 15 tot 20 jaar terug. Gebruik je je eigen zonnestroom — vooral vanaf 2027,
-        wanneer de salderingsregeling stopt — dan kan die terugverdientijd flink korter uitvallen. Jouw
+        zich doorgaans in 15 tot 20 jaar terug — korter bij een hoger gasverbruik, met een hybride als
+        tussenstap, of als je cv-ketel toch al aan vervanging toe was. Zonnepanelen verkorten dat
+        nauwelijks: die wekken vooral &apos;s zomers op, terwijl de warmtepomp in de winter verwarmt. Jouw
         werkelijke besparing hangt af van je woning, isolatie en energieprijzen.
       </p>
     </div>

@@ -133,7 +133,7 @@ export default function HoeHetWerktPage() {
                 <strong className="text-dark">En de kosten?</strong> Een COP van 3-4 betekent niet dat je
                 3 tot 4 keer goedkoper uit bent: stroom is per kWh een stuk duurder dan gas. Die hogere
                 stroomprijs wordt grotendeels gecompenseerd door de hoge COP, waardoor je netto meestal
-                goedkoper uit bent dan met gas — en flink goedkoper met zonnepanelen. De grootste winst
+                goedkoper uit bent dan met gas. De grootste winst
                 zit in CO₂: een warmtepomp stoot veel minder uit, en dat wordt elk jaar beter naarmate de
                 stroom groener wordt.
               </p>

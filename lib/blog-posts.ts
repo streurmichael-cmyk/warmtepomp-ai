@@ -251,7 +251,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Conclusie",
         paragraphs: [
-          "Een tussenwoning is in veel opzichten een ideaal startpunt voor een warmtepomp: het beperkte buitenmuuroppervlak zorgt voor een relatief lage warmtevraag, en zowel hybride als volledig elektrische warmtepompen zijn doorgaans goed te realiseren. Met de juiste voorbereiding — van het bepalen van het juiste type tot het vergelijken van offertes — verdient de overstap zich voor de meeste tussenwoningen op de lange termijn terug, en sneller als je 'm combineert met eigen zonnestroom. Wil je weten wat dit voor jouw woning betekent? Start de gratis keuzehulp en ontvang direct een persoonlijke indicatie.",
+          "Een tussenwoning is in veel opzichten een ideaal startpunt voor een warmtepomp: het beperkte buitenmuuroppervlak zorgt voor een relatief lage warmtevraag, en zowel hybride als volledig elektrische warmtepompen zijn doorgaans goed te realiseren. Met de juiste voorbereiding — van het bepalen van het juiste type tot het vergelijken van offertes — verdient de overstap zich voor de meeste tussenwoningen op de lange termijn terug. Wil je weten wat dit voor jouw woning betekent? Start de gratis keuzehulp en ontvang direct een persoonlijke indicatie.",
         ],
       },
     ],
@@ -321,7 +321,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Wat levert het op? Terugverdientijd en maandlasten",
         paragraphs: [
-          "De terugverdientijd van een warmtepomp hangt af van de aanschafprijs, de subsidie, je huidige energierekening en hoeveel je netto bespaart. Wees realistisch: een warmtepomp op zichzelf — hybride of volledig elektrisch — verdient zich voor veel woningen pas in zo'n 15 tot 20 jaar terug. Gebruik je je eigen zonnestroom, dan kan dat flink korter, vooral vanaf 2027 wanneer de salderingsregeling stopt en je eigen stroom waardevoller wordt. Bij een volledig elektrische warmtepomp staat tegenover de langere terugverdientijd dat je helemaal van het gas af bent en minder afhankelijk bent van gasprijsschommelingen.",
+          "De terugverdientijd van een warmtepomp hangt af van de aanschafprijs, de subsidie, je huidige energierekening en hoeveel je netto bespaart. Wees realistisch: een warmtepomp op zichzelf — hybride of volledig elektrisch — verdient zich voor veel woningen pas in zo'n 15 tot 20 jaar terug. Dat wordt korter bij een hoger gasverbruik, met een hybride als tussenstap, of als je cv-ketel toch al aan vervanging toe was. Zonnepanelen verkorten dat nauwelijks: die wekken vooral 's zomers op, terwijl een warmtepomp voor verwarming in de winter draait. Bij een volledig elektrische warmtepomp staat tegenover de langere terugverdientijd dat je helemaal van het gas af bent en minder afhankelijk bent van gasprijsschommelingen.",
           "Qua maandlasten zien veel huishoudens dat hun gasrekening flink daalt, terwijl de stroomrekening iets stijgt. Per saldo houden de meeste mensen een netto besparing over, zeker met de huidige energieprijzen. Hoeveel dat precies is, hangt sterk af van je woning, je stookgedrag en het elektriciteitscontract dat je hebt.",
           "Wil je niet zelf gaan rekenen, maar gewoon weten wat een warmtepomp voor jouw specifieke woning ongeveer gaat kosten en opleveren? Onze gratis keuzehulp geeft je in een paar minuten een persoonlijk overzicht van de kosten, subsidie en geschatte besparing.",
         ],
@@ -761,20 +761,20 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "warmtepomp-zonnepanelen-besparing-berekenen",
-    title: "Warmtepomp + Zonnepanelen: Zo Bereken je je Besparing (2026)",
+    title: "Warmtepomp + Zonnepanelen: Hoe Veel (en Weinig) Ze Samen Doen (2026)",
     description:
-      "Hoeveel zonnepanelen heb je nodig voor je warmtepomp, hoeveel bespaar je daarmee, en wat betekent het verdwijnen van de salderingsregeling in 2027 voor deze combinatie?",
+      "Verlagen zonnepanelen echt de kosten van je warmtepomp? We leggen eerlijk uit waarom dat tegenvalt door de seizoensmismatch, wat het einde van de salderingsregeling per 2027 betekent, en hoe je panelen en warmtepomp wél slim combineert.",
     publishedAt: "2026-06-15",
     intro:
-      "Een warmtepomp draait op stroom, en zonnepanelen wekken stroom op — die twee zijn dus geboren voor elkaar. Steeds meer huiseigenaren combineren een warmtepomp met zonnepanelen om hun energierekening nog verder te verlagen. Maar hoeveel panelen heb je daarvoor eigenlijk nodig, hoeveel scheelt het op jaarbasis, en wat verandert er straks met de salderingsregeling? In dit artikel rekenen we het stap voor stap voor je uit.",
+      "Een warmtepomp draait op stroom, en zonnepanelen wekken stroom op — dus die twee versterken elkaar perfect, toch? Dat wordt vaak beweerd, maar het ligt genuanceerder. Voor de verwarming verlagen zonnepanelen de kosten van je warmtepomp namelijk maar beperkt, en met het einde van de salderingsregeling per 2027 verandert er nog meer. In dit artikel leggen we eerlijk uit hoe het echt zit — en hoe je panelen en warmtepomp wél slim combineert.",
     sections: [
       {
         type: "text",
-        heading: "Waarom warmtepomp en zonnepanelen zo goed samen werken",
+        heading: "De aanname die vaak misgaat",
         paragraphs: [
           "Een warmtepomp vervangt (een deel van) je gasverbruik door elektriciteit. Dat is op zichzelf al een besparing, omdat elektrisch verwarmen via een warmtepomp veel efficiënter is dan stoken op gas. Maar het betekent ook dat je stroomverbruik flink toeneemt — een gemiddelde warmtepomp gebruikt ongeveer 3.500 kWh per jaar.",
-          "Zonnepanelen leveren precies dat: stroom, zonder dat je daarvoor iets aan een energieleverancier betaalt. Door zonnepanelen te combineren met een warmtepomp, gebruik je een deel van je eigen opgewekte stroom direct om je huis te verwarmen, in plaats van duurdere stroom van het net af te nemen.",
-          "Met de huidige stroomprijzen — en de wetenschap dat die de komende jaren niet snel zullen dalen — is dit een combinatie die zich dubbel uitbetaalt: je bespaart op gas dankzij de warmtepomp, én je bespaart op stroom dankzij de zonnepanelen. Beide investeringen versterken elkaar.",
+          "De gangbare redenering is dan: zet er zonnepanelen op, en die opgewekte stroom voedt je warmtepomp. Op een jaarrekening lijkt dat te kloppen. Maar er zit een belangrijke kink in: je panelen wekken het meeste op in de zomer, terwijl je warmtepomp voor verwarming juist in de winter draait — precies wanneer je panelen weinig opleveren. Die twee vallen dus grotendeels niet samen.",
+          "Het gevolg: de stroom waarmee je in de winter verwarmt, komt grotendeels gewoon van het net. Zonnepanelen verlagen de kosten van je warmtepomp daardoor maar beperkt. Dat maakt panelen geen slechte investering — ze besparen op je totale stroomrekening — maar reken niet op een veel kortere terugverdientijd van je warmtepomp dankzij die panelen.",
         ],
       },
       {
@@ -796,46 +796,56 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "text",
-        heading: "Rekenvoorbeeld: 10 zonnepanelen + warmtepomp",
+        heading: "Rekenvoorbeeld: waarom de jaarrekensom misleidt",
         paragraphs: [
-          "Laten we het concreet maken met een rekenvoorbeeld. Stel: je hebt 10 zonnepanelen die samen 3.500 kWh per jaar opwekken, en een warmtepomp die 3.500 kWh per jaar verbruikt.",
-          "Bij een stroomprijs van ongeveer €0,32 per kWh betekent dit dat je met je zonnepanelen ongeveer €1.120 per jaar aan stroomkosten voor je warmtepomp 'wegstreept' — geld dat je anders aan je energieleverancier zou betalen.",
-          "Daarbovenop komt nog de besparing die de warmtepomp zelf al oplevert ten opzichte van je oude cv-ketel, vaak €400 tot €900 per jaar afhankelijk van je gasverbruik en het type warmtepomp. Samen kan de combinatie van warmtepomp en 10 zonnepanelen dus oplopen tot €1.500 à €2.000 besparing per jaar ten opzichte van de situatie zonder warmtepomp en zonder zonnepanelen.",
-          "Heb je een ander aantal panelen? Reken dan eenvoudig: aantal panelen × 350 kWh × €0,32 = jouw extra jaarlijkse besparing op stroomkosten dankzij de zonnepanelen, naast de gasbesparing van de warmtepomp zelf.",
+          "Laten we het concreet maken. Stel: je hebt 10 zonnepanelen die samen 3.500 kWh per jaar opwekken, en een warmtepomp die 3.500 kWh per jaar verbruikt. Op papier dekt je opwek dus 100% van je warmtepompverbruik.",
+          "De verleiding is om te zeggen: bij €0,32 per kWh 'wegstreep' je dan €1.120 aan warmtepompstroom per jaar. Maar dat klopt niet, want het moment telt. Je warmtepomp verbruikt het grootste deel van die 3.500 kWh in de wintermaanden om je huis te verwarmen, terwijl je panelen dan maar een fractie van hun jaaropbrengst leveren. De zomerse opwek valt grotendeels buiten je verwarmingsseizoen.",
+          "In de praktijk gebruik je dus maar een deel van je eigen zonnestroom direct voor de verwarming; de rest van de winterstroom koop je gewoon van het net, en je zomerse overschot lever je terug. Zolang salderen nog bestaat valt dat verschil weg op je jaarrekening, maar dat verandert per 2027 (zie verderop).",
+          "De eerlijke conclusie: zonnepanelen verlagen je totale stroomrekening, maar ze verlagen de kosten van je warmtepomp-verwarming maar beperkt. Beoordeel je warmtepomp en je zonnepanelen daarom als twee losse investeringen die elk op zichzelf de moeite waard kunnen zijn — niet als een duo dat elkaars terugverdientijd halveert.",
         ],
       },
       {
         type: "text",
-        heading: "Terugverdientijd berekenen met zonnepanelen",
+        heading: "Terugverdientijd: reken de warmtepomp op zichzelf",
         paragraphs: [
-          "De terugverdientijd van je warmtepomp bereken je normaal als: (kosten warmtepomp na subsidie) ÷ (jaarlijkse gasbesparing). Heb je ook zonnepanelen, dan tel je de extra stroombesparing simpelweg op bij de gasbesparing: (kosten warmtepomp na subsidie) ÷ (gasbesparing + stroombesparing door zonnepanelen).",
-          "Een voorbeeld: stel de netto-investering in je warmtepomp (na ISDE-subsidie) is €8.000, en de gasbesparing is €500 per jaar. Zonder zonnepanelen is de terugverdientijd dan 8.000 ÷ 500 = 16 jaar.",
-          "Heb je daarnaast 10 zonnepanelen die €1.120 per jaar extra besparen op je warmtepomp-stroomverbruik, dan wordt de berekening 8.000 ÷ (500 + 1.120) = ongeveer 5 jaar. Het verschil is enorm: zonnepanelen kunnen de terugverdientijd van je warmtepomp meer dan halveren.",
-          "Houd er rekening mee dat de zonnepanelen zelf ook een investering zijn (vaak €3.000 tot €5.000 voor 10 panelen, exclusief subsidie op de btw die je kunt terugvragen). Reken je die mee, dan blijft de gecombineerde terugverdientijd van warmtepomp + zonnepanelen voor de meeste woningen toch ruim binnen 8 tot 10 jaar — met daarna nog 15 tot 20 jaar profijt.",
+          "De terugverdientijd van je warmtepomp bereken je als: (kosten warmtepomp na subsidie) ÷ (jaarlijkse besparing op je energierekening). Voor de meeste woningen komt een warmtepomp daarmee op zo'n 15 tot 20 jaar uit. Dat wordt korter bij een hoger gasverbruik, met een hybride als tussenstap, of als je cv-ketel toch al aan vervanging toe was — dan telt alleen het prijsverschil mee.",
+          "De verleiding is om de 'besparing dankzij zonnepanelen' bij die jaarlijkse besparing op te tellen, zodat de terugverdientijd ineens veel korter lijkt. Dat geeft een te rooskleurig beeld: zoals hierboven uitgelegd dekken je panelen je winterse verwarmingsstroom maar beperkt, omdat ze dan weinig opwekken.",
+          "Reken de terugverdientijd van je warmtepomp daarom op zichzelf, zonder zonnestroom mee te tellen. Heb je ook zonnepanelen, beoordeel die dan als een aparte investering met een eigen terugverdientijd — gebaseerd op je totale stroomverbruik over het jaar, niet op dat van je warmtepomp specifiek.",
+          "Zo voorkom je een onaangename verrassing en weet je waar je echt aan toe bent: twee verstandige stappen, elk met een eerlijk eigen plaatje.",
         ],
       },
       {
         type: "text",
-        heading: "De salderingsregeling verdwijnt in 2027 — wat betekent dat?",
+        heading: "De salderingsregeling stopt per 2027 — wat betekent dat?",
         paragraphs: [
-          "Tot nu toe geldt in Nederland de salderingsregeling: stroom die je zonnepanelen opwekken en die je niet direct zelf gebruikt, wordt teruggeleverd aan het net en 'wegstreept' tegen stroom die je later afneemt — tegen hetzelfde tarief. Dit maakt het in de praktijk niet zo belangrijk wanneer je je eigen stroom gebruikt.",
-          "Vanaf 2027 verdwijnt deze regeling. Stroom die je teruglevert aan het net krijg je dan vergoed tegen een veel lagere terugleververgoeding, terwijl stroom die je van het net afneemt tegen het normale (hogere) tarief blijft. Het verschil tussen 'terugleveren' en 'zelf gebruiken' wordt dus voor het eerst echt groot.",
-          "Dit is precies waar de combinatie met een warmtepomp goud waard wordt. Een warmtepomp is namelijk een van de grootste stroomverbruikers in huis, en kan op zonnige dagen — bijvoorbeeld in het voor- en najaar, wanneer je nog stookt én de zon al aardig schijnt — een groot deel van zijn stroom direct van je eigen panelen halen. Hoe meer je zelf verbruikt in plaats van teruglevert, hoe minder hard het verdwijnen van saldering aankomt in je portemonnee.",
-          "Met andere woorden: na 2027 is het niet meer alleen interessant hoeveel stroom je zonnepanelen opwekken, maar vooral hoeveel je daarvan zelf direct gebruikt. Een warmtepomp in huis verhoogt dat eigen verbruik aanzienlijk, waardoor zonnepanelen ook na het verdwijnen van saldering hun waarde behouden.",
+          "Tot nu toe geldt in Nederland de salderingsregeling: stroom die je zonnepanelen opwekken en die je niet direct zelf gebruikt, wordt teruggeleverd aan het net en 'wegstreept' tegen stroom die je later afneemt — tegen hetzelfde tarief. Daardoor maakt het op je jaarrekening nu nog weinig uit wanneer je je eigen stroom gebruikt.",
+          "Dat verandert: de salderingsregeling stopt definitief per 1 januari 2027, en wordt in één keer beëindigd in plaats van geleidelijk afgebouwd. Dit is vastgelegd in de Wet beëindiging salderingsregeling. Voor stroom die je daarna teruglevert, krijg je een terugleververgoeding van minimaal 50% van het kale leveringstarief.",
+          "Bovendien rekenen veel energieleveranciers nu al vaste terugleverkosten voor wie veel teruglevert. Terugleveren levert dus nu al weinig op. De hele beleidsrichting is om mensen te stimuleren hun zelf opgewekte stroom direct te gebruiken in plaats van terug te leveren.",
+          "Betekent dat dat je warmtepomp na 2027 ineens veel voordeliger wordt met zonnepanelen? Nee. Het knelpunt blijft de seizoensmismatch: je warmtepomp verbruikt het meest in de winter, als je panelen weinig opwekken. Je kunt die winterstroom niet zomaar uit je zomerse opwek halen. Wachten op een '2027-voordeel' voor je warmtepomp heeft dus geen zin — beoordeel de warmtepomp op zijn eigen merites. Waar zelf verbruiken wél loont, lees je in de volgende sectie.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Zo combineer je panelen en warmtepomp wél slim",
+        paragraphs: [
+          "Er zijn wél manieren om meer van je eigen zonnestroom te benutten — juist nu terugleveren steeds minder oplevert. Verschuif grootverbruikers als je wasmachine, droger, vaatwasser of het laden van je elektrische auto zoveel mogelijk naar het midden van de dag (ongeveer 11:00–15:00). Dan wekken je panelen het meest op en gebruik je je eigen stroom direct, in plaats van 'm voor weinig terug te leveren. Dat werkt vooral goed in het voorjaar en de zomer.",
+          "Wil je panelen en warmtepomptechniek écht laten samenwerken, kijk dan naar een warmtepompboiler voor je warme water. Die draait het hele jaar door — óók 's zomers, als je panelen volop opwekken. Dáár vullen zonnepanelen en warmtepomptechniek elkaar wél aan, en een warmtepompboiler is bovendien flink goedkoper in gebruik dan warm water maken met gas.",
+          "De eerlijke kanttekening blijft: voor de ruimteverwarming gaat dit niet op. Die draait in de winter, als je panelen weinig opleveren — daar moet je dus niet op rekenen.",
         ],
       },
       {
         type: "link",
         href: "/vergelijk",
-        label: "Bereken jouw besparing met warmtepomp en zonnepanelen",
+        label: "Bereken wat een warmtepomp jou oplevert",
         description:
-          "Vul de gratis keuzehulp in, geef aan of je zonnepanelen hebt (of overweegt), en ontvang direct een persoonlijke berekening inclusief terugverdientijd.",
+          "Vul de gratis keuzehulp in en ontvang direct een eerlijke berekening van het type, de kosten en de terugverdientijd voor jouw woning.",
       },
       {
         type: "text",
         heading: "Conclusie",
         paragraphs: [
-          "De combinatie van een warmtepomp en zonnepanelen is een van de slimste stappen die je kunt zetten richting een lagere energierekening: de warmtepomp verlaagt je gasverbruik, de zonnepanelen verlagen de stroomkosten van die warmtepomp, en samen kunnen ze je terugverdientijd flink verkorten. Met het verdwijnen van de salderingsregeling in 2027 wordt deze combinatie alleen nog maar interessanter. Wil je weten wat dit voor jouw woning betekent? Vul de gratis keuzehulp in en ontvang een indicatie inclusief de impact van (eventuele) zonnepanelen op je besparing en terugverdientijd.",
+          "Een warmtepomp en zonnepanelen zijn allebei verstandige stappen naar een lagere energierekening, maar het zijn geen wondercombinatie die elkaars terugverdientijd halveert. De warmtepomp verlaagt je gasverbruik; de zonnepanelen verlagen je totale stroomrekening. Voor de verwarming vullen ze elkaar maar beperkt aan, doordat je panelen vooral in de zomer opwekken en je warmtepomp vooral in de winter verwarmt.",
+          "Beoordeel beide dus op hun eigen merites, en reken niet op een '2027-voordeel' voor je warmtepomp door het einde van de salderingsregeling. Wil je weten wat een warmtepomp voor jouw woning oplevert? Vul de gratis keuzehulp in en ontvang een eerlijke indicatie van het type, de kosten en de terugverdientijd.",
         ],
       },
     ],
@@ -1015,7 +1025,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Zo bereken je de terugverdientijd",
         paragraphs: [
           "De terugverdientijd is misschien wel het belangrijkste getal om de kosten van een warmtepomp in perspectief te plaatsen. Je berekent hem door je netto-investering — de totale kosten min de subsidie — te delen door je jaarlijkse besparing op de energierekening. Kost je warmtepomp na subsidie bijvoorbeeld €7.000 en bespaar je €700 per jaar, dan is de terugverdientijd ongeveer tien jaar.",
-          "Voor een hybride warmtepomp is de terugverdientijd vaak korter, omdat de investering lager is, terwijl een all-electric systeem in een goed geïsoleerde woning op de lange termijn de grootste totale besparing oplevert. Zonnepanelen kunnen de terugverdientijd aanzienlijk verkorten doordat ze de stroomkosten van de warmtepomp drukken. Omdat elke woning anders is, is een persoonlijke berekening de enige manier om echt te weten waar jij aan toe bent.",
+          "Voor een hybride warmtepomp is de terugverdientijd vaak korter, omdat de investering lager is, terwijl een all-electric systeem in een goed geïsoleerde woning op de lange termijn de grootste totale besparing oplevert. Zonnepanelen verlagen die terugverdientijd maar beperkt: ze wekken vooral 's zomers op, terwijl de warmtepomp voor verwarming in de winter draait. Omdat elke woning anders is, is een persoonlijke berekening de enige manier om echt te weten waar jij aan toe bent.",
         ],
       },
       {
@@ -1040,7 +1050,7 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           "Een warmtepomp máákt geen warmte, hij verplaatst het: hij haalt warmte uit de buitenlucht — die er zelfs bij vorst nog in zit — en pompt die naar binnen, net als een koelkast maar dan omgekeerd. De stroom gebruikt hij alleen om die warmte te verplaatsen. Daardoor levert 1 kWh stroom ongeveer 3 tot 4 kWh warmte op. Dat getal heet de COP. Hoe kouder het buiten is en hoe warmer het water moet worden (bijvoorbeeld bij oude radiatoren), hoe lager de COP; over een heel jaar gemeten — de SCOP — zit een goed systeem op vloerverwarming rond de 3,5 à 4.",
           "Een veelgehoord misverstand is dat een cv-ketel energie verspilt. Dat klopt niet: een moderne hr-ketel zet zo'n 95% van het gas om in warmte. Het verschil is dat een ketel warmte máákt uit gas en daardoor nooit boven ongeveer 1 kWh warmte per kWh gas komt, terwijl een warmtepomp warmte uit de lucht haalt en daardoor wél boven de 1 komt. Je vergelijkt dus warmte per kWh stroom met warmte per kWh gas.",
-          "Belangrijk voor je portemonnee: een COP van 3-4 betekent niet dat je 3 tot 4 keer goedkoper uit bent. Stroom is per kWh een stuk duurder dan gas. Die hogere stroomprijs wordt grotendeels gecompenseerd door de hoge COP, waardoor je netto meestal goedkoper uit bent dan met gas — en flink goedkoper als je zonnepanelen hebt. De grootste winst zit in CO₂: een warmtepomp stoot veel minder uit, en dat wordt elk jaar beter naarmate de stroom groener wordt.",
+          "Belangrijk voor je portemonnee: een COP van 3-4 betekent niet dat je 3 tot 4 keer goedkoper uit bent. Stroom is per kWh een stuk duurder dan gas. Die hogere stroomprijs wordt grotendeels gecompenseerd door de hoge COP, waardoor je netto meestal goedkoper uit bent dan met gas. De grootste winst zit in CO₂: een warmtepomp stoot veel minder uit, en dat wordt elk jaar beter naarmate de stroom groener wordt.",
         ],
       },
       {

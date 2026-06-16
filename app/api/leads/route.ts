@@ -142,23 +142,17 @@ function berekenZonnepanelenInfo(lead: LeadData): string {
       lead.jaarlijkseOpwekKwh && lead.jaarlijkseOpwekKwh > 0
         ? `Met jouw zonnepanelen wek je ${zon.eigenOpwekKwh} kWh per jaar op`
         : `Met jouw ${lead.aantalZonnepanelen} zonnepanelen wek je ±${zon.eigenOpwekKwh} kWh per jaar op`;
-    const terugverdienLabel =
-      lead.jaarlijkseOpwekKwh && lead.jaarlijkseOpwekKwh > 0
-        ? "met jouw zonnepanelen"
-        : `met ${lead.aantalZonnepanelen} zonnepanelen`;
 
     return `
 Berekende zonnepanelen-impact (gebruik deze cijfers exact, reken niet zelf opnieuw):
 - Eigen stroomopwek: ${zon.eigenOpwekKwh} kWh per jaar
-- Dekking van het stroomverbruik van de warmtepomp: ${zon.dekkingPercentage}%
-- Extra besparing op de energierekening: €${zon.extraBesparingPerJaar} per jaar
-- Terugverdientijd zonder zonnepanelen: ${advies.terugverdientijd}
-- Terugverdientijd ${terugverdienLabel}: ${zon.terugverdientijdMetZon}
+- Dekking van het stroomverbruik van de warmtepomp op jaarbasis: ${zon.dekkingPercentage}%
+- Terugverdientijd van de warmtepomp (op zichzelf, zonder zonnestroom mee te tellen): ${advies.terugverdientijd}
 
-Verwerk dit in de indicatie met een zin in de vorm van:
-"${opwekZin}. Daarmee dek je ±${zon.dekkingPercentage}% van het stroomverbruik van je warmtepomp. Dit bespaart je extra €${zon.extraBesparingPerJaar} per jaar."
+Verwerk dit eerlijk in de indicatie met een zin in de vorm van:
+"${opwekZin} — op jaarbasis ±${zon.dekkingPercentage}% van het stroomverbruik van je warmtepomp. Reken er alleen niet op dat dit je warmtepomp veel sneller terugverdient: je panelen wekken vooral 's zomers op, terwijl de warmtepomp voor verwarming in de winter draait, als de panelen weinig opleveren. De stroom voor je warmtepomp komt dan grotendeels van het net."
 
-Noem bij de terugverdientijd beide scenario's: "Terugverdientijd zonder zonnepanelen: ${advies.terugverdientijd}" en "Terugverdientijd ${terugverdienLabel}: ${zon.terugverdientijdMetZon}".`.trim();
+Noem als terugverdientijd alleen de waarde van de warmtepomp zelf: "${advies.terugverdientijd}". Presenteer GEEN apart, korter "met zonnepanelen"-scenario en geen "vanaf 2027"-voordeel.`.trim();
   }
 
   if (lead.heeftZonnepanelen === "Nog niet, maar ik overweeg het") {
@@ -175,8 +169,8 @@ Noem bij de terugverdientijd beide scenario's: "Terugverdientijd zonder zonnepan
     const dekking = voorbeeld.zonnepanelen?.dekkingPercentage ?? 0;
 
     return `
-Geef de volgende tip mee in de indicatie:
-"Tip: Combineer je warmtepomp met zonnepanelen voor maximale besparing. Met 10 panelen dek je al ±${dekking}% van je stroomkosten."`.trim();
+Geef de volgende eerlijke tip mee in de indicatie:
+"Tip: zonnepanelen zijn op zichzelf een verstandige investering. Op jaarbasis dekken 10 panelen ±${dekking}% van het stroomverbruik van een warmtepomp, maar reken niet op een veel kortere terugverdientijd: panelen wekken vooral 's zomers op, terwijl de warmtepomp voor verwarming in de winter draait. Voor warm water vullen panelen en een warmtepompboiler elkaar wél goed aan, want die draait ook 's zomers."`.trim();
   }
 
   return "";
@@ -223,7 +217,7 @@ Schrijf de indicatie als een stuk HTML (alleen de inhoud, geen <html>/<head>/<bo
 2. Geschatte kosten (aanschaf + installatie), als bandbreedte
 3. Actuele ISDE-subsidie die van toepassing is
 4. Geschatte maandelijkse besparing op de energierekening
-5. Terugverdientijd (indicatie) — als er berekende zonnepanelen-cijfers zijn aangeleverd, noem dan beide scenario's (met en zonder zonnepanelen)
+5. Terugverdientijd (indicatie) — noem alleen de terugverdientijd van de warmtepomp op zichzelf. Tel zonnestroom niet mee in dit getal en presenteer geen apart, korter "met zonnepanelen"-scenario
 
 Belangrijke regels:
 - Begin meteen met de inhoud van punt 1. Geen aanhef of begroeting (dus niet "Hallo", "Hoi [naam]", "Beste lezer" of iets dergelijks) en geen ondertekening of afsluitende groet aan het einde — dat staat al in de rest van de e-mail.

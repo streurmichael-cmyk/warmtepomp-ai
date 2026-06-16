@@ -139,7 +139,6 @@ export type ZonnepanelenImpact = {
   eigenOpwekKwh: number;
   dekkingPercentage: number;
   extraBesparingPerJaar: number;
-  terugverdientijdMetZon: string;
 };
 
 export type HemsComponent = {
@@ -311,17 +310,11 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
       100
     );
     const extraBesparingPerJaar = Math.round(eigenOpwekKwh * STROOMPRIJS_PER_KWH);
-    const totaleBesparing = besparingPerJaar + extraBesparingPerJaar;
-    const terugverdientijdMetZon =
-      totaleBesparing > 0
-        ? `${Math.max(1, Math.round((nettoInvestering / totaleBesparing) * 10) / 10)} jaar`
-        : "—";
 
     zonnepanelen = {
       eigenOpwekKwh,
       dekkingPercentage,
       extraBesparingPerJaar,
-      terugverdientijdMetZon,
     };
   }
 

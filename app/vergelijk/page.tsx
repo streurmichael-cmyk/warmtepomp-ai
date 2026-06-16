@@ -956,18 +956,6 @@ export default function VergelijkPage() {
                     </div>
                   </div>
 
-                  {advies.zonnepanelen && (
-                    <div className="mt-6 rounded-2xl border-2 border-action/40 bg-action/5 p-6 text-center sm:p-7">
-                      <p className="font-display text-2xl font-bold leading-snug text-dark sm:text-3xl">
-                        Vanaf 2027 met je eigen zonnestroom: {advies.zonnepanelen.terugverdientijdMetZon}
-                      </p>
-                      <p className="mt-3 text-base text-muted sm:text-lg">
-                        Warmtepomp op zichzelf (nu, zonder zonnestroom):{" "}
-                        <span className="font-semibold text-dark">{advies.terugverdientijd}</span>
-                      </p>
-                    </div>
-                  )}
-
                   {advies.besparingPerJaar > 0 && (
                     <p className="mt-6 text-base text-muted">
                       Geschatte besparing op je energierekening:{" "}
@@ -984,19 +972,23 @@ export default function VergelijkPage() {
                         {data.jaarlijkseOpwekKwh && data.jaarlijkseOpwekKwh > 0
                           ? "Met jouw zonnepanelen wek je "
                           : `Met jouw ${data.aantalZonnepanelen} zonnepanelen wek je ±`}
-                        {advies.zonnepanelen.eigenOpwekKwh.toLocaleString("nl-NL")} kWh per jaar op. Daarmee dek
-                        je ±{advies.zonnepanelen.dekkingPercentage}% van het stroomverbruik van je warmtepomp
-                        en bespaar je extra{" "}
-                        <span className="font-bold text-dark">
-                          €{advies.zonnepanelen.extraBesparingPerJaar.toLocaleString("nl-NL")} per jaar
-                        </span>
-                        .
+                        {advies.zonnepanelen.eigenOpwekKwh.toLocaleString("nl-NL")} kWh per jaar op — op
+                        jaarbasis ±{advies.zonnepanelen.dekkingPercentage}% van het stroomverbruik van je
+                        warmtepomp.
+                      </p>
+                      <p className="mt-3 text-sm text-muted">
+                        In de praktijk verlagen zonnepanelen de kosten van je warmtepomp maar beperkt: je
+                        panelen wekken het meest op in de zomer, terwijl je warmtepomp voor verwarming juist
+                        in de winter draait — als de panelen weinig opleveren. De stroom voor je warmtepomp
+                        komt daardoor grotendeels van het net. Daarom rekenen we de terugverdientijd hierboven
+                        op de warmtepomp zelf, zonder zonnestroom mee te tellen.
                       </p>
                       <p className="mt-3 text-xs text-muted-light">
-                        Zolang salderen bestaat (tot naar verwachting 1 januari 2027) maakt het weinig
-                        uit of je je zonnestroom zelf gebruikt of teruglevert. Dáárna wordt zelf
-                        gebruiken — bijvoorbeeld met je warmtepomp — een stuk voordeliger, en daalt je
-                        terugverdientijd richting de waarde hierboven.
+                        De salderingsregeling stopt volledig per 1 januari 2027 (in één keer, niet geleidelijk).
+                        Daarna krijg je voor teruggeleverde stroom een terugleververgoeding van minimaal 50% van
+                        het kale leveringstarief. Veel leveranciers rekenen nu al terugleverkosten, dus
+                        terugleveren levert nu al weinig op — wachten op een &ldquo;2027-voordeel&rdquo; voor je
+                        warmtepomp heeft geen zin.
                       </p>
                     </div>
                   )}
@@ -1027,36 +1019,28 @@ export default function VergelijkPage() {
                         <p className="font-bold text-dark">Wat doen mijn zonnepanelen hierbij?</p>
                         <p>
                           Belangrijk: zonnepanelen besparen geen gas — dat doet de warmtepomp. Panelen
-                          wekken stroom op, en een warmtepomp draait op stroom. Met je eigen panelen kun
-                          je de warmtepomp dus deels op je eigen, gratis stroom laten draaien in plaats
-                          van stroom te kopen bij je energieleverancier.
+                          wekken stroom op, en een warmtepomp draait op stroom. Maar voor de verwarming
+                          verlagen zonnepanelen de warmtepompkosten maar beperkt: je panelen wekken het
+                          meest op in de zomer, terwijl je warmtepomp juist in de winter verwarmt — als de
+                          panelen weinig opleveren. De stroom voor je warmtepomp komt dan grotendeels van
+                          het net. Daarom rekenen we de terugverdientijd op de warmtepomp zelf, zonder
+                          zonnestroom mee te tellen.
                         </p>
                       </div>
                       <div>
-                        <p className="font-bold text-dark">Wat is salderen, en waarom maakt het uit?</p>
+                        <p className="font-bold text-dark">Wat is salderen, en wat verandert er?</p>
                         <p>
                           Salderen is de regeling waarmee je de stroom die je teruglevert aan het net mag
-                          wegstrepen tegen de stroom die je verbruikt. Simpel gezegd: een kWh die je
-                          teruglevert is nu evenveel waard als een kWh die je zelf gebruikt. Daardoor
-                          maakt het op dit moment weinig uit of je je zonnestroom zelf gebruikt of
-                          teruglevert.
+                          wegstrepen tegen de stroom die je verbruikt. De salderingsregeling stopt volledig
+                          per 1 januari 2027 — in één keer, niet geleidelijk. Daarna krijg je voor
+                          teruggeleverde stroom een terugleververgoeding van minimaal 50% van het kale
+                          leveringstarief.
                         </p>
                         <p className="mt-2">
-                          Maar de salderingsregeling stopt naar verwachting op 1 januari 2027. Vanaf dan
-                          krijg je veel minder geld voor stroom die je teruglevert. Je eigen stroom zélf
-                          gebruiken wordt dan ineens veel waardevoller. En een warmtepomp gebruikt nu juist
-                          veel stroom — perfect om je eigen zonnestroom in te steken. Daarom wordt de
-                          combinatie zonnepanelen + warmtepomp vanaf 2027 een stuk aantrekkelijker, en kan
-                          je terugverdientijd dan flink korter worden.
-                        </p>
-                      </div>
-                      <div>
-                        <p className="font-bold text-dark">Waarom zien we twee getallen?</p>
-                        <p>
-                          Omdat ze allebei een eerlijk verhaal vertellen. Het eerste getal laat zien wat
-                          de warmtepomp je op zichzelf kost en bespaart. Het tweede laat zien wat het extra
-                          oplevert als je 'm slim combineert met je eigen zonnepanelen — vooral vanaf 2027.
-                          Zo verstoppen we niets en zie je precies waar je aan toe bent.
+                          Veel leveranciers rekenen nu trouwens al vaste terugleverkosten, dus terugleveren
+                          levert nu al weinig op. De beleidsrichting is: gebruik je eigen stroom zoveel
+                          mogelijk direct. Wachten op een &ldquo;2027-voordeel&rdquo; voor je warmtepomp
+                          heeft geen zin — beoordeel de warmtepomp op zijn eigen merites.
                         </p>
                       </div>
                     </div>
@@ -1065,10 +1049,14 @@ export default function VergelijkPage() {
                   {data.heeftZonnepanelen === "Nog niet, maar ik overweeg het" && (
                     <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
                       <p className="text-base text-muted">
-                        <span className="font-bold text-dark">Tip:</span> combineer je warmtepomp met
-                        zonnepanelen voor maximale besparing. Met 10 panelen dek je al ±
+                        <span className="font-bold text-dark">Tip:</span> zonnepanelen zijn op zichzelf een
+                        verstandige investering, maar reken niet op een veel kortere terugverdientijd van je
+                        warmtepomp: je panelen wekken vooral &apos;s zomers op, terwijl de warmtepomp voor
+                        verwarming in de winter draait. Op jaarbasis dekken 10 panelen ±
                         {Math.min(Math.round((10 * KWH_PER_ZONNEPANEEL) / WARMTEPOMP_VERBRUIK_KWH * 100), 100)}%
-                        van je stroomkosten.
+                        van het warmtepompverbruik, maar dat valt in de praktijk lager uit door die
+                        seizoensmismatch. Wil je panelen en warmtepomp écht laten samenwerken? Kijk dan naar
+                        een warmtepompboiler voor warm water — die draait ook &apos;s zomers.
                       </p>
                     </div>
                   )}

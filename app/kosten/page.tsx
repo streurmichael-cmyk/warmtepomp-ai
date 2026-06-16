@@ -232,6 +232,54 @@ export default function KostenPage() {
           </div>
         </section>
 
+        <section className="bg-light-bg py-20 sm:py-24">
+          <div className="mx-auto max-w-3xl px-5 sm:px-8">
+            <div className="mb-10 text-center">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
+                Tips
+              </p>
+              <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
+                Zo haal je het meeste uit je zonnepanelen
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
+                Zonnepanelen verlagen de kosten van je warmtepomp maar beperkt — die verwarmt vooral in
+                de winter, als je panelen weinig opwekken. Maar met deze twee gewoontes haal je er wél
+                meer uit.
+              </p>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="rounded-2xl border border-green/10 bg-white p-7">
+                <h3 className="font-display text-lg font-bold text-dark">
+                  Gebruik grootverbruikers overdag
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-muted">
+                  Draai je wasmachine, droger en vaatwasser — en laad je elektrische auto — zoveel
+                  mogelijk tussen 11:00 en 15:00 uur. Dan wekken je panelen het meest op en gebruik je je
+                  eigen stroom direct, in plaats van &apos;m voor weinig terug te leveren. Werkt vooral
+                  goed in de lente en zomer.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-green/10 bg-white p-7">
+                <h3 className="font-display text-lg font-bold text-dark">
+                  Overweeg een warmtepompboiler
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-muted">
+                  Een warmtepompboiler voor je warme water draait het hele jaar door, óók &apos;s zomers
+                  als je panelen volop opwekken — dáár vullen zonnepanelen en warmtepomptechniek elkaar
+                  wél aan. En hij is flink goedkoper in gebruik dan warm water maken met gas.
+                </p>
+              </div>
+            </div>
+
+            <p className="mt-6 rounded-xl border border-green/10 bg-white px-5 py-4 text-sm leading-relaxed text-muted">
+              <span className="font-bold text-dark">Eerlijke kanttekening:</span> voor de ruimteverwarming
+              geldt dit niet. Je warmtepomp verwarmt vooral in de winter, als je panelen weinig opleveren —
+              reken daar dus niet op.
+            </p>
+          </div>
+        </section>
+
         <section className="bg-action py-20 text-center sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">

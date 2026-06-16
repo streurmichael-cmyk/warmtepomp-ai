@@ -59,7 +59,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Ben je met een warmtepomp echt goedkoper uit dan met gas?",
-    a: "Let op: een COP van 3-4 betekent niet dat je 3 tot 4 keer goedkoper uit bent. Stroom is per kWh een stuk duurder dan gas. Die hogere stroomprijs wordt grotendeels gecompenseerd door de hoge COP, waardoor je netto meestal goedkoper uit bent dan met gas — en flink goedkoper als je zonnepanelen hebt. De grootste winst zit in CO₂: een warmtepomp stoot veel minder uit, en dat wordt elk jaar beter naarmate de stroom groener wordt.",
+    a: "Let op: een COP van 3-4 betekent niet dat je 3 tot 4 keer goedkoper uit bent. Stroom is per kWh een stuk duurder dan gas. Die hogere stroomprijs wordt grotendeels gecompenseerd door de hoge COP, waardoor je netto meestal goedkoper uit bent dan met gas. De grootste winst zit in CO₂: een warmtepomp stoot veel minder uit, en dat wordt elk jaar beter naarmate de stroom groener wordt.",
   },
   {
     q: "Hoe kan een warmtepomp 4x meer warmte leveren dan de stroom die hij gebruikt? Die energie moet toch ergens vandaan komen?",
