@@ -183,7 +183,7 @@ export const blogPosts: BlogPost[] = [
     title: "Warmtepomp in een Tussenwoning: Alles wat je moet weten (2026)",
     description:
       "De tussenwoning is het meest voorkomende woningtype in Nederland. Alles over welk type warmtepomp het beste past, wat het kost, en waar je op moet letten.",
-    publishedAt: "2026-06-17",
+    publishedAt: "2026-06-16",
     intro:
       "De tussenwoning is veruit het meest voorkomende woningtype in Nederland, en dat zie je terug in de vragen die ik krijg: 'past een warmtepomp wel bij mijn tussenwoning?' Het korte antwoord is: in vrijwel alle gevallen wel. In dit artikel loop ik door wat er allemaal komt kijken bij het plaatsen van een warmtepomp in een tussenwoning.",
     sections: [
@@ -261,7 +261,7 @@ export const blogPosts: BlogPost[] = [
     title: "Warmtepomp Kosten 2026: Compleet Overzicht Aanschaf en Installatie",
     description:
       "Alle kosten van een warmtepomp op een rij: aanschaf, installatie, bijkomende kosten, subsidie en de invloed van je woning. Het complete kostenoverzicht voor 2026.",
-    publishedAt: "2026-06-24",
+    publishedAt: "2026-06-16",
     intro:
       "Wat kost een warmtepomp nu eigenlijk echt? Niet alleen het apparaat zelf, maar ook de installatie, eventuele aanpassingen aan je woning en de jaarlijkse kosten daarna. In dit artikel zet ik alle kostenposten voor 2026 op een rij, zodat je vooraf weet waar je rekening mee moet houden — en hoeveel je dankzij subsidie kunt terugkrijgen.",
     sections: [
@@ -347,7 +347,7 @@ export const blogPosts: BlogPost[] = [
     title: "ISDE Subsidie Aanvragen in 2026: Stap voor Stap Uitgelegd",
     description:
       "Een praktische stap-voor-stap handleiding voor het aanvragen van de ISDE-subsidie voor je warmtepomp in 2026, inclusief documenten, deadlines en veelgemaakte fouten.",
-    publishedAt: "2026-06-26",
+    publishedAt: "2026-06-16",
     intro:
       "De ISDE-subsidie kan honderden tot duizenden euro's schelen op de aanschaf van je warmtepomp, maar de aanvraag voelt voor veel mensen onnodig ingewikkeld. In dit artikel loop ik stap voor stap door het hele proces: van de voorbereiding tot het moment dat het geld op je rekening staat.",
     sections: [
@@ -436,7 +436,7 @@ export const blogPosts: BlogPost[] = [
     title: "Beste Warmtepomp Merken 2026: Daikin, Vaillant, Bosch Vergeleken",
     description:
       "Een eerlijke vergelijking van populaire warmtepompmerken in 2026: Daikin, Vaillant, Bosch en meer. Wat zijn de verschillen en waar moet je op letten bij je keuze?",
-    publishedAt: "2026-06-29",
+    publishedAt: "2026-06-16",
     intro:
       "Bij het kiezen van een warmtepomp kom je al snel een aantal bekende merknamen tegen: Daikin, Vaillant, Bosch, en nog een paar anderen. Maar wat zijn nu eigenlijk de verschillen, en hoe belangrijk is het merk eigenlijk voor jouw uiteindelijke keuze? In dit artikel zet ik de meest gekozen merken op een rij en geef ik praktische tips voor het maken van je keuze.",
     sections: [
@@ -517,7 +517,7 @@ export const blogPosts: BlogPost[] = [
     title: "Is een Warmtepomp Geschikt voor Mijn Woning? De Complete Checklist",
     description:
       "Twijfel je of een warmtepomp geschikt is voor jouw woning? Deze complete checklist helpt je op basis van bouwjaar, isolatie, radiatoren en woningtype.",
-    publishedAt: "2026-07-01",
+    publishedAt: "2026-06-16",
     intro:
       "Een van de meest gestelde vragen die ik krijg is: 'is een warmtepomp wel geschikt voor mijn woning?' Het goede nieuws is dat voor vrijwel elke woning een passende oplossing bestaat — de vraag is vooral wélk type warmtepomp het beste past. Met deze checklist loop je zelf de belangrijkste punten na.",
     sections: [
@@ -603,7 +603,7 @@ export const blogPosts: BlogPost[] = [
     title: "Hoeveel Bespaar je met een Warmtepomp? Bereken het Zelf (2026)",
     description:
       "Reken zelf uit hoeveel je kunt besparen met een warmtepomp: van gasverbruik en energieprijzen tot subsidie en terugverdientijd. Met praktische rekenvoorbeelden voor 2026.",
-    publishedAt: "2026-07-03",
+    publishedAt: "2026-06-16",
     intro:
       "Een warmtepomp kan flink besparen op je energierekening, maar hoeveel precies hangt af van jouw situatie. In dit artikel laat ik zien welke factoren de besparing bepalen en geef ik praktische rekenvoorbeelden, zodat je voor jouw eigen woning een goede inschatting kunt maken.",
     sections: [
