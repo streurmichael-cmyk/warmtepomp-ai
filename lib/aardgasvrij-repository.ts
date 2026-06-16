@@ -5,6 +5,8 @@ type AardgasvrijSignup = {
   naam: string;
   email: string;
   postcode: string;
+  /** Herkomst van de aanmelding, bijv. "aardgasvrij" of een exit-scherm uit de keuzehulp. */
+  bron?: string;
 };
 
 /**
@@ -24,11 +26,13 @@ export async function saveAardgasvrijSignup(signup: AardgasvrijSignup): Promise<
     insert into aardgasvrij_signups (
       name_encrypted,
       email_encrypted,
-      postcode
+      postcode,
+      bron
     ) values (
       ${nameEncrypted},
       ${emailEncrypted},
-      ${signup.postcode}
+      ${signup.postcode},
+      ${signup.bron ?? "aardgasvrij"}
     )
   `;
 }

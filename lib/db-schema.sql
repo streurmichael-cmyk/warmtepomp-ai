@@ -37,7 +37,12 @@ create table if not exists aardgasvrij_signups (
   created_at timestamptz not null default now(),
   name_encrypted text not null,
   email_encrypted text not null,
-  postcode text not null
+  postcode text not null,
+  bron text not null default 'aardgasvrij'
 );
 
 create index if not exists aardgasvrij_signups_created_at_idx on aardgasvrij_signups (created_at);
+
+-- Bron onderscheidt reguliere aardgasvrij-aanmeldingen van exit-contacten uit de keuzehulp
+-- (stadsverwarming/blokverwarming), zodat ze gescheiden blijven van installateur-leads.
+alter table aardgasvrij_signups add column if not exists bron text not null default 'aardgasvrij';

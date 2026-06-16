@@ -7,6 +7,7 @@ import {
   ArrowLeft,
   ArrowRight,
   BoltIcon,
+  BuildingIcon,
   CheckCircleIcon,
   FlameIcon,
   MailIcon,
@@ -78,11 +79,13 @@ type StepName =
   | "adres"
   | "zoeken"
   | "bevestig"
+  | "verwarming"
   | "energielabel"
   | "systeem"
   | "cvketel"
   | "aanpak"
-  | "stadsverwarming"
+  | "exit-stadsverwarming"
+  | "exit-blokverwarming"
   | "gasverbruik"
   | "zonnepanelen"
   | "verwerken"
@@ -92,7 +95,7 @@ type StepName =
 
 const PROGRESS_STEPS: { steps: StepName[]; label: string }[] = [
   { steps: ["adres"], label: "Jouw adres" },
-  { steps: ["zoeken", "bevestig", "energielabel"], label: "Jouw woning" },
+  { steps: ["zoeken", "verwarming", "bevestig", "energielabel"], label: "Jouw woning" },
   { steps: ["systeem", "cvketel", "aanpak", "gasverbruik", "zonnepanelen"], label: "Verwarmingssysteem" },
   { steps: ["verwerken", "advies"], label: "Jouw indicatie" },
   { steps: ["contact"], label: "Gegevens" },
@@ -107,12 +110,12 @@ const VERWERKING_TEKSTEN = [
 
 const woningtypeOpties = ["Tussenwoning", "Hoekwoning", "Twee-onder-een-kap", "Vrijstaand", "Appartement"];
 
+// Verfijning ná de vroege verwarming-vraag: alleen relevant voor wie "(deels) elektrisch /
+// bestaande warmtepomp" koos. Elektrisch en hybride leiden tot een ander advies, dus dat
+// onderscheid vragen we hier alsnog uit.
 const systemen: { label: string; icon: IconComponent }[] = [
-  { label: "CV-ketel op gas", icon: FlameIcon },
-  { label: "Stadsverwarming", icon: NetworkIcon },
   { label: "Elektrisch", icon: BoltIcon },
   { label: "Hybride warmtepomp", icon: ShieldIcon },
-  { label: "Anders", icon: QuestionIcon },
 ];
 
 const aanpakOpties: { label: string; waarde: "volledig" | "hybride"; beschrijving: string }[] = [
@@ -244,7 +247,8 @@ export default function VergelijkPage() {
       setAdresGevonden(false);
       setAutoIngevuld(false);
     } finally {
-      setStep("bevestig");
+      // Eerst de vroege verwarming-vraag; de woningdetails (bevestig) komen daarna.
+      setStep("verwarming");
     }
   }
 
@@ -310,6 +314,22 @@ export default function VergelijkPage() {
     setStep("energielabel");
   }
 
+  // Vroege gate-vraag "Hoe wordt je woning nu verwarmd?". Collectieve warmtebronnen leiden
+  // naar een exit-scherm en nooit naar het offerteformulier.
+  function kiesVerwarming(keuze: "gas" | "elektrisch" | "stadsverwarming" | "blokverwarming") {
+    if (keuze === "stadsverwarming") {
+      setStep("exit-stadsverwarming");
+      return;
+    }
+    if (keuze === "blokverwarming") {
+      setStep("exit-blokverwarming");
+      return;
+    }
+    // "gas" kennen we volledig; bij "elektrisch" verfijnen we later (elektrisch vs hybride).
+    update("huidigSysteem", keuze === "gas" ? "CV-ketel op gas" : "");
+    setStep("bevestig");
+  }
+
   function selectEnergielabel(label: string) {
     if (label === "Weet ik niet") {
       const geschat = schatEnergielabel(data.bouwjaar, data.woningtype);
@@ -327,26 +347,20 @@ export default function VergelijkPage() {
         isolatie: energielabelNaarIsolatie(label),
       }));
     }
-    setStep("systeem");
+    // De vroege verwarming-vraag bepaalt de route: bij gas kennen we het systeem al en slaan
+    // we de systeem-stap over; bij (deels) elektrisch verfijnen we elektrisch vs hybride.
+    if (data.huidigSysteem === "CV-ketel op gas") {
+      const geschat = schatGasverbruik(data.oppervlakte, data.bouwjaar);
+      setData((d) => ({ ...d, gasverbruik: d.gasverbruik || geschat }));
+      setStep("cvketel");
+    } else {
+      setStep("systeem");
+    }
   }
 
   function selectSysteem(label: string) {
-    if (label === "Stadsverwarming") {
-      update("huidigSysteem", label);
-      setStep("stadsverwarming");
-      return;
-    }
     const geschat = schatGasverbruik(data.oppervlakte, data.bouwjaar);
     setData((d) => ({ ...d, huidigSysteem: label, gasverbruik: d.gasverbruik || geschat }));
-
-    if (label === "CV-ketel op gas") {
-      setStep("cvketel");
-      return;
-    }
-    if (label === "Anders") {
-      setStep("aanpak");
-      return;
-    }
     setStep("gasverbruik");
   }
 
@@ -550,10 +564,14 @@ export default function VergelijkPage() {
             </div>
           )}
 
+          {step === "verwarming" && (
+            <VerwarmingStep onChoose={kiesVerwarming} onBack={() => setStep("adres")} />
+          )}
+
           {step === "bevestig" && (
             <Step
               heading={adresGevonden ? "Ik heb jouw woning gevonden!" : "Ik kon je woning niet automatisch vinden"}
-              onBack={() => setStep("adres")}
+              onBack={() => setStep("verwarming")}
             >
               <div className="mb-6 flex items-start gap-3 rounded-xl border border-green/15 bg-white p-4">
                 <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-action/10 text-action">
@@ -675,8 +693,13 @@ export default function VergelijkPage() {
           )}
 
           {step === "systeem" && (
-            <Step heading="Hoe verwarm je nu?" onBack={() => setStep("energielabel")}>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <Step heading="Wat heb je nu precies?" onBack={() => setStep("energielabel")}>
+              <p className="mb-6 text-base leading-relaxed text-muted">
+                Je gaf aan dat je woning al (deels) elektrisch verwarmd wordt. Heb je een hybride
+                warmtepomp die met je cv-ketel samenwerkt, of verwarm je volledig elektrisch? Dat
+                bepaalt welk advies het beste bij je past.
+              </p>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {systemen.map((opt) => (
                   <OptionCard
                     key={opt.label}
@@ -691,7 +714,7 @@ export default function VergelijkPage() {
           )}
 
           {step === "cvketel" && (
-            <Step heading="Hoe oud is je cv-ketel?" onBack={() => setStep("systeem")}>
+            <Step heading="Hoe oud is je cv-ketel?" onBack={() => setStep("energielabel")}>
               <p className="mb-6 text-base leading-relaxed text-muted">
                 Een cv-ketel gaat gemiddeld zo'n 15 jaar mee. Is die van jou aan vervanging toe, dan
                 wordt de overstap naar een warmtepomp een stuk aantrekkelijker — die vervangingskosten
@@ -748,41 +771,81 @@ export default function VergelijkPage() {
             </Step>
           )}
 
-          {step === "stadsverwarming" && (
-            <Step heading="Geen warmtepomp nodig" onBack={() => setStep("systeem")}>
+          {step === "exit-stadsverwarming" && (
+            <Step heading="Je woning is aangesloten op stadsverwarming" onBack={() => setStep("verwarming")}>
               <div className="mb-6 flex items-start gap-3 rounded-xl border border-green/15 bg-white p-4">
                 <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-action/10 text-action">
                   <NetworkIcon className="h-5 w-5" />
                 </span>
-                <p className="font-display text-lg font-bold text-dark">
-                  Bij stadsverwarming heb je geen warmtepomp nodig — je bent al aangesloten op een
-                  warmtenet.
+                <p className="text-base leading-relaxed text-muted">
+                  Bij stadsverwarming komt je warmte al van een collectief net. Een individuele
+                  warmtepomp is in dat geval bijna nooit zinvol: je zou een werkend, vaak duurzaam
+                  warmtenet vervangen door een eigen installatie — meestal duurder en zonder
+                  milieuwinst.
                 </p>
               </div>
-              <p className="text-base leading-relaxed text-muted">
-                Een warmtenet (ook wel stadsverwarming of blokverwarming) levert warmte vanuit een
-                centrale bron via leidingen aan de huizen in de buurt — net als een hele grote,
-                gedeelde cv-installatie. Een warmtepomp voegt daar in de praktijk niets aan toe.
-                Heb je vragen over je aansluiting, kosten of voorwaarden? Neem dan contact op met je
-                warmteleverancier.
-              </p>
-              <a
-                href="https://www.milieucentraal.nl/energie-besparen/aardgasvrij-wonen/warmtenet/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-action hover:underline"
-              >
-                Meer informatie over warmtenetten op Milieu Centraal
-                <ArrowRight className="h-4 w-4" />
-              </a>
+              <div className="rounded-xl border border-green/15 bg-white p-5">
+                <p className="text-base leading-relaxed text-muted">
+                  <span className="font-bold text-dark">Tip:</span> Wat wél kan helpen: je woning
+                  beter isoleren verlaagt je warmtevraag en daarmee je kosten, ongeacht je
+                  warmtebron.
+                </p>
+              </div>
 
-              <div className="mt-10 space-y-3">
-                <Link
-                  href="/"
+              <div className="mt-8 space-y-3">
+                <a
+                  href="https://www.milieucentraal.nl/energie-besparen/isoleren-en-besparen/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
                 >
-                  Terug naar home
+                  Lees over isolatie
+                  <ArrowRight className="h-5 w-5" />
+                </a>
+                <ExitEmailCapture
+                  postcode={data.postcode}
+                  bron="exit-stadsverwarming"
+                  label="Laat je e-mail achter"
+                />
+              </div>
+            </Step>
+          )}
+
+          {step === "exit-blokverwarming" && (
+            <Step heading="Je woning heeft blokverwarming" onBack={() => setStep("verwarming")}>
+              <div className="mb-6 flex items-start gap-3 rounded-xl border border-green/15 bg-white p-4">
+                <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-action/10 text-action">
+                  <BuildingIcon className="h-5 w-5" />
+                </span>
+                <p className="text-base leading-relaxed text-muted">
+                  Bij blokverwarming verwarmt één centrale installatie meerdere woningen in je
+                  gebouw. De keuze voor een warmtepomp is hier geen individuele beslissing — die
+                  loopt via je Vereniging van Eigenaren (VvE) of verhuurder, omdat het de hele installatie van
+                  het gebouw raakt.
+                </p>
+              </div>
+              <div className="rounded-xl border border-green/15 bg-white p-5">
+                <p className="text-base leading-relaxed text-muted">
+                  <span className="font-bold text-dark">Tip:</span> Wat je nu kunt doen: breng het
+                  onderwerp in bij je VvE. Een collectieve warmtepomp of aansluiting op een warmtenet
+                  wordt vaak op gebouwniveau bekeken, inclusief subsidiemogelijkheden voor
+                  VvE&apos;s.
+                </p>
+              </div>
+
+              <div className="mt-8 space-y-3">
+                <Link
+                  href="/warmtepompen"
+                  className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
+                >
+                  Meer over warmtepompen
+                  <ArrowRight className="h-5 w-5" />
                 </Link>
+                <ExitEmailCapture
+                  postcode={data.postcode}
+                  bron="exit-blokverwarming"
+                  label="Laat je e-mail achter voor VvE-info"
+                />
               </div>
             </Step>
           )}
@@ -1347,6 +1410,177 @@ function VerwerkenStep({ onDone }: { onDone: () => void }) {
       />
       <p className="font-display text-lg font-bold text-dark">{VERWERKING_TEKSTEN[index]}</p>
     </div>
+  );
+}
+
+type VerwarmingKeuze = "gas" | "elektrisch" | "stadsverwarming" | "blokverwarming";
+
+function VerwarmingStep({
+  onChoose,
+  onBack,
+}: {
+  onChoose: (keuze: VerwarmingKeuze) => void;
+  onBack: () => void;
+}) {
+  const [toonHulp, setToonHulp] = useState(false);
+
+  const opties: { label: string; icon: IconComponent; keuze: VerwarmingKeuze }[] = [
+    { label: "CV-ketel op gas", icon: FlameIcon, keuze: "gas" },
+    { label: "Al (deels) elektrisch / bestaande warmtepomp", icon: BoltIcon, keuze: "elektrisch" },
+    { label: "Stadsverwarming (warmtenet)", icon: NetworkIcon, keuze: "stadsverwarming" },
+    { label: "Blokverwarming (collectief in het gebouw)", icon: BuildingIcon, keuze: "blokverwarming" },
+  ];
+
+  return (
+    <Step heading="Hoe wordt je woning nu verwarmd?" onBack={onBack}>
+      <p className="mb-6 text-base leading-relaxed text-muted">
+        Dit bepaalt of een eigen warmtepomp voor jou een zinvolle keuze is. Bij een collectieve
+        warmtebron is dat meestal niet zo — dan laat ik je dat meteen weten.
+      </p>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {opties.map((opt) => (
+          <OptionCard
+            key={opt.keuze}
+            label={opt.label}
+            icon={opt.icon}
+            onClick={() => onChoose(opt.keuze)}
+          />
+        ))}
+        <OptionCard
+          label="Weet ik niet zeker"
+          icon={QuestionIcon}
+          selected={toonHulp}
+          onClick={() => setToonHulp(true)}
+        />
+      </div>
+      {toonHulp && (
+        <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+          <p className="text-base leading-relaxed text-muted">
+            Heb je een cv-ketel in huis, of komt de warmte centraal het gebouw in?
+          </p>
+        </div>
+      )}
+    </Step>
+  );
+}
+
+/** E-mailcapture op de exit-schermen: gaat naar /api/aardgasvrij (gescheiden van
+ * installateur-leads) en nooit naar het offerteformulier. */
+function ExitEmailCapture({
+  postcode,
+  bron,
+  label,
+}: {
+  postcode: string;
+  bron: string;
+  label: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const [naam, setNaam] = useState("");
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [done, setDone] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!naam.trim()) {
+      setError("Vul je naam in");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setError("Vul een geldig e-mailadres in");
+      return;
+    }
+    setError("");
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/aardgasvrij", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ naam: naam.trim(), email: email.trim(), postcode, bron }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        setError(body?.error ?? "Er ging iets mis, probeer het later opnieuw.");
+        return;
+      }
+      setDone(true);
+    } catch {
+      setError("Er ging iets mis, probeer het later opnieuw.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  if (done) {
+    return (
+      <div className="flex items-start gap-3 rounded-xl border border-green/15 bg-white p-5">
+        <CheckCircleIcon className="h-6 w-6 flex-shrink-0 text-green" />
+        <div>
+          <p className="font-display text-base font-bold text-dark">
+            Bedankt, je e-mailadres is genoteerd!
+          </p>
+          <p className="mt-1 text-sm text-muted">
+            Ik neem contact op zodra er voor jou relevante informatie is.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!open) {
+    return (
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border-2 border-green/20 px-7 py-3.5 text-base font-bold text-dark transition-colors hover:border-action hover:text-action"
+      >
+        {label}
+      </button>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className="space-y-3 rounded-xl border border-green/15 bg-white p-5"
+    >
+      <p className="text-sm text-muted">
+        Laat je naam en e-mailadres achter, dan houd ik je op de hoogte. Je gegevens gaan niet naar
+        installateurs.
+      </p>
+      <FormField
+        name="exit-naam"
+        label="Naam"
+        icon={UserIcon}
+        type="text"
+        placeholder="Voornaam"
+        autoComplete="given-name"
+        value={naam}
+        onChange={setNaam}
+      />
+      <FormField
+        name="exit-email"
+        label="E-mailadres"
+        icon={MailIcon}
+        type="email"
+        placeholder="naam@voorbeeld.nl"
+        autoComplete="email"
+        value={email}
+        onChange={setEmail}
+        error={error}
+      />
+      <button
+        type="submit"
+        disabled={submitting}
+        className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44] disabled:opacity-60"
+      >
+        {submitting ? "Versturen..." : "Verstuur"}
+        {!submitting && <ArrowRight className="h-5 w-5" />}
+      </button>
+    </form>
   );
 }
 

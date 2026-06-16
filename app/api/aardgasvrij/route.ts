@@ -6,7 +6,11 @@ import { saveAardgasvrijSignup } from "@/lib/aardgasvrij-repository";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const POSTCODE_REGEX = /^\d{4}[A-Z]{2}$/;
 
-async function sendNotificationEmail(naam: string, email: string, postcode: string) {
+// Toegestane herkomsten. "aardgasvrij" is de reguliere aanmelding; de exit-bronnen komen
+// uit de keuzehulp (collectieve verwarming) en zijn info/exit-contacten, geen offerte-leads.
+const TOEGESTANE_BRONNEN = ["aardgasvrij", "exit-stadsverwarming", "exit-blokverwarming"];
+
+async function sendNotificationEmail(naam: string, email: string, postcode: string, bron: string) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.warn("RESEND_API_KEY niet ingesteld, notificatiemail wordt overgeslagen");
@@ -20,13 +24,14 @@ async function sendNotificationEmail(naam: string, email: string, postcode: stri
     const { data, error } = await resend.emails.send({
       from,
       to: "info@warmtepomp.ai",
-      subject: `🔥 Nieuwe aanmelding aardgasvrij: ${naam} - ${postcode}`,
+      subject: `🔥 Nieuwe aanmelding (${bron}): ${naam} - ${postcode}`,
       html: `
         <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
           <ul>
             <li><strong>Naam:</strong> ${naam}</li>
             <li><strong>Email:</strong> ${email}</li>
             <li><strong>Postcode:</strong> ${postcode}</li>
+            <li><strong>Bron:</strong> ${bron}</li>
           </ul>
         </div>
       `,
@@ -55,7 +60,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Ongeldige aanvraag" }, { status: 400 });
   }
 
-  const { naam, email, postcode } = body as Record<string, unknown>;
+  const { naam, email, postcode, bron } = body as Record<string, unknown>;
+  const veiligeBron =
+    typeof bron === "string" && TOEGESTANE_BRONNEN.includes(bron) ? bron : "aardgasvrij";
 
   if (typeof naam !== "string" || naam.trim().length === 0) {
     return NextResponse.json({ error: "Vul je naam in" }, { status: 400 });
@@ -76,8 +83,8 @@ export async function POST(request: Request) {
     );
   }
 
-  await saveAardgasvrijSignup({ naam: naam.trim(), email, postcode: cleanPostcode });
-  await sendNotificationEmail(naam.trim(), email, cleanPostcode);
+  await saveAardgasvrijSignup({ naam: naam.trim(), email, postcode: cleanPostcode, bron: veiligeBron });
+  await sendNotificationEmail(naam.trim(), email, cleanPostcode, veiligeBron);
 
   return NextResponse.json({ success: true });
 }
