@@ -33,6 +33,7 @@ export const INDEXED_CITY_SLUGS = [
   "almere",
   "breda",
   "nijmegen",
+  "arnhem",
 ] as const;
 
 export function isCityIndexed(slug: string): boolean {
@@ -427,6 +428,35 @@ export const cities: City[] = [
       {
         q: "Is mijn woning in Nijmegen geschikt voor een warmtepomp?",
         a: "In de meeste gevallen wel. Voor jaren '20-30 woningen in Nijmegen-Oost is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwbouw in de Waalsprong doorgaans al geschikt is voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "arnhem",
+    name: "Arnhem",
+    province: "Gelderland",
+    context:
+      "Van de karakteristieke 19e-eeuwse woningen in het Spijkerkwartier tot de nieuwbouw in Schuytgraaf",
+    woningType: "karakteristieke vooroorlogse woningen en nieuwbouw in Schuytgraaf",
+    localParagraph:
+      "Het Spijkerkwartier staat bekend om zijn karakteristieke 19e-eeuwse stadswoningen met hoge plafonds en sierlijke gevels, waarvan een deel beeldbepalend of monumentaal is. Aanpassingen aan de buitenkant — zoals gevelisolatie — zijn daar niet altijd mogelijk of wenselijk. Een hybride warmtepomp is dan vaak de meest praktische eerste stap: je bespaart op gas zonder de uitstraling van je woning aan te tasten, en je cv-ketel blijft als back-up beschikbaar. Aan de zuidkant van de Rijn breidt de nieuwbouwwijk Schuytgraaf zich juist verder uit; die woningen zijn vaak al voorbereid op lage-temperatuurverwarming, wat ze geschikt maakt voor een volledig elektrische lucht-water warmtepomp. Mijn keuzehulp houdt rekening met dit verschil tussen de oudere stadswijken en de nieuwbouw, en helpt je verder richting gecertificeerde installateurs in de regio Arnhem.",
+    localFacts: [
+      "Arnhem is de provinciehoofdstad van Gelderland en werkt aan de warmtetransitie met aandacht voor aardgasvrije wijken.",
+      "Mix van karakteristieke vooroorlogse koopwoningen en huurwoningen — warmtepomp-subsidie geldt alleen voor eigenaar-bewoners, dus vooral relevant voor koopwoningen.",
+      "Regio Arnhem-Nijmegen: actieve installateursmarkt met meerdere gecertificeerde bedrijven in de regio.",
+    ],
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Arnhem?",
+        a: "In Arnhem liggen de kosten van een hybride warmtepomp gemiddeld tussen €3.500 en €7.000, en een volledig elektrische lucht-water warmtepomp tussen €6.000 en €12.000, inclusief installatie. Voor de karakteristieke vooroorlogse woningen in wijken als het Spijkerkwartier is een hybride warmtepomp vaak de meest praktische eerste keuze.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Arnhem?",
+        a: "Ja, in Arnhem en de regio Arnhem-Nijmegen zijn meerdere gecertificeerde installateurs actief, met ervaring in zowel de oudere stadswijken als de nieuwbouw. Via mijn keuzehulp laat je je gegevens achter, dan help ik je verder richting een gecertificeerde installateur bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Arnhem geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor karakteristieke vooroorlogse woningen, bijvoorbeeld in het Spijkerkwartier, is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwbouw in Schuytgraaf doorgaans al geschikt is voor een volledig elektrische warmtepomp.",
       },
     ],
   },
