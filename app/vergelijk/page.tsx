@@ -76,6 +76,11 @@ async function getRecaptchaToken(): Promise<string | undefined> {
   }
 }
 
+// Tijdelijk verborgen: het HEMS/"toekomstklaar"-blok toont besparingsbedragen die
+// straks niet meer kloppen (saldering stopt per 2027). De rekenlogica blijft intact;
+// we bouwen het blok later eerlijk opnieuw op. Zet op true om weer te tonen.
+const SHOW_HEMS_TOEKOMSTKLAAR = false;
+
 type StepName =
   | "adres"
   | "zoeken"
@@ -1147,7 +1152,7 @@ export default function VergelijkPage() {
                     </div>
                   )}
 
-                  {advies.hemsPakket && (
+                  {SHOW_HEMS_TOEKOMSTKLAAR && advies.hemsPakket && (
                     <div className="mt-8 rounded-2xl border border-green/15 bg-white p-6 sm:p-7">
                       <h2 className="font-display text-lg font-bold text-dark sm:text-xl">
                         In één keer helemaal toekomstklaar?
