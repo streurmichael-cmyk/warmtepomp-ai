@@ -723,6 +723,98 @@ export const cities: City[] = [
       },
     ],
   },
+  {
+    slug: "leeuwarden",
+    name: "Leeuwarden",
+    province: "Friesland",
+    context: "Van de historische binnenstad tot de naoorlogse wijken en nieuwbouw aan de rand",
+    woningType: "een mix van vooroorlogse woningen, naoorlogse wijken en nieuwbouw",
+    localParagraph:
+      "Leeuwarden, de hoofdstad van Friesland, heeft een gemengde woningvoorraad: van oudere, vaak karakteristieke woningen in en rond de historische binnenstad tot ruimere naoorlogse wijken en nieuwbouw aan de randen van de stad. Voor oudere en minder goed geïsoleerde woningen is een hybride warmtepomp vaak de meest praktische eerste stap — je bespaart op gas zonder grote ingrepen, en je cv-ketel blijft als back-up beschikbaar op de koudste dagen. Nieuwere en goed geïsoleerde woningen zijn vaak al geschikt voor een volledig elektrische lucht-water warmtepomp. Welk type bij jouw woning past, hangt sterk af van het bouwjaar en de isolatie. Mijn gratis keuzehulp geeft je in een paar minuten een persoonlijke indicatie en helpt je verder richting gecertificeerde installateurs in de regio Leeuwarden.",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Leeuwarden?",
+        a: "Een hybride warmtepomp kost in Leeuwarden gemiddeld €3.500 – €7.000 en een volledig elektrische lucht-water warmtepomp €6.000 – €12.000, inclusief installatie. De exacte prijs hangt af van het type woning en de isolatiestaat.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Leeuwarden?",
+        a: "Ja, in Leeuwarden en omgeving zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai laat je vrijblijvend je gegevens achter, dan help ik je verder richting een gecertificeerde installateur bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Leeuwarden geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor oudere, minder goed geïsoleerde woningen is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwere en goed geïsoleerde woningen meestal al geschikt zijn voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "assen",
+    name: "Assen",
+    province: "Drenthe",
+    context: "Van de oudere woningen rond het centrum tot de naoorlogse wijken en nieuwbouw",
+    woningType: "een mix van vooroorlogse woningen, naoorlogse wijken en nieuwbouw",
+    localParagraph:
+      "Assen, de hoofdstad van Drenthe, is een groene stad met een gevarieerde woningvoorraad: oudere woningen rond het centrum, ruime naoorlogse wijken en nieuwbouw aan de randen. Voor oudere en minder goed geïsoleerde woningen is een hybride warmtepomp meestal de beste eerste stap — lage instapkosten en directe besparing, met je cv-ketel als back-up op de koudste dagen. Nieuwere en goed geïsoleerde woningen zijn vaak al geschikt voor een volledig elektrische lucht-water warmtepomp. Welk type bij jouw woning past, hangt sterk af van het bouwjaar en de isolatie. Mijn gratis keuzehulp geeft je in een paar minuten een persoonlijke indicatie en helpt je verder richting gecertificeerde installateurs in de regio Assen.",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Assen?",
+        a: "Een hybride warmtepomp kost in Assen gemiddeld €3.500 – €7.000 en een volledig elektrische lucht-water warmtepomp €6.000 – €12.000, inclusief installatie. De exacte prijs hangt af van het type woning en de isolatiestaat.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Assen?",
+        a: "Ja, in Assen en omgeving zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai laat je vrijblijvend je gegevens achter, dan help ik je verder richting een gecertificeerde installateur bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Assen geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor oudere, minder goed geïsoleerde woningen is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwere en goed geïsoleerde woningen meestal al geschikt zijn voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "middelburg",
+    name: "Middelburg",
+    province: "Zeeland",
+    context: "Van de monumentale historische binnenstad tot de naoorlogse wijken en nieuwbouw",
+    woningType: "een mix van karakteristieke binnenstadswoningen, naoorlogse wijken en nieuwbouw",
+    localParagraph:
+      "Middelburg, de hoofdstad van Zeeland, staat bekend om zijn monumentale historische binnenstad, met daaromheen naoorlogse wijken en nieuwbouw. De karakteristieke en deels monumentale woningen in de binnenstad hebben vaak beeldbepalende gevels, waardoor aanpassingen aan de buitenkant niet altijd mogelijk of wenselijk zijn — een hybride warmtepomp is dan vaak de meest praktische eerste stap, zonder de uitstraling van je woning aan te tasten en met je cv-ketel als back-up. Nieuwere en goed geïsoleerde woningen aan de randen van de stad zijn vaak al geschikt voor een volledig elektrische lucht-water warmtepomp. Welk type bij jouw woning past, hangt sterk af van het bouwjaar en de isolatie. Mijn gratis keuzehulp geeft je in een paar minuten een persoonlijke indicatie en helpt je verder richting gecertificeerde installateurs in de regio Middelburg.",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Middelburg?",
+        a: "Een hybride warmtepomp kost in Middelburg gemiddeld €3.500 – €7.000 en een volledig elektrische lucht-water warmtepomp €6.000 – €12.000, inclusief installatie. Voor de karakteristieke woningen in de binnenstad is een hybride warmtepomp vaak de meest praktische eerste keuze.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Middelburg?",
+        a: "Ja, in Middelburg en omgeving zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai laat je vrijblijvend je gegevens achter, dan help ik je verder richting een gecertificeerde installateur bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Middelburg geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor oudere, karakteristieke woningen in de binnenstad is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwere en goed geïsoleerde woningen meestal al geschikt zijn voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
+  {
+    slug: "venlo",
+    name: "Venlo",
+    province: "Limburg",
+    context: "Van de oudere woningen rond het centrum tot de naoorlogse wijken en nieuwbouw",
+    woningType: "een mix van vooroorlogse woningen, naoorlogse wijken en nieuwbouw",
+    localParagraph:
+      "Venlo, een stad in Noord-Limburg nabij de Duitse grens, heeft een gemengde woningvoorraad: oudere woningen rond het centrum, naoorlogse wijken en nieuwbouw aan de randen van de stad. Voor oudere en minder goed geïsoleerde woningen is een hybride warmtepomp meestal de beste eerste stap — je bespaart op gas zonder grote ingrepen, en je cv-ketel blijft als back-up beschikbaar op de koudste dagen. Nieuwere en goed geïsoleerde woningen zijn vaak al geschikt voor een volledig elektrische lucht-water warmtepomp. Welk type bij jouw woning past, hangt sterk af van het bouwjaar en de isolatie. Mijn gratis keuzehulp geeft je in een paar minuten een persoonlijke indicatie en helpt je verder richting gecertificeerde installateurs in de regio Venlo.",
+    faqs: [
+      {
+        q: "Wat kost een warmtepomp installatie in Venlo?",
+        a: "Een hybride warmtepomp kost in Venlo gemiddeld €3.500 – €7.000 en een volledig elektrische lucht-water warmtepomp €6.000 – €12.000, inclusief installatie. De exacte prijs hangt af van het type woning en de isolatiestaat.",
+      },
+      {
+        q: "Zijn er gecertificeerde installateurs actief in Venlo?",
+        a: "Ja, in Venlo en omgeving zijn meerdere gecertificeerde installateurs actief. Via warmtepomp.ai laat je vrijblijvend je gegevens achter, dan help ik je verder richting een gecertificeerde installateur bij jou in de buurt.",
+      },
+      {
+        q: "Is mijn woning in Venlo geschikt voor een warmtepomp?",
+        a: "In de meeste gevallen wel. Voor oudere, minder goed geïsoleerde woningen is een hybride warmtepomp vaak de beste eerste stap, terwijl nieuwere en goed geïsoleerde woningen meestal al geschikt zijn voor een volledig elektrische warmtepomp.",
+      },
+    ],
+  },
 ];
 
 export function getCity(slug: string): City | undefined {
