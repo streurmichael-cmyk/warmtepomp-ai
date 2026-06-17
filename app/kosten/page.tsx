@@ -200,6 +200,162 @@ export default function KostenPage() {
           </div>
         </section>
 
+        <section id="kosten-per-maand" className="scroll-mt-24 bg-white py-20 sm:py-24">
+          <div className="mx-auto max-w-3xl px-5 sm:px-8">
+            <div className="mb-10 text-center">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
+                Per maand
+              </p>
+              <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
+                Warmtepomp kosten per maand
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
+                Wat een warmtepomp je per maand kost, hangt vooral af van drie dingen: je
+                stroomverbruik, de SCOP-waarde van de warmtepomp (hoe efficiënt hij warmte
+                maakt) en het energietarief dat je betaalt. Hoe hoger de SCOP en hoe beter je
+                woning is geïsoleerd, hoe lager je maandlasten.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-green/10 bg-light-bg p-8 sm:p-10">
+              <h3 className="font-display text-lg font-bold text-dark">
+                Rekenvoorbeeld
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                Een redelijk geïsoleerde woning van circa 150 m² met een lucht-water warmtepomp
+                met een SCOP van 4,0:
+              </p>
+              <div className="mt-5 overflow-hidden rounded-2xl border border-green/10 bg-white">
+                <table className="w-full text-left text-sm">
+                  <tbody>
+                    <tr className="bg-white">
+                      <td className="px-5 py-3.5 font-bold text-dark sm:px-6">Stroomverbruik warmtepomp</td>
+                      <td className="px-5 py-3.5 text-muted sm:px-6">± 3.500 kWh per jaar</td>
+                    </tr>
+                    <tr className="bg-light-bg">
+                      <td className="px-5 py-3.5 font-bold text-dark sm:px-6">Energietarief</td>
+                      <td className="px-5 py-3.5 text-muted sm:px-6">€0,25 per kWh</td>
+                    </tr>
+                    <tr className="bg-white">
+                      <td className="px-5 py-3.5 font-bold text-dark sm:px-6">Kosten per jaar</td>
+                      <td className="px-5 py-3.5 text-muted sm:px-6">± €875</td>
+                    </tr>
+                    <tr className="bg-light-bg">
+                      <td className="px-5 py-3.5 font-bold text-dark sm:px-6">Kosten per maand</td>
+                      <td className="px-5 py-3.5 font-bold text-green sm:px-6">± €73</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-6 text-base leading-relaxed text-muted">
+                Ter vergelijking: een gemiddelde gasrekening voor verwarming en warm water ligt
+                rond de <span className="font-bold text-dark">€150 – €180 per maand</span>. Een
+                goed werkende warmtepomp in een geschikte woning is dus vaak fors voordeliger in
+                gebruik.
+              </p>
+            </div>
+            <p className="mt-4 text-xs text-muted">
+              * Indicatief rekenvoorbeeld. Je werkelijke kosten hangen af van je woning,
+              isolatie, stooktemperatuur en energiecontract.
+            </p>
+          </div>
+        </section>
+
+        <section id="bestaande-woning" className="scroll-mt-24 bg-light-bg py-20 sm:py-24">
+          <div className="mx-auto max-w-3xl px-5 sm:px-8">
+            <div className="mb-10 text-center">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
+                Bestaande woning
+              </p>
+              <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
+                Warmtepomp in bestaande woning
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
+                Eerlijk verhaal: in een bestaande woning komt er vaak meer bij kijken dan alleen
+                de warmtepomp zelf. Is je woning nog niet goed geïsoleerd, dan moet je rekening
+                houden met extra kosten voor isolatie. Zonder die isolatie moet de warmtepomp op
+                een hoge temperatuur stoken en lopen je maandlasten juist op.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-green/10 bg-white p-8 sm:p-10">
+              <h3 className="font-display text-lg font-bold text-dark">Vuistregel isolatie</h3>
+              <ul className="mt-4 space-y-3">
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green" />
+                  <span className="text-base leading-relaxed text-muted">
+                    Voor een <span className="font-bold text-dark">hybride of lucht-water
+                    warmtepomp</span> is minimaal energielabel C aan te raden.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green" />
+                  <span className="text-base leading-relaxed text-muted">
+                    Voor een volledig <span className="font-bold text-dark">all-electric
+                    warmtepomp</span> wil je richting energielabel A zitten.
+                  </span>
+                </li>
+              </ul>
+              <p className="mt-6 rounded-xl border border-green/10 bg-light-bg px-5 py-4 text-sm leading-relaxed text-muted">
+                <span className="font-bold text-dark">Tip:</span> neem de meerkosten van isolatie
+                altijd mee in je totaalberekening. Een warmtepomp die op papier goedkoop lijkt,
+                kan in een slecht geïsoleerd huis alsnog tegenvallen. Reken het geheel door —
+                isolatie én warmtepomp samen.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="onderhoudskosten" className="scroll-mt-24 bg-white py-20 sm:py-24">
+          <div className="mx-auto max-w-3xl px-5 sm:px-8">
+            <div className="mb-10 text-center">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
+                Onderhoud
+              </p>
+              <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
+                Onderhoudskosten warmtepomp
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
+                Net als een cv-ketel heeft een warmtepomp periodiek onderhoud nodig. Reken op
+                ongeveer <span className="font-bold text-dark">€150 – €300 per jaar</span> voor
+                een jaarlijkse of tweejaarlijkse onderhoudsbeurt door een erkend installateur.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-green/10 bg-light-bg p-8 sm:p-10">
+              <h3 className="font-display text-lg font-bold text-dark">
+                Wat wordt er gecontroleerd?
+              </h3>
+              <ul className="mt-4 space-y-3">
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green" />
+                  <span className="text-base leading-relaxed text-muted">
+                    Het koudemiddel en de werkdruk van het systeem.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green" />
+                  <span className="text-base leading-relaxed text-muted">
+                    De filters, de buitenunit en de luchtstroom (reinigen waar nodig).
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green" />
+                  <span className="text-base leading-relaxed text-muted">
+                    De elektrische aansluitingen, de instellingen en de algehele werking.
+                  </span>
+                </li>
+              </ul>
+              <p className="mt-6 text-base leading-relaxed text-muted">
+                Ter vergelijking: ook het onderhoud van een cv-ketel kost gemiddeld
+                <span className="font-bold text-dark"> €100 – €200 per jaar</span>. De
+                onderhoudskosten van een warmtepomp zijn dus vergelijkbaar — geen verrassende
+                extra post dus.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">
             <div className="rounded-2xl border border-green/10 bg-light-bg p-8 sm:p-10">
