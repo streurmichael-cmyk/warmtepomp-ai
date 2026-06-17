@@ -52,18 +52,19 @@ export default function OverOnsPage() {
                   className="h-24 w-24 flex-shrink-0 rounded-full border-4 border-green/10 object-cover sm:h-28 sm:w-28"
                 />
                 <div>
-                  <h2 className="font-display text-lg font-bold text-dark">Hoi, ik ben Michael</h2>
-                  <p className="mt-2 text-base leading-relaxed text-muted">
-                    Ik ben de oprichter van warmtepomp.ai. Een paar jaar geleden liep ik zelf
-                    vast in het oerwoud van offertes, subsidieregels en installateurs die allemaal
-                    een ander verhaal vertelden. Wat me opviel: het draaide vaak meer om de
-                    provisie van de installateur dan om wat het beste was voor de woning.
+                  <p className="text-base leading-relaxed text-muted">
+                    Ik ben de oprichter van warmtepomp.ai. Ik raakte geïnteresseerd in warmtepompen
+                    en ben me er steeds verder in gaan verdiepen. Wat me opviel: het is een
+                    ondoorzichtige wereld — offertes die je nauwelijks kunt vergelijken, ingewikkelde
+                    subsidieregels, en informatie die vaak gekleurd is door wie er iets wil verkopen.
                   </p>
-                  <p className="mt-3 text-base leading-relaxed text-muted">
-                    Daarom bouwde ik warmtepomp.ai: een keuzehulp die in een paar minuten een
-                    eerlijke, persoonlijke indicatie geeft — zonder dat er één verkoper aan te pas komt.
-                    Ik werk er in mijn eentje aan, vanuit de regio Amsterdam, en lees ook echt elke
-                    aanvraag die binnenkomt.
+                  <p className="mt-4 text-base leading-relaxed text-muted">
+                    Hoe meer ik leerde, hoe meer ik dacht: het kan duidelijker en eerlijker. Daarom
+                    bouw ik warmtepomp.ai — ik wil de meest informatieve, onafhankelijke keuzehulp van
+                    Nederland maken, zodat jij in een paar minuten begrijpt wat bij jouw woning past,
+                    zonder verkooppraatjes. Ik woon in de regio Amsterdam en bouw de site in mijn
+                    eentje stap voor stap uit over heel Nederland — en ik lees echt elke aanvraag die
+                    binnenkomt.
                   </p>
                 </div>
               </div>
