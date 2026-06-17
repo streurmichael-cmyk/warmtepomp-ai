@@ -76,10 +76,10 @@ async function getRecaptchaToken(): Promise<string | undefined> {
   }
 }
 
-// Tijdelijk verborgen: het HEMS/"toekomstklaar"-blok toont besparingsbedragen die
-// straks niet meer kloppen (saldering stopt per 2027). De rekenlogica blijft intact;
-// we bouwen het blok later eerlijk opnieuw op. Zet op true om weer te tonen.
-const SHOW_HEMS_TOEKOMSTKLAAR = false;
+// Het "toekomstbestendig / woningwaarde"-blok op de indicatiepagina. Herbouwd met
+// woningwaarde voorop (Brainbay/NVM) en eerlijke, gelabelde aannames; saldering stopt
+// per 1-1-2027. Zet op false om het blok te verbergen.
+const SHOW_HEMS_TOEKOMSTKLAAR = true;
 
 type StepName =
   | "adres"
@@ -1157,75 +1157,103 @@ export default function VergelijkPage() {
                     </div>
                   )}
 
-                  {SHOW_HEMS_TOEKOMSTKLAAR && advies.hemsPakket && (
+                  {SHOW_HEMS_TOEKOMSTKLAAR && (
                     <div className="mt-8 rounded-2xl border border-green/15 bg-white p-6 sm:p-7">
                       <h2 className="font-display text-lg font-bold text-dark sm:text-xl">
-                        In één keer helemaal toekomstklaar?
+                        Toekomstbestendig — en wat dat doet met je woningwaarde
                       </h2>
                       <p className="mt-2 text-sm leading-relaxed text-muted">
-                        Combineer je warmtepomp met zonnepanelen, een thuisbatterij en een HEMS (Home
-                        Energy Management System). Een HEMS stuurt slim aan wanneer je stroom opwekt,
-                        opslaat en verbruikt — dat verlaagt je rekening én helpt tegen{" "}
-                        <span className="font-semibold text-dark">netcongestie</span>, doordat je
-                        minder op piekmomenten van het stroomnet afhankelijk bent.
+                        Een warmtepomp is meer dan een keuze voor je energierekening: je maakt je
+                        woning er toekomstbestendig mee. Samen met goede isolatie heeft dat ook effect
+                        op de waarde van je woning — vaak een grotere financiële factor dan de
+                        maandelijkse besparing.
                       </p>
 
-                      <div className="mt-5 divide-y divide-green/10">
-                        {advies.hemsPakket.componenten.map((c) => (
-                          <div
-                            key={c.naam}
-                            className="flex items-center justify-between gap-3 py-2.5 text-sm"
-                          >
-                            <span className="text-dark">
-                              {c.naam}
-                              {c.aanwezig && (
-                                <span className="text-muted-light"> · al aanwezig</span>
-                              )}
-                            </span>
-                            <span className="text-right text-muted">
-                              {c.investering > 0
-                                ? `€${c.investering.toLocaleString("nl-NL")}`
-                                : "—"}{" "}
-                              · bespaart €{c.besparingPerJaar.toLocaleString("nl-NL")}/jaar
-                            </span>
-                          </div>
-                        ))}
+                      <div className="mt-5 rounded-xl border border-green/15 bg-action/5 p-4 sm:p-5">
+                        <p className="text-sm font-bold text-dark">
+                          Een beter energielabel = gemiddeld een hogere woningwaarde
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-muted">
+                          Woningen met een beter energielabel zijn gemiddeld meer waard en verkopen
+                          sneller. Volgens onderzoek van Brainbay/NVM leveren labelsprongen enkele
+                          procenten tot tienduizenden euro&apos;s op; een sprong van label G naar label A
+                          scheelt gemiddeld zo&apos;n{" "}
+                          <span className="font-bold text-dark">€69.000</span> in woningwaarde.
+                        </p>
+                        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
+                          <li>
+                            Dit zit in het hele pakket: vooral isolatie, warmtepomp en zon sámen bepalen
+                            je energielabel — niet de warmtepomp alleen.
+                          </li>
+                          <li>
+                            Het is een waarde-effect bij verkoop, geen geld dat je elk jaar terugziet
+                            zoals een lagere energierekening.
+                          </li>
+                          <li>
+                            Het varieert sterk per regio, woningtype, bouwjaar en woningmarkt: oudere
+                            woningen maken de grootste sprong, en Noord-Holland hoort bij de provincies
+                            met de kleinste stijging. Daarom noem ik bewust een bandbreedte en geen vast
+                            bedrag.
+                          </li>
+                        </ul>
+                        <p className="mt-3 text-xs text-muted-light">Bron: Brainbay/NVM.</p>
                       </div>
 
-                      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                        <div className="rounded-xl border border-green/15 p-4">
-                          <p className="text-xs font-bold uppercase tracking-wide text-muted-light">
-                            Los aangeschaft
-                          </p>
-                          <p className="mt-1.5 font-display text-lg font-bold text-dark">
-                            €{advies.hemsPakket.losInvestering.toLocaleString("nl-NL")}
-                          </p>
-                          <p className="text-sm text-muted">
-                            terugverdientijd {advies.hemsPakket.losTerugverdientijd}
-                          </p>
-                        </div>
-                        <div className="rounded-xl border-2 border-action/40 bg-action/5 p-4">
-                          <p className="text-xs font-bold uppercase tracking-wide text-action">
-                            Als gecombineerd pakket
-                          </p>
-                          <p className="mt-1.5 font-display text-lg font-bold text-dark">
-                            €{advies.hemsPakket.pakketInvestering.toLocaleString("nl-NL")}
-                          </p>
-                          <p className="text-sm text-muted">
-                            terugverdientijd {advies.hemsPakket.pakketTerugverdientijd}
-                          </p>
-                        </div>
+                      <div className="mt-5">
+                        <p className="text-sm font-bold text-dark">
+                          Zonnepanelen, en wat er per 2027 verandert
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-muted">
+                          Zonnepanelen maken je warmtepomp niet goedkoper: je panelen wekken het meest
+                          op in de zomer, terwijl je warmtepomp in de winter verwarmt (zie de uitleg
+                          hierboven). Wel verandert er iets belangrijks — de salderingsregeling stopt
+                          volledig per{" "}
+                          <span className="font-semibold text-dark">1 januari 2027</span>.
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-muted">
+                          <span className="font-semibold text-dark">Vóór 2027</span> streep je
+                          teruggeleverde zonnestroom via saldering weg tegen je verbruik, dus een
+                          overschot is veel waard. <span className="font-semibold text-dark">Ná 2027</span>{" "}
+                          niet meer — dan telt vooral hoeveel van je eigen stroom je zélf direct
+                          gebruikt. Juist daardoor worden een thuisbatterij en slimme sturing (HEMS) in
+                          de toekomst interessanter.
+                        </p>
                       </div>
-                      <p className="mt-3 text-sm text-muted">
-                        Samen aanschaffen scheelt ongeveer{" "}
-                        <span className="font-bold text-dark">
-                          €{advies.hemsPakket.pakketvoordeel.toLocaleString("nl-NL")}
-                        </span>{" "}
-                        aan installatiekosten, en samen besparen de systemen circa{" "}
-                        <span className="font-bold text-dark">
-                          €{advies.hemsPakket.besparingPerJaar.toLocaleString("nl-NL")} per jaar
-                        </span>
-                        .
+
+                      <div className="mt-5">
+                        <p className="text-sm font-bold text-dark">
+                          Wat is een HEMS, en een thuisbatterij?
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-muted">
+                          Een HEMS (Home Energy Management System) is een slimme energieregelaar: het
+                          stuurt automatisch aan wánneer je stroom opwekt, opslaat en verbruikt. Zo
+                          gebruik je meer van je eigen zonnestroom zelf, en help je mee tegen{" "}
+                          <span className="font-semibold text-dark">netcongestie</span> — de drukte op
+                          het stroomnet — doordat je minder op piekmomenten van het net afhankelijk bent.
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-muted">
+                          Een thuisbatterij kost indicatief zo&apos;n{" "}
+                          <span className="font-semibold text-dark">€5.000</span>, een HEMS ongeveer{" "}
+                          <span className="font-semibold text-dark">€1.000 – €2.000</span> (indicatief,
+                          bron Milieu Centraal). Over de besparing en terugverdientijd ben ik eerlijk:
+                          die is <span className="font-semibold text-dark">lang, vaak 15+ jaar</span>, en
+                          sterk afhankelijk van je verbruik en de tarieven ná 2027. Daarom noem ik bewust
+                          geen vaste jaarbesparing of terugverdientijd — dat zou schijnzekerheid zijn.
+                        </p>
+                        <Link
+                          href="/blog/warmtepomp-kosten-2026"
+                          className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-action hover:underline"
+                        >
+                          Lees meer over warmtepomp, zon en HEMS
+                          <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </div>
+
+                      <p className="mt-5 text-xs leading-relaxed text-muted-light">
+                        Aannames en bronnen: woningwaarde-cijfers van Brainbay/NVM; kosten indicatief via
+                        Milieu Centraal en CBS; subsidie via RVO (2026). De salderingsregeling stopt op
+                        1 januari 2027. Genoemde bedragen zijn bandbreedtes ter illustratie, geen
+                        toezegging.
                       </p>
                     </div>
                   )}
