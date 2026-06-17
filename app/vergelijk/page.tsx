@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Logo } from "@/components/logo";
+import { RevenueNote } from "@/components/revenue-note";
 import {
   ArrowLeft,
   ArrowRight,
@@ -1332,6 +1333,7 @@ export default function VergelijkPage() {
                   {submitting ? "Versturen..." : wantsInstallateur ? "Vraag offertes aan" : "Stuur mijn indicatie"}
                   {!submitting && <ArrowRight className="h-5 w-5" />}
                 </button>
+                <RevenueNote />
                 <p className="text-center text-xs text-muted-light">
                   Je gegevens worden gedeeld met gecertificeerde installateurs om je offerte te
                   kunnen versturen. Ik verkoop ze nooit aan derden voor marketingdoeleinden.{" "}

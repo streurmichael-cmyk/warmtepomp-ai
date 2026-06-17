@@ -106,4 +106,16 @@ export const faqs: FaqItem[] = [
       label: "Bekijk de ISDE-aanvraag stap voor stap",
     },
   },
+  {
+    q: "Kost warmtepomp.ai mij iets?",
+    a: "Nee. Het gebruik is volledig gratis en je zit nergens aan vast.",
+  },
+  {
+    q: "Verdien je dan aan mij?",
+    a: "Ik ontvang een vergoeding van de installateur wanneer ik je introduceer, niet van jou. Jouw offerteprijs wordt daar niet door beïnvloed.",
+  },
+  {
+    q: "Is je vergelijking echt onafhankelijk?",
+    a: "Mijn informatie en vergelijking zijn niet gekoppeld aan het assortiment van één installateur of merk. Ik laat zien wat bij jouw woning past, niet wat iemand wil verkopen.",
+  },
 ];

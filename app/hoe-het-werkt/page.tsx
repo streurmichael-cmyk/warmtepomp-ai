@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { RevenueTransparency } from "@/components/revenue-transparency";
 import { TrustBar } from "@/components/trust-bar";
 import {
   ArrowRight,
@@ -138,6 +139,20 @@ export default function HoeHetWerktPage() {
                 stroom groener wordt.
               </p>
             </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-20 sm:py-24">
+          <div className="mx-auto max-w-3xl px-5 sm:px-8">
+            <div className="mb-10 text-center">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
+                Transparant verdienmodel
+              </p>
+              <h2 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
+                Wat kost dit jou?
+              </h2>
+            </div>
+            <RevenueTransparency />
           </div>
         </section>
       </main>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { RevenueTransparency } from "@/components/revenue-transparency";
 import { TrustBar } from "@/components/trust-bar";
 import {
   ArrowRight,
@@ -9,7 +10,6 @@ import {
   MailIcon,
   MapPinIcon,
   ShieldIcon,
-  SubsidyIcon,
 } from "@/components/icons";
 import { buildMetadata } from "@/lib/seo";
 
@@ -84,23 +84,7 @@ export default function OverOnsPage() {
               </div>
             </div>
 
-            <div className="mt-6 rounded-2xl border border-green/10 bg-white p-8 sm:p-10">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-green/10 text-green">
-                  <SubsidyIcon className="h-6 w-6" />
-                </div>
-                <div>
-                  <h2 className="font-display text-lg font-bold text-dark">
-                    Hoe ik geld verdien
-                  </h2>
-                  <p className="mt-2 text-base leading-relaxed text-muted">
-                    Ik ontvang een vergoeding van installateurs wanneer zij via mijn platform
-                    een klant begeleiden. Dit heeft geen invloed op mijn indicatie — ik ben altijd
-                    aan jouw kant.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <RevenueTransparency className="mt-6" />
           </div>
         </section>
 

@@ -10,6 +10,7 @@ import {
   PhoneIcon,
   UserIcon,
 } from "./icons";
+import { RevenueNote } from "./revenue-note";
 
 const woningTypes = [
   "Tussenwoning",
@@ -241,6 +242,7 @@ export function InstallateursLeadForm({
             {submitting ? "Versturen..." : "Verstuur mijn aanvraag"}
             {!submitting && <ArrowRight className="h-5 w-5" />}
           </button>
+          <RevenueNote />
         </form>
       )}
 
