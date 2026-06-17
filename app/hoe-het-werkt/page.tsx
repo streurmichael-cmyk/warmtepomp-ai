@@ -124,7 +124,7 @@ export default function HoeHetWerktPage() {
                 de SCOP — zit een goed systeem op vloerverwarming rond de 3,5 à 4.
               </p>
               <p>
-                Een moderne hr-ketel is juist heel efficiënt: die zet zo'n 95% van het gas om in warmte
+                Een moderne hr-ketel is juist heel efficiënt: die zet zo&apos;n 95% van het gas om in warmte
                 en is dus niet verspillend. Het verschil: een ketel máákt warmte uit gas en komt daardoor
                 nooit boven ongeveer 1 kWh warmte per kWh gas, terwijl een warmtepomp warmte uit de lucht
                 haalt en daardoor wél boven de 1 komt. Je vergelijkt dus eigenlijk warmte per kWh stroom

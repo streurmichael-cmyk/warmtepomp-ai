@@ -259,6 +259,10 @@ export default function VergelijkPage() {
   }
 
   // Als we via de homepage met postcode + huisnummer binnenkomen, start de zoekopdracht direct.
+  // Bewust een eenmalige initialisatie ná mount: leesAdresParams() leest window.location
+  // (alleen client-side beschikbaar, niet tijdens SSR), dus dit kan niet in een lazy
+  // useState-initializer zonder hydration-mismatch. De ref-guard zorgt dat dit één keer
+  // draait, dus de setState-aanroepen veroorzaken geen render-cascade.
   useEffect(() => {
     if (lookupGestart.current) return;
     lookupGestart.current = true;
@@ -268,6 +272,7 @@ export default function VergelijkPage() {
     const huisnummerGeldig = /^\d+[A-Za-z]?$/.test(huisnummer);
     const woningtypeGeldig = woningtypeOpties.includes(woningtype);
 
+    /* eslint-disable react-hooks/set-state-in-effect -- eenmalige init uit URL ná mount, zie toelichting hierboven */
     if (postcodeGeldig && huisnummerGeldig) {
       setData((d) => ({ ...d, postcode, huisnummer, ...(woningtypeGeldig ? { woningtype } : {}) }));
       setStep("zoeken");
@@ -279,7 +284,7 @@ export default function VergelijkPage() {
         ...(woningtypeGeldig ? { woningtype } : {}),
       }));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
 
   // Laad het reCAPTCHA Enterprise-script (onzichtbaar) als er een site key is geconfigureerd.
@@ -722,7 +727,7 @@ export default function VergelijkPage() {
           {step === "cvketel" && (
             <Step heading="Hoe oud is je cv-ketel?" onBack={() => setStep("energielabel")}>
               <p className="mb-6 text-base leading-relaxed text-muted">
-                Een cv-ketel gaat gemiddeld zo'n 15 jaar mee. Is die van jou aan vervanging toe, dan
+                Een cv-ketel gaat gemiddeld zo&apos;n 15 jaar mee. Is die van jou aan vervanging toe, dan
                 wordt de overstap naar een warmtepomp een stuk aantrekkelijker — die vervangingskosten
                 bespaar je dan namelijk uit.
               </p>
