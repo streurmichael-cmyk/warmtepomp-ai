@@ -429,44 +429,63 @@ export async function POST(request: Request) {
     console.error("Tellen van leads per IP mislukt, aanvraag wordt toch verwerkt:", err);
   }
 
-  // Double opt-in: genereer een verificatietoken en stuur een bevestigingsmail.
-  // De interne notificatie naar info@ gaat direct bij elke succesvolle inzending uit
-  // (best-effort; de lead wordt los daarvan altijd opgeslagen via saveLead).
+  // Double opt-in: genereer een verificatietoken voor de bevestigingsmail.
   const verifyToken = randomBytes(32).toString("hex");
   const verifyUrl = new URL("/api/leads/verify", request.url);
   verifyUrl.searchParams.set("token", verifyToken);
 
-  {
-    const subsidieInfo = await getRvoSubsidieInfo();
-    const advies = await generateAdvies(data, subsidieInfo);
-    const adviesResultaat = berekenAdvies({
-      woningtype: data.woningtype ?? "",
-      oppervlakte: data.oppervlakte ?? "",
-      bouwjaar: data.bouwjaar ?? "",
-      isolatie: data.isolatie ?? "",
-      huidigSysteem: data.huidigSysteem ?? "",
-      gasverbruik: data.gasverbruik ?? 0,
-      heeftZonnepanelen: data.heeftZonnepanelen,
-      aantalZonnepanelen: data.aantalZonnepanelen,
-      jaarlijkseOpwekKwh: data.jaarlijkseOpwekKwh,
-      overstapVoorkeur: data.overstapVoorkeur,
-      cvKetelOuderDan15: data.cvKetelLeeftijd === "Ouder dan 15 jaar",
-    });
+  // berekenAdvies is lokaal en deterministisch (geen externe call), dus veilig vóór opslag.
+  const adviesResultaat = berekenAdvies({
+    woningtype: data.woningtype ?? "",
+    oppervlakte: data.oppervlakte ?? "",
+    bouwjaar: data.bouwjaar ?? "",
+    isolatie: data.isolatie ?? "",
+    huidigSysteem: data.huidigSysteem ?? "",
+    gasverbruik: data.gasverbruik ?? 0,
+    heeftZonnepanelen: data.heeftZonnepanelen,
+    aantalZonnepanelen: data.aantalZonnepanelen,
+    jaarlijkseOpwekKwh: data.jaarlijkseOpwekKwh,
+    overstapVoorkeur: data.overstapVoorkeur,
+    cvKetelOuderDan15: data.cvKetelLeeftijd === "Ouder dan 15 jaar",
+  });
 
-    await Promise.all([
-      sendConfirmationEmail(data, advies, verifyUrl.toString()),
-      sendLeadNotification({
-        voornaam: data.voornaam ?? "",
-        email: data.email ?? "",
-        telefoon: data.telefoon ?? null,
-        woningtype: data.woningtype ?? null,
-        postcode: data.postcode ?? null,
-        huisnummer: data.huisnummer ?? null,
-      }),
-      pingIndexNow(),
-      saveLead({ ...data, advies: adviesResultaat, ipHash, verifyToken }),
-    ]);
+  // Bron van waarheid: sla de lead op vóór welke externe call dan ook (advies/mails).
+  // Faalt dit, dan is er echt niets opgeslagen — harde fout, geen stille verlies.
+  try {
+    await saveLead({ ...data, advies: adviesResultaat, ipHash, verifyToken });
+  } catch (err) {
+    console.error("Opslaan van lead in Neon mislukt:", err);
+    return NextResponse.json(
+      { error: "Er ging iets mis bij het opslaan van je aanvraag. Probeer het opnieuw." },
+      { status: 500 }
+    );
   }
+
+  // Vanaf hier is alles best-effort: de lead staat al opgeslagen en mag nooit verloren gaan.
+  // Het AI-advies is alleen verrijking van de bevestigingsmail; faalt het, dan gaat de mail
+  // zonder AI-advies uit (sendConfirmationEmail verwerkt advies === null netjes).
+  let advies: string | null = null;
+  try {
+    const subsidieInfo = await getRvoSubsidieInfo();
+    advies = await generateAdvies(data, subsidieInfo);
+  } catch (err) {
+    console.error("Genereren van AI-advies mislukt, ga door zonder advies:", err);
+  }
+
+  // sendConfirmationEmail, sendLeadNotification en pingIndexNow loggen hun eigen fouten en
+  // gooien niet — ze kunnen de (al opgeslagen) lead dus nooit alsnog laten sneuvelen.
+  await Promise.all([
+    sendConfirmationEmail(data, advies, verifyUrl.toString()),
+    sendLeadNotification({
+      voornaam: data.voornaam ?? "",
+      email: data.email ?? "",
+      telefoon: data.telefoon ?? null,
+      woningtype: data.woningtype ?? null,
+      postcode: data.postcode ?? null,
+      huisnummer: data.huisnummer ?? null,
+    }),
+    pingIndexNow(),
+  ]);
 
   return NextResponse.json({ success: true });
 }
