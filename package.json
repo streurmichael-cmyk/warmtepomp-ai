@@ -10,7 +10,6 @@
     "db:migrate": "node --env-file-if-exists=.env.local scripts/migrate.mjs"
   },
   "dependencies": {
-    "@next/third-parties": "^16.2.9",
     "@vercel/analytics": "^2.0.1",
     "@vercel/postgres": "^0.10.0",
     "next": "16.2.7",

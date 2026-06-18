@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
 import { LevertijdenBlok } from "@/components/LevertijdenBlok";
 import { Logo } from "@/components/logo";
 import { ScopVergelijkingBlok } from "@/components/ScopVergelijkingBlok";
@@ -483,6 +484,8 @@ export default function VergelijkPage() {
         const body = await res.json().catch(() => null);
         throw new Error(body?.error || "Request failed");
       }
+      // Kern-conversie: alleen vuren na een succesvolle inzending (API 200).
+      track("lead_submit");
       setStep("bedankt");
     } catch (err) {
       setSubmitError(

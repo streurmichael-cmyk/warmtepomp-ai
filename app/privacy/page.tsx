@@ -79,7 +79,9 @@ const sections: PrivacySection[] = [
     heading: "Cookies",
     paragraphs: [
       "warmtepomp.ai gebruikt functionele cookies die nodig zijn om de website goed te laten werken.",
-      "Daarnaast gebruik ik Google Analytics om inzicht te krijgen in hoe de website wordt gebruikt, zodat ik hem kan verbeteren; Google plaatst daarvoor cookies. Voor websitestatistieken gebruik ik ook Vercel Web Analytics, dat geen cookies plaatst. Ik gebruik geen advertentiecookies en verkoop je gegevens niet.",
+      "Voor websitestatistieken gebruik ik Vercel Web Analytics. Dit is privacy-vriendelijk en cookieloos: het plaatst geen tracking-cookies en verzamelt geen persoonsgegevens waarmee je individueel te identificeren bent.",
+      "Om spam en misbruik van mijn formulieren tegen te gaan, gebruik ik Google reCAPTCHA Enterprise. Deze dienst van Google plaatst cookies en verwerkt gegevens — zoals je IP-adres en je interactie met de pagina — om echte bezoekers van geautomatiseerde bots te onderscheiden. Op die verwerking zijn de voorwaarden en het privacybeleid van Google van toepassing.",
+      "Ik gebruik geen advertentiecookies en verkoop je gegevens niet.",
     ],
   },
 ];

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Fraunces, Source_Sans_3 } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/seo";
@@ -66,8 +65,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
-
   return (
     <html
       lang="nl"
@@ -85,7 +82,6 @@ export default function RootLayout({
         {children}
         <WhatsAppButton />
         <Analytics />
-        {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
       </body>
     </html>
   );
