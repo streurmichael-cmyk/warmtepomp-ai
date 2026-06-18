@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { LevertijdenBlok } from "@/components/LevertijdenBlok";
 import { Logo } from "@/components/logo";
+import { ScopVergelijkingBlok } from "@/components/ScopVergelijkingBlok";
 import { RevenueNote } from "@/components/revenue-note";
 import {
   ArrowLeft,
@@ -1260,6 +1261,8 @@ export default function VergelijkPage() {
                   )}
 
                   <LevertijdenBlok className="mt-8" />
+
+                  <ScopVergelijkingBlok className="mt-8" />
 
                   <p className="mt-6 text-xs leading-relaxed text-muted-light">
                     Deze indicatie is gebaseerd op: BAG-woningdata, RVO subsidiebedragen 2026 en
