@@ -34,6 +34,11 @@ export const INDEXED_CITY_SLUGS = [
   "breda",
   "nijmegen",
   "arnhem",
+  "haarlem",
+  "zaandam",
+  "purmerend",
+  "alkmaar",
+  "hoorn",
 ] as const;
 
 export function isCityIndexed(slug: string): boolean {
@@ -228,7 +233,7 @@ export const cities: City[] = [
       "Van de historische binnenstad tot de karakteristieke jaren '20-30 wijken in Haarlem-Noord",
     woningType: "jaren '20-30 woningen en herenhuizen",
     localParagraph:
-      "Haarlem staat bekend om zijn karakteristieke jaren '20-30-woningen en herenhuizen, met name in wijken als Haarlem-Noord en rond het centrum. Deze woningen hebben vaak hoge plafonds en oorspronkelijke radiatoren, wat betekent dat de woning een relatief hoge aanvoertemperatuur nodig heeft om warm te blijven. Een hybride warmtepomp is in dat geval vaak de beste eerste stap: hij vult je bestaande cv-ketel aan en zorgt voor een flinke gasbesparing, zonder dat je de hele verwarmingsinstallatie hoeft te vervangen. Is jouw herenhuis al voorzien van dubbel glas en spouwmuurisolatie, dan kan een volledig elektrische warmtepomp ook al een optie zijn. Via mijn keuzehulp krijg je een indicatie op maat van jouw Haarlemse woning, en help ik je verder richting gecertificeerde installateurs die ervaring hebben met dit type woningen.",
+      "Haarlem staat bekend om zijn karakteristieke jaren '20-30-woningen en herenhuizen, met name in wijken als Haarlem-Noord en rond het centrum. Deze woningen hebben vaak hoge plafonds en oorspronkelijke radiatoren, wat betekent dat de woning een relatief hoge aanvoertemperatuur nodig heeft om warm te blijven. Een hybride warmtepomp is in dat geval vaak de beste eerste stap: hij vult je bestaande cv-ketel aan en zorgt voor een flinke gasbesparing, zonder dat je de hele verwarmingsinstallatie hoeft te vervangen. Is jouw herenhuis al voorzien van dubbel glas en spouwmuurisolatie, dan kan een volledig elektrische warmtepomp ook al een optie zijn. Ook in wijken als het Ramplaankwartier en de Indische Buurt zie ik in Haarlem veel woningen waar isolatie en verwarming stap voor stap samen verbeterd kunnen worden. Via mijn keuzehulp krijg je een indicatie op maat van jouw Haarlemse woning, en help ik je verder richting gecertificeerde installateurs die ervaring hebben met dit type woningen.",
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Haarlem?",
@@ -276,7 +281,7 @@ export const cities: City[] = [
       "Van de karakteristieke Zaanse huizen tot de moderne nieuwbouw langs de Zaan",
     woningType: "jaren '30-woningen en moderne nieuwbouw langs het water",
     localParagraph:
-      "Zaandam is bekend om zijn karakteristieke Zaanse houten huizen en de jaren '30-woningen die de stad rijk is, naast moderne nieuwbouw langs de Zaan en in de Achtersluispolder. De traditionele Zaanse woningen hebben vaak een houten constructie en specifieke eisen aan ventilatie en vochtbeheersing, waar een installateur rekening mee moet houden bij het plaatsen van een warmtepomp. Voor deze woningen is een hybride warmtepomp meestal de praktische keuze: lage instapkosten en een snelle gasbesparing, zonder ingrijpende verbouwingen. De nieuwere woningen langs het water zijn vaak al beter geïsoleerd en kunnen sneller overstappen op een volledig elektrische lucht-water warmtepomp. Met mijn gratis keuzehulp kom je erachter wat voor jouw woning in Zaandam het beste past, en plan je een gesprek met een installateur die de regio Zaanstad kent.",
+      "Zaandam is bekend om zijn karakteristieke Zaanse houten huizen en de jaren '30-woningen die de stad rijk is, naast moderne nieuwbouw langs de Zaan en in de Achtersluispolder. De traditionele Zaanse woningen hebben vaak een houten constructie en specifieke eisen aan ventilatie en vochtbeheersing, waar een installateur rekening mee moet houden bij het plaatsen van een warmtepomp. Voor deze woningen is een hybride warmtepomp meestal de praktische keuze: lage instapkosten en een snelle gasbesparing, zonder ingrijpende verbouwingen. De nieuwere woningen langs het water zijn vaak al beter geïsoleerd en kunnen sneller overstappen op een volledig elektrische lucht-water warmtepomp. In wijken als Poelenburg en de Rosmolenwijk staan in Zaandam daarnaast veel naoorlogse rijwoningen die met gerichte isolatie klaar te maken zijn voor een warmtepomp. Met mijn gratis keuzehulp kom je erachter wat voor jouw woning in Zaandam het beste past, en plan je een gesprek met een installateur die de regio Zaanstad kent.",
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Zaandam?",
@@ -299,7 +304,7 @@ export const cities: City[] = [
     context: "Een groeikern met veel jaren '70-80 wijken zoals Wheermolen en Overwhere",
     woningType: "jaren '70-80 woningen",
     localParagraph:
-      "Purmerend bestaat voor een groot deel uit jaren '70-80 nieuwbouwwijken zoals Wheermolen, Overwhere en Gors — gebouwd in een periode waarin spouwmuurisolatie net gangbaar werd, maar vaak nog beperkt is naar huidige maatstaven. Voor woningen uit deze periode is een hybride warmtepomp vaak de slimste eerste stap: je profiteert direct van een lagere energierekening, terwijl je cv-ketel als back-up blijft draaien op de allerkoudste dagen. Heb je je woning al laten naisoleren of heb je dubbel glas en vloerisolatie laten aanbrengen? Dan kan een volledig elektrische lucht-water warmtepomp ook al een serieuze optie zijn. Omdat zoveel woningen in Purmerend uit dezelfde bouwperiode stammen, hebben lokale installateurs hier veel ervaring mee. Mijn keuzehulp geeft je in een paar minuten een indicatie op maat en helpt je verder richting gecertificeerde installateurs in de regio Waterland.",
+      "Purmerend bestaat voor een groot deel uit jaren '70-80 nieuwbouwwijken zoals Wheermolen, Overwhere en Gors — gebouwd in een periode waarin spouwmuurisolatie net gangbaar werd, maar vaak nog beperkt is naar huidige maatstaven. Voor woningen uit deze periode is een hybride warmtepomp vaak de slimste eerste stap: je profiteert direct van een lagere energierekening, terwijl je cv-ketel als back-up blijft draaien op de allerkoudste dagen. Heb je je woning al laten naisoleren of heb je dubbel glas en vloerisolatie laten aanbrengen? Dan kan een volledig elektrische lucht-water warmtepomp ook al een serieuze optie zijn. In een nieuwere wijk als Weidevenne staan in Purmerend juist woningen waarvan de isolatie al van deze tijd is, waardoor een volledig elektrische warmtepomp daar sneller binnen bereik ligt. Omdat zoveel woningen in Purmerend uit dezelfde bouwperiode stammen, hebben lokale installateurs hier veel ervaring mee. Mijn keuzehulp geeft je in een paar minuten een indicatie op maat en helpt je verder richting gecertificeerde installateurs in de regio Waterland.",
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Purmerend?",
@@ -660,7 +665,7 @@ export const cities: City[] = [
       "Van de jaren '70 wijken zoals De Mare en Daalmeer tot de nieuwbouw rond Overstad",
     woningType: "jaren '70-woningen en nieuwbouw rond Overstad",
     localParagraph:
-      "Alkmaar heeft veel woningen uit de jaren '70 in wijken als De Mare en Daalmeer, naast de nieuwere ontwikkeling rond Overstad. De jaren '70-woningen hebben vaak een spouwmuur die wel aanwezig is maar niet altijd is nageïsoleerd, en enkel of verouderd dubbel glas. Voor deze woningen is een hybride warmtepomp meestal de slimste keuze: je profiteert meteen van een lagere energierekening, terwijl je cv-ketel bijspringt op de koudste dagen. Nieuwbouwwoningen rond Overstad zijn vaak al uitgerust met moderne isolatie en lage-temperatuurverwarming, waardoor een volledig elektrische lucht-water warmtepomp daar een directe optie kan zijn. Mijn keuzehulp geeft binnen enkele minuten een persoonlijke indicatie voor jouw woning in Alkmaar, en helpt je verder richting gecertificeerde installateurs in de regio Noord-Holland-Noord.",
+      "Alkmaar heeft veel woningen uit de jaren '70 in wijken als De Mare en Daalmeer, naast de nieuwere ontwikkeling rond Overstad. De jaren '70-woningen hebben vaak een spouwmuur die wel aanwezig is maar niet altijd is nageïsoleerd, en enkel of verouderd dubbel glas. Voor deze woningen is een hybride warmtepomp meestal de slimste keuze: je profiteert meteen van een lagere energierekening, terwijl je cv-ketel bijspringt op de koudste dagen. Nieuwbouwwoningen rond Overstad zijn vaak al uitgerust met moderne isolatie en lage-temperatuurverwarming, waardoor een volledig elektrische lucht-water warmtepomp daar een directe optie kan zijn. De historische binnenstad van Alkmaar kent daarnaast oudere panden met een beschermd karakter, waar een compacte hybride warmtepomp vaak de praktische route is; in naoorlogse wijken als Huiswaard en Overdie liggen de mogelijkheden juist wat ruimer. Mijn keuzehulp geeft binnen enkele minuten een persoonlijke indicatie voor jouw woning in Alkmaar, en helpt je verder richting gecertificeerde installateurs in de regio Noord-Holland-Noord.",
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Alkmaar?",
@@ -707,7 +712,7 @@ export const cities: City[] = [
     context: "Van de jaren '70 wijk Grote Waal tot de nieuwbouw in Poort van Hoorn",
     woningType: "jaren '70-woningen en nieuwbouw in Poort van Hoorn",
     localParagraph:
-      "Hoorn heeft met de Grote Waal een grote naoorlogse wijk met woningen uit de jaren '70, naast de nieuwe ontwikkeling Poort van Hoorn bij het station. De woningen in de Grote Waal hebben vaak een vergelijkbare bouwstijl en isolatieniveau, waardoor installateurs snel kunnen inschatten welk vermogen warmtepomp nodig is. Voor deze woningen is een hybride warmtepomp meestal de beste eerste stap: lage instapkosten en directe besparing, met je cv-ketel als back-up op de koudste dagen. Nieuwbouwwoningen in Poort van Hoorn zijn vaak al voorbereid op duurzame verwarming en daardoor sneller geschikt voor een volledig elektrische lucht-water warmtepomp. Mijn gratis keuzehulp geeft je in een paar minuten een indicatie op maat voor jouw woning in Hoorn, en helpt je verder richting gecertificeerde installateurs in de regio West-Friesland.",
+      "Hoorn heeft met de Grote Waal een grote naoorlogse wijk met woningen uit de jaren '70, naast de nieuwe ontwikkeling Poort van Hoorn bij het station. De woningen in de Grote Waal hebben vaak een vergelijkbare bouwstijl en isolatieniveau, waardoor installateurs snel kunnen inschatten welk vermogen warmtepomp nodig is. Voor deze woningen is een hybride warmtepomp meestal de beste eerste stap: lage instapkosten en directe besparing, met je cv-ketel als back-up op de koudste dagen. Nieuwbouwwoningen in Poort van Hoorn zijn vaak al voorbereid op duurzame verwarming en daardoor sneller geschikt voor een volledig elektrische lucht-water warmtepomp. De historische binnenstad uit de VOC-tijd telt daarnaast monumentale panden die om maatwerk vragen, terwijl de nieuwere wijk Bangert en Oosterpolder juist woningen heeft die vaak al goed geïsoleerd zijn. Mijn gratis keuzehulp geeft je in een paar minuten een indicatie op maat voor jouw woning in Hoorn, en helpt je verder richting gecertificeerde installateurs in de regio West-Friesland.",
     faqs: [
       {
         q: "Wat kost een warmtepomp installatie in Hoorn?",
