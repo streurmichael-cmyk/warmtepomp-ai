@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { RelatedLinks } from "@/components/related-links";
 import { TrustBar } from "@/components/trust-bar";
 import { SavingsCalculator } from "@/components/savings-calculator";
 import { ArrowRight, NetworkIcon, SubsidyIcon } from "@/components/icons";
@@ -434,6 +435,8 @@ export default function KostenPage() {
             </p>
           </div>
         </section>
+
+        <RelatedLinks />
 
         <section className="bg-action py-20 text-center sm:py-24">
           <div className="mx-auto max-w-3xl px-5 sm:px-8">

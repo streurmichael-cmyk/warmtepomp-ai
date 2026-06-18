@@ -10,6 +10,7 @@ import { Hero } from "@/components/hero";
 import { HowItWorks } from "@/components/how-it-works";
 import { Objections } from "@/components/objections";
 import { PricingRanges } from "@/components/pricing-ranges";
+import { RelatedLinks } from "@/components/related-links";
 import { Reviews } from "@/components/reviews";
 import { TrustBar } from "@/components/trust-bar";
 import { faqs } from "@/lib/faqs";
@@ -88,6 +89,7 @@ export default function Home() {
         <CitiesSection />
         <Reviews />
         <Faq />
+        <RelatedLinks />
         <CtaBanner />
       </main>
       <Footer />
