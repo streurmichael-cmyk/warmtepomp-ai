@@ -10,11 +10,11 @@ export type NotificationLead = {
 };
 
 /**
- * Stuurt de interne notificatiemail naar info@ voor een lead. Wordt pas
- * aangeroepen nadat de aanvrager zijn e-mailadres heeft bevestigd (double
- * opt-in), zodat het team alleen geverifieerde leads opvolgt. Of de aanvrager
- * gekoppeld wil worden aan een installateur leiden we af uit de aanwezigheid
- * van een telefoonnummer.
+ * Stuurt de interne notificatiemail naar info@ voor een lead. Wordt aangeroepen
+ * bij elke succesvolle inzending, zodat ik elke lead direct kan opvolgen. Of de
+ * aanvrager gekoppeld wil worden aan een installateur leid ik af uit de
+ * aanwezigheid van een telefoonnummer. Reply-to staat op het e-mailadres van de
+ * lead, zodat ik direct kan terugmailen.
  */
 export async function sendLeadNotification(lead: NotificationLead): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
@@ -28,13 +28,13 @@ export async function sendLeadNotification(lead: NotificationLead): Promise<void
   const postcodeVeld = `${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}`;
 
   const subject = wantsInstallateur
-    ? `🔥 Bevestigde lead: ${lead.voornaam} - ${lead.woningtype ?? "Onbekend"} - ${lead.postcode ?? "-"}`
-    : `📧 Bevestigde indicatie-aanvraag: ${lead.voornaam} - ${lead.postcode ?? "-"}`;
+    ? `🔥 Nieuwe lead: ${lead.voornaam} - ${lead.woningtype ?? "Onbekend"} - ${lead.postcode ?? "-"}`
+    : `📧 Nieuwe indicatie-aanvraag: ${lead.voornaam} - ${lead.postcode ?? "-"}`;
 
   const html = wantsInstallateur
     ? `
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
-      <p style="font-weight: bold; color: #0e7a4f;">✅ E-mailadres bevestigd door de aanvrager.</p>
+      <p style="font-weight: bold; color: #0e7a4f;">🆕 Nieuwe lead via de keuzehulp.</p>
       <ul>
         <li><strong>Naam:</strong> ${lead.voornaam}</li>
         <li><strong>Telefoon:</strong> ${lead.telefoon ?? "-"}</li>
@@ -47,7 +47,7 @@ export async function sendLeadNotification(lead: NotificationLead): Promise<void
   `
     : `
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
-      <p style="font-weight: bold; color: #0e7a4f;">✅ E-mailadres bevestigd door de aanvrager.</p>
+      <p style="font-weight: bold; color: #0e7a4f;">🆕 Nieuwe lead via de keuzehulp.</p>
       <ul>
         <li><strong>Naam:</strong> ${lead.voornaam}</li>
         <li><strong>Email:</strong> ${lead.email}</li>
@@ -63,7 +63,13 @@ export async function sendLeadNotification(lead: NotificationLead): Promise<void
 
   try {
     const resend = new Resend(apiKey);
-    const { data, error } = await resend.emails.send({ from, to, subject, html });
+    const { data, error } = await resend.emails.send({
+      from,
+      to,
+      subject,
+      html,
+      ...(lead.email ? { replyTo: lead.email } : {}),
+    });
     if (error) {
       console.error("Versturen van notificatiemail mislukt:", error);
     } else {

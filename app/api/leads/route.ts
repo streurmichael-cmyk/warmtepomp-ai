@@ -4,6 +4,7 @@ import { Resend } from "resend";
 import { pingIndexNow } from "@/lib/indexnow";
 import { berekenAdvies } from "@/lib/advies";
 import { countLeadsByIpHash, saveLead } from "@/lib/leads-repository";
+import { sendLeadNotification } from "@/lib/lead-emails";
 import { getClientIp, isRateLimited } from "@/lib/rate-limit";
 import { verifyRecaptcha } from "@/lib/recaptcha";
 
@@ -429,7 +430,8 @@ export async function POST(request: Request) {
   }
 
   // Double opt-in: genereer een verificatietoken en stuur een bevestigingsmail.
-  // De interne notificatie naar info@ volgt pas nadat de aanvrager bevestigt.
+  // De interne notificatie naar info@ gaat direct bij elke succesvolle inzending uit
+  // (best-effort; de lead wordt los daarvan altijd opgeslagen via saveLead).
   const verifyToken = randomBytes(32).toString("hex");
   const verifyUrl = new URL("/api/leads/verify", request.url);
   verifyUrl.searchParams.set("token", verifyToken);
@@ -453,6 +455,14 @@ export async function POST(request: Request) {
 
     await Promise.all([
       sendConfirmationEmail(data, advies, verifyUrl.toString()),
+      sendLeadNotification({
+        voornaam: data.voornaam ?? "",
+        email: data.email ?? "",
+        telefoon: data.telefoon ?? null,
+        woningtype: data.woningtype ?? null,
+        postcode: data.postcode ?? null,
+        huisnummer: data.huisnummer ?? null,
+      }),
       pingIndexNow(),
       saveLead({ ...data, advies: adviesResultaat, ipHash, verifyToken }),
     ]);
