@@ -3,13 +3,13 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { pingIndexNow } from "@/lib/indexnow";
 import { berekenAdvies } from "@/lib/advies";
-import { countLeadsByIpHash, saveLead } from "@/lib/leads-repository";
+import { countLeadsByAddress, saveLead } from "@/lib/leads-repository";
 import { sendLeadNotification } from "@/lib/lead-emails";
 import { getClientIp, isRateLimited } from "@/lib/rate-limit";
 import { verifyRecaptcha } from "@/lib/recaptcha";
 
 /** Maximaal aantal leads dat één IP-adres ooit mag indienen. */
-const MAX_LEADS_PER_IP = 2;
+const MAX_LEADS_PER_ADDRESS = 2;
 
 /** Hash een IP-adres (met pepper) zodat we per IP kunnen tellen zonder ruwe IP's op te slaan. */
 function hashIp(ip: string): string {
@@ -368,9 +368,25 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null, veri
   }
 }
 
+/**
+ * Geheime test-bypass voor ontwikkeling: met de juiste sleutel (env-var
+ * LEADS_TEST_BYPASS_KEY) via ?testKey= of de header x-test-key sla ik de
+ * dedup per adres én de per-uur-limiet over. Opslag en mails draaien gewoon
+ * door, zodat ik kan testen of de info@-notificatie werkt. Inactief zolang de
+ * env-var niet is gezet.
+ */
+function isTestBypass(request: Request): boolean {
+  const key = process.env.LEADS_TEST_BYPASS_KEY;
+  if (!key) return false;
+  const provided =
+    request.headers.get("x-test-key") ?? new URL(request.url).searchParams.get("testKey");
+  return provided === key;
+}
+
 export async function POST(request: Request) {
   const ip = getClientIp(request);
-  if (isRateLimited(ip)) {
+  const testBypass = isTestBypass(request);
+  if (!testBypass && isRateLimited(ip)) {
     console.warn(`Rate limit overschreden voor ${ip}`);
     return NextResponse.json(
       { error: "Te veel aanvragen vanaf dit adres. Probeer het over een uur opnieuw." },
@@ -413,20 +429,26 @@ export async function POST(request: Request) {
   }
 
   const ipHash = hashIp(ip);
-  try {
-    const aantalLeads = await countLeadsByIpHash(ipHash);
-    if (aantalLeads >= MAX_LEADS_PER_IP) {
-      console.warn(`IP-limiet bereikt (${aantalLeads} leads) voor hash ${ipHash.slice(0, 12)}…`);
-      return NextResponse.json(
-        {
-          error:
-            "Je hebt al een aanvraag ingediend. Neem contact op via info@warmtepomp.ai als je een vraag hebt.",
-        },
-        { status: 429 }
-      );
+  // Dedup per HUISADRES (postcode + huisnummer), niet per IP — gedeelde/mobiele
+  // IP's mogen geen echte leads blokkeren. ip_hash wordt nog wel opgeslagen.
+  if (!testBypass) {
+    try {
+      const aantalVoorAdres = await countLeadsByAddress(data.postcode ?? "", data.huisnummer ?? "");
+      if (aantalVoorAdres >= MAX_LEADS_PER_ADDRESS) {
+        console.warn(
+          `Adres-limiet bereikt (${aantalVoorAdres} leads) voor ${data.postcode ?? "-"} ${data.huisnummer ?? "-"}`
+        );
+        return NextResponse.json(
+          {
+            error:
+              "Voor dit adres is al een aanvraag ingediend. Neem contact op via info@warmtepomp.ai als je een vraag hebt.",
+          },
+          { status: 429 }
+        );
+      }
+    } catch (err) {
+      console.error("Tellen van leads per adres mislukt, aanvraag wordt toch verwerkt:", err);
     }
-  } catch (err) {
-    console.error("Tellen van leads per IP mislukt, aanvraag wordt toch verwerkt:", err);
   }
 
   // Double opt-in: genereer een verificatietoken voor de bevestigingsmail.

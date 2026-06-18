@@ -3,10 +3,9 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
-import { LevertijdenBlok } from "@/components/LevertijdenBlok";
 import { Logo } from "@/components/logo";
-import { ScopVergelijkingBlok } from "@/components/ScopVergelijkingBlok";
 import { RevenueNote } from "@/components/revenue-note";
+import { VergelijkInfo } from "@/components/vergelijk-info";
 import {
   ArrowLeft,
   ArrowRight,
@@ -475,7 +474,10 @@ export default function VergelijkPage() {
     };
 
     try {
-      const res = await fetch("/api/leads", {
+      // Optionele test-bypass: geef ?testKey= uit de pagina-URL door aan de API,
+      // zodat dedup + per-uur-limiet overgeslagen worden bij herhaald testen.
+      const testKey = new URLSearchParams(window.location.search).get("testKey");
+      const res = await fetch(`/api/leads${testKey ? `?testKey=${encodeURIComponent(testKey)}` : ""}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -521,6 +523,7 @@ export default function VergelijkPage() {
           <ProgressIndicator step={step} />
 
           {step === "adres" && (
+            <>
             <Step heading="Waar staat je woning?">
               <p className="mb-6 text-base leading-relaxed text-muted">
                 Vul je postcode en huisnummer in. De tool zoekt automatisch een aantal gegevens van
@@ -566,6 +569,8 @@ export default function VergelijkPage() {
                 </p>
               </form>
             </Step>
+            <VergelijkInfo />
+            </>
           )}
 
           {step === "zoeken" && (
@@ -1262,10 +1267,6 @@ export default function VergelijkPage() {
                       </p>
                     </div>
                   )}
-
-                  <LevertijdenBlok className="mt-8" />
-
-                  <ScopVergelijkingBlok className="mt-8" />
 
                   <p className="mt-6 text-xs leading-relaxed text-muted-light">
                     Deze indicatie is gebaseerd op: BAG-woningdata, RVO subsidiebedragen 2026 en

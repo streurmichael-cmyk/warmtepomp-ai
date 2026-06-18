@@ -26,15 +26,19 @@ export type VerifiedLead = {
 };
 
 /**
- * Telt hoeveel leads er al van dit IP-adres (gehasht) zijn opgeslagen.
- * Gebruikt om maximaal 2 aanvragen per IP toe te staan. Zonder database
- * geconfigureerd geven we 0 terug zodat de flow niet breekt.
+ * Telt hoeveel leads er al voor dit huisadres (postcode + huisnummer) zijn
+ * opgeslagen. Gebruikt voor dedup per adres in plaats van per IP, zodat
+ * gedeelde of mobiele IP's geen echte leads blokkeren. Case-insensitief
+ * (postcode/huisnummer-toevoeging). Zonder database geven we 0 terug.
  */
-export async function countLeadsByIpHash(ipHash: string): Promise<number> {
-  if (!isDbConfigured() || !ipHash) {
+export async function countLeadsByAddress(postcode: string, huisnummer: string): Promise<number> {
+  if (!isDbConfigured() || !postcode || !huisnummer) {
     return 0;
   }
-  const result = await sql`select count(*)::int as n from leads where ip_hash = ${ipHash}`;
+  const result = await sql`
+    select count(*)::int as n from leads
+    where lower(postcode) = lower(${postcode}) and lower(huisnummer) = lower(${huisnummer})
+  `;
   return result.rows[0]?.n ?? 0;
 }
 
