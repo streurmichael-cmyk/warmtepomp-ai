@@ -47,6 +47,45 @@ export default function VergelijkLayout({ children }: { children: React.ReactNod
         items={[{ name: "Home", path: "/" }, { name: "Vergelijken", path: "/vergelijk" }]}
       />
       {children}
+      <section className="border-t border-green/10 bg-white py-14 sm:py-16">
+        <div className="mx-auto max-w-3xl px-5 sm:px-8">
+          <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
+            Hoe werkt de keuzehulp van warmtepomp.ai?
+          </h2>
+          <div className="mt-5 space-y-4 text-base leading-relaxed text-muted">
+            <p>
+              warmtepomp.ai is een onafhankelijke keuzehulp die je in een paar minuten een
+              persoonlijke indicatie geeft voor jouw woning. Je vult je postcode en huisnummer in,
+              waarna de tool automatisch de bekende woninggegevens ophaalt — zoals het woningtype,
+              het bouwjaar en de oppervlakte. Aangevuld met een paar korte vragen over je huidige
+              verwarming en isolatie bepaalt de keuzehulp welk type warmtepomp het beste bij jouw
+              situatie past.
+            </p>
+            <p>
+              Je krijgt een indicatie van het best passende type warmtepomp, een richtprijs voor
+              aanschaf en installatie, de ISDE-subsidie waarvoor je mogelijk in aanmerking komt en
+              een inschatting van je besparing. Zo zie je in één overzicht waar je financieel
+              ongeveer aan toe bent — zonder dat je meteen een afspraak hoeft te maken of je
+              gegevens bij meerdere bedrijven hoeft achter te laten. Je doorloopt de keuzehulp
+              volledig zelf en in je eigen tempo, en bepaalt aan het eind of je de indicatie per
+              e-mail wilt ontvangen of vrijblijvend offertes wilt opvragen.
+            </p>
+            <p>
+              Ik ben aan geen enkel merk of installateur gebonden. De aanbeveling is dus gebaseerd
+              op wat bij jouw woning past, niet op wie er iets wil verkopen. Wil je een stap verder,
+              dan help ik je richting een gecertificeerde installateur die op basis van jouw
+              indicatie een offerte op maat kan opstellen. Daarbij kies je zelf of en met wie je
+              verdergaat; je zit nergens aan vast.
+            </p>
+            <p>
+              Belangrijk om te weten: de uitkomst is een indicatie, geen bindende offerte. De
+              werkelijke kosten, het exacte vermogen en de definitieve subsidie hangen af van een
+              opname bij jou thuis. Gebruik de indicatie daarom als vertrekpunt voor een goed
+              gesprek met een installateur, niet als eindbedrag.
+            </p>
+          </div>
+        </div>
+      </section>
       <section className="border-t border-green/10 bg-light-bg py-14 sm:py-16">
         <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <div className="mb-8 text-center">

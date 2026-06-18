@@ -78,7 +78,8 @@ const sections: PrivacySection[] = [
   {
     heading: "Cookies",
     paragraphs: [
-      "warmtepomp.ai gebruikt alleen functionele cookies die nodig zijn om de website goed te laten werken. Ik gebruik geen tracking- of advertentiecookies.",
+      "warmtepomp.ai gebruikt functionele cookies die nodig zijn om de website goed te laten werken.",
+      "Daarnaast gebruik ik Google Analytics om inzicht te krijgen in hoe de website wordt gebruikt, zodat ik hem kan verbeteren; Google plaatst daarvoor cookies. Voor websitestatistieken gebruik ik ook Vercel Web Analytics, dat geen cookies plaatst. Ik gebruik geen advertentiecookies en verkoop je gegevens niet.",
     ],
   },
 ];
