@@ -1,4 +1,5 @@
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { InstallateursLeadForm } from "@/components/installateurs-lead-form";
 import { TrustBar } from "@/components/trust-bar";
@@ -33,6 +34,9 @@ const benefits = [
 export default function InstallateursPage() {
   return (
     <>
+      <Breadcrumbs
+        items={[{ name: "Home", path: "/" }, { name: "Installateurs", path: "/installateurs" }]}
+      />
       <Header />
       <TrustBar />
       <main>

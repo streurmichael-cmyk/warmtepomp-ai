@@ -13,7 +13,7 @@ import { PricingRanges } from "@/components/pricing-ranges";
 import { RelatedLinks } from "@/components/related-links";
 import { Reviews } from "@/components/reviews";
 import { TrustBar } from "@/components/trust-bar";
-import { SITE_URL, buildMetadata } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Warmtepomp vergelijken 2026 | Keuzehulp | warmtepomp.ai",
@@ -22,41 +22,9 @@ export const metadata = buildMetadata({
   path: "/",
 });
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "warmtepomp.ai",
-  url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
-  contactPoint: {
-    "@type": "ContactPoint",
-    email: "info@warmtepomp.ai",
-    contactType: "customer service",
-    areaServed: "NL",
-    availableLanguage: ["Dutch"],
-  },
-};
-
-const websiteJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "warmtepomp.ai",
-  url: SITE_URL,
-  description: "Onafhankelijke warmtepomp-vergelijking voor jouw woning",
-  inLanguage: "nl-NL",
-};
-
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-      />
       <Header />
       <TrustBar />
       <main>

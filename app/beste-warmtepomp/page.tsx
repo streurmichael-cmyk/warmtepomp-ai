@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import { CtaBanner } from "@/components/cta-banner";
@@ -10,7 +11,7 @@ import {
   NetworkIcon,
   SnowflakeIcon,
 } from "@/components/icons";
-import { SITE_URL, buildMetadata } from "@/lib/seo";
+import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Beste Warmtepomp 2026 | Onafhankelijke Top 5",
@@ -110,26 +111,14 @@ const faqs = [
   },
 ];
 
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Beste warmtepomp 2026",
-      item: `${SITE_URL}/beste-warmtepomp`,
-    },
-  ],
-};
-
 export default function BesteWarmtepompPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Beste warmtepomp 2026", path: "/beste-warmtepomp" },
+        ]}
       />
       <Header />
       <TrustBar />

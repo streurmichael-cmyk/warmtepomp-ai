@@ -2,11 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import { ArrowLeft, ArrowRight } from "@/components/icons";
 import { blogPosts, getBlogPost, getRelatedPosts } from "@/lib/blog-posts";
-import { SITE_URL, buildMetadata } from "@/lib/seo";
+import { ORG_ID, PERSON_ID, SITE_URL, buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -60,12 +61,8 @@ export default async function BlogPostPage({
     mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
     url: `${SITE_URL}/blog/${post.slug}`,
     image: `${SITE_URL}/logo.png`,
-    author: { "@type": "Person", name: "Michael Streur" },
-    publisher: {
-      "@type": "Organization",
-      name: "warmtepomp.ai",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
-    },
+    author: { "@type": "Person", "@id": PERSON_ID, name: "Michael Streur" },
+    publisher: { "@id": ORG_ID },
   };
 
   return (
@@ -73,6 +70,13 @@ export default async function BlogPostPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]}
       />
       <Header />
       <TrustBar />
@@ -91,7 +95,7 @@ export default async function BlogPostPage({
               Terug naar blog
             </Link>
             <p className="mb-3 mt-6 text-xs font-bold uppercase tracking-[0.2em] text-action">
-              {formatDate(post.publishedAt)}
+              Door Michael Streur · {formatDate(post.publishedAt)}
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
               {post.title}

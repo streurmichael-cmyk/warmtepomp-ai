@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import { GemeenteLookupTool } from "@/components/gemeente-lookup-tool";
@@ -48,6 +49,7 @@ export default function AardgasvrijPage() {
           ),
         }}
       />
+      <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Aardgasvrij", path: "/aardgasvrij" }]} />
       <Header />
       <TrustBar />
       <main>

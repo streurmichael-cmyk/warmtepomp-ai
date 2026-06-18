@@ -1,5 +1,6 @@
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import { faqs } from "@/lib/faqs";
@@ -31,6 +32,9 @@ export default function FaqPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Breadcrumbs
+        items={[{ name: "Home", path: "/" }, { name: "Veelgestelde vragen", path: "/faq" }]}
       />
       <Header />
       <TrustBar />

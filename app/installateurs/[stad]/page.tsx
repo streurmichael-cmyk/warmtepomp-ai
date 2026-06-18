@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { InstallateursLeadForm } from "@/components/installateurs-lead-form";
 import { PermitsInfo } from "@/components/permits-info";
@@ -106,6 +107,13 @@ export default async function StadPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Installateurs", path: "/installateurs" },
+          { name: city.name, path: `/installateurs/${city.slug}` },
+        ]}
       />
       <Header />
       <TrustBar />

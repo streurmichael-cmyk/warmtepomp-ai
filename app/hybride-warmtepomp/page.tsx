@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import { CtaBanner } from "@/components/cta-banner";
@@ -66,6 +67,12 @@ const faqs = [
 export default function HybrideWarmtepompPage() {
   return (
     <>
+      <Breadcrumbs
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Hybride warmtepomp", path: "/hybride-warmtepomp" },
+        ]}
+      />
       <Header />
       <TrustBar />
       <main>

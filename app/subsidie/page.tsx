@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import {
@@ -75,6 +76,7 @@ export default function SubsidiePage() {
           ),
         }}
       />
+      <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Subsidie", path: "/subsidie" }]} />
       <Header />
       <TrustBar />
       <main>

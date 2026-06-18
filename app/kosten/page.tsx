@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { RelatedLinks } from "@/components/related-links";
 import { TrustBar } from "@/components/trust-bar";
@@ -52,6 +53,7 @@ export default function KostenPage() {
           ),
         }}
       />
+      <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Kosten", path: "/kosten" }]} />
       <Header />
       <TrustBar />
       <main>

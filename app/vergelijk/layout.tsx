@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SITE_URL, buildMetadata } from "@/lib/seo";
 
 const verderLinks = [
@@ -41,6 +42,9 @@ export default function VergelijkLayout({ children }: { children: React.ReactNod
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <Breadcrumbs
+        items={[{ name: "Home", path: "/" }, { name: "Vergelijken", path: "/vergelijk" }]}
       />
       {children}
       <section className="border-t border-green/10 bg-light-bg py-14 sm:py-16">

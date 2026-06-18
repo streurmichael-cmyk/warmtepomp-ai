@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import {
@@ -37,6 +38,9 @@ const cijfers = [
 export default function VoorbeeldAdviesPage() {
   return (
     <>
+      <Breadcrumbs
+        items={[{ name: "Home", path: "/" }, { name: "Voorbeeldindicatie", path: "/voorbeeld-advies" }]}
+      />
       <Header />
       <TrustBar />
       <main>

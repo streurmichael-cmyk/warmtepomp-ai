@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import { ArrowRight } from "@/components/icons";
@@ -28,6 +29,7 @@ export default function BlogPage() {
 
   return (
     <>
+      <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Blog", path: "/blog" }]} />
       <Header />
       <TrustBar />
       <main>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { RevenueTransparency } from "@/components/revenue-transparency";
 import { TrustBar } from "@/components/trust-bar";
@@ -57,6 +58,9 @@ export default function HoeHetWerktPage() {
             }),
           ),
         }}
+      />
+      <Breadcrumbs
+        items={[{ name: "Home", path: "/" }, { name: "Hoe het werkt", path: "/hoe-het-werkt" }]}
       />
       <Header />
       <TrustBar />

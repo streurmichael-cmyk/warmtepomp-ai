@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AddressLookupForm } from "@/components/address-lookup-form";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import { CtaBanner } from "@/components/cta-banner";
@@ -81,6 +82,9 @@ const faqs = [
 export default function OffertePage() {
   return (
     <>
+      <Breadcrumbs
+        items={[{ name: "Home", path: "/" }, { name: "Offerte aanvragen", path: "/offerte" }]}
+      />
       <Header />
       <TrustBar />
       <main>

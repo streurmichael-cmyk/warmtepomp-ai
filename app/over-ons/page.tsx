@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { RevenueTransparency } from "@/components/revenue-transparency";
 import { TrustBar } from "@/components/trust-bar";
@@ -11,7 +12,7 @@ import {
   MapPinIcon,
   ShieldIcon,
 } from "@/components/icons";
-import { buildMetadata } from "@/lib/seo";
+import { ORG_ID, PERSON_ID, SITE_URL, WEBSITE_ID, buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Over warmtepomp.ai: onafhankelijke warmtepomp-keuzehulp",
@@ -20,9 +21,30 @@ export const metadata = buildMetadata({
   path: "/over-ons",
 });
 
+const aboutPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  url: `${SITE_URL}/over-ons`,
+  name: "Over warmtepomp.ai",
+  inLanguage: "nl-NL",
+  isPartOf: { "@id": WEBSITE_ID },
+  mainEntity: {
+    "@type": "Person",
+    "@id": PERSON_ID,
+    name: "Michael Streur",
+    jobTitle: "Oprichter",
+    worksFor: { "@id": ORG_ID },
+  },
+};
+
 export default function OverOnsPage() {
   return (
     <>
+      <Breadcrumbs items={[{ name: "Home", path: "/" }, { name: "Over mij", path: "/over-ons" }]} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }}
+      />
       <Header />
       <TrustBar />
       <main>
@@ -51,7 +73,7 @@ export default function OverOnsPage() {
                   height={112}
                   className="h-24 w-24 flex-shrink-0 rounded-full border-4 border-green/10 object-cover sm:h-28 sm:w-28"
                 />
-                <div>
+                <div id="michael-streur" className="scroll-mt-24">
                   <p className="text-base leading-relaxed text-muted">
                     Ik ben de oprichter van warmtepomp.ai. Ik raakte geïnteresseerd in warmtepompen
                     en ben me er steeds verder in gaan verdiepen. Wat me opviel: het is een

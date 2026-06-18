@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CitiesSection } from "@/components/cities-section";
 import { Footer } from "@/components/footer";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import {
@@ -123,6 +124,7 @@ export default function WarmtepompenPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             webPageJsonLd({
+              type: "CollectionPage",
               name: "Welke warmtepomp past bij mij?",
               description:
                 "Ontdek welk type warmtepomp past bij jouw woning: lucht-water, hybride, bodem-water of lucht-lucht. Met uitleg, voor- en nadelen, kosten en subsidie.",
@@ -130,6 +132,9 @@ export default function WarmtepompenPage() {
             }),
           ),
         }}
+      />
+      <Breadcrumbs
+        items={[{ name: "Home", path: "/" }, { name: "Warmtepompen", path: "/warmtepompen" }]}
       />
       <Header />
       <TrustBar />
