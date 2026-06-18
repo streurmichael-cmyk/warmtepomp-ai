@@ -24,7 +24,7 @@ import { buildMetadata } from "@/lib/seo";
 // Evergreen blogartikelen die op elke stadpagina relevant zijn als verdieping.
 const relatedArticleSlugs = [
   "warmtepomp-geschikt-voor-mijn-woning",
-  "warmtepomp-kosten-2026-compleet-overzicht",
+  "warmtepomp-kosten-2026",
   "warmtepomp-besparing-berekenen",
 ];
 

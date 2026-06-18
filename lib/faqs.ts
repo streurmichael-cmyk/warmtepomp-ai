@@ -26,7 +26,7 @@ export const faqs: FaqItem[] = [
     q: "Wat kost een warmtepomp gemiddeld?",
     a: "Een hybride warmtepomp kost inclusief installatie gemiddeld €7.000 – €9.500. Een volledige lucht/water-warmtepomp kost €8.500 – €14.000 afhankelijk van je woningtype. Na ISDE-subsidie en eventuele BTW-teruggave kan dit aanzienlijk lager uitvallen.",
     link: {
-      href: "/blog/warmtepomp-kosten-2026-compleet-overzicht",
+      href: "/blog/warmtepomp-kosten-2026",
       label: "Bekijk het complete kostenoverzicht voor 2026",
     },
   },
