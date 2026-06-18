@@ -203,7 +203,7 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
   if (huidigSysteem === "Hybride warmtepomp") {
     type = appartement ? "Lucht/lucht warmtepomp" : "Volledig elektrische warmtepomp (upgrade)";
     kostenRange = appartement ? "€2.500 – €4.500" : groteWoning ? "€5.500 – €8.000" : "€4.500 – €6.500";
-    subsidie = appartement ? "doorgaans niet subsidiabel via ISDE" : "tot €3.500";
+    subsidie = appartement ? "doorgaans niet subsidiabel via ISDE" : "tot €2.500";
     toelichting =
       "Je hebt al een hybride warmtepomp die het grootste deel van het jaar verwarmt. De volgende stap is een volledig elektrische warmtepomp die de cv-ketel helemaal vervangt. Omdat een deel van de installatie er al staat, zijn de extra kosten vaak lager dan bij een eerste installatie.";
   } else if (isolatie === "Matig of oud") {
@@ -245,7 +245,7 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
   } else {
     type = appartement ? "Lucht/lucht warmtepomp" : "Lucht/water warmtepomp (volledig elektrisch)";
     kostenRange = appartement ? "€4.000 – €6.000" : groteWoning ? "€10.500 – €14.000" : "€8.500 – €11.000";
-    subsidie = appartement ? "doorgaans niet subsidiabel via ISDE" : "tot €3.500";
+    subsidie = appartement ? "doorgaans niet subsidiabel via ISDE" : "tot €2.500";
     toelichting =
       "Je woning is goed geïsoleerd, dus een volledig elektrische warmtepomp kan je gasaansluiting helemaal vervangen. Dat levert de grootste besparing op.";
   }

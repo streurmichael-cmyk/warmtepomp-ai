@@ -14,7 +14,7 @@ import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Voorbeeldindicatie warmtepomp: zo ziet jouw indicatie eruit | warmtepomp.ai",
+  title: "Voorbeeld warmtepomp-indicatie | warmtepomp.ai",
   description:
     "Benieuwd hoe een persoonlijke warmtepomp-indicatie eruitziet? Bekijk een voorbeeld met aanbevolen type, geschatte kosten, ISDE-subsidie en besparing.",
   path: "/voorbeeld-advies",

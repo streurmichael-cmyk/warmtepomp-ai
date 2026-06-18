@@ -7,7 +7,7 @@ const objections = [
   {
     question: "Een warmtepomp is veel te duur",
     answer:
-      "Klopt, de aanschaf is een flinke uitgave: tussen de €7.000 en €14.000, afhankelijk van het type. Met de ISDE-subsidie (tot €3.500) en de besparing op je gasrekening verdien je dat — eerlijk gezegd — niet in een paar jaar terug: een warmtepomp op zichzelf doet daar al snel 15 tot 20 jaar over. Dat wordt korter bij een hoger gasverbruik, met een hybride als tussenstap, of als je cv-ketel toch al aan vervanging toe was (dan telt alleen het prijsverschil). Is je woning slecht geïsoleerd én is je budget krap? Dan is een hybride warmtepomp vaak een betaalbaardere eerste stap dan in één keer volledig overstappen.",
+      "Klopt, de aanschaf is een flinke uitgave: tussen de €7.000 en €14.000, afhankelijk van het type. Met de ISDE-subsidie (tot €2.500) en de besparing op je gasrekening verdien je dat — eerlijk gezegd — niet in een paar jaar terug: een warmtepomp op zichzelf doet daar al snel 15 tot 20 jaar over. Dat wordt korter bij een hoger gasverbruik, met een hybride als tussenstap, of als je cv-ketel toch al aan vervanging toe was (dan telt alleen het prijsverschil). Is je woning slecht geïsoleerd én is je budget krap? Dan is een hybride warmtepomp vaak een betaalbaardere eerste stap dan in één keer volledig overstappen.",
   },
   {
     question: "Een warmtepomp maakt te veel herrie",

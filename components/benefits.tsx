@@ -5,7 +5,7 @@ const benefits = [
     icon: SubsidyIcon,
     title: "Actuele subsidie",
     body: "De tool houdt de actuele ISDE-subsidieregeling voor je bij en berekent automatisch hoeveel jij kunt ontvangen in 2026. Zo mis je geen voordeel.",
-    note: "Tot €3.500 voordeel",
+    note: "Tot €2.500 voordeel",
   },
   {
     icon: ConversationIcon,

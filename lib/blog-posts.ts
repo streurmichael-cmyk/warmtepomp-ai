@@ -5,6 +5,8 @@ export type BlogSection =
 export type BlogPost = {
   slug: string;
   title: string;
+  /** SEO meta title (≤60 tekens); valt terug op `title` als afwezig. */
+  metaTitle?: string;
   description: string;
   publishedAt: string;
   intro: string;
@@ -16,7 +18,7 @@ export const blogPosts: BlogPost[] = [
     slug: "warmtepomp-subsidie-2026-complete-gids",
     title: "ISDE Subsidie Warmtepomp 2026: Complete Gids",
     description:
-      "Alles over de ISDE-subsidie voor warmtepompen in 2026: bedragen per type, voorwaarden, het aanvraagproces en praktische tips om je aanvraag soepel te laten verlopen.",
+      "Alles over de ISDE-subsidie voor warmtepompen in 2026: bedragen per type, voorwaarden, het aanvraagproces en praktische tips voor je aanvraag.",
     publishedAt: "2026-06-03",
     intro:
       "Een warmtepomp is een flinke investering, maar de overheid betaalt via de ISDE-regeling een aanzienlijk deel mee. In deze gids leg ik in gewone taal uit hoe de ISDE-subsidie voor warmtepompen in 2026 werkt, hoeveel je kunt krijgen, aan welke voorwaarden je moet voldoen en hoe je de aanvraag stap voor stap doet.",
@@ -105,7 +107,7 @@ export const blogPosts: BlogPost[] = [
     slug: "hybride-warmtepomp-ervaringen",
     title: "Hybride Warmtepomp: Ervaringen, Kosten en Voordelen in 2026",
     description:
-      "Een eerlijk verhaal over de hybride warmtepomp: hoe het werkt, voor wie het geschikt is, wat het kost en wat huiseigenaren in de praktijk merken van hun besparing.",
+      "Een eerlijk verhaal over de hybride warmtepomp: hoe het werkt, voor wie het geschikt is, wat het kost en wat je in de praktijk bespaart.",
     publishedAt: "2026-06-10",
     intro:
       "De hybride warmtepomp is al jaren de meest verkochte warmtepomp in Nederland, en niet zonder reden. In dit artikel leg ik uit wat een hybride warmtepomp is, voor wie hij geschikt is, wat de kosten en besparingen in de praktijk zijn, en waar je op moet letten voordat je de overstap maakt.",
@@ -181,6 +183,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "warmtepomp-tussenwoning-geschikt",
     title: "Warmtepomp in een Tussenwoning: Alles wat je moet weten (2026)",
+    metaTitle: "Warmtepomp in een Tussenwoning: Wat je moet weten (2026)",
     description:
       "De tussenwoning is het meest voorkomende woningtype in Nederland. Alles over welk type warmtepomp het beste past, wat het kost, en waar je op moet letten.",
     publishedAt: "2026-06-16",
@@ -259,8 +262,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "warmtepomp-kosten-2026-compleet-overzicht",
     title: "Warmtepomp Kosten 2026: Compleet Overzicht Aanschaf en Installatie",
+    metaTitle: "Warmtepomp Kosten 2026: Aanschaf en Installatie",
     description:
-      "Alle kosten van een warmtepomp op een rij: aanschaf, installatie, bijkomende kosten, subsidie en de invloed van je woning. Het complete kostenoverzicht voor 2026.",
+      "Alle kosten van een warmtepomp op een rij: aanschaf, installatie, bijkomende kosten en subsidie. Het complete kostenoverzicht voor 2026.",
     publishedAt: "2026-06-16",
     intro:
       "Wat kost een warmtepomp nu eigenlijk echt? Niet alleen het apparaat zelf, maar ook de installatie, eventuele aanpassingen aan je woning en de jaarlijkse kosten daarna. In dit artikel zet ik alle kostenposten voor 2026 op een rij, zodat je vooraf weet waar je rekening mee moet houden — en hoeveel je dankzij subsidie kunt terugkrijgen.",
@@ -346,7 +350,7 @@ export const blogPosts: BlogPost[] = [
     slug: "warmtepomp-subsidie-aanvragen-stap-voor-stap",
     title: "ISDE Subsidie Aanvragen in 2026: Stap voor Stap Uitgelegd",
     description:
-      "Een praktische stap-voor-stap handleiding voor het aanvragen van de ISDE-subsidie voor je warmtepomp in 2026, inclusief documenten, deadlines en veelgemaakte fouten.",
+      "Een praktische stap-voor-stap handleiding voor het aanvragen van de ISDE-subsidie voor je warmtepomp in 2026: documenten, deadlines en valkuilen.",
     publishedAt: "2026-06-16",
     intro:
       "De ISDE-subsidie kan honderden tot duizenden euro's schelen op de aanschaf van je warmtepomp, maar de aanvraag voelt voor veel mensen onnodig ingewikkeld. In dit artikel loop ik stap voor stap door het hele proces: van de voorbereiding tot het moment dat het geld op je rekening staat.",
@@ -434,8 +438,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "beste-warmtepomp-merken-2026",
     title: "Beste Warmtepomp Merken 2026: Daikin, Vaillant, Bosch Vergeleken",
+    metaTitle: "Beste Warmtepomp Merken 2026: Daikin, Vaillant & Bosch",
     description:
-      "Een eerlijke vergelijking van populaire warmtepompmerken in 2026: Daikin, Vaillant, Bosch en meer. Wat zijn de verschillen en waar moet je op letten bij je keuze?",
+      "Een eerlijke vergelijking van populaire warmtepompmerken in 2026: Daikin, Vaillant, Bosch en meer. Wat zijn de verschillen en waar let je op?",
     publishedAt: "2026-06-16",
     intro:
       "Bij het kiezen van een warmtepomp kom je al snel een aantal bekende merknamen tegen: Daikin, Vaillant, Bosch, en nog een paar anderen. Maar wat zijn nu eigenlijk de verschillen, en hoe belangrijk is het merk eigenlijk voor jouw uiteindelijke keuze? In dit artikel zet ik de meest gekozen merken op een rij en geef ik praktische tips voor het maken van je keuze.",
@@ -515,6 +520,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "warmtepomp-geschikt-voor-mijn-woning",
     title: "Is een Warmtepomp Geschikt voor Mijn Woning? De Complete Checklist",
+    metaTitle: "Is een Warmtepomp Geschikt voor Mijn Woning? Checklist",
     description:
       "Twijfel je of een warmtepomp geschikt is voor jouw woning? Deze complete checklist helpt je op basis van bouwjaar, isolatie, radiatoren en woningtype.",
     publishedAt: "2026-06-16",
@@ -601,8 +607,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "warmtepomp-besparing-berekenen",
     title: "Hoeveel Bespaar je met een Warmtepomp? Bereken het Zelf (2026)",
+    metaTitle: "Hoeveel Bespaar je met een Warmtepomp? (2026)",
     description:
-      "Reken zelf uit hoeveel je kunt besparen met een warmtepomp: van gasverbruik en energieprijzen tot subsidie en terugverdientijd. Met praktische rekenvoorbeelden voor 2026.",
+      "Reken zelf uit hoeveel je bespaart met een warmtepomp: van gasverbruik en energieprijzen tot subsidie en terugverdientijd, met rekenvoorbeelden.",
     publishedAt: "2026-06-16",
     intro:
       "Een warmtepomp kan flink besparen op je energierekening, maar hoeveel precies hangt af van jouw situatie. In dit artikel laat ik zien welke factoren de besparing bepalen en geef ik praktische rekenvoorbeelden, zodat je voor jouw eigen woning een goede inschatting kunt maken.",
@@ -691,7 +698,7 @@ export const blogPosts: BlogPost[] = [
     slug: "warmtepomp-vloerverwarming-perfecte-combinatie",
     title: "Warmtepomp en Vloerverwarming: De Perfecte Combinatie (2026)",
     description:
-      "Waarom warmtepompen en vloerverwarming zo goed samengaan, of het ook zonder kan, wat vloerverwarming aanleggen kost en wat dit betekent voor je terugverdientijd.",
+      "Waarom warmtepompen en vloerverwarming zo goed samengaan, of het ook zonder kan, wat aanleggen kost en wat het betekent voor je terugverdientijd.",
     publishedAt: "2026-06-12",
     intro:
       "Warmtepomp en vloerverwarming worden vaak in één adem genoemd, en dat is niet zonder reden. Deze twee technieken versterken elkaar enorm: een warmtepomp werkt het meest efficiënt bij lage temperaturen, en vloerverwarming is daar precies op gebouwd. Maar betekent dit dat je eerst vloerverwarming moet aanleggen voordat een warmtepomp zin heeft? In dit artikel leg ik uit waarom deze combinatie zo goed werkt, wat je alternatieven zijn als je geen vloerverwarming hebt, wat het aanleggen ervan kost en hoe dit je terugverdientijd beïnvloedt.",
@@ -762,8 +769,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "warmtepomp-zonnepanelen-besparing-berekenen",
     title: "Warmtepomp + Zonnepanelen: Hoe Veel (en Weinig) Ze Samen Doen (2026)",
+    metaTitle: "Warmtepomp + Zonnepanelen: Werkt die Combinatie? (2026)",
     description:
-      "Verlagen zonnepanelen echt de kosten van je warmtepomp? Ik leg eerlijk uit waarom dat tegenvalt door de seizoensmismatch, wat het einde van de salderingsregeling per 2027 betekent, en hoe je panelen en warmtepomp wél slim combineert.",
+      "Verlagen zonnepanelen echt de kosten van je warmtepomp? Ik leg eerlijk uit waarom dat tegenvalt en hoe je panelen en warmtepomp wél slim combineert.",
     publishedAt: "2026-06-15",
     intro:
       "Een warmtepomp draait op stroom, en zonnepanelen wekken stroom op — dus die twee versterken elkaar perfect, toch? Dat wordt vaak beweerd, maar het ligt genuanceerder. Voor de verwarming verlagen zonnepanelen de kosten van je warmtepomp namelijk maar beperkt, en met het einde van de salderingsregeling per 2027 verandert er nog meer. In dit artikel leg ik eerlijk uit hoe het echt zit — en hoe je panelen en warmtepomp wél slim combineert.",
@@ -798,7 +806,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Rekenvoorbeeld: waarom de jaarrekensom misleidt",
         paragraphs: [
-          "Laten we het concreet maken. Stel: je hebt 10 zonnepanelen die samen 3.500 kWh per jaar opwekken, en een warmtepomp die 3.500 kWh per jaar verbruikt. Op papier dekt je opwek dus 100% van je warmtepompverbruik.",
+          "Laat ik het concreet maken. Stel: je hebt 10 zonnepanelen die samen 3.500 kWh per jaar opwekken, en een warmtepomp die 3.500 kWh per jaar verbruikt. Op papier dekt je opwek dus 100% van je warmtepompverbruik.",
           "De verleiding is om te zeggen: bij €0,32 per kWh 'wegstreep' je dan €1.120 aan warmtepompstroom per jaar. Maar dat klopt niet, want het moment telt. Je warmtepomp verbruikt het grootste deel van die 3.500 kWh in de wintermaanden om je huis te verwarmen, terwijl je panelen dan maar een fractie van hun jaaropbrengst leveren. De zomerse opwek valt grotendeels buiten je verwarmingsseizoen.",
           "In de praktijk gebruik je dus maar een deel van je eigen zonnestroom direct voor de verwarming; de rest van de winterstroom koop je gewoon van het net, en je zomerse overschot lever je terug. Zolang salderen nog bestaat valt dat verschil weg op je jaarrekening, maar dat verandert per 2027 (zie verderop).",
           "De eerlijke conclusie: zonnepanelen verlagen je totale stroomrekening, maar ze verlagen de kosten van je warmtepomp-verwarming maar beperkt. Beoordeel je warmtepomp en je zonnepanelen daarom als twee losse investeringen die elk op zichzelf de moeite waard kunnen zijn — niet als een duo dat elkaars terugverdientijd halveert.",
@@ -853,8 +861,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "beste-all-electric-warmtepomp-2026",
     title: "Beste All-Electric Warmtepomp 2026: Vergelijking, Voor- en Nadelen",
+    metaTitle: "Beste All-Electric Warmtepomp 2026: Vergelijking",
     description:
-      "Welke all-electric warmtepomp past het best bij jouw woning in 2026? Ik vergelijk lucht-water en bodem-water systemen en bespreek kosten, subsidie, geschiktheid en de belangrijkste voor- en nadelen.",
+      "Welke all-electric warmtepomp past het best bij jouw woning in 2026? Ik vergelijk lucht-water en bodem-water op kosten, subsidie en geschiktheid.",
     publishedAt: "2026-06-13",
     intro:
       "Een all-electric warmtepomp verwarmt je woning volledig zonder aardgas en is daarmee de meest vergaande stap in de verduurzaming van je huis. Maar welke variant past het beste bij jouw situatie, en waar moet je op letten voordat je de gasaansluiting de deur uit doet? In dit artikel vergelijk ik de belangrijkste all-electric warmtepompen voor 2026, met hun kosten, subsidie, geschiktheid en de voor- en nadelen op een rij.",
@@ -952,11 +961,12 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "warmtepomp-kosten-2026",
     title: "Warmtepomp Kosten 2026: Aanschaf, Installatie, Subsidie en Terugverdientijd",
+    metaTitle: "Warmtepomp Kosten 2026: Aanschaf, Subsidie & Meer",
     description:
-      "Wat kost een warmtepomp in 2026? Een compleet en eerlijk overzicht van de aanschaf- en installatiekosten per type, de subsidie, de gebruikskosten en hoe je de terugverdientijd berekent.",
+      "Wat kost een warmtepomp in 2026? Een eerlijk overzicht van aanschaf- en installatiekosten per type, subsidie, gebruikskosten en terugverdientijd.",
     publishedAt: "2026-06-14",
     intro:
-      "De kosten van een warmtepomp zijn voor veel huiseigenaren de doorslaggevende factor bij de keuze om over te stappen. Maar 'wat kost een warmtepomp?' is lastig in één bedrag te vangen: het hangt af van het type, je woning en de bijkomende werkzaamheden. In dit artikel zetten we alle kosten voor 2026 op een rij — van aanschaf en installatie tot subsidie, gebruikskosten en de terugverdientijd — zodat je weet waar je financieel aan toe bent.",
+      "De kosten van een warmtepomp zijn voor veel huiseigenaren de doorslaggevende factor bij de keuze om over te stappen. Maar 'wat kost een warmtepomp?' is lastig in één bedrag te vangen: het hangt af van het type, je woning en de bijkomende werkzaamheden. In dit artikel zet ik alle kosten voor 2026 op een rij — van aanschaf en installatie tot subsidie, gebruikskosten en de terugverdientijd — zodat je weet waar je financieel aan toe bent.",
     sections: [
       {
         type: "text",

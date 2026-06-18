@@ -6,9 +6,9 @@ import { ConversationIcon, NetworkIcon, ShieldIcon } from "@/components/icons";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Een gecertificeerde warmtepomp installateur vinden | warmtepomp.ai",
+  title: "Warmtepomp installateur vinden | warmtepomp.ai",
   description:
-    "Op zoek naar een gecertificeerde warmtepomp installateur? Vul je gegevens in, dan help ik je de beste optie voor jouw woning te vinden. Gratis en vrijblijvend.",
+    "Op zoek naar een gecertificeerde warmtepomp installateur? Vul je gegevens in, dan help ik je de beste optie te vinden. Gratis en vrijblijvend.",
   path: "/installateurs",
 });
 

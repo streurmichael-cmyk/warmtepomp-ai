@@ -3,7 +3,7 @@ import { SITE_URL, buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Gratis warmtepomp-indicatie op maat | warmtepomp.ai",
   description:
-    "Beantwoord een paar vragen over je woning en ontvang gratis en vrijblijvend een persoonlijke indicatie van het beste type warmtepomp, kosten, subsidie en besparing.",
+    "Beantwoord een paar vragen over je woning en ontvang gratis een persoonlijke indicatie van het beste type warmtepomp, de kosten en de subsidie.",
   path: "/vergelijk",
 });
 

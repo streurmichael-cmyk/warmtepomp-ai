@@ -13,9 +13,9 @@ import {
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Hoe werkt warmtepomp.ai? In 4 stappen naar jouw indicatie | warmtepomp.ai",
+  title: "Hoe werkt warmtepomp.ai? In 4 stappen | warmtepomp.ai",
   description:
-    "Zo werkt warmtepomp.ai: vul je gegevens in, ontvang persoonlijke indicatie, vergelijk gecertificeerde installateurs en plan je installatie. Gratis en vrijblijvend.",
+    "Zo werkt warmtepomp.ai: vul je gegevens in, ontvang een persoonlijke indicatie en vergelijk gecertificeerde installateurs. Gratis en vrijblijvend.",
   path: "/hoe-het-werkt",
 });
 

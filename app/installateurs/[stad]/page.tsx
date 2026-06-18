@@ -44,8 +44,8 @@ export async function generateMetadata({
   if (!city) return {};
 
   return buildMetadata({
-    title: `Warmtepomp installateur ${city.name} | Gratis vergelijken | warmtepomp.ai`,
-    description: `Op zoek naar een gecertificeerde warmtepomp installateur in ${city.name}? Krijg eerst een gratis, onafhankelijke indicatie voor jouw woning. ISDE subsidie tot €2.500.`,
+    title: `Warmtepomp installateur ${city.name} | warmtepomp.ai`,
+    description: `Op zoek naar een warmtepomp installateur in ${city.name}? Krijg eerst een gratis, onafhankelijke indicatie voor jouw woning, met ISDE-subsidie.`,
     path: `/installateurs/${city.slug}`,
     noindex: !isCityIndexed(city.slug),
   });

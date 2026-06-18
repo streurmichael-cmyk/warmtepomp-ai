@@ -599,7 +599,7 @@ export default function VergelijkPage() {
                       ? autoIngevuld
                         ? "De tool heeft een deel van je gegevens alvast ingevuld — controleer en vul aan waar nodig."
                         : "De tool heeft je adres gevonden, maar niet alle details. Vul de onderstaande gegevens zelf aan."
-                      : "Vul de onderstaande gegevens zelf in, dan gaan we gewoon verder."}
+                      : "Vul de onderstaande gegevens zelf in, dan ga ik gewoon verder."}
                   </p>
                 </div>
               </div>

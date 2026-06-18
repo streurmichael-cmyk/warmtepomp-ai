@@ -7,7 +7,7 @@ import { blogPosts } from "@/lib/blog-posts";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Blog: gidsen, kosten en ervaringen met warmtepompen | warmtepomp.ai",
+  title: "Blog over warmtepompen: gidsen & kosten | warmtepomp.ai",
   description:
     "Lees mijn artikelen over ISDE-subsidie, hybride warmtepompen en warmtepompen in tussenwoningen. Praktische, eerlijke informatie om je op weg te helpen.",
   path: "/blog",

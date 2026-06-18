@@ -17,9 +17,9 @@ import { faqs } from "@/lib/faqs";
 import { SITE_URL, buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Warmtepomp vergelijken 2026 | Onafhankelijke keuzehulp | warmtepomp.ai",
+  title: "Warmtepomp vergelijken 2026 | Keuzehulp | warmtepomp.ai",
   description:
-    "Onafhankelijke keuzehulp voor warmtepompen in Nederland. Persoonlijke indicatie van het beste type warmtepomp, actuele subsidie-informatie en hulp bij het vinden van de beste optie voor jouw woning.",
+    "Onafhankelijke keuzehulp voor warmtepompen. Krijg een persoonlijke indicatie van het beste type warmtepomp, plus actuele subsidie-informatie.",
   path: "/",
 });
 

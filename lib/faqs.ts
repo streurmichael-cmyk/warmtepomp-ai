@@ -16,7 +16,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Hoeveel subsidie kan ik krijgen voor een warmtepomp?",
-    a: "Via de ISDE-regeling (Investeringssubsidie Duurzame Energie) kun je in 2026 tot €3.500 subsidie ontvangen voor een warmtepomp. Het exacte bedrag hangt af van het type warmtepomp en het vermogen. Ik bereken jouw subsidie automatisch op basis van jouw situatie.",
+    a: "Via de ISDE-regeling (Investeringssubsidie Duurzame Energie) kun je in 2026 tot €2.500 subsidie ontvangen voor een warmtepomp. Het exacte bedrag hangt af van het type warmtepomp en het vermogen. Ik bereken jouw subsidie automatisch op basis van jouw situatie.",
     link: {
       href: "/blog/warmtepomp-subsidie-2026-complete-gids",
       label: "Lees de complete ISDE-subsidiegids voor 2026",

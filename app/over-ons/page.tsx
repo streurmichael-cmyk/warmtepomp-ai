@@ -16,7 +16,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Over mij | warmtepomp.ai",
   description:
-    "Maak kennis met warmtepomp.ai: onafhankelijke vergelijking van warmtepompen, opgericht door Michael Streur. Lees wie ik ben, waarom ik dit doe en hoe ik geld verdien.",
+    "Maak kennis met warmtepomp.ai, opgericht door Michael Streur. Lees wie ik ben, waarom ik dit doe en hoe ik geld verdien.",
   path: "/over-ons",
 });
 

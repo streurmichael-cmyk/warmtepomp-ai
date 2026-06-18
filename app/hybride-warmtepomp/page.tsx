@@ -22,8 +22,7 @@ const geschiktVoor = [
 ];
 
 const kosten = [
-  { post: "Aanschaf warmtepomp(deel)", bedrag: "€3.000 – €8.000" },
-  { post: "Installatie", bedrag: "€1.000 – €2.000" },
+  { post: "Aanschaf inclusief installatie", bedrag: "€3.500 – €7.000" },
   { post: "ISDE-subsidie", bedrag: "Van toepassing (bedrag wisselt per toestel)" },
 ];
 
@@ -52,7 +51,7 @@ const faqs = [
   },
   {
     q: "Wat kost een hybride warmtepomp?",
-    a: "Reken op €3.000–€8.000 voor het toestel en €1.000–€2.000 voor de installatie. Met de ISDE-subsidie betaal je netto minder; het subsidiebedrag verschilt per toestel.",
+    a: "Reken op €3.500 – €7.000 inclusief installatie. Met de ISDE-subsidie betaal je netto minder; het subsidiebedrag verschilt per toestel.",
   },
   {
     q: "Krijg ik subsidie op een hybride warmtepomp?",

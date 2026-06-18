@@ -18,9 +18,9 @@ import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Welke warmtepomp past bij mij? Alle types uitgelegd | warmtepomp.ai",
+  title: "Welke warmtepomp past bij mij? | warmtepomp.ai",
   description:
-    "Ontdek welk type warmtepomp het beste past bij jouw woning: lucht-water, hybride, bodem-water of lucht-lucht. Vergelijk uitleg, voor- en nadelen, kosten en subsidie.",
+    "Ontdek welk type warmtepomp past bij jouw woning: lucht-water, hybride, bodem-water of lucht-lucht. Met uitleg, voor- en nadelen, kosten en subsidie.",
   path: "/warmtepompen",
 });
 

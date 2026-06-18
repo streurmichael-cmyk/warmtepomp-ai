@@ -6,7 +6,7 @@ import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import { ArrowLeft, ArrowRight } from "@/components/icons";
 import { blogPosts, getBlogPost, getRelatedPosts } from "@/lib/blog-posts";
-import { buildMetadata } from "@/lib/seo";
+import { SITE_URL, buildMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -24,7 +24,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   return buildMetadata({
-    title: `${post.title} | warmtepomp.ai`,
+    title: post.metaTitle ?? post.title,
     description: post.description,
     path: `/blog/${post.slug}`,
   });
@@ -49,8 +49,31 @@ export default async function BlogPostPage({
 
   const relatedPosts = getRelatedPosts(slug);
 
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    inLanguage: "nl-NL",
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    url: `${SITE_URL}/blog/${post.slug}`,
+    image: `${SITE_URL}/logo.png`,
+    author: { "@type": "Person", name: "Michael Streur" },
+    publisher: {
+      "@type": "Organization",
+      name: "warmtepomp.ai",
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
       <Header />
       <TrustBar />
       <main>
