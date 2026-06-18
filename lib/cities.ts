@@ -104,7 +104,7 @@ export const cities: City[] = [
       "Typisch Rotterdams woningbestand: veel tussenwoningen uit de jaren '70 en '80, vaak met spouwmuurisolatie maar zonder vloerverwarming — een hybride warmtepomp is dan de meest praktische tussenstap.",
       "Rotterdampas-houders krijgen korting op energiebesparende maatregelen.",
       "De gemeente Rotterdam heeft een eigen energiefonds voor bewoners die niet in aanmerking komen voor andere subsidies; je kunt ook een energiecoach aanvragen via de gemeente.",
-      "ISDE-subsidie voor een hybride warmtepomp ligt tussen €875 en €2.300, afhankelijk van het vermogen en de SCOP-waarde.",
+      "ISDE-subsidie voor een hybride warmtepomp: tot €2.300, afhankelijk van het vermogen en de SCOP-waarde.",
     ],
     faqs: [
       {
@@ -164,7 +164,7 @@ export const cities: City[] = [
       "In delen van Escamp en Laak wordt het stadsverwarmingsnetwerk actief uitgebreid — controleer of jouw adres in een warmtenet-zone valt voordat je een warmtepomp aanschaft.",
       "Woon je in een VvE-complex? Het plaatsen van een buitenunit vereist toestemming van de VvE.",
       "Kies een installateur met STEK-certificaat (voor koelmiddelen) en bij voorkeur het ISSO-kwaliteitskeurmerk voor warmtepompen.",
-      "ISDE-subsidie voor een hybride warmtepomp in 2026: tot €2.700.",
+      "ISDE-subsidie voor een hybride warmtepomp in 2026: tot €2.300.",
     ],
     faqs: [
       {

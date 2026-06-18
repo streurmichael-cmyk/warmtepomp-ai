@@ -5,7 +5,7 @@ import { TrustBar } from "@/components/trust-bar";
 import { GemeenteLookupTool } from "@/components/gemeente-lookup-tool";
 import { AardgasvrijSignupForm } from "@/components/aardgasvrij-signup-form";
 import { ArrowRight, BuildingIcon, NetworkIcon, UserIcon } from "@/components/icons";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Wanneer gaat jouw buurt van het gas af? | warmtepomp.ai",
@@ -35,6 +35,19 @@ const infoBlokken = [
 export default function AardgasvrijPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            webPageJsonLd({
+              name: "Wanneer gaat jouw buurt van het gas af?",
+              description:
+                "Zoek op postcode op wat de warmtetransitie betekent voor jouw gemeente en meld je aan voor een collectieve actie — vaak tot 30% voordeliger.",
+              path: "/aardgasvrij",
+            }),
+          ),
+        }}
+      />
       <Header />
       <TrustBar />
       <main>

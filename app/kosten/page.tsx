@@ -7,7 +7,7 @@ import { TrustBar } from "@/components/trust-bar";
 import { SavingsCalculator } from "@/components/savings-calculator";
 import { ArrowRight, NetworkIcon, SubsidyIcon } from "@/components/icons";
 import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Wat kost een warmtepomp in 2026? | warmtepomp.ai",
@@ -25,7 +25,7 @@ const kosten = [
 
 const subsidieBedragen = [
   { type: "Lucht-water warmtepomp", bedrag: "Tot €2.500" },
-  { type: "Hybride warmtepomp", bedrag: "Wisselend bedrag" },
+  { type: "Hybride warmtepomp", bedrag: "Tot €2.300" },
   { type: "Bodem-water warmtepomp", bedrag: "Op aanvraag" },
   { type: "Lucht-lucht warmtepomp", bedrag: "Meestal niet" },
 ];
@@ -39,6 +39,19 @@ const aanvraagStappen = [
 export default function KostenPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            webPageJsonLd({
+              name: "Wat kost een warmtepomp in 2026?",
+              description:
+                "Eerlijk overzicht van de kosten van een warmtepomp in 2026: aanschaf en installatie per type, ISDE-subsidie en je maandelijkse besparing berekenen.",
+              path: "/kosten",
+            }),
+          ),
+        }}
+      />
       <Header />
       <TrustBar />
       <main>

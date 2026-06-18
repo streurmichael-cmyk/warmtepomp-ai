@@ -209,7 +209,7 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
   } else if (isolatie === "Matig of oud") {
     type = "Hybride warmtepomp";
     kostenRange = appartement ? "€5.500 – €7.500" : groteWoning ? "€8.500 – €11.000" : "€7.000 – €9.500";
-    subsidie = "tot €1.225";
+    subsidie = "tot €2.300";
     toelichting =
       "Een hybride warmtepomp is een slimme tussenstap op weg naar volledig gasloos: hij neemt het grootste deel van het stookjaar over en je cv-ketel springt alleen bij op de koudste dagen. Zo bespaar je nu al 30–50% op gas en ben je klaar voor de toekomst. De uiteindelijke richting is all-electric; een hybride maakt die overgang makkelijker en kun je doen zodra je woning beter geïsoleerd is.";
     if (overstapVoorkeur === "volledig") {
@@ -226,7 +226,7 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
     } else if (overstapVoorkeur === "hybride") {
       type = "Hybride warmtepomp";
       kostenRange = groteWoning ? "€8.500 – €11.000" : "€7.000 – €9.500";
-      subsidie = "tot €1.225";
+      subsidie = "tot €2.300";
       toelichting =
         "Een hybride warmtepomp is een slimme tussenstap op weg naar volledig gasloos: hij neemt het grootste deel van het stookjaar over en je cv-ketel blijft als back-up. Zo bespaar je nu al 30–50% op gas en ben je klaar voor de toekomst. De uiteindelijke richting is all-electric; de overstap daarnaartoe kun je later makkelijk zetten.";
     } else if (overstapVoorkeur === "volledig") {

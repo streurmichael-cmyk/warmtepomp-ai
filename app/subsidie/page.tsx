@@ -10,7 +10,7 @@ import {
   SubsidyIcon,
 } from "@/components/icons";
 import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "ISDE Subsidie warmtepomp 2026: tot €2.500 | warmtepomp.ai",
@@ -62,6 +62,19 @@ const bedragen = [
 export default function SubsidiePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            webPageJsonLd({
+              name: "ISDE-subsidie warmtepomp 2026",
+              description:
+                "Alles over de ISDE-subsidie voor warmtepompen in 2026: hoogte van de bedragen per type, voorwaarden en hoe je de subsidie aanvraagt bij de RVO.",
+              path: "/subsidie",
+            }),
+          ),
+        }}
+      />
       <Header />
       <TrustBar />
       <main>

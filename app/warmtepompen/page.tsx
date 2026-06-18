@@ -15,7 +15,7 @@ import {
   StarIcon,
 } from "@/components/icons";
 import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Welke warmtepomp past bij mij? | warmtepomp.ai",
@@ -118,6 +118,19 @@ function StarRating({ score }: { score: number }) {
 export default function WarmtepompenPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            webPageJsonLd({
+              name: "Welke warmtepomp past bij mij?",
+              description:
+                "Ontdek welk type warmtepomp past bij jouw woning: lucht-water, hybride, bodem-water of lucht-lucht. Met uitleg, voor- en nadelen, kosten en subsidie.",
+              path: "/warmtepompen",
+            }),
+          ),
+        }}
+      />
       <Header />
       <TrustBar />
       <main>

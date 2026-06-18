@@ -10,7 +10,7 @@ import {
   NetworkIcon,
   UserIcon,
 } from "@/components/icons";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Hoe werkt warmtepomp.ai? In 4 stappen | warmtepomp.ai",
@@ -45,6 +45,19 @@ const steps = [
 export default function HoeHetWerktPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            webPageJsonLd({
+              name: "Hoe werkt warmtepomp.ai?",
+              description:
+                "Zo werkt warmtepomp.ai: vul je gegevens in, ontvang een persoonlijke indicatie en vergelijk gecertificeerde installateurs. Gratis en vrijblijvend.",
+              path: "/hoe-het-werkt",
+            }),
+          ),
+        }}
+      />
       <Header />
       <TrustBar />
       <main>
