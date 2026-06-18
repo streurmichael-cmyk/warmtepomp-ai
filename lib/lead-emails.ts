@@ -23,7 +23,7 @@ export async function sendLeadNotification(lead: NotificationLead): Promise<void
     return;
   }
 
-  const from = process.env.RESEND_FROM_EMAIL ?? "Warmtepomp.ai <noreply@warmtepomp.ai>";
+  const from = process.env.RESEND_FROM_EMAIL ?? "warmtepomp.ai <noreply@warmtepomp.ai>";
   const wantsInstallateur = Boolean(lead.telefoon);
   const postcodeVeld = `${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}`;
 

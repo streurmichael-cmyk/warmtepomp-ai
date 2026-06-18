@@ -32,19 +32,19 @@ const sections = [
   {
     heading: "Onafhankelijk platform",
     paragraphs: [
-      "Warmtepomp.ai is een onafhankelijk platform en geen installateur. Ik voer zelf geen installaties uit, maar help je verder richting gecertificeerde installateurs en bouw aan een netwerk daarvan.",
+      "warmtepomp.ai is een onafhankelijk platform en geen installateur. Ik voer zelf geen installaties uit, maar help je verder richting gecertificeerde installateurs en bouw aan een netwerk daarvan.",
     ],
   },
   {
     heading: "Hoe ik verdien",
     paragraphs: [
-      "Warmtepomp.ai ontvangt een vergoeding van installateurs voor elke lead die ik doorverwijs. Dit heeft geen invloed op de onafhankelijkheid van mijn vergelijking en kost jou niets extra.",
+      "warmtepomp.ai ontvangt een vergoeding van installateurs voor elke lead die ik doorverwijs. Dit heeft geen invloed op de onafhankelijkheid van mijn vergelijking en kost jou niets extra.",
     ],
   },
   {
     heading: "Aansprakelijkheid",
     paragraphs: [
-      "Warmtepomp.ai is niet aansprakelijk voor beslissingen die je neemt op basis van de informatie op deze website. Voor een definitief advies en offerte raad ik je aan contact op te nemen met een installateur.",
+      "warmtepomp.ai is niet aansprakelijk voor beslissingen die je neemt op basis van de informatie op deze website. Voor een definitief advies en offerte raad ik je aan contact op te nemen met een installateur.",
     ],
   },
 ];

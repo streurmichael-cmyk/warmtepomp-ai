@@ -288,7 +288,7 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null, veri
   if (!lead.email) return;
 
   const voornaam = lead.voornaam ?? "";
-  const from = process.env.RESEND_FROM_EMAIL ?? "Warmtepomp.ai <noreply@warmtepomp.ai>";
+  const from = process.env.RESEND_FROM_EMAIL ?? "warmtepomp.ai <noreply@warmtepomp.ai>";
 
   const verifyCta = `
         <div style="margin: 24px 0; padding: 20px; border: 1px solid #e5e5e5; border-radius: 12px; background: #f7faf8;">

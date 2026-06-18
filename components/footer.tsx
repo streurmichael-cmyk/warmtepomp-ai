@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MailIcon } from "./icons";
+import { MailIcon, WhatsAppIcon } from "./icons";
 import { Logo } from "./logo";
 
 const navLinks = [
@@ -55,6 +55,15 @@ export function Footer() {
             >
               <MailIcon className="h-4 w-4 text-green" />
               info@warmtepomp.ai
+            </a>
+            <a
+              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 flex items-center gap-2 text-sm text-muted transition-colors hover:text-action"
+            >
+              <WhatsAppIcon className="h-4 w-4 text-green" />
+              +31 6 13818383
             </a>
           </div>
         </div>

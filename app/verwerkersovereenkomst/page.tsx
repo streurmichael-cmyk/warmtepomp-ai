@@ -14,7 +14,7 @@ const sections = [
   {
     heading: "Wat is een verwerkersovereenkomst",
     paragraphs: [
-      "Warmtepomp.ai is volgens de Algemene Verordening Gegevensbescherming (AVG) de verwerkingsverantwoordelijke voor de persoonsgegevens die je via mijn website met mij deelt. Voor diensten die namens mij gegevens verwerken — zoals het versturen van e-mails — sluit ik een verwerkersovereenkomst af. Daarin leg ik vast hoe die partij met jouw gegevens mag omgaan.",
+      "warmtepomp.ai is volgens de Algemene Verordening Gegevensbescherming (AVG) de verwerkingsverantwoordelijke voor de persoonsgegevens die je via mijn website met mij deelt. Voor diensten die namens mij gegevens verwerken — zoals het versturen van e-mails — sluit ik een verwerkersovereenkomst af. Daarin leg ik vast hoe die partij met jouw gegevens mag omgaan.",
     ],
   },
   {

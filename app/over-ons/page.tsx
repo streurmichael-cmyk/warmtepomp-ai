@@ -14,7 +14,7 @@ import {
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Over mij | warmtepomp.ai",
+  title: "Over warmtepomp.ai: onafhankelijke warmtepomp-keuzehulp",
   description:
     "Maak kennis met warmtepomp.ai, opgericht door Michael Streur. Lees wie ik ben, waarom ik dit doe en hoe ik geld verdien.",
   path: "/over-ons",
@@ -35,7 +35,7 @@ export default function OverOnsPage() {
               Wie zit er achter warmtepomp.ai?
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted">
-              Warmtepomp.ai is nieuw, klein en transparant over wie ik ben en hoe ik werk.
+              warmtepomp.ai is nieuw, klein en transparant over wie ik ben en hoe ik werk.
             </p>
           </div>
         </section>
@@ -79,7 +79,7 @@ export default function OverOnsPage() {
                   <h2 className="font-display text-lg font-bold text-dark">Waarom warmtepomp.ai</h2>
                   <p className="mt-2 text-base leading-relaxed text-muted">
                     Ik merkte dat het vergelijken van warmtepompen en installateurs ondoorzichtig
-                    en tijdrovend is. Warmtepomp.ai maakt dat simpel en eerlijk.
+                    en tijdrovend is. warmtepomp.ai maakt dat simpel en eerlijk.
                   </p>
                 </div>
               </div>

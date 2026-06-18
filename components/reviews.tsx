@@ -18,7 +18,7 @@ export function Reviews() {
           Wat andere huiseigenaren zeggen
         </h2>
         <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">
-          Warmtepomp.ai is net gestart, dus ik heb nog geen stapel reviews — en die ga ik
+          warmtepomp.ai is net gestart, dus ik heb nog geen stapel reviews — en die ga ik
           ook niet verzinnen. Dit kan ik wel laten zien:
         </p>
 

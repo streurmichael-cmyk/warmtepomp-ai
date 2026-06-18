@@ -21,7 +21,7 @@ const sections: PrivacySection[] = [
   {
     heading: "Wie is verantwoordelijk",
     paragraphs: [
-      "Warmtepomp.ai is een onafhankelijk platform van Michael Streur. Ik ben verantwoordelijk voor de verwerking van jouw persoonsgegevens zoals beschreven in deze privacyverklaring.",
+      "warmtepomp.ai is een onafhankelijk platform van Michael Streur. Ik ben verantwoordelijk voor de verwerking van jouw persoonsgegevens zoals beschreven in deze privacyverklaring.",
       "Heb je vragen over je gegevens? Mail mij op info@warmtepomp.ai.",
     ],
   },
@@ -78,7 +78,7 @@ const sections: PrivacySection[] = [
   {
     heading: "Cookies",
     paragraphs: [
-      "Warmtepomp.ai gebruikt alleen functionele cookies die nodig zijn om de website goed te laten werken. Ik gebruik geen tracking- of advertentiecookies.",
+      "warmtepomp.ai gebruikt alleen functionele cookies die nodig zijn om de website goed te laten werken. Ik gebruik geen tracking- of advertentiecookies.",
     ],
   },
 ];

@@ -21,6 +21,7 @@ const heroVariants: HeroVariant[] = [
     badge: "Gratis & onafhankelijke vergelijking",
     headlinePrefix: "Is een warmtepomp slim voor ",
     headlineHighlight: "jouw woning?",
+    headlineSuffix: " Ontdek het met warmtepomp.ai.",
     subline: "Eerlijk antwoord in 5 minuten. Geen verkooppraatje, geen verplichting.",
   },
   {

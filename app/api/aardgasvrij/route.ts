@@ -17,7 +17,7 @@ async function sendNotificationEmail(naam: string, email: string, postcode: stri
     return;
   }
 
-  const from = process.env.RESEND_FROM_EMAIL ?? "Warmtepomp.ai <noreply@warmtepomp.ai>";
+  const from = process.env.RESEND_FROM_EMAIL ?? "warmtepomp.ai <noreply@warmtepomp.ai>";
 
   try {
     const resend = new Resend(apiKey);

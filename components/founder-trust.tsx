@@ -12,9 +12,10 @@ export function FounderTrust() {
           <div>
             <h2 className="font-display text-lg font-bold text-dark">Wie maakt dit?</h2>
             <p className="mt-2 text-base leading-relaxed text-muted">
-              Warmtepomp.ai is een onafhankelijk Nederlands platform, opgericht door Michael
-              Streur (regio Amsterdam). Geen callcenter, geen verkoopteam — een rekentool die
-              je helpt om zelf een goede beslissing te nemen.
+              warmtepomp.ai is een onafhankelijk Nederlands online platform dat huiseigenaren via
+              een AI-keuzehulp een persoonlijke warmtepomp-indicatie geeft, opgericht in 2025 door
+              Michael Streur (regio Amsterdam). Geen callcenter, geen verkoopteam — een rekentool
+              die je helpt om zelf een goede beslissing te nemen.
             </p>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted sm:justify-start">
               <span className="inline-flex items-center gap-1.5">
