@@ -12,13 +12,13 @@ const EXPECTED_ACTION = "lead";
  * - RECAPTCHA_PROJECT_ID — het Google Cloud project-ID (niet de weergavenaam).
  * - RECAPTCHA_SECRET_KEY — hergebruikt als de Google Cloud API key.
  *
- * Beleid (reCAPTCHA is defense-in-depth naast de IP-limiet en e-mailverificatie):
+ * Beleid (reCAPTCHA is defense-in-depth naast de per-uur-limiet en e-mailverificatie):
  * - Niet volledig geconfigureerd → controle overslaan (return true).
- * - Geen token ontvangen → 'fail open' (return true) met waarschuwing. Een
- *   ontbrekend token komt vrijwel altijd door een client-/configuratieprobleem,
- *   niet door een bot; echte gebruikers onterecht blokkeren is erger.
+ * - Geen of leeg token → 'fail closed' (return false): behandeld als mislukte
+ *   verificatie, de aanvraag wordt geblokkeerd.
  * - Token aanwezig maar ongeldig of te lage score → blokkeren (return false).
- * - Netwerk-/API-fout → 'fail open' (return true).
+ * - Netwerk-/API-fout (5xx, timeout) → 'fail open' (return true): een storing
+ *   aan Google's kant mag echte leads nooit tegenhouden.
  */
 export async function verifyRecaptcha(token: string | undefined): Promise<boolean> {
   const apiKey = process.env.RECAPTCHA_SECRET_KEY;
@@ -30,11 +30,11 @@ export async function verifyRecaptcha(token: string | undefined): Promise<boolea
   }
   if (!token) {
     console.warn(
-      "reCAPTCHA: geen token ontvangen terwijl Enterprise is geconfigureerd — " +
-        "controleer of NEXT_PUBLIC_RECAPTCHA_SITE_KEY in de build zit (redeploy na het zetten). " +
-        "Aanvraag wordt toegestaan."
+      "reCAPTCHA: geen of leeg token ontvangen terwijl Enterprise is geconfigureerd — " +
+        "aanvraag geweigerd (fail-closed). Controleer of NEXT_PUBLIC_RECAPTCHA_SITE_KEY in de " +
+        "build zit (redeploy na het zetten) als dit echte bezoekers betreft."
     );
-    return true;
+    return false;
   }
 
   try {
