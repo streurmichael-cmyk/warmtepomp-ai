@@ -20,7 +20,7 @@ const sections = [
   {
     heading: "Met wie heb ik een verwerkersovereenkomst",
     paragraphs: [
-      "Resend: mijn e-maildienst, die namens mij de bevestigings- en notificatiemails verstuurt die horen bij jouw aanvraag. Resend verwerkt hierbij je naam en e-mailadres, uitsluitend om deze e-mails te kunnen afleveren.",
+      "Resend: mijn e-maildienst, die namens mij de indicatie- en notificatiemails verstuurt die horen bij jouw aanvraag. Resend verwerkt hierbij je naam en e-mailadres, uitsluitend om deze e-mails te kunnen afleveren.",
       "Mijn hostingpartij (Vercel) en databaseleverancier: zij slaan de gegevens op die nodig zijn om mijn website te laten draaien, waaronder de versleutelde aanvraaggegevens.",
     ],
   },

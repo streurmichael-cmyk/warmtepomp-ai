@@ -16,21 +16,28 @@ create table if not exists leads (
   advies_type text,
   advies jsonb,
   ip_hash text,
-  verified boolean not null default false,
-  verify_token text,
+  consent_forwarding boolean not null default false,
+  consent_at timestamptz,
+  consent_disclosure_version text,
   status text not null default 'nieuw'
 );
 
--- ip_hash voor bestaande installaties toevoegen (max. 2 leads per IP).
+-- ip_hash voor bestaande installaties.
 alter table leads add column if not exists ip_hash text;
--- E-mailverificatie (double opt-in): lead pas geldig na klik op bevestigingslink.
-alter table leads add column if not exists verified boolean not null default false;
-alter table leads add column if not exists verify_token text;
+
+-- Single-opt-in: de double-opt-in e-mailverificatie is verwijderd. Ruim oude kolommen op.
+drop index if exists leads_verify_token_idx;
+alter table leads drop column if exists verified;
+alter table leads drop column if exists verify_token;
+
+-- Aantoonbare forwarding-toestemming (gezet wanneer de bezoeker "Vraag offertes aan" kiest).
+alter table leads add column if not exists consent_forwarding boolean not null default false;
+alter table leads add column if not exists consent_at timestamptz;
+alter table leads add column if not exists consent_disclosure_version text;
 
 create index if not exists leads_created_at_idx on leads (created_at);
 create index if not exists leads_matched_at_idx on leads (matched_at);
 create index if not exists leads_ip_hash_idx on leads (ip_hash);
-create index if not exists leads_verify_token_idx on leads (verify_token);
 
 create table if not exists aardgasvrij_signups (
   id uuid primary key default gen_random_uuid(),

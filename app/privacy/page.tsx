@@ -57,7 +57,7 @@ const sections: PrivacySection[] = [
     heading: "Deel ik jouw gegevens",
     paragraphs: [
       "Ja. Om je te kunnen koppelen aan een geschikte installateur, deel ik jouw gegevens met gecertificeerde installateurs uit mijn netwerk, zodat zij contact met je kunnen opnemen voor een offerte.",
-      "Daarnaast gebruikt mijn e-maildienst Resend je naam en e-mailadres om de bevestigings- en notificatiemails te versturen die bij je aanvraag horen.",
+      "Daarnaast gebruikt mijn e-maildienst Resend je naam en e-mailadres om de indicatie- en notificatiemails te versturen die bij je aanvraag horen.",
       "Ik verkoop jouw gegevens nooit aan derden voor marketingdoeleinden.",
       <>
         Lees in mijn{" "}

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
+import { FORWARDING_CONSENT_TEXT } from "@/lib/consent";
 import { Logo } from "@/components/logo";
 import { RevenueNote } from "@/components/revenue-note";
 import { VergelijkInfo } from "@/components/vergelijk-info";
@@ -1383,11 +1384,9 @@ export default function VergelijkPage() {
                 </button>
                 <RevenueNote />
                 <p className="text-center text-xs text-muted-light">
-                  Je gegevens worden gedeeld met gecertificeerde installateurs om je offerte te
-                  kunnen versturen. Ik verkoop ze nooit aan derden voor marketingdoeleinden.{" "}
                   {wantsInstallateur
-                    ? "Maximaal 3 installateurs nemen contact op."
-                    : "Geen telefoontjes, alleen een e-mail."}
+                    ? FORWARDING_CONSENT_TEXT
+                    : "Je gegevens worden gedeeld met gecertificeerde installateurs om je offerte te kunnen versturen. Ik verkoop ze nooit aan derden voor marketingdoeleinden. Geen telefoontjes, alleen een e-mail."}
                 </p>
               </form>
             </Step>

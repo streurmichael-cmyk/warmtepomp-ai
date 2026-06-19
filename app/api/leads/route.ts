@@ -1,4 +1,4 @@
-import { createHash, randomBytes } from "crypto";
+import { createHash } from "crypto";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { pingIndexNow } from "@/lib/indexnow";
@@ -280,7 +280,7 @@ Belangrijke regels:
   }
 }
 
-async function sendConfirmationEmail(lead: LeadData, advies: string | null, verifyUrl: string) {
+async function sendConfirmationEmail(lead: LeadData, advies: string | null) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.warn("RESEND_API_KEY niet ingesteld, bevestigingsmail wordt overgeslagen");
@@ -290,18 +290,6 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null, veri
 
   const voornaam = lead.voornaam ?? "";
   const from = process.env.RESEND_FROM_EMAIL ?? "warmtepomp.ai <noreply@warmtepomp.ai>";
-
-  const verifyCta = `
-        <div style="margin: 24px 0; padding: 20px; border: 1px solid #e5e5e5; border-radius: 12px; background: #f7faf8;">
-          <p style="margin: 0 0 12px; font-weight: bold; color: #0d1f16;">Bevestig je aanvraag</p>
-          <p style="margin: 0 0 16px; font-size: 14px; color: #5a7264;">
-            Klik op de knop om te bevestigen dat dit jouw e-mailadres is. Pas daarna activeer ik je
-            aanvraag definitief. Niets gedaan? Dan verwijder ik je gegevens automatisch binnen 24 uur.
-          </p>
-          <a href="${verifyUrl}" style="display: inline-block; padding: 12px 24px; background: #0e7a4f; color: #ffffff; text-decoration: none; border-radius: 10px; font-weight: bold;">
-            Bevestig mijn aanvraag
-          </a>
-        </div>`;
 
   const adviesHtml = advies
     ? `
@@ -322,14 +310,13 @@ async function sendConfirmationEmail(lead: LeadData, advies: string | null, veri
     : "Jouw warmtepomp-indicatie van warmtepomp.ai";
 
   const introTekst = wantsInstallateur
-    ? "Hieronder vind je jouw warmtepomp-indicatie. Ik zoek een passende installateur in jouw regio en neem zo snel mogelijk contact op."
+    ? "Hieronder vind je jouw warmtepomp-indicatie. Ik koppel je aan maximaal 3 gecertificeerde installateurs in jouw regio en neem zo snel mogelijk contact met je op."
     : "Hieronder vind je jouw persoonlijke warmtepomp-indicatie. Geen verplichtingen, geen telefoontjes. Heb je vragen? Mail mij op info@warmtepomp.ai.";
 
   const html = `
     <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
       <p>Hoi ${voornaam},</p>
       <p>${introTekst}</p>
-      ${verifyCta}
       <p><strong>Jouw gegevens:</strong></p>
       <ul>
         <li>Woningtype: ${lead.woningtype ?? "-"}</li>
@@ -451,11 +438,6 @@ export async function POST(request: Request) {
     }
   }
 
-  // Double opt-in: genereer een verificatietoken voor de bevestigingsmail.
-  const verifyToken = randomBytes(32).toString("hex");
-  const verifyUrl = new URL("/api/leads/verify", request.url);
-  verifyUrl.searchParams.set("token", verifyToken);
-
   // berekenAdvies is lokaal en deterministisch (geen externe call), dus veilig vóór opslag.
   const adviesResultaat = berekenAdvies({
     woningtype: data.woningtype ?? "",
@@ -474,7 +456,12 @@ export async function POST(request: Request) {
   // Bron van waarheid: sla de lead op vóór welke externe call dan ook (advies/mails).
   // Faalt dit, dan is er echt niets opgeslagen — harde fout, geen stille verlies.
   try {
-    await saveLead({ ...data, advies: adviesResultaat, ipHash, verifyToken });
+    await saveLead({
+      ...data,
+      advies: adviesResultaat,
+      ipHash,
+      consentForwarding: data.wantsInstallateur ?? false,
+    });
   } catch (err) {
     console.error("Opslaan van lead in Neon mislukt:", err);
     return NextResponse.json(
@@ -497,7 +484,7 @@ export async function POST(request: Request) {
   // sendConfirmationEmail, sendLeadNotification en pingIndexNow loggen hun eigen fouten en
   // gooien niet — ze kunnen de (al opgeslagen) lead dus nooit alsnog laten sneuvelen.
   await Promise.all([
-    sendConfirmationEmail(data, advies, verifyUrl.toString()),
+    sendConfirmationEmail(data, advies),
     sendLeadNotification({
       voornaam: data.voornaam ?? "",
       email: data.email ?? "",

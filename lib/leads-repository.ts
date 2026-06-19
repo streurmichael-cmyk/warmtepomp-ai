@@ -1,6 +1,7 @@
 import { sql, isDbConfigured } from "@/lib/db";
-import { encrypt, decrypt } from "@/lib/encryption";
+import { encrypt } from "@/lib/encryption";
 import type { AdviesResultaat } from "@/lib/advies";
+import { FORWARDING_CONSENT_VERSION } from "@/lib/consent";
 
 type LeadRecord = {
   voornaam?: string;
@@ -12,17 +13,8 @@ type LeadRecord = {
   adviesType?: string;
   advies?: AdviesResultaat;
   ipHash?: string;
-  verifyToken?: string;
-};
-
-/** Een geverifieerde lead, ontsleuteld, zoals teruggegeven door verifyLead. */
-export type VerifiedLead = {
-  voornaam: string;
-  email: string;
-  telefoon: string | null;
-  postcode: string | null;
-  huisnummer: string | null;
-  woningtype: string | null;
+  /** True als de bezoeker expliciet toestemming gaf om met installateurs te delen. */
+  consentForwarding?: boolean;
 };
 
 /**
@@ -57,6 +49,7 @@ export async function saveLead(lead: LeadRecord): Promise<void> {
   const nameEncrypted = encrypt(lead.voornaam ?? "");
   const emailEncrypted = encrypt(lead.email ?? "");
   const phoneEncrypted = lead.telefoon ? encrypt(lead.telefoon) : null;
+  const consent = lead.consentForwarding ?? false;
 
   await sql`
     insert into leads (
@@ -69,7 +62,9 @@ export async function saveLead(lead: LeadRecord): Promise<void> {
       advies_type,
       advies,
       ip_hash,
-      verify_token
+      consent_forwarding,
+      consent_at,
+      consent_disclosure_version
     ) values (
       ${nameEncrypted},
       ${emailEncrypted},
@@ -80,49 +75,17 @@ export async function saveLead(lead: LeadRecord): Promise<void> {
       ${lead.adviesType ?? null},
       ${lead.advies ? JSON.stringify(lead.advies) : null},
       ${lead.ipHash ?? null},
-      ${lead.verifyToken ?? null}
+      ${consent},
+      ${consent ? new Date().toISOString() : null},
+      ${consent ? FORWARDING_CONSENT_VERSION : null}
     )
   `;
 }
 
 /**
- * Markeert de lead met dit verificatietoken als geverifieerd (double opt-in)
- * en geeft de ontsleutelde leadgegevens terug, zodat de notificatie naar
- * info@ pas na bevestiging verstuurd wordt. Geeft null als het token niet
- * bestaat of de lead al geverifieerd is.
- */
-export async function verifyLead(token: string): Promise<VerifiedLead | null> {
-  if (!isDbConfigured() || !token) {
-    return null;
-  }
-
-  const result = await sql`
-    update leads
-    set verified = true, verify_token = null
-    where verify_token = ${token} and verified = false
-    returning name_encrypted, email_encrypted, phone_encrypted, postcode, huisnummer, woningtype
-  `;
-
-  const row = result.rows[0];
-  if (!row) {
-    return null;
-  }
-
-  return {
-    voornaam: decrypt(row.name_encrypted as string),
-    email: decrypt(row.email_encrypted as string),
-    telefoon: row.phone_encrypted ? decrypt(row.phone_encrypted as string) : null,
-    postcode: (row.postcode as string) ?? null,
-    huisnummer: (row.huisnummer as string) ?? null,
-    woningtype: (row.woningtype as string) ?? null,
-  };
-}
-
-/**
  * Verwijdert leads die de bewaartermijn uit de privacyverklaring hebben
- * overschreden: niet-gekoppelde leads ouder dan 3 maanden, gekoppelde
- * leads waarvan de koppeling met een installateur ouder is dan 1 jaar, en
- * ongeverifieerde leads (double opt-in) die ouder zijn dan 24 uur.
+ * overschreden: niet-gekoppelde leads ouder dan 3 maanden en gekoppelde
+ * leads waarvan de koppeling met een installateur ouder is dan 1 jaar.
  * Geeft het aantal verwijderde leads en hun id's terug, zodat dit gelogd
  * kan worden.
  */
@@ -137,7 +100,6 @@ export async function deleteExpiredLeads(): Promise<{ count: number; ids: string
     where
       (matched_at is null and created_at < now() - interval '3 months')
       or (matched_at is not null and matched_at < now() - interval '1 year')
-      or (verified = false and created_at < now() - interval '24 hours')
     returning id
   `;
 
