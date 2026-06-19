@@ -20,7 +20,12 @@ export const organizationJsonLd = {
   logo: `${SITE_URL}/logo.png`,
   description: BRAND_DESCRIPTION,
   email: "info@warmtepomp.ai",
-  founder: { "@type": "Person", "@id": PERSON_ID, name: "Michael Streur" },
+  founder: {
+    "@type": "Person",
+    "@id": PERSON_ID,
+    name: "Michael Streur",
+    url: `${SITE_URL}/over-ons`,
+  },
   areaServed: { "@type": "Country", name: "Nederland" },
   contactPoint: {
     "@type": "ContactPoint",
