@@ -168,7 +168,7 @@ export default function KostenPage() {
                           <td className="px-5 py-3.5 font-bold text-dark sm:px-6">
                             {item.type}
                           </td>
-                          <td className="px-5 py-3.5 text-green sm:px-6">{item.bedrag}</td>
+                          <td className="px-5 py-3.5 text-green-ink sm:px-6">{item.bedrag}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -258,7 +258,7 @@ export default function KostenPage() {
                     </tr>
                     <tr className="bg-light-bg">
                       <td className="px-5 py-3.5 font-bold text-dark sm:px-6">Kosten per maand</td>
-                      <td className="px-5 py-3.5 font-bold text-green sm:px-6">± €73</td>
+                      <td className="px-5 py-3.5 font-bold text-green-ink sm:px-6">± €73</td>
                     </tr>
                   </tbody>
                 </table>

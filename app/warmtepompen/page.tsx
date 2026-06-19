@@ -277,7 +277,7 @@ export default function WarmtepompenPage() {
                       <p className="text-xs font-bold uppercase tracking-wide text-muted">
                         Subsidie
                       </p>
-                      <p className="mt-1 font-display text-lg font-bold text-green">
+                      <p className="mt-1 font-display text-lg font-bold text-green-ink">
                         {type.subsidie}
                       </p>
                     </div>
@@ -326,7 +326,7 @@ export default function WarmtepompenPage() {
                       <td className="px-5 py-4 leading-relaxed text-muted sm:px-6">
                         {rij.situatie}
                       </td>
-                      <td className="px-5 py-4 font-bold text-green sm:px-6">{rij.advies}</td>
+                      <td className="px-5 py-4 font-bold text-green-ink sm:px-6">{rij.advies}</td>
                     </tr>
                   ))}
                 </tbody>

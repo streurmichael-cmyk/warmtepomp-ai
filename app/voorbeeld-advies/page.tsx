@@ -117,7 +117,7 @@ export default function VoorbeeldAdviesPage() {
                           <td className="px-5 py-3.5 font-bold text-dark sm:px-6">
                             {item.label}
                           </td>
-                          <td className="px-5 py-3.5 text-green sm:px-6">{item.value}</td>
+                          <td className="px-5 py-3.5 text-green-ink sm:px-6">{item.value}</td>
                         </tr>
                       ))}
                     </tbody>

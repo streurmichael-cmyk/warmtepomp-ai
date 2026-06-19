@@ -57,7 +57,7 @@ export function Benefits() {
               <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
                 {item.body}
               </p>
-              <span className="mt-5 inline-block w-fit self-start rounded-full bg-green/10 px-3 py-1 text-xs font-bold text-green">
+              <span className="mt-5 inline-block w-fit self-start rounded-full bg-green/10 px-3 py-1 text-xs font-bold text-green-ink">
                 {item.note}
               </span>
             </article>

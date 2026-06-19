@@ -202,7 +202,7 @@ export default function BesteWarmtepompPage() {
                     <tr key={r.merk} className={i % 2 === 0 ? "bg-white" : "bg-light-bg"}>
                       <td className="px-4 py-4 font-bold text-dark sm:px-5">{r.merk}</td>
                       <td className="px-4 py-4 text-muted sm:px-5">{r.type}</td>
-                      <td className="px-4 py-4 font-semibold text-green sm:px-5">{r.scop}</td>
+                      <td className="px-4 py-4 font-semibold text-green-ink sm:px-5">{r.scop}</td>
                       <td className="px-4 py-4 text-muted sm:px-5">{r.prijs}</td>
                       <td className="px-4 py-4 text-muted sm:px-5">{r.geschikt}</td>
                     </tr>

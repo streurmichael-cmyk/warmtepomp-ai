@@ -153,7 +153,7 @@ export default function SubsidiePage() {
                   </h3>
                   <p
                     className={`mt-2 font-display text-2xl font-bold ${
-                      item.highlight ? "text-white" : "text-green"
+                      item.highlight ? "text-white" : "text-green-ink"
                     }`}
                   >
                     {item.amount}

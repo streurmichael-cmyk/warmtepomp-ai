@@ -60,7 +60,7 @@ export function PricingRanges() {
               }`}
             >
               {r.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-white px-4 py-1 text-xs font-bold text-green">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-white px-4 py-1 text-xs font-bold text-green-ink">
                   {r.note}
                 </span>
               )}
@@ -89,10 +89,10 @@ export function PricingRanges() {
                   </p>
                 </div>
                 <div className={`rounded-lg px-4 py-3 ${r.highlight ? "bg-white/15" : "bg-green/10"}`}>
-                  <p className={`text-xs font-semibold uppercase tracking-wide ${r.highlight ? "text-white/80" : "text-green/70"}`}>
+                  <p className={`text-xs font-semibold uppercase tracking-wide ${r.highlight ? "text-white/80" : "text-green-ink"}`}>
                     Na ISDE-subsidie
                   </p>
-                  <p className={`text-lg font-extrabold ${r.highlight ? "text-white" : "text-green"}`}>{r.afterSubsidy}</p>
+                  <p className={`text-lg font-extrabold ${r.highlight ? "text-white" : "text-green-ink"}`}>{r.afterSubsidy}</p>
                 </div>
               </div>
 
