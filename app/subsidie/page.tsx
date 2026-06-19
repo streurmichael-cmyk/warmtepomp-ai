@@ -160,7 +160,7 @@ export default function SubsidiePage() {
                   </p>
                   <p
                     className={`mt-3 text-sm leading-relaxed ${
-                      item.highlight ? "text-white/85" : "text-muted"
+                      item.highlight ? "text-white" : "text-muted"
                     }`}
                   >
                     {item.description}
@@ -211,7 +211,7 @@ export default function SubsidiePage() {
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Benieuwd wat jij kunt besparen?
             </h2>
-            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white/85">
+            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white">
               Beantwoord een paar vragen over je woning en ontvang direct een indicatie van je
               subsidie en de kosten van een warmtepomp.
             </p>

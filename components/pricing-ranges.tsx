@@ -81,22 +81,22 @@ export function PricingRanges() {
 
               <div className="mt-5 space-y-2">
                 <div>
-                  <p className={`text-xs font-semibold uppercase tracking-wide ${r.highlight ? "text-white/70" : "text-muted/70"}`}>
+                  <p className={`text-xs font-semibold uppercase tracking-wide ${r.highlight ? "text-white" : "text-muted"}`}>
                     Totaalprijs
                   </p>
                   <p className={`text-xl font-bold ${r.highlight ? "text-white" : "text-dark"}`}>
                     {r.gross}
                   </p>
                 </div>
-                <div className={`rounded-lg px-4 py-3 ${r.highlight ? "bg-white/15" : "bg-green/10"}`}>
-                  <p className={`text-xs font-semibold uppercase tracking-wide ${r.highlight ? "text-white/80" : "text-green-ink"}`}>
+                <div className={`rounded-lg px-4 py-3 ${r.highlight ? "bg-black/25" : "bg-green/10"}`}>
+                  <p className={`text-xs font-semibold uppercase tracking-wide ${r.highlight ? "text-white" : "text-green-ink"}`}>
                     Na ISDE-subsidie
                   </p>
                   <p className={`text-lg font-extrabold ${r.highlight ? "text-white" : "text-green-ink"}`}>{r.afterSubsidy}</p>
                 </div>
               </div>
 
-              <p className={`mt-4 text-sm ${r.highlight ? "text-white/85" : "text-muted"}`}>
+              <p className={`mt-4 text-sm ${r.highlight ? "text-white" : "text-muted"}`}>
                 Aanbevolen type:{" "}
                 <span className={`font-semibold ${r.highlight ? "text-white" : "text-dark"}`}>
                   {r.ideal}

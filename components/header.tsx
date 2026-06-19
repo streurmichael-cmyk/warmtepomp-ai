@@ -35,7 +35,7 @@ export function Header() {
           ))}
           <Link
             href="/vergelijk"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-green px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-turquoise"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-action px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0c6a44]"
           >
             Start keuzehulp
             <ArrowRight className="h-4 w-4" />
@@ -75,7 +75,7 @@ export function Header() {
             <li className="pt-2">
               <Link
                 href="/vergelijk"
-                className="flex items-center justify-center gap-1.5 rounded-lg bg-green px-4 py-3 text-center text-sm font-semibold text-white"
+                className="flex items-center justify-center gap-1.5 rounded-lg bg-action px-4 py-3 text-center text-sm font-semibold text-white"
                 onClick={() => setOpen(false)}
               >
                 Start keuzehulp

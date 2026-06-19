@@ -164,7 +164,7 @@ export default function OverOnsPage() {
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Benieuwd wat ik voor jou kan doen?
             </h2>
-            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white/85">
+            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white">
               Beantwoord een paar vragen over je woning en ontvang gratis en vrijblijvend
               een indicatie.
             </p>

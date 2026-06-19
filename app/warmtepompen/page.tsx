@@ -351,7 +351,7 @@ export default function WarmtepompenPage() {
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Welke warmtepomp past bij jouw woning?
             </h2>
-            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white/85">
+            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white">
               Beantwoord een paar vragen en ontvang direct een persoonlijke indicatie, op maat van
               jouw situatie.
             </p>

@@ -165,7 +165,7 @@ export default function OffertePage() {
                   key={tip.titel}
                   className="rounded-2xl border border-green/10 bg-light-bg p-7 transition-all hover:-translate-y-1 hover:border-green/35 hover:shadow-[0_16px_48px_rgba(34,181,114,0.08)]"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-green text-base font-bold text-white">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-action text-base font-bold text-white">
                     {i + 1}
                   </span>
                   <h3 className="mt-5 font-display text-lg font-bold text-dark">{tip.titel}</h3>

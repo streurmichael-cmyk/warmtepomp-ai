@@ -181,7 +181,7 @@ export default function KostenPage() {
                 <ol className="mt-4 space-y-3">
                   {aanvraagStappen.map((stap, i) => (
                     <li key={stap} className="flex items-start gap-3">
-                      <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-green text-xs font-bold text-white">
+                      <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-action text-xs font-bold text-white">
                         {i + 1}
                       </span>
                       <span className="text-sm leading-relaxed text-muted">{stap}</span>
@@ -458,7 +458,7 @@ export default function KostenPage() {
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Bereken jouw persoonlijke besparing
             </h2>
-            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white/85">
+            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white">
               Vul een paar gegevens over je woning in en ontvang een indicatie op maat, inclusief
               kosten, subsidie en besparing.
             </p>

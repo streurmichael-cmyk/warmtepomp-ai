@@ -138,7 +138,7 @@ export default function AardgasvrijPage() {
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Liever niet wachten op je buurt?
             </h2>
-            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white/85">
+            <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-white">
               Met een warmtepomp ben je nu al onafhankelijk van het gasnet. Beantwoord een paar
               vragen en ontvang direct een persoonlijke indicatie.
             </p>

@@ -18,7 +18,7 @@ export function CtaBanner() {
           Start gratis check
           <ArrowRight className="h-5 w-5" />
         </Link>
-        <p className="mt-3 text-sm text-white/80">
+        <p className="mt-3 text-sm text-white">
           Geen registratie vereist · 100% gratis · Resultaat binnen 5 minuten
         </p>
       </div>
