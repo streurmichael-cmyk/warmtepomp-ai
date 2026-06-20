@@ -13,6 +13,7 @@ const staticPages: { path: string; changeFrequency: MetadataRoute.Sitemap[number
   { path: "/beste-warmtepomp", changeFrequency: "monthly", priority: 0.8 },
   { path: "/hybride-warmtepomp", changeFrequency: "monthly", priority: 0.8 },
   { path: "/installateurs", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/voor-installateurs", changeFrequency: "monthly", priority: 0.5 },
   { path: "/aardgasvrij", changeFrequency: "monthly", priority: 0.7 },
   { path: "/hoe-het-werkt", changeFrequency: "monthly", priority: 0.6 },
   { path: "/voorbeeld-advies", changeFrequency: "monthly", priority: 0.6 },
