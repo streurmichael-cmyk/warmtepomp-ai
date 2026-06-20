@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
-import { InstallateursLeadForm } from "@/components/installateurs-lead-form";
+import { KeuzehulpWizard } from "@/components/keuzehulp-wizard";
 import { PermitsInfo } from "@/components/permits-info";
 import { TrustBar } from "@/components/trust-bar";
 import {
@@ -148,11 +148,9 @@ export default async function StadPage({
               </p>
             </div>
 
-            <InstallateursLeadForm
-              initialPostcode={city.name}
-              locationLabel="Postcode of plaatsnaam"
-              acceptPlaceName
-            />
+            <div className="mx-auto mt-10 max-w-2xl text-left">
+              <KeuzehulpWizard bron={`stad:${city.slug}`} stad={city.name} />
+            </div>
           </div>
         </section>
 

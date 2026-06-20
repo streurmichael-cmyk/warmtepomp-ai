@@ -7,6 +7,8 @@ export type NotificationLead = {
   woningtype: string | null;
   postcode: string | null;
   huisnummer?: string | null;
+  /** Optionele bron-attributie (bv. "stad:amsterdam"), zodat zichtbaar is via welke pagina de lead binnenkwam. */
+  bron?: string | null;
 };
 
 /**
@@ -26,6 +28,7 @@ export async function sendLeadNotification(lead: NotificationLead): Promise<void
   const from = process.env.RESEND_FROM_EMAIL ?? "warmtepomp.ai <noreply@warmtepomp.ai>";
   const wantsInstallateur = Boolean(lead.telefoon);
   const postcodeVeld = `${lead.postcode ?? "-"}${lead.huisnummer ? ` ${lead.huisnummer}` : ""}`;
+  const bronRegel = lead.bron ? `<li><strong>Bron:</strong> ${lead.bron}</li>` : "";
 
   const subject = wantsInstallateur
     ? `🔥 Nieuwe lead: ${lead.voornaam} - ${lead.woningtype ?? "Onbekend"} - ${lead.postcode ?? "-"}`
@@ -41,6 +44,7 @@ export async function sendLeadNotification(lead: NotificationLead): Promise<void
         <li><strong>Email:</strong> ${lead.email}</li>
         <li><strong>Woningtype:</strong> ${lead.woningtype ?? "-"}</li>
         <li><strong>Postcode:</strong> ${postcodeVeld}</li>
+        ${bronRegel}
       </ul>
       <p style="margin-top: 24px; font-weight: bold;">Nieuwe offerte-aanvraag — volg op zodra je een installateur hebt.</p>
     </div>
@@ -53,6 +57,7 @@ export async function sendLeadNotification(lead: NotificationLead): Promise<void
         <li><strong>Email:</strong> ${lead.email}</li>
         <li><strong>Woningtype:</strong> ${lead.woningtype ?? "-"}</li>
         <li><strong>Postcode:</strong> ${postcodeVeld}</li>
+        ${bronRegel}
       </ul>
       <p style="margin-top: 24px; font-weight: bold;">Gebruiker wil alleen de indicatie per mail, geen installateur-koppeling.</p>
     </div>

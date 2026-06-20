@@ -38,6 +38,8 @@ type LeadData = {
   adviesType?: string;
   wantsInstallateur?: boolean;
   recaptchaToken?: string;
+  /** Optionele bron-attributie (bv. "stad:amsterdam"); puur informatief, niet gevalideerd. */
+  bron?: string;
 };
 
 function isLeadData(value: unknown): value is LeadData {
@@ -492,6 +494,7 @@ export async function POST(request: Request) {
       woningtype: data.woningtype ?? null,
       postcode: data.postcode ?? null,
       huisnummer: data.huisnummer ?? null,
+      bron: data.bron ?? null,
     }),
     pingIndexNow(),
   ]);

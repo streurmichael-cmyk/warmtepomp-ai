@@ -1,0 +1,1790 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
+import { FORWARDING_CONSENT_TEXT } from "@/lib/consent";
+import { RevenueNote } from "@/components/revenue-note";
+import { VergelijkInfo } from "@/components/vergelijk-info";
+import {
+  ArrowLeft,
+  ArrowRight,
+  BoltIcon,
+  BuildingIcon,
+  CheckCircleIcon,
+  FlameIcon,
+  MailIcon,
+  MapPinIcon,
+  NetworkIcon,
+  PhoneIcon,
+  QuestionIcon,
+  ShieldIcon,
+  UserIcon,
+} from "@/components/icons";
+import {
+  type AdviesResultaat,
+  berekenAdvies,
+  bouwjaarOpties,
+  cvKetelLeeftijdOpties,
+  energielabelNaarIsolatie,
+  energielabelOpties,
+  KWH_PER_ZONNEPANEEL,
+  oppervlakteOpties,
+  schatEnergielabel,
+  schatGasverbruik,
+  WARMTEPOMP_VERBRUIK_KWH,
+} from "@/lib/advies";
+
+type IconComponent = React.ComponentType<{ className?: string }>;
+
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+type GrecaptchaApi = {
+  ready: (cb: () => void) => void;
+  execute: (siteKey: string, options: { action: string }) => Promise<string>;
+};
+
+declare global {
+  interface Window {
+    grecaptcha?: {
+      enterprise?: GrecaptchaApi;
+    } & Partial<GrecaptchaApi>;
+  }
+}
+
+/** Haalt een reCAPTCHA Enterprise-token op; geeft undefined als het niet geconfigureerd of geladen is. */
+async function getRecaptchaToken(): Promise<string | undefined> {
+  if (!RECAPTCHA_SITE_KEY || typeof window === "undefined") {
+    return undefined;
+  }
+  // Wacht tot het Enterprise-script geladen is (max ~3s) zodat we geen token
+  // missen door een race tussen het laden van het script en het verzenden.
+  for (let i = 0; i < 30 && !window.grecaptcha?.enterprise; i++) {
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  const enterprise = window.grecaptcha?.enterprise;
+  if (!enterprise) {
+    console.warn("reCAPTCHA Enterprise-script niet geladen; aanvraag wordt zonder token verstuurd.");
+    return undefined;
+  }
+  try {
+    return await new Promise<string>((resolve, reject) => {
+      enterprise.ready(() => {
+        enterprise.execute(RECAPTCHA_SITE_KEY!, { action: "lead" }).then(resolve, reject);
+      });
+    });
+  } catch {
+    return undefined;
+  }
+}
+
+// Het "toekomstbestendig / woningwaarde"-blok op de indicatiepagina. Herbouwd met
+// woningwaarde voorop (Brainbay/NVM) en eerlijke, gelabelde aannames; saldering stopt
+// per 1-1-2027. Zet op false om het blok te verbergen.
+const SHOW_HEMS_TOEKOMSTKLAAR = true;
+
+type StepName =
+  | "adres"
+  | "zoeken"
+  | "bevestig"
+  | "verwarming"
+  | "energielabel"
+  | "systeem"
+  | "cvketel"
+  | "aanpak"
+  | "exit-stadsverwarming"
+  | "exit-blokverwarming"
+  | "gasverbruik"
+  | "zonnepanelen"
+  | "verwerken"
+  | "advies"
+  | "contact"
+  | "bedankt";
+
+const PROGRESS_STEPS: { steps: StepName[]; label: string }[] = [
+  { steps: ["adres"], label: "Jouw adres" },
+  { steps: ["zoeken", "verwarming", "bevestig", "energielabel"], label: "Jouw woning" },
+  { steps: ["systeem", "cvketel", "aanpak", "gasverbruik", "zonnepanelen"], label: "Verwarmingssysteem" },
+  { steps: ["verwerken", "advies"], label: "Jouw indicatie" },
+  { steps: ["contact"], label: "Gegevens" },
+];
+
+const VERWERKING_TEKSTEN = [
+  "De AI analyseert jouw woning...",
+  "Subsidies worden berekend...",
+  "Beste warmtepomp types worden bepaald...",
+  "Persoonlijke indicatie wordt opgesteld...",
+];
+
+const woningtypeOpties = ["Tussenwoning", "Hoekwoning", "Twee-onder-een-kap", "Vrijstaand", "Appartement"];
+
+// Verfijning ná de vroege verwarming-vraag: alleen relevant voor wie "(deels) elektrisch /
+// bestaande warmtepomp" koos. Elektrisch en hybride leiden tot een ander advies, dus dat
+// onderscheid vragen we hier alsnog uit.
+const systemen: { label: string; icon: IconComponent }[] = [
+  { label: "Elektrisch", icon: BoltIcon },
+  { label: "Hybride warmtepomp", icon: ShieldIcon },
+];
+
+const aanpakOpties: { label: string; waarde: "volledig" | "hybride"; beschrijving: string }[] = [
+  {
+    label: "In één keer volledig elektrisch",
+    waarde: "volledig",
+    beschrijving: "Cv-ketel verdwijnt helemaal, je gaat direct van het gas af.",
+  },
+  {
+    label: "In stappen, eerst een hybride warmtepomp",
+    waarde: "hybride",
+    beschrijving: "Cv-ketel blijft als back-up, je warmtepomp neemt het grootste deel over.",
+  },
+];
+
+const zonnepanelenOpties = ["Nee", "Ja", "Nog niet, maar ik overweeg het"] as const;
+
+type FormData = {
+  postcode: string;
+  huisnummer: string;
+  adres: string;
+  woningtype: string;
+  oppervlakte: string;
+  oppervlakteM2?: number;
+  bouwjaar: string;
+  bouwjaarJaar?: number;
+  energielabel: string;
+  energielabelGeschat: boolean;
+  isolatie: string;
+  huidigSysteem: string;
+  cvKetelLeeftijd: string;
+  overstapVoorkeur: "" | "volledig" | "hybride";
+  gasverbruik: number;
+  heeftZonnepanelen: string;
+  aantalZonnepanelen: number;
+  jaarlijkseOpwekKwh?: number;
+  voornaam: string;
+  telefoon: string;
+  email: string;
+};
+
+const initialData: FormData = {
+  postcode: "",
+  huisnummer: "",
+  adres: "",
+  woningtype: "",
+  oppervlakte: "",
+  bouwjaar: "",
+  energielabel: "",
+  energielabelGeschat: false,
+  isolatie: "",
+  huidigSysteem: "",
+  cvKetelLeeftijd: "",
+  overstapVoorkeur: "",
+  gasverbruik: 0,
+  heeftZonnepanelen: "",
+  aantalZonnepanelen: 10,
+  voornaam: "",
+  telefoon: "",
+  email: "",
+};
+
+type AdresErrors = Partial<Record<"postcode" | "huisnummer" | "algemeen", string>>;
+type LeadErrors = Partial<Record<"voornaam" | "telefoon" | "email", string>>;
+
+function leesAdresParams() {
+  const params = new URLSearchParams(window.location.search);
+  const postcode = params.get("postcode")?.replace(/\s/g, "").toUpperCase() ?? "";
+  const huisnummer = params.get("huisnummer")?.trim() ?? "";
+  const woningtype = params.get("woningtype") ?? "";
+  return { postcode, huisnummer, woningtype };
+}
+
+/**
+ * De volledige keuzehulp-wizard. Wordt gedeeld door /vergelijk en de stadpagina's,
+ * zodat een lead overal even gekwalificeerd is (echte postcode + huisnummer via BAG).
+ * - `bron`: optionele bron-attributie die meegestuurd wordt in de lead-payload
+ *   (bv. "stad:amsterdam"), zodat zichtbaar is via welke pagina de lead binnenkwam.
+ * - `stad`: optionele stadcontext voor een lokaal aanvoelende intro.
+ */
+export function KeuzehulpWizard({ bron, stad }: { bron?: string; stad?: string }) {
+  const [step, setStep] = useState<StepName>("adres");
+  const [data, setData] = useState<FormData>(initialData);
+  const [adresGevonden, setAdresGevonden] = useState(false);
+  const [autoIngevuld, setAutoIngevuld] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [adresErrors, setAdresErrors] = useState<AdresErrors>({});
+  const [leadErrors, setLeadErrors] = useState<LeadErrors>({});
+  const [wantsInstallateur, setWantsInstallateur] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const lookupGestart = useRef(false);
+
+  function update<K extends keyof FormData>(field: K, value: FormData[K]) {
+    setData((d) => ({ ...d, [field]: value }));
+  }
+
+  async function performLookup(cleanPostcode: string, cleanHuisnummer: string) {
+    try {
+      const res = await fetch(
+        `/api/woninggegevens?postcode=${cleanPostcode}&huisnummer=${encodeURIComponent(cleanHuisnummer)}`
+      );
+      const json = await res.json();
+
+      if (json?.found && json?.woning) {
+        setData((d) => ({
+          ...d,
+          postcode: cleanPostcode,
+          huisnummer: cleanHuisnummer,
+          adres: json.woning.adres ?? `${cleanPostcode} ${cleanHuisnummer}`,
+          bouwjaar: json.woning.bouwjaar || d.bouwjaar,
+          bouwjaarJaar: json.woning.bouwjaarJaar,
+          oppervlakte: json.woning.oppervlakte || d.oppervlakte,
+          oppervlakteM2: json.woning.oppervlakteM2,
+          woningtype: json.woning.woningtype || d.woningtype,
+        }));
+        setAdresGevonden(true);
+        setAutoIngevuld(Boolean(json.woning.bouwjaar || json.woning.oppervlakte));
+      } else {
+        setData((d) => ({
+          ...d,
+          postcode: cleanPostcode,
+          huisnummer: cleanHuisnummer,
+          adres: `${cleanPostcode} ${cleanHuisnummer}`,
+        }));
+        setAdresGevonden(false);
+        setAutoIngevuld(false);
+      }
+    } catch {
+      setData((d) => ({
+        ...d,
+        postcode: cleanPostcode,
+        huisnummer: cleanHuisnummer,
+        adres: `${cleanPostcode} ${cleanHuisnummer}`,
+      }));
+      setAdresGevonden(false);
+      setAutoIngevuld(false);
+    } finally {
+      // Eerst de vroege verwarming-vraag; de woningdetails (bevestig) komen daarna.
+      setStep("verwarming");
+    }
+  }
+
+  // Als we via de homepage met postcode + huisnummer binnenkomen, start de zoekopdracht direct.
+  // Bewust een eenmalige initialisatie ná mount: leesAdresParams() leest window.location
+  // (alleen client-side beschikbaar, niet tijdens SSR), dus dit kan niet in een lazy
+  // useState-initializer zonder hydration-mismatch. De ref-guard zorgt dat dit één keer
+  // draait, dus de setState-aanroepen veroorzaken geen render-cascade.
+  useEffect(() => {
+    if (lookupGestart.current) return;
+    lookupGestart.current = true;
+
+    const { postcode, huisnummer, woningtype } = leesAdresParams();
+    const postcodeGeldig = /^\d{4}[A-Z]{2}$/.test(postcode);
+    const huisnummerGeldig = /^\d+[A-Za-z]?$/.test(huisnummer);
+    const woningtypeGeldig = woningtypeOpties.includes(woningtype);
+
+    /* eslint-disable react-hooks/set-state-in-effect -- eenmalige init uit URL ná mount, zie toelichting hierboven */
+    if (postcodeGeldig && huisnummerGeldig) {
+      setData((d) => ({ ...d, postcode, huisnummer, ...(woningtypeGeldig ? { woningtype } : {}) }));
+      setStep("zoeken");
+      performLookup(postcode, huisnummer);
+    } else if (postcodeGeldig || woningtypeGeldig) {
+      setData((d) => ({
+        ...d,
+        ...(postcodeGeldig ? { postcode } : {}),
+        ...(woningtypeGeldig ? { woningtype } : {}),
+      }));
+    }
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, []);
+
+  // Laad het reCAPTCHA Enterprise-script (onzichtbaar) als er een site key is geconfigureerd.
+  useEffect(() => {
+    if (!RECAPTCHA_SITE_KEY || document.querySelector("script[data-recaptcha]")) return;
+    const script = document.createElement("script");
+    script.src = `https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    script.defer = true;
+    script.dataset.recaptcha = "true";
+    document.head.appendChild(script);
+  }, []);
+
+  async function handleAdresSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    const cleanPostcode = data.postcode.replace(/\s/g, "").toUpperCase();
+    const cleanHuisnummer = data.huisnummer.trim();
+
+    const errors: AdresErrors = {};
+    if (!/^\d{4}[A-Z]{2}$/.test(cleanPostcode)) {
+      errors.postcode = "Vul een geldige postcode in, bijv. 1234AB";
+    }
+    if (!/^\d+[A-Za-z]?$/.test(cleanHuisnummer)) {
+      errors.huisnummer = "Vul een geldig huisnummer in";
+    }
+    if (Object.keys(errors).length > 0) {
+      setAdresErrors(errors);
+      return;
+    }
+
+    setAdresErrors({});
+    setStep("zoeken");
+    await performLookup(cleanPostcode, cleanHuisnummer);
+  }
+
+  function bevestigWoning() {
+    setStep("energielabel");
+  }
+
+  // Vroege gate-vraag "Hoe wordt je woning nu verwarmd?". Collectieve warmtebronnen leiden
+  // naar een exit-scherm en nooit naar het offerteformulier.
+  function kiesVerwarming(keuze: "gas" | "elektrisch" | "stadsverwarming" | "blokverwarming") {
+    if (keuze === "stadsverwarming") {
+      setStep("exit-stadsverwarming");
+      return;
+    }
+    if (keuze === "blokverwarming") {
+      setStep("exit-blokverwarming");
+      return;
+    }
+    // "gas" kennen we volledig; bij "elektrisch" verfijnen we later (elektrisch vs hybride).
+    update("huidigSysteem", keuze === "gas" ? "CV-ketel op gas" : "");
+    setStep("bevestig");
+  }
+
+  function selectEnergielabel(label: string) {
+    if (label === "Weet ik niet") {
+      const geschat = schatEnergielabel(data.bouwjaar, data.woningtype);
+      setData((d) => ({
+        ...d,
+        energielabel: geschat,
+        energielabelGeschat: true,
+        isolatie: energielabelNaarIsolatie(geschat),
+      }));
+    } else {
+      setData((d) => ({
+        ...d,
+        energielabel: label,
+        energielabelGeschat: false,
+        isolatie: energielabelNaarIsolatie(label),
+      }));
+    }
+    // De vroege verwarming-vraag bepaalt de route: bij gas kennen we het systeem al en slaan
+    // we de systeem-stap over; bij (deels) elektrisch verfijnen we elektrisch vs hybride.
+    if (data.huidigSysteem === "CV-ketel op gas") {
+      const geschat = schatGasverbruik(data.oppervlakte, data.bouwjaar);
+      setData((d) => ({ ...d, gasverbruik: d.gasverbruik || geschat }));
+      setStep("cvketel");
+    } else {
+      setStep("systeem");
+    }
+  }
+
+  function selectSysteem(label: string) {
+    const geschat = schatGasverbruik(data.oppervlakte, data.bouwjaar);
+    setData((d) => ({ ...d, huidigSysteem: label, gasverbruik: d.gasverbruik || geschat }));
+    setStep("gasverbruik");
+  }
+
+  function selectCvKetel(label: string) {
+    update("cvKetelLeeftijd", label);
+    setStep("aanpak");
+  }
+
+  function selectAanpak(waarde: "volledig" | "hybride") {
+    update("overstapVoorkeur", waarde);
+    setStep("gasverbruik");
+  }
+
+  function selectZonnepanelen(optie: string) {
+    update("heeftZonnepanelen", optie);
+    if (optie !== "Ja") {
+      setStep("verwerken");
+    }
+  }
+
+  const cvKetelOuderDan15 = data.cvKetelLeeftijd === "Ouder dan 15 jaar";
+
+  const advies = useMemo<AdviesResultaat>(
+    () =>
+      berekenAdvies({
+        woningtype: data.woningtype,
+        oppervlakte: data.oppervlakte,
+        bouwjaar: data.bouwjaar,
+        isolatie: data.isolatie,
+        huidigSysteem: data.huidigSysteem,
+        gasverbruik: data.gasverbruik,
+        heeftZonnepanelen: data.heeftZonnepanelen,
+        aantalZonnepanelen: data.aantalZonnepanelen,
+        jaarlijkseOpwekKwh: data.jaarlijkseOpwekKwh,
+        overstapVoorkeur: data.overstapVoorkeur || undefined,
+        cvKetelOuderDan15,
+      }),
+    [
+      data.woningtype,
+      data.oppervlakte,
+      data.bouwjaar,
+      data.isolatie,
+      data.huidigSysteem,
+      data.gasverbruik,
+      data.heeftZonnepanelen,
+      data.aantalZonnepanelen,
+      data.jaarlijkseOpwekKwh,
+      data.overstapVoorkeur,
+      cvKetelOuderDan15,
+    ]
+  );
+
+  async function handleLeadSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    const errors: LeadErrors = {};
+    if (!data.voornaam.trim()) errors.voornaam = "Vul je voornaam in";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
+      errors.email = "Vul een geldig e-mailadres in";
+    }
+    if (wantsInstallateur && !/^[\d\s+()-]{9,}$/.test(data.telefoon.trim())) {
+      errors.telefoon = "Vul een geldig telefoonnummer in";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setLeadErrors(errors);
+      return;
+    }
+
+    setLeadErrors({});
+    setSubmitting(true);
+    setSubmitError("");
+
+    const recaptchaToken = await getRecaptchaToken();
+
+    const payload = {
+      woningtype: data.woningtype,
+      oppervlakte: data.oppervlakte,
+      bouwjaar: data.bouwjaar,
+      energielabel: data.energielabel || undefined,
+      isolatie: data.isolatie,
+      huidigSysteem: data.huidigSysteem,
+      cvKetelLeeftijd: data.cvKetelLeeftijd || undefined,
+      overstapVoorkeur: data.overstapVoorkeur || undefined,
+      gasverbruik: data.gasverbruik,
+      heeftZonnepanelen: data.heeftZonnepanelen,
+      aantalZonnepanelen: data.heeftZonnepanelen === "Ja" ? data.aantalZonnepanelen : undefined,
+      jaarlijkseOpwekKwh:
+        data.heeftZonnepanelen === "Ja" ? data.jaarlijkseOpwekKwh : undefined,
+      postcode: data.postcode,
+      huisnummer: data.huisnummer,
+      voornaam: data.voornaam.trim(),
+      email: data.email.trim(),
+      telefoon: wantsInstallateur ? data.telefoon.trim() : undefined,
+      adviesType: advies.type,
+      wantsInstallateur,
+      recaptchaToken,
+      ...(bron ? { bron } : {}),
+    };
+
+    try {
+      // Optionele test-bypass: geef ?testKey= uit de pagina-URL door aan de API,
+      // zodat dedup + per-uur-limiet overgeslagen worden bij herhaald testen.
+      const testKey = new URLSearchParams(window.location.search).get("testKey");
+      const res = await fetch(`/api/leads${testKey ? `?testKey=${encodeURIComponent(testKey)}` : ""}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error || "Request failed");
+      }
+      // Kern-conversie: alleen vuren na een succesvolle inzending (API 200).
+      track("lead_submit");
+      setStep("bedankt");
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error && err.message !== "Request failed"
+          ? err.message
+          : "Er ging iets mis bij het versturen. Probeer het opnieuw."
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  const ontbreekt = {
+    woningtype: !data.woningtype,
+    bouwjaar: !data.bouwjaar,
+    oppervlakte: !data.oppervlakte,
+  };
+  const toonAlleVelden = editMode || !adresGevonden;
+  const toonVeld = (veld: keyof typeof ontbreekt) => toonAlleVelden || ontbreekt[veld];
+  const klaarOmTeBevestigen = !!data.woningtype && !!data.bouwjaar && !!data.oppervlakte;
+
+  return (
+    <>
+      <ProgressIndicator step={step} />
+
+      {step === "adres" && (
+        <>
+          <Step heading={stad ? `Waar in ${stad} staat je woning?` : "Waar staat je woning?"}>
+            <p className="mb-6 text-base leading-relaxed text-muted">
+              {stad
+                ? `Vind een passende warmtepomp-installateur in ${stad}. Vul je postcode en huisnummer in, dan zoekt de tool automatisch een aantal gegevens van je woning op zodat je zelf minder hoeft in te vullen.`
+                : "Vul je postcode en huisnummer in. De tool zoekt automatisch een aantal gegevens van je woning op, zodat je zelf minder hoeft in te vullen."}
+            </p>
+            <form onSubmit={handleAdresSubmit} noValidate className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <FormField
+                  name="postcode"
+                  label="Postcode"
+                  icon={MapPinIcon}
+                  type="text"
+                  placeholder="1234 AB"
+                  maxLength={7}
+                  autoComplete="postal-code"
+                  value={data.postcode}
+                  onChange={(v) => update("postcode", v.toUpperCase())}
+                  error={adresErrors.postcode}
+                />
+                <FormField
+                  name="huisnummer"
+                  label="Huisnummer"
+                  type="text"
+                  placeholder="12"
+                  maxLength={6}
+                  autoComplete="address-line2"
+                  value={data.huisnummer}
+                  onChange={(v) => update("huisnummer", v)}
+                  error={adresErrors.huisnummer}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
+              >
+                Zoek mijn woning
+                <ArrowRight className="h-5 w-5" />
+              </button>
+              <p className="text-center text-xs text-muted-light">
+                Ik haal woninggegevens op via de BAG (Basisregistratie Adressen en Gebouwen) van de
+                overheid. Ik sla je adres niet op en verkoop het nooit door.
+              </p>
+            </form>
+          </Step>
+          <VergelijkInfo />
+        </>
+      )}
+
+      {step === "zoeken" && (
+        <div className="flex flex-col items-center justify-center py-20 text-center">
+          <div
+            className="mb-6 h-12 w-12 animate-spin rounded-full border-4 border-green/15 border-t-action"
+            aria-hidden="true"
+          />
+          <p className="font-display text-lg font-bold text-dark">
+            Even geduld... ik zoek jouw woning op in het Kadaster
+          </p>
+        </div>
+      )}
+
+      {step === "verwarming" && (
+        <VerwarmingStep onChoose={kiesVerwarming} onBack={() => setStep("adres")} />
+      )}
+
+      {step === "bevestig" && (
+        <Step
+          heading={adresGevonden ? "Ik heb jouw woning gevonden!" : "Ik kon je woning niet automatisch vinden"}
+          onBack={() => setStep("verwarming")}
+        >
+          <div className="mb-6 flex items-start gap-3 rounded-xl border border-green/15 bg-white p-4">
+            <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-action/10 text-action">
+              {adresGevonden ? <CheckCircleIcon className="h-5 w-5" /> : <MapPinIcon className="h-5 w-5" />}
+            </span>
+            <div>
+              <p className="font-display text-lg font-bold text-dark">
+                {data.adres || `${data.postcode} ${data.huisnummer}`}
+              </p>
+              <p className="text-sm text-muted">
+                {adresGevonden
+                  ? autoIngevuld
+                    ? "De tool heeft een deel van je gegevens alvast ingevuld — controleer en vul aan waar nodig."
+                    : "De tool heeft je adres gevonden, maar niet alle details. Vul de onderstaande gegevens zelf aan."
+                  : "Vul de onderstaande gegevens zelf in, dan ga ik gewoon verder."}
+              </p>
+            </div>
+          </div>
+
+          <div className="mb-6 grid gap-3 sm:grid-cols-3">
+            <InfoCard
+              label="Bouwjaar"
+              value={data.bouwjaarJaar ? String(data.bouwjaarJaar) : data.bouwjaar}
+            />
+            <InfoCard
+              label="Woonoppervlakte"
+              value={data.oppervlakteM2 ? `${data.oppervlakteM2} m²` : data.oppervlakte}
+            />
+            <InfoCard label="Woningtype" value={data.woningtype} />
+          </div>
+
+          <div className="space-y-6">
+            {toonVeld("woningtype") && (
+              <ChipGroup
+                label="Wat voor woning is het?"
+                options={woningtypeOpties}
+                value={data.woningtype}
+                onChange={(v) => update("woningtype", v)}
+              />
+            )}
+            {toonVeld("bouwjaar") && (
+              <ChipGroup
+                label="Wanneer is je woning gebouwd?"
+                options={bouwjaarOpties}
+                value={data.bouwjaar}
+                onChange={(v) => update("bouwjaar", v)}
+              />
+            )}
+            {toonVeld("oppervlakte") && (
+              <ChipGroup
+                label="Hoe groot is je woning?"
+                options={oppervlakteOpties}
+                value={data.oppervlakte}
+                onChange={(v) => update("oppervlakte", v)}
+              />
+            )}
+          </div>
+
+          <div className="mt-8 space-y-3">
+            <button
+              type="button"
+              disabled={!klaarOmTeBevestigen}
+              onClick={bevestigWoning}
+              className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44] disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              Klopt dit! Ga verder
+              <ArrowRight className="h-5 w-5" />
+            </button>
+            {adresGevonden && !editMode && (
+              <button
+                type="button"
+                onClick={() => setEditMode(true)}
+                className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border-2 border-green/20 px-7 py-3.5 text-base font-bold text-dark transition-colors hover:border-action hover:text-action"
+              >
+                Gegevens aanpassen
+              </button>
+            )}
+          </div>
+        </Step>
+      )}
+
+      {step === "energielabel" && (
+        <Step heading="Wat is het energielabel van je woning?" onBack={() => setStep("bevestig")}>
+          <p className="mb-6 text-base leading-relaxed text-muted">
+            Het energielabel zegt veel over hoe goed je woning geïsoleerd is en bepaalt mee welk
+            type warmtepomp het beste past. Weet je het niet zeker? Kies dan &ldquo;Weet ik
+            niet&rdquo; — dan schat ik het in op basis van je woning.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {energielabelOpties.map((opt) => (
+              <button
+                key={opt}
+                type="button"
+                onClick={() => selectEnergielabel(opt)}
+                aria-pressed={data.energielabel === opt}
+                className={`min-h-[48px] rounded-full border-2 px-4 py-3 text-sm font-semibold transition-colors ${
+                  data.energielabel === opt
+                    ? "border-action bg-action/10 text-action"
+                    : "border-green/15 bg-white text-dark hover:border-action/40"
+                }`}
+              >
+                {opt}
+              </button>
+            ))}
+          </div>
+          <p className="mt-6 text-xs leading-relaxed text-muted-light">
+            Je officiële energielabel vind je gratis op{" "}
+            <a
+              href="https://www.ep-online.nl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-action hover:underline"
+            >
+              EP-online
+            </a>
+            , de officiële database van de Rijksoverheid.
+          </p>
+        </Step>
+      )}
+
+      {step === "systeem" && (
+        <Step heading="Wat heb je nu precies?" onBack={() => setStep("energielabel")}>
+          <p className="mb-6 text-base leading-relaxed text-muted">
+            Je gaf aan dat je woning al (deels) elektrisch verwarmd wordt. Heb je een hybride
+            warmtepomp die met je cv-ketel samenwerkt, of verwarm je volledig elektrisch? Dat
+            bepaalt welk advies het beste bij je past.
+          </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {systemen.map((opt) => (
+              <OptionCard
+                key={opt.label}
+                label={opt.label}
+                icon={opt.icon}
+                selected={data.huidigSysteem === opt.label}
+                onClick={() => selectSysteem(opt.label)}
+              />
+            ))}
+          </div>
+        </Step>
+      )}
+
+      {step === "cvketel" && (
+        <Step heading="Hoe oud is je cv-ketel?" onBack={() => setStep("energielabel")}>
+          <p className="mb-6 text-base leading-relaxed text-muted">
+            Een cv-ketel gaat gemiddeld zo&apos;n 15 jaar mee. Is die van jou aan vervanging toe, dan
+            wordt de overstap naar een warmtepomp een stuk aantrekkelijker — die vervangingskosten
+            bespaar je dan namelijk uit.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {cvKetelLeeftijdOpties.map((opt) => (
+              <button
+                key={opt}
+                type="button"
+                onClick={() => selectCvKetel(opt)}
+                aria-pressed={data.cvKetelLeeftijd === opt}
+                className={`min-h-[48px] rounded-full border-2 px-4 py-3 text-sm font-semibold transition-colors ${
+                  data.cvKetelLeeftijd === opt
+                    ? "border-action bg-action/10 text-action"
+                    : "border-green/15 bg-white text-dark hover:border-action/40"
+                }`}
+              >
+                {opt}
+              </button>
+            ))}
+          </div>
+        </Step>
+      )}
+
+      {step === "aanpak" && (
+        <Step
+          heading="Hoe wil je overstappen?"
+          onBack={() => setStep(data.huidigSysteem === "CV-ketel op gas" ? "cvketel" : "systeem")}
+        >
+          <p className="mb-6 text-base leading-relaxed text-muted">
+            Je kunt in één keer volledig van het gas af, of het stap voor stap doen met een
+            hybride warmtepomp die samenwerkt met je cv-ketel. Ik houd hier rekening mee in je
+            indicatie.
+          </p>
+          <div className="space-y-4">
+            {aanpakOpties.map((opt) => (
+              <button
+                key={opt.waarde}
+                type="button"
+                onClick={() => selectAanpak(opt.waarde)}
+                aria-pressed={data.overstapVoorkeur === opt.waarde}
+                className={`flex w-full flex-col items-start gap-1 rounded-2xl border-2 px-6 py-5 text-left transition-colors ${
+                  data.overstapVoorkeur === opt.waarde
+                    ? "border-action bg-action/10"
+                    : "border-green/10 bg-white hover:border-action/40"
+                }`}
+              >
+                <span className="font-display text-lg font-bold text-dark">{opt.label}</span>
+                <span className="text-sm text-muted">{opt.beschrijving}</span>
+              </button>
+            ))}
+          </div>
+        </Step>
+      )}
+
+      {step === "exit-stadsverwarming" && (
+        <Step heading="Je woning is aangesloten op stadsverwarming" onBack={() => setStep("verwarming")}>
+          <div className="mb-6 flex items-start gap-3 rounded-xl border border-green/15 bg-white p-4">
+            <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-action/10 text-action">
+              <NetworkIcon className="h-5 w-5" />
+            </span>
+            <p className="text-base leading-relaxed text-muted">
+              Bij stadsverwarming komt je warmte al van een collectief net. Een individuele
+              warmtepomp is in dat geval bijna nooit zinvol: je zou een werkend, vaak duurzaam
+              warmtenet vervangen door een eigen installatie — meestal duurder en zonder
+              milieuwinst.
+            </p>
+          </div>
+          <div className="rounded-xl border border-green/15 bg-white p-5">
+            <p className="text-base leading-relaxed text-muted">
+              <span className="font-bold text-dark">Tip:</span> Wat wél kan helpen: je woning
+              beter isoleren verlaagt je warmtevraag en daarmee je kosten, ongeacht je
+              warmtebron.
+            </p>
+          </div>
+
+          <div className="mt-8 space-y-3">
+            <a
+              href="https://www.milieucentraal.nl/energie-besparen/isoleren-en-besparen/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
+            >
+              Lees over isolatie
+              <ArrowRight className="h-5 w-5" />
+            </a>
+            <ExitEmailCapture
+              postcode={data.postcode}
+              bron="exit-stadsverwarming"
+              label="Laat je e-mail achter"
+            />
+          </div>
+        </Step>
+      )}
+
+      {step === "exit-blokverwarming" && (
+        <Step heading="Je woning heeft blokverwarming" onBack={() => setStep("verwarming")}>
+          <div className="mb-6 flex items-start gap-3 rounded-xl border border-green/15 bg-white p-4">
+            <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-action/10 text-action">
+              <BuildingIcon className="h-5 w-5" />
+            </span>
+            <p className="text-base leading-relaxed text-muted">
+              Bij blokverwarming verwarmt één centrale installatie meerdere woningen in je
+              gebouw. De keuze voor een warmtepomp is hier geen individuele beslissing — die
+              loopt via je Vereniging van Eigenaren (VvE) of verhuurder, omdat het de hele installatie van
+              het gebouw raakt.
+            </p>
+          </div>
+          <div className="rounded-xl border border-green/15 bg-white p-5">
+            <p className="text-base leading-relaxed text-muted">
+              <span className="font-bold text-dark">Tip:</span> Wat je nu kunt doen: breng het
+              onderwerp in bij je VvE. Een collectieve warmtepomp of aansluiting op een warmtenet
+              wordt vaak op gebouwniveau bekeken, inclusief subsidiemogelijkheden voor
+              VvE&apos;s.
+            </p>
+          </div>
+
+          <div className="mt-8 space-y-3">
+            <Link
+              href="/warmtepompen"
+              className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
+            >
+              Meer over warmtepompen
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+            <ExitEmailCapture
+              postcode={data.postcode}
+              bron="exit-blokverwarming"
+              label="Laat je e-mail achter voor VvE-info"
+            />
+          </div>
+        </Step>
+      )}
+
+      {step === "gasverbruik" && (
+        <Step
+          heading="Hoeveel gas verbruik je per jaar?"
+          onBack={() =>
+            setStep(
+              data.huidigSysteem === "CV-ketel op gas" || data.huidigSysteem === "Anders"
+                ? "aanpak"
+                : "systeem"
+            )
+          }
+        >
+          <p className="mb-6 text-base leading-relaxed text-muted">
+            De tool heeft dit alvast geschat op basis van je woning. Klopt het ongeveer? Het
+            exacte getal vind je op de jaarafrekening van je energieleverancier.
+          </p>
+          <input
+            type="range"
+            min={500}
+            max={4000}
+            step={50}
+            value={data.gasverbruik}
+            onChange={(e) => update("gasverbruik", Number(e.target.value))}
+            className="w-full accent-action"
+            aria-label="Geschat jaarlijks gasverbruik in kubieke meter"
+          />
+          <p className="mt-2 text-center font-display text-3xl font-bold text-dark">
+            {data.gasverbruik.toLocaleString("nl-NL")} m³{" "}
+            <span className="text-base font-semibold text-muted">per jaar</span>
+          </p>
+
+          <button
+            type="button"
+            onClick={() => setStep("zonnepanelen")}
+            className="mt-8 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
+          >
+            Volgende
+            <ArrowRight className="h-5 w-5" />
+          </button>
+        </Step>
+      )}
+
+      {step === "zonnepanelen" && (
+        <Step heading="Heb je zonnepanelen?" onBack={() => setStep("gasverbruik")}>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {zonnepanelenOpties.map((opt) => (
+              <OptionCard
+                key={opt}
+                label={opt}
+                selected={data.heeftZonnepanelen === opt}
+                onClick={() => selectZonnepanelen(opt)}
+              />
+            ))}
+          </div>
+
+          {data.heeftZonnepanelen === "Ja" && (
+            <div className="mt-8">
+              <p className="mb-2 text-sm font-bold text-dark">Hoeveel zonnepanelen heb je?</p>
+              <input
+                type="range"
+                min={0}
+                max={30}
+                step={1}
+                value={data.aantalZonnepanelen}
+                onChange={(e) => update("aantalZonnepanelen", Number(e.target.value))}
+                className="w-full accent-action"
+                aria-label="Aantal zonnepanelen"
+              />
+              <p className="mt-2 text-center font-display text-3xl font-bold text-dark">
+                {data.aantalZonnepanelen}{" "}
+                <span className="text-base font-semibold text-muted">panelen</span>
+              </p>
+              <p className="mt-2 text-center text-xs text-muted-light">
+                Gemiddeld paneel levert 400 Wp = ±350 kWh/jaar
+              </p>
+
+              <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                <label htmlFor="jaarlijkseOpwekKwh" className="block text-sm font-bold text-dark">
+                  Weet je je jaaropbrengst? (optioneel)
+                </label>
+                <p className="mt-1 text-xs text-muted">
+                  Vul je werkelijke opbrengst in kWh per jaar in voor een nauwkeurigere
+                  berekening — die vind je op je jaarafrekening of in de app van je
+                  omvormer. Laat leeg om de schatting hierboven te gebruiken.
+                </p>
+                <div className="relative mt-3">
+                  <input
+                    id="jaarlijkseOpwekKwh"
+                    type="number"
+                    inputMode="numeric"
+                    min={0}
+                    max={20000}
+                    step={50}
+                    placeholder={`±${(data.aantalZonnepanelen * KWH_PER_ZONNEPANEEL).toLocaleString("nl-NL")}`}
+                    value={data.jaarlijkseOpwekKwh ?? ""}
+                    onChange={(e) =>
+                      update(
+                        "jaarlijkseOpwekKwh",
+                        e.target.value ? Number(e.target.value) : undefined
+                      )
+                    }
+                    className="min-h-[48px] w-full rounded-xl border-2 border-green/15 bg-white py-3.5 pl-4 pr-16 text-base text-dark placeholder:text-muted-light outline-none transition-colors focus:border-action"
+                    aria-label="Jaarlijkse opbrengst zonnepanelen in kWh"
+                  />
+                  <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted">
+                    kWh/jaar
+                  </span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setStep("verwerken")}
+                className="mt-8 inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
+              >
+                Bekijk mijn indicatie
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </div>
+          )}
+        </Step>
+      )}
+
+      {step === "verwerken" && <VerwerkenStep onDone={() => setStep("advies")} />}
+
+      {step === "advies" && (
+        <div>
+          <button
+            type="button"
+            onClick={() => setStep("zonnepanelen")}
+            className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-action"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Terug
+          </button>
+
+          {advies.passend ? (
+            <>
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-action">
+                Jouw indicatie
+              </p>
+              <h1 className="mb-6 font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
+                {advies.type}
+              </h1>
+              <p className="mb-8 text-base leading-relaxed text-muted">{advies.toelichting}</p>
+
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="rounded-xl border border-green/15 bg-white p-5">
+                  <p className="text-xs font-bold uppercase tracking-wide text-muted-light">
+                    Indicatie kosten
+                  </p>
+                  <p className="mt-2 font-display text-xl font-bold text-dark">{advies.kostenRange}</p>
+                </div>
+                <div className="rounded-xl border border-green/15 bg-white p-5">
+                  <p className="text-xs font-bold uppercase tracking-wide text-muted-light">
+                    ISDE-subsidie
+                  </p>
+                  <p className="mt-2 font-display text-xl font-bold text-dark">{advies.subsidie}</p>
+                </div>
+                <div className="rounded-xl border border-green/15 bg-white p-5">
+                  <p className="text-xs font-bold uppercase tracking-wide text-muted-light">
+                    Terugverdientijd
+                  </p>
+                  <p className="mt-2 font-display text-xl font-bold text-dark">
+                    {advies.terugverdientijd}
+                  </p>
+                  <p className="mt-1 text-xs text-muted-light">warmtepomp op zichzelf</p>
+                </div>
+              </div>
+
+              {advies.besparingPerJaar > 0 && (
+                <p className="mt-6 text-base text-muted">
+                  Geschatte besparing op je energierekening:{" "}
+                  <span className="font-bold text-dark">
+                    €{advies.besparingPerJaar.toLocaleString("nl-NL")} per jaar
+                  </span>
+                  .
+                </p>
+              )}
+
+              {advies.zonnepanelen && (
+                <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                  <p className="text-base text-muted">
+                    {data.jaarlijkseOpwekKwh && data.jaarlijkseOpwekKwh > 0
+                      ? "Met jouw zonnepanelen wek je "
+                      : `Met jouw ${data.aantalZonnepanelen} zonnepanelen wek je ±`}
+                    {advies.zonnepanelen.eigenOpwekKwh.toLocaleString("nl-NL")} kWh per jaar op — op
+                    jaarbasis ±{advies.zonnepanelen.dekkingPercentage}% van het stroomverbruik van je
+                    warmtepomp.
+                  </p>
+                  <p className="mt-3 text-sm text-muted">
+                    In de praktijk verlagen zonnepanelen de kosten van je warmtepomp maar beperkt: je
+                    panelen wekken het meest op in de zomer, terwijl je warmtepomp voor verwarming juist
+                    in de winter draait — als de panelen weinig opleveren. De stroom voor je warmtepomp
+                    komt daardoor grotendeels van het net. Daarom reken ik de terugverdientijd hierboven
+                    op de warmtepomp zelf, zonder zonnestroom mee te tellen.
+                  </p>
+                  <p className="mt-3 text-xs text-muted-light">
+                    De salderingsregeling stopt volledig per 1 januari 2027 (in één keer, niet geleidelijk).
+                    Daarna krijg je voor teruggeleverde stroom een terugleververgoeding van minimaal 50% van
+                    het kale leveringstarief. Veel leveranciers rekenen nu al terugleverkosten, dus
+                    terugleveren levert nu al weinig op — wachten op een &ldquo;2027-voordeel&rdquo; voor je
+                    warmtepomp heeft geen zin.
+                  </p>
+                </div>
+              )}
+
+              <details className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                <summary className="cursor-pointer font-bold text-dark">
+                  Wat betekent terugverdientijd? (uitleg in gewone taal)
+                </summary>
+                <div className="mt-4 space-y-4 text-sm leading-relaxed text-muted">
+                  <div>
+                    <p className="font-bold text-dark">Wat betekent terugverdientijd?</p>
+                    <p>
+                      Het aantal jaren dat het duurt voordat je de aanschaf hebt terugverdiend met
+                      wat je elk jaar bespaart. Kost een warmtepomp €5.800 en bespaar je €353 per
+                      jaar, dan sta je na ongeveer 16 jaar quitte. Daarna is het pure winst.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-bold text-dark">Waarom duurt dat bij een hybride zo lang?</p>
+                    <p>
+                      Een hybride warmtepomp neemt een deel van je verwarming over, maar op de
+                      koudste dagen gebruik je nog wat gas. De besparing is dus echt, maar niet
+                      enorm, terwijl de aanschaf een flink bedrag is. Daarom duurt het terugverdienen
+                      langer dan veel reclames je doen geloven. Ik vertel je dat liever eerlijk.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-bold text-dark">Wat doen mijn zonnepanelen hierbij?</p>
+                    <p>
+                      Belangrijk: zonnepanelen besparen geen gas — dat doet de warmtepomp. Panelen
+                      wekken stroom op, en een warmtepomp draait op stroom. Maar voor de verwarming
+                      verlagen zonnepanelen de warmtepompkosten maar beperkt: je panelen wekken het
+                      meest op in de zomer, terwijl je warmtepomp juist in de winter verwarmt — als de
+                      panelen weinig opleveren. De stroom voor je warmtepomp komt dan grotendeels van
+                      het net. Daarom reken ik de terugverdientijd op de warmtepomp zelf, zonder
+                      zonnestroom mee te tellen.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-bold text-dark">Wat is salderen, en wat verandert er?</p>
+                    <p>
+                      Salderen is de regeling waarmee je de stroom die je teruglevert aan het net mag
+                      wegstrepen tegen de stroom die je verbruikt. De salderingsregeling stopt volledig
+                      per 1 januari 2027 — in één keer, niet geleidelijk. Daarna krijg je voor
+                      teruggeleverde stroom een terugleververgoeding van minimaal 50% van het kale
+                      leveringstarief.
+                    </p>
+                    <p className="mt-2">
+                      Veel leveranciers rekenen nu trouwens al vaste terugleverkosten, dus terugleveren
+                      levert nu al weinig op. De beleidsrichting is: gebruik je eigen stroom zoveel
+                      mogelijk direct. Wachten op een &ldquo;2027-voordeel&rdquo; voor je warmtepomp
+                      heeft geen zin — beoordeel de warmtepomp op zijn eigen merites.
+                    </p>
+                  </div>
+                </div>
+              </details>
+
+              {data.heeftZonnepanelen === "Nog niet, maar ik overweeg het" && (
+                <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                  <p className="text-base text-muted">
+                    <span className="font-bold text-dark">Tip:</span> zonnepanelen zijn op zichzelf een
+                    verstandige investering, maar reken niet op een veel kortere terugverdientijd van je
+                    warmtepomp: je panelen wekken vooral &apos;s zomers op, terwijl de warmtepomp voor
+                    verwarming in de winter draait. Op jaarbasis dekken 10 panelen ±
+                    {Math.min(Math.round((10 * KWH_PER_ZONNEPANEEL) / WARMTEPOMP_VERBRUIK_KWH * 100), 100)}%
+                    van het warmtepompverbruik, maar dat valt in de praktijk lager uit door die
+                    seizoensmismatch. Wil je panelen en warmtepomp écht laten samenwerken? Kijk dan naar
+                    een warmtepompboiler voor warm water — die draait ook &apos;s zomers.
+                  </p>
+                </div>
+              )}
+
+              {data.isolatie === "Matig of oud" && (
+                <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                  <p className="text-base text-muted">
+                    <span className="font-bold text-dark">Tip:</span> heb je de mogelijkheid om te
+                    isoleren? Dan verdien je de warmtepomp sneller terug en heb je minder vermogen
+                    nodig. Goede isolatie maakt op termijn ook een volledige overstap naar
+                    all-electric mogelijk.
+                  </p>
+                </div>
+              )}
+
+              {cvKetelOuderDan15 && (
+                <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+                  <p className="text-base text-muted">
+                    <span className="font-bold text-dark">Let op:</span> je cv-ketel is ouder dan
+                    15 jaar en is dus sowieso binnenkort aan vervanging toe. Ik heb de
+                    uitgespaarde vervangingskosten (±€3.000) al meegerekend in de terugverdientijd
+                    hierboven — daardoor is overstappen nu extra aantrekkelijk.
+                  </p>
+                </div>
+              )}
+
+              {SHOW_HEMS_TOEKOMSTKLAAR && (
+                <div className="mt-8 rounded-2xl border border-green/15 bg-white p-6 sm:p-7">
+                  <h2 className="font-display text-lg font-bold text-dark sm:text-xl">
+                    Toekomstbestendig — en wat dat doet met je woningwaarde
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    Een warmtepomp is meer dan een keuze voor je energierekening: je maakt je
+                    woning er toekomstbestendig mee. Samen met goede isolatie heeft dat ook effect
+                    op de waarde van je woning — vaak een grotere financiële factor dan de
+                    maandelijkse besparing.
+                  </p>
+
+                  <div className="mt-5 rounded-xl border border-green/15 bg-action/5 p-4 sm:p-5">
+                    <p className="text-sm font-bold text-dark">
+                      Een beter energielabel = gemiddeld een hogere woningwaarde
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">
+                      Woningen met een beter energielabel zijn gemiddeld meer waard en verkopen
+                      sneller. Volgens onderzoek van Brainbay/NVM leveren labelsprongen enkele
+                      procenten tot tienduizenden euro&apos;s op; een sprong van label G naar label A
+                      scheelt gemiddeld zo&apos;n{" "}
+                      <span className="font-bold text-dark">€69.000</span> in woningwaarde.
+                    </p>
+                    <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted">
+                      <li>
+                        Dit zit in het hele pakket: vooral isolatie, warmtepomp en zon sámen bepalen
+                        je energielabel — niet de warmtepomp alleen.
+                      </li>
+                      <li>
+                        Het is een waarde-effect bij verkoop, geen geld dat je elk jaar terugziet
+                        zoals een lagere energierekening.
+                      </li>
+                      <li>
+                        Het varieert sterk per regio, woningtype, bouwjaar en woningmarkt: oudere
+                        woningen maken de grootste sprong, en Noord-Holland hoort bij de provincies
+                        met de kleinste stijging. Daarom noem ik bewust een bandbreedte en geen vast
+                        bedrag.
+                      </li>
+                    </ul>
+                    <p className="mt-3 text-xs text-muted-light">Bron: Brainbay/NVM.</p>
+                  </div>
+
+                  <div className="mt-5">
+                    <p className="text-sm font-bold text-dark">
+                      Zonnepanelen, en wat er per 2027 verandert
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">
+                      Zonnepanelen maken je warmtepomp niet goedkoper: je panelen wekken het meest
+                      op in de zomer, terwijl je warmtepomp in de winter verwarmt (zie de uitleg
+                      hierboven). Wel verandert er iets belangrijks — de salderingsregeling stopt
+                      volledig per{" "}
+                      <span className="font-semibold text-dark">1 januari 2027</span>.
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">
+                      <span className="font-semibold text-dark">Vóór 2027</span> streep je
+                      teruggeleverde zonnestroom via saldering weg tegen je verbruik, dus een
+                      overschot is veel waard. <span className="font-semibold text-dark">Ná 2027</span>{" "}
+                      niet meer — dan telt vooral hoeveel van je eigen stroom je zélf direct
+                      gebruikt. Juist daardoor worden een thuisbatterij en slimme sturing (HEMS) in
+                      de toekomst interessanter.
+                    </p>
+                  </div>
+
+                  <div className="mt-5">
+                    <p className="text-sm font-bold text-dark">
+                      Wat is een HEMS, en een thuisbatterij?
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">
+                      Een HEMS (Home Energy Management System) is een slimme energieregelaar: het
+                      stuurt automatisch aan wánneer je stroom opwekt, opslaat en verbruikt. Zo
+                      gebruik je meer van je eigen zonnestroom zelf, en help je mee tegen{" "}
+                      <span className="font-semibold text-dark">netcongestie</span> — de drukte op
+                      het stroomnet — doordat je minder op piekmomenten van het net afhankelijk bent.
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">
+                      Een thuisbatterij kost indicatief zo&apos;n{" "}
+                      <span className="font-semibold text-dark">€5.000</span>, een HEMS ongeveer{" "}
+                      <span className="font-semibold text-dark">€1.000 – €2.000</span> (indicatief,
+                      bron Milieu Centraal). Over de besparing en terugverdientijd ben ik eerlijk:
+                      die is <span className="font-semibold text-dark">lang, vaak 15+ jaar</span>, en
+                      sterk afhankelijk van je verbruik en de tarieven ná 2027. Daarom noem ik bewust
+                      geen vaste jaarbesparing of terugverdientijd — dat zou schijnzekerheid zijn.
+                    </p>
+                    <Link
+                      href="/blog/warmtepomp-kosten-2026"
+                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-action hover:underline"
+                    >
+                      Lees meer over warmtepomp, zon en HEMS
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+
+                  <p className="mt-5 text-xs leading-relaxed text-muted-light">
+                    Aannames en bronnen: woningwaarde-cijfers van Brainbay/NVM; kosten indicatief via
+                    Milieu Centraal en CBS; subsidie via RVO (2026). De salderingsregeling stopt op
+                    1 januari 2027. Genoemde bedragen zijn bandbreedtes ter illustratie, geen
+                    toezegging.
+                  </p>
+                </div>
+              )}
+
+              <p className="mt-6 text-xs leading-relaxed text-muted-light">
+                Deze indicatie is gebaseerd op: BAG-woningdata, RVO subsidiebedragen 2026 en
+                gemiddelden van Milieu Centraal. Aannames:{" "}
+                {data.energielabel
+                  ? `energielabel ${data.energielabel}${data.energielabelGeschat ? " (geschat op basis van je woning)" : ""}`
+                  : "energielabel op basis van bouwjaar"}
+                , gemiddeld verbruik voor jouw woningtype.
+              </p>
+
+              <div className="mt-10 space-y-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setWantsInstallateur(true);
+                    setStep("contact");
+                  }}
+                  className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44]"
+                >
+                  Vraag vrijblijvend offertes aan
+                  <ArrowRight className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setWantsInstallateur(false);
+                    setStep("contact");
+                  }}
+                  className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border-2 border-green/20 px-7 py-3.5 text-base font-bold text-dark transition-colors hover:border-action hover:text-action"
+                >
+                  Stuur deze indicatie naar mijn e-mail
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <h1 className="mb-6 font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
+                {advies.type}
+              </h1>
+              <p className="mb-8 text-base leading-relaxed text-muted">{advies.toelichting}</p>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 rounded-xl border-2 border-green/20 px-6 py-3 text-sm font-semibold text-dark transition-colors hover:border-action hover:text-action"
+              >
+                Terug naar home
+              </Link>
+            </>
+          )}
+        </div>
+      )}
+
+      {step === "contact" && (
+        <Step
+          heading={
+            wantsInstallateur ? "Waar mogen installateurs je bereiken?" : "Waar stuur ik je indicatie naartoe?"
+          }
+          onBack={() => setStep("advies")}
+        >
+          <p className="mb-6 text-base leading-relaxed text-muted">
+            {wantsInstallateur
+              ? "Ik ga voor je op zoek naar een passende installateur voor jouw woning en neem zo snel mogelijk vrijblijvend contact met je op."
+              : "Ik stuur je de volledige indicatie, inclusief kosten, subsidie en terugverdientijd, per e-mail."}
+          </p>
+          <form onSubmit={handleLeadSubmit} noValidate className="space-y-4">
+            <FormField
+              name="voornaam"
+              label="Voornaam"
+              icon={UserIcon}
+              type="text"
+              placeholder="Voornaam"
+              autoComplete="given-name"
+              value={data.voornaam}
+              onChange={(v) => update("voornaam", v)}
+              error={leadErrors.voornaam}
+            />
+            <FormField
+              name="email"
+              label="E-mailadres"
+              icon={MailIcon}
+              type="email"
+              placeholder="naam@voorbeeld.nl"
+              autoComplete="email"
+              value={data.email}
+              onChange={(v) => update("email", v)}
+              error={leadErrors.email}
+            />
+            {wantsInstallateur && (
+              <FormField
+                name="telefoon"
+                label="Telefoonnummer"
+                icon={PhoneIcon}
+                type="tel"
+                placeholder="06 12345678"
+                autoComplete="tel"
+                value={data.telefoon}
+                onChange={(v) => update("telefoon", v)}
+                error={leadErrors.telefoon}
+              />
+            )}
+
+            {submitError && (
+              <p role="alert" className="text-sm text-error">
+                {submitError}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={submitting}
+              className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44] disabled:opacity-60"
+            >
+              {submitting ? "Versturen..." : wantsInstallateur ? "Vraag offertes aan" : "Stuur mijn indicatie"}
+              {!submitting && <ArrowRight className="h-5 w-5" />}
+            </button>
+            <RevenueNote />
+            <p className="text-center text-xs text-muted-light">
+              {wantsInstallateur
+                ? FORWARDING_CONSENT_TEXT
+                : "Je gegevens worden gedeeld met gecertificeerde installateurs om je offerte te kunnen versturen. Ik verkoop ze nooit aan derden voor marketingdoeleinden. Geen telefoontjes, alleen een e-mail."}
+            </p>
+          </form>
+        </Step>
+      )}
+
+      {step === "bedankt" && (
+        <div className="text-center">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-action/10 text-action">
+            <CheckCircleIcon className="h-9 w-9" />
+          </div>
+          <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-4xl">
+            Bedankt, {data.voornaam}!
+          </h1>
+          <p className="mx-auto mt-4 max-w-md text-lg leading-relaxed text-muted">
+            {wantsInstallateur
+              ? "Ik heb je aanvraag ontvangen. Ik ga voor je op zoek naar een passende installateur voor jouw woning en neem zo snel mogelijk contact met je op."
+              : "Check je inbox — ik heb de volledige indicatie naar je e-mailadres gestuurd."}
+          </p>
+          <Link
+            href="/"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl border-2 border-green/20 px-6 py-3 text-sm font-semibold text-dark transition-colors hover:border-action hover:text-action"
+          >
+            Terug naar home
+          </Link>
+        </div>
+      )}
+    </>
+  );
+}
+
+function ProgressIndicator({ step }: { step: StepName }) {
+  const idx = PROGRESS_STEPS.findIndex((p) => p.steps.includes(step));
+  if (idx === -1) return null;
+
+  return (
+    <div className="mb-10">
+      <p className="mb-3 text-sm font-semibold text-muted-light">
+        Stap {idx + 1} van {PROGRESS_STEPS.length} · {PROGRESS_STEPS[idx].label}
+      </p>
+      <div className="flex gap-2">
+        {PROGRESS_STEPS.map((p, i) => (
+          <div key={p.label} className={`h-1.5 flex-1 rounded-full ${i <= idx ? "bg-action" : "bg-green/10"}`} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function VerwerkenStep({ onDone }: { onDone: () => void }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((i) => (i + 1 < VERWERKING_TEKSTEN.length ? i + 1 : i));
+    }, 1250);
+    const timeout = setTimeout(onDone, 5000);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [onDone]);
+
+  return (
+    <div className="flex flex-col items-center justify-center py-20 text-center">
+      <div
+        className="mb-6 h-12 w-12 animate-spin rounded-full border-4 border-green/15 border-t-action"
+        aria-hidden="true"
+      />
+      <p className="font-display text-lg font-bold text-dark">{VERWERKING_TEKSTEN[index]}</p>
+    </div>
+  );
+}
+
+type VerwarmingKeuze = "gas" | "elektrisch" | "stadsverwarming" | "blokverwarming";
+
+function VerwarmingStep({
+  onChoose,
+  onBack,
+}: {
+  onChoose: (keuze: VerwarmingKeuze) => void;
+  onBack: () => void;
+}) {
+  const [toonHulp, setToonHulp] = useState(false);
+
+  const opties: { label: string; icon: IconComponent; keuze: VerwarmingKeuze }[] = [
+    { label: "CV-ketel op gas", icon: FlameIcon, keuze: "gas" },
+    { label: "Al (deels) elektrisch / bestaande warmtepomp", icon: BoltIcon, keuze: "elektrisch" },
+    { label: "Stadsverwarming (warmtenet)", icon: NetworkIcon, keuze: "stadsverwarming" },
+    { label: "Blokverwarming (collectief in het gebouw)", icon: BuildingIcon, keuze: "blokverwarming" },
+  ];
+
+  return (
+    <Step heading="Hoe wordt je woning nu verwarmd?" onBack={onBack}>
+      <p className="mb-6 text-base leading-relaxed text-muted">
+        Dit bepaalt of een eigen warmtepomp voor jou een zinvolle keuze is. Bij een collectieve
+        warmtebron is dat meestal niet zo — dan laat ik je dat meteen weten.
+      </p>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {opties.map((opt) => (
+          <OptionCard
+            key={opt.keuze}
+            label={opt.label}
+            icon={opt.icon}
+            onClick={() => onChoose(opt.keuze)}
+          />
+        ))}
+        <OptionCard
+          label="Weet ik niet zeker"
+          icon={QuestionIcon}
+          selected={toonHulp}
+          onClick={() => setToonHulp(true)}
+        />
+      </div>
+      {toonHulp && (
+        <div className="mt-6 rounded-xl border border-green/15 bg-white p-5">
+          <p className="text-base leading-relaxed text-muted">
+            Heb je een cv-ketel in huis, of komt de warmte centraal het gebouw in?
+          </p>
+        </div>
+      )}
+    </Step>
+  );
+}
+
+/** E-mailcapture op de exit-schermen: gaat naar /api/aardgasvrij (gescheiden van
+ * installateur-leads) en nooit naar het offerteformulier. */
+function ExitEmailCapture({
+  postcode,
+  bron,
+  label,
+}: {
+  postcode: string;
+  bron: string;
+  label: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const [naam, setNaam] = useState("");
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [done, setDone] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!naam.trim()) {
+      setError("Vul je naam in");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setError("Vul een geldig e-mailadres in");
+      return;
+    }
+    setError("");
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/aardgasvrij", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ naam: naam.trim(), email: email.trim(), postcode, bron }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        setError(body?.error ?? "Er ging iets mis, probeer het later opnieuw.");
+        return;
+      }
+      setDone(true);
+    } catch {
+      setError("Er ging iets mis, probeer het later opnieuw.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  if (done) {
+    return (
+      <div className="flex items-start gap-3 rounded-xl border border-green/15 bg-white p-5">
+        <CheckCircleIcon className="h-6 w-6 flex-shrink-0 text-green" />
+        <div>
+          <p className="font-display text-base font-bold text-dark">
+            Bedankt, je e-mailadres is genoteerd!
+          </p>
+          <p className="mt-1 text-sm text-muted">
+            Ik neem contact op zodra er voor jou relevante informatie is.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!open) {
+    return (
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border-2 border-green/20 px-7 py-3.5 text-base font-bold text-dark transition-colors hover:border-action hover:text-action"
+      >
+        {label}
+      </button>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className="space-y-3 rounded-xl border border-green/15 bg-white p-5"
+    >
+      <p className="text-sm text-muted">
+        Laat je naam en e-mailadres achter, dan houd ik je op de hoogte. Je gegevens gaan niet naar
+        installateurs.
+      </p>
+      <FormField
+        name="exit-naam"
+        label="Naam"
+        icon={UserIcon}
+        type="text"
+        placeholder="Voornaam"
+        autoComplete="given-name"
+        value={naam}
+        onChange={setNaam}
+      />
+      <FormField
+        name="exit-email"
+        label="E-mailadres"
+        icon={MailIcon}
+        type="email"
+        placeholder="naam@voorbeeld.nl"
+        autoComplete="email"
+        value={email}
+        onChange={setEmail}
+        error={error}
+      />
+      <button
+        type="submit"
+        disabled={submitting}
+        className="inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-action px-7 py-4 text-base font-bold text-white transition-colors hover:bg-[#0c6a44] disabled:opacity-60"
+      >
+        {submitting ? "Versturen..." : "Verstuur"}
+        {!submitting && <ArrowRight className="h-5 w-5" />}
+      </button>
+    </form>
+  );
+}
+
+function Step({
+  heading,
+  onBack,
+  children,
+}: {
+  heading: string;
+  onBack?: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      {onBack && (
+        <button
+          type="button"
+          onClick={onBack}
+          className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-action"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Terug
+        </button>
+      )}
+      <h1 className="mb-8 font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">{heading}</h1>
+      {children}
+    </div>
+  );
+}
+
+function InfoCard({ label, value }: { label: string; value?: string }) {
+  return (
+    <div className="rounded-xl border border-green/15 bg-white p-4">
+      <p className="text-xs font-bold uppercase tracking-wide text-muted-light">{label}</p>
+      {value ? (
+        <p className="mt-1 font-display text-lg font-bold text-dark">{value}</p>
+      ) : (
+        <p className="mt-1 text-sm font-semibold text-muted">Niet gevonden via Kadaster — vul zelf in ↓</p>
+      )}
+    </div>
+  );
+}
+
+function OptionCard({
+  label,
+  icon: Icon,
+  selected,
+  onClick,
+}: {
+  label: string;
+  icon?: IconComponent;
+  selected?: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={!!selected}
+      className={`flex min-h-[96px] flex-col items-center justify-center gap-3 rounded-2xl border-2 px-4 py-6 text-center text-sm font-semibold transition-colors ${
+        selected
+          ? "border-action bg-action/10 text-dark"
+          : "border-green/10 bg-white text-dark/85 hover:border-action/40"
+      }`}
+    >
+      {Icon && (
+        <span
+          className={`flex h-12 w-12 items-center justify-center rounded-xl ${
+            selected ? "bg-action/15 text-action" : "bg-green/10 text-green"
+          }`}
+        >
+          <Icon className="h-6 w-6" />
+        </span>
+      )}
+      {label}
+    </button>
+  );
+}
+
+function ChipGroup({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  options: readonly string[];
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <div>
+      <p className="mb-2 text-sm font-bold text-dark">{label}</p>
+      <div className="flex flex-wrap gap-2">
+        {options.map((opt) => (
+          <button
+            key={opt}
+            type="button"
+            onClick={() => onChange(opt)}
+            aria-pressed={value === opt}
+            className={`min-h-[48px] rounded-full border-2 px-4 py-3 text-sm font-semibold transition-colors ${
+              value === opt
+                ? "border-action bg-action/10 text-action"
+                : "border-green/15 bg-white text-dark hover:border-action/40"
+            }`}
+          >
+            {opt}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function FormField({
+  icon: Icon,
+  label,
+  value,
+  onChange,
+  error,
+  name,
+  ...rest
+}: {
+  icon?: IconComponent;
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
+  name: string;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "value" | "onChange" | "name">) {
+  const errorId = `${name}-error`;
+  return (
+    <div>
+      <label htmlFor={name} className="mb-1.5 block text-sm font-bold text-dark">
+        {label}
+      </label>
+      <div className="relative">
+        {Icon && (
+          <Icon className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-action" />
+        )}
+        <input
+          id={name}
+          name={name}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          aria-invalid={!!error}
+          aria-describedby={error ? errorId : undefined}
+          className={`min-h-[48px] w-full rounded-xl border-2 border-green/15 bg-white py-3.5 ${
+            Icon ? "pl-11" : "pl-4"
+          } pr-4 text-base text-dark placeholder:text-muted-light outline-none transition-colors focus:border-action`}
+          {...rest}
+        />
+      </div>
+      {error && (
+        <p id={errorId} role="alert" className="mt-1.5 text-sm text-error">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
