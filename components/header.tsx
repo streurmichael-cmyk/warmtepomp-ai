@@ -35,9 +35,9 @@ export function Header() {
           ))}
           <Link
             href="/voor-installateurs"
-            className="text-xs font-medium text-muted-light transition-colors hover:text-action"
+            className="text-sm font-medium text-dark/70 transition-colors hover:text-action"
           >
-            Voor installateurs
+            Voor professionals
           </Link>
           <Link
             href="/vergelijk"
@@ -78,6 +78,15 @@ export function Header() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/voor-installateurs"
+                className="block py-2.5 text-base font-medium text-dark/80"
+                onClick={() => setOpen(false)}
+              >
+                Voor professionals
+              </Link>
+            </li>
             <li className="pt-2">
               <Link
                 href="/vergelijk"
@@ -86,15 +95,6 @@ export function Header() {
               >
                 Start keuzehulp
                 <ArrowRight className="h-4 w-4" />
-              </Link>
-            </li>
-            <li className="mt-2 border-t border-green/10 pt-3">
-              <Link
-                href="/voor-installateurs"
-                className="block py-1 text-sm font-medium text-muted-light"
-                onClick={() => setOpen(false)}
-              >
-                Voor installateurs
               </Link>
             </li>
           </ul>

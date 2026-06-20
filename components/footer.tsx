@@ -72,7 +72,7 @@ export function Footer() {
           <span>© {new Date().getFullYear()} warmtepomp.ai · Alle rechten voorbehouden</span>
           <span className="flex gap-4">
             <Link href="/voor-installateurs" className="hover:text-action">
-              Voor installateurs
+              Voor professionals
             </Link>
             <Link href="/privacy" className="hover:text-action">
               Privacy
