@@ -103,8 +103,10 @@ export async function POST(request: Request) {
     </div>
   `;
 
+  const resend = new Resend(apiKey);
+
+  // Kritieke pad: de interne notificatie naar info@ moet aankomen, anders faalt het request.
   try {
-    const resend = new Resend(apiKey);
     const { data: sent, error } = await resend.emails.send({
       from,
       to,
@@ -126,6 +128,35 @@ export async function POST(request: Request) {
       { error: "Er ging iets mis bij het versturen. Probeer het later opnieuw." },
       { status: 500 }
     );
+  }
+
+  // Best-effort: bevestigingsmail naar de aanmelder. Faalt deze, dan loggen we het maar
+  // geven nog steeds 200 — de interne notificatie is al binnen.
+  try {
+    const naam = escapeHtml(a.contactpersoon.trim());
+    const confirmHtml = `
+    <div style="font-family: sans-serif; color: #1a1a1a; line-height: 1.6;">
+      <p>Hoi ${naam},</p>
+      <p>Bedankt voor je aanmelding als partner-installateur bij warmtepomp.ai — ik heb je gegevens goed ontvangen.</p>
+      <p>Ik neem binnen enkele werkdagen zelf contact met je op voor een korte kennismaking: kijken of het wederzijds past en om je vragen te beantwoorden. Geen verplichtingen, gewoon een gesprek.</p>
+      <p>Heb je in de tussentijd een vraag? Beantwoord deze mail gerust.</p>
+      <p>Tot snel,<br>Michael — warmtepomp.ai</p>
+    </div>
+  `;
+    const { data: sentConfirm, error: confirmError } = await resend.emails.send({
+      from,
+      to: a.email.trim(),
+      subject: "Bedankt voor je aanmelding bij warmtepomp.ai",
+      html: confirmHtml,
+      replyTo: to,
+    });
+    if (confirmError) {
+      console.error("Bevestigingsmail naar aanmelder mislukt:", confirmError);
+    } else {
+      console.log(`Bevestigingsmail verstuurd naar aanmelder (id: ${sentConfirm?.id})`);
+    }
+  } catch (err) {
+    console.error("Bevestigingsmail naar aanmelder mislukt:", err);
   }
 
   return NextResponse.json({ success: true });
