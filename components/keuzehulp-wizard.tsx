@@ -216,6 +216,20 @@ export function KeuzehulpWizard({ bron, stad }: { bron?: string; stad?: string }
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const lookupGestart = useRef(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const eersteRender = useRef(true);
+
+  // Scroll de top van de wizard in beeld bij elke échte stapwissel, zodat het invoerveld
+  // van de nieuwe stap niet boven beeld valt. Niet bij de allereerste render (geen
+  // autoscroll bij paginalaad). scroll-margin-top op de container houdt de top vrij van
+  // de sticky header.
+  useEffect(() => {
+    if (eersteRender.current) {
+      eersteRender.current = false;
+      return;
+    }
+    rootRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [step]);
 
   function update<K extends keyof FormData>(field: K, value: FormData[K]) {
     setData((d) => ({ ...d, [field]: value }));
@@ -518,7 +532,7 @@ export function KeuzehulpWizard({ bron, stad }: { bron?: string; stad?: string }
   const klaarOmTeBevestigen = !!data.woningtype && !!data.bouwjaar && !!data.oppervlakte;
 
   return (
-    <>
+    <div ref={rootRef} className="scroll-mt-[4.25rem]">
       <ProgressIndicator step={step} />
 
       {step === "adres" && (
@@ -1412,7 +1426,7 @@ export function KeuzehulpWizard({ bron, stad }: { bron?: string; stad?: string }
           </Link>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
