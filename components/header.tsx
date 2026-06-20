@@ -34,6 +34,12 @@ export function Header() {
             </Link>
           ))}
           <Link
+            href="/voor-installateurs"
+            className="text-xs font-medium text-muted-light transition-colors hover:text-action"
+          >
+            Voor installateurs
+          </Link>
+          <Link
             href="/vergelijk"
             className="inline-flex items-center gap-1.5 rounded-lg bg-action px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0c6a44]"
           >
@@ -80,6 +86,15 @@ export function Header() {
               >
                 Start keuzehulp
                 <ArrowRight className="h-4 w-4" />
+              </Link>
+            </li>
+            <li className="mt-2 border-t border-green/10 pt-3">
+              <Link
+                href="/voor-installateurs"
+                className="block py-1 text-sm font-medium text-muted-light"
+                onClick={() => setOpen(false)}
+              >
+                Voor installateurs
               </Link>
             </li>
           </ul>
