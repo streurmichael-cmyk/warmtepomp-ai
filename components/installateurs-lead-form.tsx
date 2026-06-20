@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   BuildingIcon,
@@ -11,6 +11,36 @@ import {
   UserIcon,
 } from "./icons";
 import { RevenueNote } from "./revenue-note";
+
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+type GrecaptchaWindow = {
+  grecaptcha?: {
+    enterprise?: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  };
+};
+
+/** Haalt een reCAPTCHA Enterprise-token op; undefined als niet geconfigureerd/geladen. */
+async function getRecaptchaToken(): Promise<string | undefined> {
+  if (!RECAPTCHA_SITE_KEY || typeof window === "undefined") return undefined;
+  for (let i = 0; i < 30 && !(window as unknown as GrecaptchaWindow).grecaptcha?.enterprise; i++) {
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+  const enterprise = (window as unknown as GrecaptchaWindow).grecaptcha?.enterprise;
+  if (!enterprise) return undefined;
+  try {
+    return await new Promise<string>((resolve, reject) => {
+      enterprise.ready(() => {
+        enterprise.execute(RECAPTCHA_SITE_KEY!, { action: "lead" }).then(resolve, reject);
+      });
+    });
+  } catch {
+    return undefined;
+  }
+}
 
 const woningTypes = [
   "Tussenwoning",
@@ -40,6 +70,18 @@ export function InstallateursLeadForm({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+
+  // Laad het reCAPTCHA Enterprise-script (eenmalig) zodat ik vóór de POST een token kan ophalen.
+  useEffect(() => {
+    if (!RECAPTCHA_SITE_KEY) return;
+    const id = "recaptcha-enterprise";
+    if (document.getElementById(id)) return;
+    const script = document.createElement("script");
+    script.id = id;
+    script.src = `https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    document.head.appendChild(script);
+  }, []);
 
   function handleSearchSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -94,10 +136,11 @@ export function InstallateursLeadForm({
     setSubmitError("");
 
     try {
+      const recaptchaToken = await getRecaptchaToken();
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ postcode, woningtype, voornaam, telefoon, email }),
+        body: JSON.stringify({ postcode, woningtype, voornaam, telefoon, email, recaptchaToken }),
       });
       if (!res.ok) throw new Error("Request failed");
       setStep("done");
