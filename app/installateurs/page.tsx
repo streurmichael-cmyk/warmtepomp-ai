@@ -1,7 +1,7 @@
 import { Footer } from "@/components/footer";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
-import { InstallateursLeadForm } from "@/components/installateurs-lead-form";
+import { KeuzehulpWizard } from "@/components/keuzehulp-wizard";
 import { TrustBar } from "@/components/trust-bar";
 import { ConversationIcon, NetworkIcon, ShieldIcon } from "@/components/icons";
 import { buildMetadata } from "@/lib/seo";
@@ -62,7 +62,9 @@ export default function InstallateursPage() {
               installateur en neem zo snel mogelijk vrijblijvend contact met je op.
             </p>
 
-            <InstallateursLeadForm />
+            <div className="mx-auto mt-10 max-w-2xl text-left">
+              <KeuzehulpWizard bron="hub" />
+            </div>
           </div>
         </section>
 
