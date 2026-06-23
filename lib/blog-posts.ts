@@ -1059,6 +1059,199 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "airco-of-warmtepomp",
+    title: "Airco of warmtepomp? Het verschil eerlijk uitgelegd",
+    metaTitle: "Airco of Warmtepomp? Het Eerlijke Verschil (2026)",
+    description:
+      "Wil je koelen, verwarmen, of allebei? Ik leg eerlijk uit wanneer een airco slimmer is dan een warmtepomp — en wanneer juist niet. Inclusief het subsidieverschil.",
+    publishedAt: "2026-06-23",
+    intro:
+      "Kort gezegd: een airco koelt (en kan verwarmen) één of een paar ruimtes en is goedkoop in aanschaf, terwijl een lucht-water warmtepomp je hele huis verwarmt, je warm water regelt en je van het gas kan halen — en daar subsidie voor krijgt, wat voor een airco niet geldt. Welke bij je past, hangt dus niet af van welke 'beter' is, maar van wat je wilt bereiken. Hieronder leg ik het verschil eerlijk uit, ook als de uitkomst is dat je géén warmtepomp nodig hebt.",
+    sections: [
+      {
+        type: "text",
+        heading: "Ze zijn eigenlijk familie van elkaar",
+        paragraphs: [
+          "Verwarrend maar waar: een airco is technisch gezien een lucht-lucht warmtepomp. Hetzelfde principe — warmte uit de lucht verplaatsen — alleen geeft die de warmte (of koelte) direct aan de binnenlucht af, terwijl een lucht-water warmtepomp de warmte aan je cv-water geeft voor je radiatoren of vloerverwarming én je kraanwater. Dat ene verschil bepaalt bijna alles.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Wat een airco wel en niet doet",
+        paragraphs: [
+          "Een airco (lucht-lucht) is sterk in koelen en kan een ruimte ook efficiënt verwarmen. Voordelen: relatief goedkoop, snel geïnstalleerd, en in de zomer heerlijk. Maar: hij verwarmt alleen de ruimte(s) waar een binnenunit hangt, hij maakt géén warm tapwater, en hij haalt je niet van het gas af — je cv-ketel blijft nodig voor de rest van je huis en je warm water.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Wat een lucht-water warmtepomp doet",
+        paragraphs: [
+          "Een lucht-water warmtepomp neemt je centrale verwarming over: alle radiatoren of vloerverwarming én je warm water. Hybride combineert dat nog met je cv-ketel; volledig haalt je helemaal van het gas. Veel modellen kunnen in de zomer ook koelen. Het is een grotere investering en je woning moet het aankunnen (isolatie, lagetemperatuur-afgifte), maar het is de logische keuze als je doel verder gaat dan een koele woonkamer.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Het verschil dat veel mensen missen: subsidie",
+        paragraphs: [
+          "Dit is belangrijk en eerlijk om te weten: een airco (lucht-lucht) komt niet in aanmerking voor ISDE-subsidie. Een lucht-water, bodem-water of water-water warmtepomp wél. Wil je dus profiteren van de overheidsbijdrage, dan val je met een airco buiten de boot. Wat je voor een warmtepomp kunt krijgen in 2026 vind je actueel op mijn subsidiepagina.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/subsidie",
+        label: "Bekijk de actuele ISDE-subsidiebedragen",
+        description:
+          "Zie welk subsidiebedrag geldt per type warmtepomp in 2026 — en waarom een airco erbuiten valt.",
+      },
+      {
+        type: "text",
+        heading: "En de kosten?",
+        paragraphs: [
+          "Een airco is fors goedkoper in aanschaf dan een volledige warmtepomp — logisch, want hij doet ook minder. Maar reken niet alleen de aanschaf: de warmtepomp verlaagt je gasrekening structureel en vervangt op termijn je ketel, terwijl de airco daarbovenop komt. De volledige kostenplaat van een warmtepomp staat op mijn kostenpagina.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/kosten",
+        label: "Bekijk de kosten van een warmtepomp",
+        description:
+          "Aanschaf, installatie, subsidie en terugverdientijd per type warmtepomp op een rij.",
+      },
+      {
+        type: "text",
+        heading: "Koelen kan allebei, verwarmen is het verschil",
+        paragraphs: [
+          "In de zomer koelen ze allebei prima. Het echte onderscheid zit in de winter: een airco verwarmt de ruimte waar hij hangt, een warmtepomp je hele huis plus je warm water. Wie alleen 's zomers verkoeling zoekt en af en toe een ruimte wil bijverwarmen, heeft aan een airco genoeg. Wie van het gas af wil of zijn hele woning duurzaam wil verwarmen, komt bij de warmtepomp uit.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Wanneer kies je wat?",
+        paragraphs: [
+          "Eerlijk, zonder je iets aan te praten:",
+          "Kies een airco als je vooral wilt koelen, een beperkt budget hebt, en hooguit een ruimte wilt bijverwarmen. Je cv-ketel blijft dan gewoon je hoofdverwarming.",
+          "Kies een (hybride of volledige) warmtepomp als je je hele huis duurzaam wilt verwarmen, je warm water wilt meenemen, van het gas af wilt, en/of gebruik wilt maken van subsidie.",
+          "Voor sommige mensen is de airco simpelweg de slimmere, goedkopere keuze — en dan zeg ik dat gewoon.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Let op het geluid",
+        paragraphs: [
+          "Voor de buitenunit van een airco gelden dezelfde geluidsregels als voor een warmtepomp: maximaal 40 dB(A) 's nachts en 45 dB(A) overdag op de erfgrens. Houd daar rekening mee bij de plaatsing. Meer hierover lees je in mijn artikel over het geluid van een warmtepomp.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/blog/warmtepomp-geluid-buitenunit",
+        label: "Geluid van een warmtepomp: normen, regels en tips",
+        description:
+          "De geluidsnorm voor de buitenunit, plus praktische tips om gedoe met de buren te voorkomen.",
+      },
+      {
+        type: "text",
+        heading: "Veelgestelde vragen",
+        paragraphs: [
+          "Is een airco een soort warmtepomp? Ja. Een airco is een lucht-lucht warmtepomp. Het verschil met een 'echte' warmtepomp is dat een lucht-water warmtepomp je cv-water en warm water verwarmt in plaats van alleen de lucht in een ruimte.",
+          "Krijg ik subsidie op een airco? Nee. Lucht-lucht (airco) valt buiten de ISDE. Lucht-water, bodem-water en water-water warmtepompen komen wel in aanmerking.",
+          "Kan een warmtepomp ook koelen, net als een airco? Veel lucht-water warmtepompen kunnen in de zomer koelen, maar de koeling is doorgaans milder dan die van een airco. Wil je krachtig koelen, dan is een airco daar beter in.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/vergelijk",
+        label: "Doe de gratis keuzehulp",
+        description:
+          "In een paar vragen weet je of een warmtepomp logisch is voor jouw woning. Onafhankelijk van fabrikanten en merken, en gratis voor jou.",
+      },
+    ],
+  },
+  {
+    slug: "warmtepomp-geluid-buitenunit",
+    title: "Geluid van een warmtepomp: normen, regels en tips",
+    metaTitle: "Warmtepomp Geluid: Normen, Regels & Tips (2026)",
+    description:
+      "Hoeveel geluid mag een warmtepomp maken, en hoe voorkom je gedoe met de buren? De geluidsnorm voor 2026 eerlijk uitgelegd, plus praktische tips.",
+    publishedAt: "2026-06-23",
+    intro:
+      "Een warmtepomp met een buitenunit maakt geluid, maar de wet is duidelijk: op de erfgrens van een aangrenzende woning mag dat 's nachts maximaal 40 dB(A) zijn en overdag 45 dB(A). Met de juiste plaatsing en een modern toestel valt overlast prima te voorkomen — ook in een tussenwoning met een kleine tuin. Hieronder leg ik uit wat de norm precies inhoudt, wat het geluid bepaalt, en hoe je gedoe met de buren voor blijft.",
+    sections: [
+      {
+        type: "text",
+        heading: "Wat zegt de wet?",
+        paragraphs: [
+          "De geluidseisen staan in het Besluit bouwwerken leefomgeving (Bbl) en gelden sinds 1 april 2021 voor elke nieuw geplaatste buitenunit van een warmtepomp of airco. De kern: als jouw woning direct aan die van een ander grenst, mag de buitenunit op de erfgrens niet meer dan 40 dB(A) ('s nachts, 19:00–07:00) en 45 dB(A) (overdag) produceren.",
+          "Belangrijk om te weten: er bestaat géén vaste wettelijke minimumafstand van bijvoorbeeld 2 of 3 meter tot de buren. Bouwkundig geldt wel een halve meter, maar verder draait alles om het geluid op de erfgrens, niet om het aantal meters. Een stille, goed geplaatste warmtepomp mag dus dichter bij de grens staan dan een luidruchtige.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Hoeveel is 40 dB eigenlijk?",
+        paragraphs: [
+          "Niet veel. 40 dB(A) is vergelijkbaar met het zachte gezoem van een moderne koelkast of zacht gefluister. De norm is dus streng — en dat is maar goed ook, want een apparaat dat dag en nacht draait, wil je niet als constante bromtoon in de tuin van de buren hebben.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Wat bepaalt of je eronder blijft?",
+        paragraphs: [
+          "Drie dingen bepalen of je onder de norm blijft.",
+          "Het apparaat zelf. Het geluidsvermogen staat op het energielabel. Moderne, modulerende toestellen en monobloc-systemen zijn vaak stiller dan oudere split-units.",
+          "De afstand. Geluid neemt af naarmate je verder weg komt: elke verdubbeling van de afstand scheelt ongeveer 6 dB. Staat de unit verder van de erfgrens, dan komt er minder bij de buren aan.",
+          "De plek. Reflectie en resonantie kunnen geluid juist versterken — een nauwe steeg tussen twee muren of een plek onder een overstekend dak is ongunstig.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Tips om overlast te voorkomen",
+        paragraphs: [
+          "Zet de unit niet pal tegen de erfgrens en richt de ventilator niet op het terras of slaapkamerraam van de buren.",
+          "Houd, als er geen andere maatregelen zijn, bij voorkeur 3 tot 5 meter afstand tot de erfgrens aan.",
+          "Plaats de unit op een stevige, verharde ondergrond met trillingsdempers, zodat trillingen zich niet via de constructie naar binnen verplaatsen.",
+          "Lukt het niet binnen de norm te blijven? Een geluidsdempende omkasting reduceert het geluid vaak met 9 tot 15 dB(A), waardoor de unit alsnog dichter bij de grens kan. Laat wel ruimte voor luchtcirculatie — een volledig dichte kast schaadt de efficiëntie.",
+          "Kies bij een krappe tuin bewust een stil model. De meerprijs (€500–€1.500) weegt ruimschoots op tegen jarenlange burenruzie.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Vergunning en gemeente",
+        paragraphs: [
+          "Een buitenunit op de grond is ruimtelijk vaak vergunningvrij als hij niet hoger is dan 1 meter en maximaal 2 m² beslaat. Dat betekent niet dat je klaar bent: de geluidsnorm uit het Bbl geldt nog steeds, en gemeenten kunnen via het omgevingsplan aanvullende regels hebben. Plaats je de unit aan de gevel of op het dak, of woon je in een monument of beschermd stadsgezicht, controleer dat dan vooraf bij je gemeente.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Last van de buren — of zij van jou?",
+        paragraphs: [
+          "Ervaar jij of je buurman overlast, begin dan altijd met een gesprek. Komen jullie er samen niet uit, dan kan een buurtbemiddelaar helpen. Lukt dat ook niet, dan kun je een handhavingsverzoek indienen bij de gemeente; die kan een geluidsmeting laten uitvoeren. Als uiterste stap bestaat er nog het burenrecht (artikel 5:37 BW), maar in de praktijk wordt het zelden zo ver gespeeld.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Mijn advies",
+        paragraphs: [
+          "Vraag je installateur om vóór de installatie een geluidsberekening te maken — daar is een officiële rekentool voor. Zo weet je zeker dat je toestel op die plek aan de norm voldoet, en heb je meteen een rapport in handen mocht een buur ooit klagen. Dat kost je niets extra en voorkomt een hoop gedoe achteraf.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Veelgestelde vragen",
+        paragraphs: [
+          "Hoeveel geluid mag een warmtepomp maken? Op de erfgrens van een aangrenzende woning maximaal 40 dB(A) 's nachts en 45 dB(A) overdag, volgens het Besluit bouwwerken leefomgeving.",
+          "Hoe ver moet een warmtepomp van de erfgrens staan? Er is geen vaste minimumafstand (bouwkundig wel 0,5 meter). Het gaat om het geluid op de erfgrens; met een stil toestel en goede plaatsing kan de unit soms al binnen enkele meters voldoen.",
+          "Kan ik een bestaande, te luide warmtepomp stiller maken? Ja — met een geluidsdempende omkasting, trillingsdempers, een geluidsscherm of door de unit te verplaatsen.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/vergelijk",
+        label: "Doe de gratis keuzehulp",
+        description:
+          "Ontdek welke warmtepomp bij jouw woning past, ook qua plaatsing. Gratis en onafhankelijk van fabrikanten en merken.",
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
