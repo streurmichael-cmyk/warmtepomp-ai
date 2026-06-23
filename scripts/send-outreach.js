@@ -285,8 +285,10 @@ const REGIONS = {
 // Aparte templates voor energiecoöperaties/-loketten (A) en gemeentelijke
 // duurzaamheidspagina's (B). Alleen verstuurd naar geverifieerde adressen.
 
-function buildBacklinkBodyA(orgNaam) {
-  return `Beste ${orgNaam},
+// Aanhef altijd "Geachte heer/mevrouw," — nooit een organisatienaam invullen
+// (er is geen persoonsnaam bekend bij deze ontvangers).
+function buildBacklinkBodyA() {
+  return `Geachte heer/mevrouw,
 
 Mijn naam is Michael Streur. Ik heb warmtepomp.ai gebouwd — een onafhankelijke site waar huiseigenaren eerlijk advies krijgen over warmtepompen, inclusief een gratis keuzehulp, subsidieberekening en uitleg over kosten en terugverdientijd.
 
@@ -300,16 +302,14 @@ warmtepomp.ai
 info@warmtepomp.ai`;
 }
 
-function buildBacklinkBodyB(afdeling, gemeente, gemeenteSlug) {
-  return `Beste ${afdeling},
+function buildBacklinkBodyB(gemeente, gemeenteSlug) {
+  return `Geachte heer/mevrouw,
 
 Mijn naam is Michael Streur. Ik heb warmtepomp.ai gemaakt — een gratis, onafhankelijke site voor huiseigenaren die overwegen een warmtepomp aan te schaffen. De site bevat een keuzehulp, subsidie-informatie (ISDE 2026), kostenoverzichten en uitleg per woningtype.
 
 De informatie is eerlijk en niet gebonden aan commerciële belangen. Ik heb ook een pagina speciaal voor inwoners van ${gemeente}: warmtepomp.ai/installateurs/${gemeenteSlug}.
 
-Zou u een verwijzing naar warmtepomp.ai willen overwegen op uw pagina over duurzaamheid of aardgasvrij wonen?
-
-Alvast hartelijk dank voor uw overweging.
+Zou u een verwijzing naar warmtepomp.ai willen overwegen op uw pagina over duurzaam wonen of energiebesparende maatregelen?
 
 Met vriendelijke groet,
 Michael Streur
@@ -323,33 +323,44 @@ const BACKLINK_RECIPIENTS = [
     naam: "Regionaal Energieloket",
     email: "vragen@regionaalenergieloket.nl",
     subject: "Warmtepomp-informatie voor jouw bezoekers — link mogelijk?",
-    body: buildBacklinkBodyA("Regionaal Energieloket"),
+    body: buildBacklinkBodyA(),
   },
   {
     naam: "Duurzaam Bouwloket",
     email: "info@duurzaambouwloket.nl",
     subject: "Warmtepomp-informatie voor jouw bezoekers — link mogelijk?",
-    body: buildBacklinkBodyA("Duurzaam Bouwloket"),
+    body: buildBacklinkBodyA(),
   },
   {
     naam: "Zon op Edam-Volendam",
     email: "contact@zonopedam-volendam.nl",
     subject: "Warmtepomp-informatie voor jouw bezoekers — link mogelijk?",
-    body: buildBacklinkBodyA("Zon op Edam-Volendam"),
+    body: buildBacklinkBodyA(),
   },
   {
     naam: "Gemeente Purmerend (duurzaamheid)",
     email: "info@purmerend.nl",
     subject: "Onafhankelijke warmtepomp-informatie voor inwoners van Purmerend",
-    body: buildBacklinkBodyB("team Duurzaamheid van de gemeente Purmerend", "Purmerend", "purmerend"),
+    body: buildBacklinkBodyB("Purmerend", "purmerend"),
   },
 ];
 
-async function runBacklink(dryRun) {
-  const resend = dryRun ? null : new Resend(process.env.RESEND_API_KEY);
-  console.log(`Backlink-outreach: ${BACKLINK_RECIPIENTS.length} geverifieerde ontvangers.`);
+// Gemeentelijke duurzaamheidsafdelingen (Template B). Alleen gemeenten waarvan
+// het e-mailadres aantoonbaar op de gemeentewebsite staat; de rest overgeslagen.
+const BACKLINK_GEMEENTEN = [
+  {
+    naam: "Gemeente Eindhoven (duurzaamheid)",
+    email: "duurzaamheid@eindhoven.nl",
+    subject: "Onafhankelijke warmtepomp-informatie voor inwoners van Eindhoven",
+    body: buildBacklinkBodyB("Eindhoven", "eindhoven"),
+  },
+];
 
-  for (const ontvanger of BACKLINK_RECIPIENTS) {
+async function runBacklink(recipients, dryRun) {
+  const resend = dryRun ? null : new Resend(process.env.RESEND_API_KEY);
+  console.log(`Backlink-outreach: ${recipients.length} geverifieerde ontvangers.`);
+
+  for (const ontvanger of recipients) {
     if (dryRun) {
       console.log(`\n[dry-run] → ${ontvanger.naam} <${ontvanger.email}>`);
       console.log(`  Onderwerp: ${ontvanger.subject}`);
@@ -387,8 +398,10 @@ async function main() {
   const regioKey = process.argv[2];
   const dryRun = process.argv.includes("--dry-run");
 
-  if (regioKey !== "backlink" && (!regioKey || !REGIONS[regioKey])) {
-    console.error(`Geef een geldige regio op (of "backlink"). Beschikbaar: ${Object.keys(REGIONS).join(", ")}`);
+  const isBacklink = regioKey === "backlink" || regioKey === "backlink-gemeenten";
+
+  if (!isBacklink && (!regioKey || !REGIONS[regioKey])) {
+    console.error(`Geef een geldige regio op (of "backlink" / "backlink-gemeenten"). Beschikbaar: ${Object.keys(REGIONS).join(", ")}`);
     process.exit(1);
   }
 
@@ -398,7 +411,12 @@ async function main() {
   }
 
   if (regioKey === "backlink") {
-    await runBacklink(dryRun);
+    await runBacklink(BACKLINK_RECIPIENTS, dryRun);
+    return;
+  }
+
+  if (regioKey === "backlink-gemeenten") {
+    await runBacklink(BACKLINK_GEMEENTEN, dryRun);
     return;
   }
 
