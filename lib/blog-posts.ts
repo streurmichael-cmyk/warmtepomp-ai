@@ -237,6 +237,13 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "link",
+        href: "/blog/warmtepomp-geluid-buitenunit",
+        label: "Geluid van een warmtepomp: normen, regels en tips",
+        description:
+          "Juist in een tussenwoning met een kleine tuin staat de buitenunit dicht bij de buren — dit zijn de geluidsnormen en plaatsingstips.",
+      },
+      {
+        type: "link",
         href: "/vergelijk",
         label: "Ontvang een persoonlijke indicatie voor jouw tussenwoning",
         description:
@@ -418,6 +425,13 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "link",
+        href: "/blog/warmtepomp-geluid-buitenunit",
+        label: "Geluid van een warmtepomp: normen, regels en tips",
+        description:
+          "Het geluidsniveau verschilt per merk en model — zo kies je een stil toestel dat op de erfgrens binnen de norm blijft.",
+      },
+      {
+        type: "link",
         href: "/vergelijk",
         label: "Ontvang een indicatie zonder gebonden te zijn aan één merk",
         description:
@@ -492,6 +506,13 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "link",
+        href: "/blog/warmtepomp-geluid-buitenunit",
+        label: "Geluid van een warmtepomp: normen, regels en tips",
+        description:
+          "Waar je de buitenunit ook plaatst: op de erfgrens moet hij onder de wettelijke geluidsnorm blijven. Zo voorkom je gedoe met de buren.",
+      },
+      {
+        type: "link",
         href: "/warmtepompen",
         label: "Welk type warmtepomp past bij jouw situatie?",
         description: "Lees de uitleg over hybride, lucht-water, bodem-water en lucht-lucht warmtepompen.",
@@ -519,6 +540,13 @@ export const blogPosts: BlogPost[] = [
           "Binnen de hoofdkeuze hybride of volledig zijn er een paar technische varianten. Een lucht-water warmtepomp is de meest gekozen variant voor woningen: hij haalt warmte uit de buitenlucht en geeft die af aan je cv-water voor radiatoren of vloerverwarming én aan je warm water. Zowel hybride als volledig leverbaar — voor de meeste bestaande woningen komt de keuze hierop neer.",
           "Een lucht-lucht warmtepomp verwarmt (en koelt) de lucht rechtstreeks, zoals een airco. Handig voor losse ruimtes, maar hij regelt je warm water niet en is daardoor zelden de complete oplossing voor een heel huis. Een bodem-water warmtepomp haalt warmte uit de grond via een boring: zeer efficiënt en stil, maar duur in aanleg, en je hebt ruimte en vaak een vergunning nodig. Die is vooral interessant bij nieuwbouw of een ingrijpende verbouwing.",
         ],
+      },
+      {
+        type: "link",
+        href: "/blog/airco-of-warmtepomp",
+        label: "Airco of warmtepomp? Het verschil eerlijk uitgelegd",
+        description:
+          "Wil je vooral koelen en is een volledige warmtepomp niet logisch voor je woning? Dan kan een airco de slimmere keuze zijn — al krijg je er geen ISDE-subsidie op.",
       },
       {
         type: "text",
@@ -938,6 +966,13 @@ export const blogPosts: BlogPost[] = [
           "Een all-electric lucht-water warmtepomp, die je gasaansluiting volledig vervangt, ligt hoger: reken op ongeveer €8.500 tot €14.000 inclusief installatie, afhankelijk van de grootte van je woning en het benodigde vermogen. Voor een appartement met een lucht-lucht systeem ben je vaak goedkoper uit, met bedragen vanaf circa €4.000.",
           "De duurste optie is de bodem-water warmtepomp, die warmte uit de grond haalt. Door de noodzakelijke bodemboring of -lus liggen de totale kosten tussen de €12.000 en €20.000. Dit systeem is vooral interessant voor grotere, vrijstaande woningen met een hoge warmtevraag, waar het hoge rendement de investering deels terugverdient.",
         ],
+      },
+      {
+        type: "link",
+        href: "/blog/airco-of-warmtepomp",
+        label: "Airco of warmtepomp? Het verschil eerlijk uitgelegd",
+        description:
+          "Een airco (lucht-lucht) is goedkoper, maar verwarmt je cv-water en tapwater niet en komt niet in aanmerking voor ISDE-subsidie.",
       },
       {
         type: "link",
