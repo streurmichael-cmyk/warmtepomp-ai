@@ -2,7 +2,7 @@ import Image from "next/image";
 import { AddressLookupForm } from "./address-lookup-form";
 
 const stats = [
-  { value: "5 min", label: "tijd om je indicatie te krijgen" },
+  { value: "tot 70%", label: "minder gas (hybride)" },
   { value: "Gratis", label: "geen kosten, geen verplichtingen" },
   { value: "5 min", label: "tot je advies" },
 ];
