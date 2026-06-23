@@ -96,7 +96,7 @@ export function GET() {
     "",
     "> warmtepomp.ai is een onafhankelijk Nederlands platform met een gratis AI-keuzehulp die " +
       "huiseigenaren op basis van hun woning een persoonlijke warmtepomp-indicatie geeft. Ik ben " +
-      "aan geen enkel merk of fabrikant gebonden en krijg geen commissie van fabrikanten. De " +
+      "onafhankelijk van fabrikanten en merken. De " +
       "keuzehulp is gratis voor jou; ik ontvang een vergoeding van installateurs wanneer ik je " +
       "doorverwijs, wat de vergelijking niet beïnvloedt en jou niets extra kost.",
     "",

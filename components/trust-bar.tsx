@@ -13,7 +13,7 @@ const items = [
         `Gemiddeld ${GEMIDDELDE_BEOORDELING} ★ tevredenheid`,
       ]
     : []),
-  "100% onafhankelijk — geen commissie van merken",
+  "Onafhankelijk van fabrikanten en merken",
   "Gratis indicatie, geen verplichtingen",
   "Je gegevens gaan nooit naar derden voor marketing",
 ];
