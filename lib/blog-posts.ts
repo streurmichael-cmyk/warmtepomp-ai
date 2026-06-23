@@ -438,10 +438,19 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Is een Warmtepomp Geschikt voor Mijn Woning? Checklist",
     description:
       "Twijfel je of een warmtepomp geschikt is voor jouw woning? Deze complete checklist helpt je op basis van bouwjaar, isolatie, radiatoren en woningtype.",
-    publishedAt: "2026-06-16",
+    publishedAt: "2026-06-23",
     intro:
       "Een van de meest gestelde vragen die ik krijg is: 'is een warmtepomp wel geschikt voor mijn woning?' Het goede nieuws is dat voor vrijwel elke woning een passende oplossing bestaat — de vraag is vooral wélk type warmtepomp het beste past. Met deze checklist loop je zelf de belangrijkste punten na.",
     sections: [
+      {
+        type: "text",
+        heading: "De eerste keuze: hybride of volledig?",
+        paragraphs: [
+          "Welke warmtepomp bij je past, hangt vooral af van vier dingen: hoe goed je huis is geïsoleerd, wat voor afgiftesysteem je hebt (radiatoren of vloerverwarming), je bouwjaar, en je doel — wil je gas besparen of er helemaal vanaf? De allereerste afweging, en eigenlijk de enige die je vooraf hoeft te maken, is hybride versus volledig.",
+          "Een hybride warmtepomp werkt samen met je bestaande cv-ketel: de warmtepomp doet het grootste deel van het werk, de ketel springt bij op de koudste dagen. Hij is goedkoper in aanschaf, werkt ook in minder goed geïsoleerde huizen en bespaart al snel 30 tot 50% op je gasverbruik. Een logische tussenstap als je nog niet klaar bent om volledig van het gas te gaan.",
+          "Een volledige (all-electric) warmtepomp vervangt je ketel helemaal — je gaat van het gas af. De investering is hoger, en je woning moet het wel aankunnen: goede isolatie en bij voorkeur lagetemperatuur-afgifte. Dit is de toekomstbestendige keuze. Twijfel je tussen beide, dan is de isolatie van je huis meestal doorslaggevend — precies wat de checklist hieronder voor je nuanceert.",
+        ],
+      },
       {
         type: "text",
         heading: "1. Wat is het bouwjaar van je woning?",
@@ -501,6 +510,29 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           "Tot slot speelt je huidige energieverbruik een rol bij het bepalen van het juiste vermogen van de warmtepomp. Een installateur kijkt hiervoor vaak naar je gasverbruik van de afgelopen jaren, het aantal vierkante meters dat verwarmd moet worden, en het aantal bewoners.",
           "Een te kleine warmtepomp zal op koude dagen niet voldoende warmte kunnen leveren, terwijl een te grote warmtepomp onnodig duur is in aanschaf en minder efficiënt kan werken. Dit is precies waarom een goede opname door een installateur zo belangrijk is.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "De warmtepomptypen op een rij",
+        paragraphs: [
+          "Binnen de hoofdkeuze hybride of volledig zijn er een paar technische varianten. Een lucht-water warmtepomp is de meest gekozen variant voor woningen: hij haalt warmte uit de buitenlucht en geeft die af aan je cv-water voor radiatoren of vloerverwarming én aan je warm water. Zowel hybride als volledig leverbaar — voor de meeste bestaande woningen komt de keuze hierop neer.",
+          "Een lucht-lucht warmtepomp verwarmt (en koelt) de lucht rechtstreeks, zoals een airco. Handig voor losse ruimtes, maar hij regelt je warm water niet en is daardoor zelden de complete oplossing voor een heel huis. Een bodem-water warmtepomp haalt warmte uit de grond via een boring: zeer efficiënt en stil, maar duur in aanleg, en je hebt ruimte en vaak een vergunning nodig. Die is vooral interessant bij nieuwbouw of een ingrijpende verbouwing.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "En het vermogen en de SCOP?",
+        paragraphs: [
+          "Het juiste vermogen en de efficiëntie — de SCOP, oftewel hoeveel warmte je over een heel jaar per eenheid stroom krijgt — zijn belangrijk, maar dat is werk voor je installateur op basis van een goede warmteberekening. Laat je geen te zware pomp aansmeren: overgedimensioneerd is duurder en niet per se beter. Een eerlijke installateur rekent dit netjes voor je uit.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Zo kies je in het kort",
+        paragraphs: [
+          "Bepaal eerst je doel: gas besparen (hybride) of eraf (volledig). Kijk daarna naar je isolatie en afgiftesysteem — die bepalen of volledig nu al kan of dat hybride voorlopig verstandiger is. Kies binnen die richting meestal een lucht-water warmtepomp, en laat het exacte vermogen door een installateur berekenen.",
+          "Wil je niet zelf puzzelen? Mijn keuzehulp doet het in een paar vragen voor je: welk type bij je woning past, een indicatie van de kosten en terugverdientijd, en daarna koppel ik je desgewenst aan een gecertificeerde installateur. Onafhankelijk van fabrikanten en merken, en gratis voor jou.",
         ],
       },
       {
@@ -886,7 +918,7 @@ export const blogPosts: BlogPost[] = [
     metaTitle: "Warmtepomp Kosten 2026: Aanschaf, Subsidie & Meer",
     description:
       "Wat kost een warmtepomp in 2026? Een eerlijk overzicht van aanschaf- en installatiekosten per type, subsidie, gebruikskosten en terugverdientijd.",
-    publishedAt: "2026-06-14",
+    publishedAt: "2026-06-23",
     intro:
       "De kosten van een warmtepomp zijn voor veel huiseigenaren de doorslaggevende factor bij de keuze om over te stappen. Maar 'wat kost een warmtepomp?' is lastig in één bedrag te vangen: het hangt af van het type, je woning en de bijkomende werkzaamheden. In dit artikel zet ik alle kosten voor 2026 op een rij — van aanschaf en installatie tot subsidie, gebruikskosten en de terugverdientijd — zodat je weet waar je financieel aan toe bent.",
     sections: [
@@ -943,6 +975,7 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           "Een warmtepomp verlaagt je gasverbruik fors — bij een all-electric systeem zelfs tot nul — maar verhoogt tegelijk je stroomverbruik. Het netto-effect op je energierekening is in vrijwel alle geschikte woningen positief, maar hoe groot de besparing is, hangt af van de verhouding tussen de gas- en stroomprijs en van de efficiëntie van je systeem.",
           "Een gemiddeld huishouden bespaart met een warmtepomp doorgaans enkele honderden euro's per jaar op de energierekening. In goed geïsoleerde woningen en bij een hoog rendement loopt dit verder op. Heb je zonnepanelen, dan wek je een deel van je stroom zelf op, maar dat verkort de terugverdientijd van je warmtepomp maar beperkt: je panelen leveren vooral 's zomers, terwijl de warmtepomp juist 's winters verwarmt.",
+          "Reken die zonnestroom dus niet rijk in je warmtepomp-besparing. Daar komt bij dat de salderingsregeling per 1 januari 2027 stopt, waardoor je voor de stroom die je 's zomers teruglevert daarna minder terugkrijgt. Wat wél goed samengaat met zonnepanelen is een warmtepompboiler voor je warm water, want die draait het hele jaar door — ook in de zomer, als je panelen volop opwekken.",
         ],
       },
       {
@@ -956,8 +989,8 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Zo bereken je de terugverdientijd",
         paragraphs: [
-          "De terugverdientijd is misschien wel het belangrijkste getal om de kosten van een warmtepomp in perspectief te plaatsen. Je berekent hem door je netto-investering — de totale kosten min de subsidie — te delen door je jaarlijkse besparing op de energierekening. Kost je warmtepomp na subsidie bijvoorbeeld €7.000 en bespaar je €700 per jaar, dan is de terugverdientijd ongeveer tien jaar.",
-          "Voor een hybride warmtepomp is de terugverdientijd vaak korter, omdat de investering lager is, terwijl een all-electric systeem in een goed geïsoleerde woning op de lange termijn de grootste totale besparing oplevert. Zonnepanelen verlagen die terugverdientijd maar beperkt: ze wekken vooral 's zomers op, terwijl de warmtepomp voor verwarming in de winter draait. Omdat elke woning anders is, is een persoonlijke berekening de enige manier om echt te weten waar jij aan toe bent.",
+          "De terugverdientijd is misschien wel het belangrijkste getal om de kosten van een warmtepomp in perspectief te plaatsen. Je berekent hem door je netto-investering — de totale kosten min de subsidie — te delen door je jaarlijkse besparing op de energierekening. Het eerlijke cijfer vooraf: een volledige warmtepomp verdient zichzelf op eigen kracht meestal in zo'n 15 tot 20 jaar terug. Neem een doorsnee tussenwoning die volledig overstapt — reken je met een realistische netto besparing van ongeveer €0,45 per bespaarde kuub gas en de aanschaf na subsidie, dan kom je uit op grofweg 15 jaar. Geen mooi-weer-cijfer, maar wel een eerlijk cijfer.",
+          "Die termijn kantelt flink in jouw voordeel in twee gevallen. Kies je voor een hybride warmtepomp, dan is de investering lager terwijl je al snel fors gas bespaart — vaak de kortste terugverdientijd van allemaal. En is je cv-ketel toch aan vervanging toe, dan vergelijk je niet de volle prijs met 'niks', maar alleen de meerkosten ten opzichte van een nieuwe ketel (daarover hieronder meer). Zonnepanelen verlagen die terugverdientijd maar beperkt: ze wekken vooral 's zomers op, terwijl de warmtepomp voor verwarming in de winter draait. Omdat elke woning anders is, is een persoonlijke berekening de enige manier om echt te weten waar jij aan toe bent.",
         ],
       },
       {
@@ -1007,6 +1040,14 @@ export const blogPosts: BlogPost[] = [
         paragraphs: [
           "Tot slot een tip die op de kosten van je warmtepomp grote invloed heeft: isoleer eerst, als je de mogelijkheid hebt. Een beter geïsoleerde woning heeft minder warmte nodig, waardoor je met een lichtere — en dus goedkopere — warmtepomp toekunt en hij efficiënter draait.",
           "Daarmee verdien je je warmtepomp sneller terug én maak je op termijn een volledige overstap naar all-electric mogelijk. Isolatie en warmtepomp versterken elkaar dus: samen leveren ze de laagste energierekening en de kortste terugverdientijd op.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Eerlijk: wanneer een warmtepomp zich wél en niet uitbetaalt",
+        paragraphs: [
+          "Ik verkoop je geen gouden bergen. Een warmtepomp gaat ongeveer 15 tot 20 jaar mee. Reken je puur financieel en stap je standalone over op een volledige warmtepomp, dan zit de terugverdientijd dicht tegen de levensduur aan — dan is het geen vetpot. De warmtepomp wordt pas echt aantrekkelijk als je hem combineert met een natuurlijk vervangmoment van je ketel, voor een hybride opstelling kiest, óf als je naast geld ook waarde hecht aan comfort, koelen in de zomer en een lagere CO₂-uitstoot.",
+          "Eén ding dat niet in de kale terugverdientijd zit maar wel meetelt: een verduurzaamde woning met een beter energielabel is doorgaans meer waard en makkelijker te verkopen. Twijfel je of het in jouw situatie uit kan? Mijn keuzehulp rekent het door op basis van je woningtype, energielabel en gasverbruik — onafhankelijk van fabrikanten en merken, en gratis voor jou.",
         ],
       },
       {
