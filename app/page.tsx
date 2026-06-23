@@ -3,6 +3,7 @@ import { CitiesSection } from "@/components/cities-section";
 import { CtaBanner } from "@/components/cta-banner";
 import { ExampleAdviceCta } from "@/components/example-advice-cta";
 import { Faq } from "@/components/faq";
+import { FeaturedPosts } from "@/components/featured-posts";
 import { Footer } from "@/components/footer";
 import { FounderTrust } from "@/components/founder-trust";
 import { Header } from "@/components/header";
@@ -39,6 +40,7 @@ export default function Home() {
         <Reviews />
         <Faq />
         <RelatedLinks />
+        <FeaturedPosts />
         <CtaBanner />
       </main>
       <Footer />
