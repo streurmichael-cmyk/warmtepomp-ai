@@ -8,7 +8,6 @@ import { Logo } from "./logo";
 const links = [
   { href: "/warmtepompen", label: "Warmtepompen" },
   { href: "/kosten", label: "Kosten" },
-  { href: "/hoe-het-werkt", label: "Hoe het werkt" },
   { href: "/installateurs", label: "Installateurs" },
   { href: "/subsidie", label: "Subsidie" },
   { href: "/faq", label: "FAQ" },
@@ -38,6 +37,12 @@ export function Header() {
             className="text-sm font-medium text-dark/70 transition-colors hover:text-action"
           >
             Kennisbank
+          </Link>
+          <Link
+            href="/voor-installateurs"
+            className="text-sm font-medium text-dark/70 transition-colors hover:text-action"
+          >
+            Voor professionals
           </Link>
           <Link
             href="/vergelijk"
@@ -85,6 +90,15 @@ export function Header() {
                 onClick={() => setOpen(false)}
               >
                 Kennisbank
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/voor-installateurs"
+                className="block py-2.5 text-base font-medium text-dark/80"
+                onClick={() => setOpen(false)}
+              >
+                Voor professionals
               </Link>
             </li>
             <li className="pt-2">
