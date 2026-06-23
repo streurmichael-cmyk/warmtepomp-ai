@@ -1,4 +1,9 @@
-import { ISDE_HYBRIDE_MAX_TOT, ISDE_LUCHT_WATER_RANGE } from "./subsidie";
+import {
+  ISDE_HYBRIDE_MAX,
+  ISDE_HYBRIDE_MAX_TOT,
+  ISDE_LUCHT_WATER_MIN,
+  ISDE_LUCHT_WATER_RANGE,
+} from "./subsidie";
 
 export const oppervlakteOpties = [
   "< 75 m²",
@@ -200,18 +205,24 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
   let type: string;
   let kostenRange: string;
   let subsidie: string;
+  // Numeriek bedrag dat we in de terugverdientijd-berekening gebruiken. We rekenen
+  // bewust met de conservatieve ondergrens van de ISDE-range (eerder voorzichtig
+  // dan rooskleurig); appartementen die niet ISDE-subsidiabel zijn, krijgen €0.
+  let subsidieBedrag: number;
   let toelichting: string;
 
   if (huidigSysteem === "Hybride warmtepomp") {
     type = appartement ? "Lucht/lucht warmtepomp" : "Volledig elektrische warmtepomp (upgrade)";
     kostenRange = appartement ? "€2.500 – €4.500" : groteWoning ? "€5.500 – €8.000" : "€4.500 – €6.500";
     subsidie = appartement ? "doorgaans niet subsidiabel via ISDE" : ISDE_LUCHT_WATER_RANGE;
+    subsidieBedrag = appartement ? 0 : ISDE_LUCHT_WATER_MIN;
     toelichting =
       "Je hebt al een hybride warmtepomp die het grootste deel van het jaar verwarmt. De volgende stap is een volledig elektrische warmtepomp die de cv-ketel helemaal vervangt. Omdat een deel van de installatie er al staat, zijn de extra kosten vaak lager dan bij een eerste installatie.";
   } else if (isolatie === "Matig of oud") {
     type = "Hybride warmtepomp";
     kostenRange = appartement ? "€5.500 – €7.500" : groteWoning ? "€8.500 – €11.000" : "€7.000 – €9.500";
     subsidie = ISDE_HYBRIDE_MAX_TOT;
+    subsidieBedrag = ISDE_HYBRIDE_MAX;
     toelichting =
       "Een hybride warmtepomp is een slimme tussenstap op weg naar volledig gasloos: hij neemt het grootste deel van het stookjaar over en je cv-ketel springt alleen bij op de koudste dagen. Zo bespaar je nu al 30–50% op gas en ben je klaar voor de toekomst. De uiteindelijke richting is all-electric; een hybride maakt die overgang makkelijker en kun je doen zodra je woning beter geïsoleerd is.";
     if (overstapVoorkeur === "volledig") {
@@ -223,24 +234,28 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
       type = "Lucht/lucht warmtepomp";
       kostenRange = "€4.000 – €6.000";
       subsidie = "doorgaans niet subsidiabel via ISDE";
+      subsidieBedrag = 0;
       toelichting =
         "Met een redelijke isolatie kun je vaak al volledig elektrisch verwarmen, maar een hybride variant is een veiligere én goedkopere eerste stap. Welke het beste past hangt af van je budget en je radiatoren.";
     } else if (overstapVoorkeur === "hybride") {
       type = "Hybride warmtepomp";
       kostenRange = groteWoning ? "€8.500 – €11.000" : "€7.000 – €9.500";
       subsidie = ISDE_HYBRIDE_MAX_TOT;
+      subsidieBedrag = ISDE_HYBRIDE_MAX;
       toelichting =
         "Een hybride warmtepomp is een slimme tussenstap op weg naar volledig gasloos: hij neemt het grootste deel van het stookjaar over en je cv-ketel blijft als back-up. Zo bespaar je nu al 30–50% op gas en ben je klaar voor de toekomst. De uiteindelijke richting is all-electric; de overstap daarnaartoe kun je later makkelijk zetten.";
     } else if (overstapVoorkeur === "volledig") {
       type = "Lucht/water warmtepomp (volledig elektrisch)";
       kostenRange = groteWoning ? "€10.500 – €14.000" : "€9.500 – €13.000";
       subsidie = ISDE_LUCHT_WATER_RANGE;
+      subsidieBedrag = ISDE_LUCHT_WATER_MIN;
       toelichting =
         "Met een redelijke isolatie en jouw voorkeur om in één keer volledig van het gas af te gaan, is een volledig elektrische warmtepomp goed mogelijk. Let goed op je radiatoren — bij lage temperaturen werkt een warmtepomp het efficiëntst.";
     } else {
       type = "Hybride of volledig elektrische warmtepomp";
       kostenRange = groteWoning ? "€9.500 – €13.000" : "€7.500 – €10.500";
       subsidie = ISDE_LUCHT_WATER_RANGE;
+      subsidieBedrag = ISDE_LUCHT_WATER_MIN;
       toelichting =
         "Met een redelijke isolatie kun je vaak al volledig elektrisch verwarmen, maar een hybride variant is een veiligere én goedkopere eerste stap. Welke het beste past hangt af van je budget en je radiatoren.";
     }
@@ -248,6 +263,7 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
     type = appartement ? "Lucht/lucht warmtepomp" : "Lucht/water warmtepomp (volledig elektrisch)";
     kostenRange = appartement ? "€4.000 – €6.000" : groteWoning ? "€10.500 – €14.000" : "€8.500 – €11.000";
     subsidie = appartement ? "doorgaans niet subsidiabel via ISDE" : ISDE_LUCHT_WATER_RANGE;
+    subsidieBedrag = appartement ? 0 : ISDE_LUCHT_WATER_MIN;
     toelichting =
       "Je woning is goed geïsoleerd, dus een volledig elektrische warmtepomp kan je gasaansluiting helemaal vervangen. Dat levert de grootste besparing op.";
   }
@@ -257,11 +273,10 @@ export function berekenAdvies(input: AdviesInput): AdviesResultaat {
   // Indicatie van de netto investering (na subsidie) voor de terugverdientijd-berekening.
   const kostenGetallen = kostenRange.match(/[\d.]+/g)?.map((n) => Number(n.replace(/\./g, ""))) ?? [8000, 10000];
   const gemKosten = (kostenGetallen[0] + kostenGetallen[1]) / 2;
-  const subsidieGetal = Number(subsidie.match(/[\d.]+/)?.[0]?.replace(/\./g, "") ?? 0);
   // Is de cv-ketel ouder dan 15 jaar, dan moet die toch al vervangen worden; die
   // uitgespaarde vervangingskosten halen we van de netto investering af.
   const cvVervangingsbesparing = input.cvKetelOuderDan15 ? CV_VERVANGINGSKOSTEN : 0;
-  const nettoInvestering = Math.max(gemKosten - subsidieGetal - cvVervangingsbesparing, 1000);
+  const nettoInvestering = Math.max(gemKosten - subsidieBedrag - cvVervangingsbesparing, 1000);
 
   const terugverdientijd =
     besparingPerJaar > 0
