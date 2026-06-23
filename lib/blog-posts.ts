@@ -1,4 +1,4 @@
-import { ISDE_LUCHT_WATER_MAX_LABEL, ISDE_LUCHT_WATER_MAX_TOT } from "./subsidie";
+import { ISDE_LUCHT_WATER_RANGE } from "./subsidie";
 
 export type BlogSection =
   | { type: "text"; heading?: string; paragraphs: string[] }
@@ -38,7 +38,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Hoeveel subsidie kun je krijgen per type warmtepomp?",
         paragraphs: [
-          `De hoogte van de ISDE-subsidie hangt af van het type warmtepomp dat je laat plaatsen. Voor een lucht-water warmtepomp — de meest gekozen warmtepomp in Nederland — kun je doorgaans ${ISDE_LUCHT_WATER_MAX_TOT} subsidie ontvangen, afhankelijk van het thermisch vermogen van de installatie. Hoe hoger het vermogen, hoe hoger het subsidiebedrag, tot een bepaald maximum.`,
+          `De hoogte van de ISDE-subsidie hangt af van het type warmtepomp dat je laat plaatsen. Voor een lucht-water warmtepomp — de meest gekozen warmtepomp in Nederland — kun je doorgaans ${ISDE_LUCHT_WATER_RANGE} subsidie ontvangen, afhankelijk van het thermisch vermogen van de installatie. Hoe hoger het vermogen, hoe hoger het subsidiebedrag.`,
           "Voor een hybride warmtepomp, die je bestaande cv-ketel niet vervangt maar aanvult, ligt het subsidiebedrag doorgaans lager dan voor een volledig elektrische warmtepomp. Het exacte bedrag is wisselend en hangt af van het vermogen en type van de hybride installatie.",
           "Voor bodem-water (geothermische) warmtepompen geldt vaak een hoger subsidiebedrag, omdat deze installaties duurder zijn en doorgaans efficiënter werken. Voor lucht-lucht warmtepompen — die voornamelijk verwarmen én koelen via luchtcirculatie — geldt meestal geen of een zeer beperkte ISDE-subsidie.",
           "Omdat deze bedragen per jaar en per situatie kunnen verschillen, is het verstandig om je eigen situatie gratis te laten doorrekenen voordat je een definitieve keuze maakt.",
@@ -222,7 +222,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Kosten en subsidie voor een tussenwoning",
         paragraphs: [
           "Voor een gemiddelde tussenwoning liggen de kosten van een hybride warmtepomp doorgaans tussen €3.500 en €7.000, inclusief installatie. Een volledig elektrische lucht-water warmtepomp kost voor een tussenwoning meestal tussen €6.000 en €12.000, waarbij het lagere vermogen dat vaak volstaat voor een tussenwoning de prijs gunstig kan beïnvloeden ten opzichte van grotere woningtypes.",
-          `Via de ISDE-subsidie kun je voor een lucht-water warmtepomp ${ISDE_LUCHT_WATER_MAX_TOT} terugkrijgen, afhankelijk van het vermogen. Voor een hybride warmtepomp is het subsidiebedrag wisselend, maar ook hier kan een deel van de kosten worden terugverdiend.`,
+          `Via de ISDE-subsidie kun je voor een lucht-water warmtepomp ${ISDE_LUCHT_WATER_RANGE} terugkrijgen, afhankelijk van het vermogen. Voor een hybride warmtepomp is het subsidiebedrag wisselend, maar ook hier kan een deel van de kosten worden terugverdiend.`,
           "Reken je de aanschafkosten, subsidie en de netto besparing op je energierekening bij elkaar op, dan kom je voor veel tussenwoningen op een terugverdientijd van zo'n 12 tot 18 jaar voor de warmtepomp op zichzelf. Heb je ook zonnepanelen, beoordeel die dan als een losse investering — ze wekken vooral 's zomers op en verkorten de terugverdientijd van je warmtepomp daarom maar beperkt. Het blijft een van de meest impactvolle verduurzamingsmaatregelen voor dit woningtype, maar wees realistisch over de terugverdientijd.",
         ],
       },
@@ -575,7 +575,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Stap 4: reken de subsidie en terugverdientijd uit",
         paragraphs: [
           "Trek van de aanschafprijs eerst de ISDE-subsidie af om je netto-investering te bepalen. Voor een hybride warmtepomp van bijvoorbeeld €5.000 met een subsidie van €1.000 kom je op een netto-investering van €4.000. Bij een netto besparing van €300 per jaar is de terugverdientijd dan ongeveer 13 jaar — maar let op: dit is exclusief de stijgende gasprijzen, die de besparing in de praktijk vaak groter maken naarmate de jaren vorderen.",
-          `Voor een volledig elektrische warmtepomp van bijvoorbeeld €9.000 met ${ISDE_LUCHT_WATER_MAX_LABEL} subsidie kom je op een netto-investering van €6.500. Bij een netto besparing van €550 per jaar kom je dan uit op een terugverdientijd van ongeveer 12 jaar.`,
+          "Voor een volledig elektrische warmtepomp van bijvoorbeeld €9.000 met €2.500 subsidie kom je op een netto-investering van €6.500. Bij een netto besparing van €550 per jaar kom je dan uit op een terugverdientijd van ongeveer 12 jaar.",
           "Deze berekeningen zijn voorbeelden — de werkelijke cijfers voor jouw woning kunnen hoger of lager uitvallen, afhankelijk van je verbruik, isolatie en de energieprijzen op het moment van aanschaf.",
         ],
       },
@@ -835,7 +835,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Subsidie op een all-electric warmtepomp",
         paragraphs: [
-          "Voor een all-electric warmtepomp kun je via de ISDE-regeling een aanzienlijk subsidiebedrag terugkrijgen. Voor een lucht-water warmtepomp gaat het doorgaans om een bedrag tot ongeveer €2.500 à €3.500, afhankelijk van het thermisch vermogen van de installatie. Voor bodem-water warmtepompen ligt het subsidiebedrag vaak hoger, omdat deze systemen duurder en efficiënter zijn.",
+          `Voor een all-electric warmtepomp kun je via de ISDE-regeling een aanzienlijk subsidiebedrag terugkrijgen. Voor een lucht-water warmtepomp gaat het doorgaans om ${ISDE_LUCHT_WATER_RANGE}, afhankelijk van het thermisch vermogen van de installatie. Voor bodem-water warmtepompen ligt het subsidiebedrag vaak hoger, omdat deze systemen duurder en efficiënter zijn.`,
           "Juist omdat een all-electric warmtepomp je gasaansluiting volledig vervangt, valt deze in een gunstiger subsidiecategorie dan een hybride systeem. Dat maakt de netto-investering een stuk aantrekkelijker. Houd er wel rekening mee dat de exacte bedragen jaarlijks worden vastgesteld en dat het subsidiebudget op kan raken — vraag de subsidie dus tijdig aan.",
         ],
       },
@@ -926,7 +926,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Hoeveel subsidie haal je van de kosten af?",
         paragraphs: [
-          "De ISDE-subsidie verlaagt je netto-investering flink. Voor een all-electric lucht-water warmtepomp kun je doorgaans tot €2.500 à €3.500 terugkrijgen, afhankelijk van het vermogen. Voor een hybride warmtepomp ligt het subsidiebedrag lager, en voor bodem-water warmtepompen vaak hoger. Lucht-lucht systemen komen meestal niet in aanmerking.",
+          `De ISDE-subsidie verlaagt je netto-investering flink. Voor een all-electric lucht-water warmtepomp kun je doorgaans ${ISDE_LUCHT_WATER_RANGE} terugkrijgen, afhankelijk van het vermogen. Voor een hybride warmtepomp ligt het subsidiebedrag lager, en voor bodem-water warmtepompen vaak hoger. Lucht-lucht systemen komen meestal niet in aanmerking.`,
           "Belangrijk is dat de subsidie wordt uitgekeerd als een vast bedrag per installatie en niet als percentage van de factuur. Je weet dus vooraf vrij precies hoeveel er van je investering afgaat. De bedragen worden jaarlijks vastgesteld en het budget kan opraken, dus vraag de subsidie tijdig aan nadat je warmtepomp is geïnstalleerd.",
         ],
       },

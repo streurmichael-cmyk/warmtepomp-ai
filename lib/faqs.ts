@@ -1,4 +1,4 @@
-import { ISDE_LUCHT_WATER_MAX_TOT } from "./subsidie";
+import { ISDE_LUCHT_WATER_RANGE } from "./subsidie";
 
 export type FaqItem = {
   q: string;
@@ -18,7 +18,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Hoeveel subsidie kan ik krijgen voor een warmtepomp?",
-    a: `Via de ISDE-regeling (Investeringssubsidie Duurzame Energie) kun je in 2026 ${ISDE_LUCHT_WATER_MAX_TOT} subsidie ontvangen voor een warmtepomp. Het exacte bedrag hangt af van het type warmtepomp en het vermogen. Ik bereken jouw subsidie automatisch op basis van jouw situatie.`,
+    a: `Via de ISDE-regeling (Investeringssubsidie Duurzame Energie) kun je in 2026 subsidie krijgen voor een warmtepomp. Voor een lucht-water warmtepomp gaat het doorgaans om ${ISDE_LUCHT_WATER_RANGE}, oplopend met het thermisch vermogen. Het exacte bedrag hangt af van het type warmtepomp en het vermogen. Ik bereken jouw subsidie automatisch op basis van jouw situatie.`,
     link: {
       href: "/blog/warmtepomp-subsidie-2026-complete-gids",
       label: "Lees de complete ISDE-subsidiegids voor 2026",

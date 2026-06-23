@@ -21,7 +21,7 @@ import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
 import { getBlogPost } from "@/lib/blog-posts";
 import { cities, getCity, isCityIndexed } from "@/lib/cities";
 import { buildMetadata } from "@/lib/seo";
-import { ISDE_LUCHT_WATER_MAX_TOT } from "@/lib/subsidie";
+import { ISDE_LUCHT_WATER_RANGE } from "@/lib/subsidie";
 
 // Evergreen blogartikelen die op elke stadpagina relevant zijn als verdieping.
 const relatedArticleSlugs = [
@@ -266,7 +266,7 @@ export default async function StadPage({
                   </h2>
                   <p className="mt-2 text-base leading-relaxed text-muted">
                     Ook in {city.name} kun je via de ISDE-regeling van de Rijksoverheid subsidie
-                    krijgen voor je warmtepomp — {ISDE_LUCHT_WATER_MAX_TOT} voor een lucht-water warmtepomp,
+                    krijgen voor je warmtepomp — {ISDE_LUCHT_WATER_RANGE} voor een lucht-water warmtepomp,
                     afhankelijk van het vermogen. De aanvraag verloopt landelijk via
                     mijn.rvo.nl, ongeacht waar in Nederland je woont.
                   </p>
