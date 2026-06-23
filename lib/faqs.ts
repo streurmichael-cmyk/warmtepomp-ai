@@ -112,7 +112,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: "Verdien je dan aan mij?",
-    a: "Ik ontvang een vergoeding van de installateur wanneer ik je introduceer, niet van jou. Jouw offerteprijs wordt daar niet door beïnvloed.",
+    a: "Ik ontvang een vergoeding van de installateur wanneer ik je introduceer, niet van jou. Die vergoeding komt in de plaats van de advertentie- en acquisitiekosten die een installateur anders maakt om aan nieuwe klanten te komen — voor hem is het dus geen extra kostenpost, maar een andere. Daardoor verandert jouw offerteprijs er niet wezenlijk door.",
   },
   {
     q: "Is je vergelijking echt onafhankelijk?",

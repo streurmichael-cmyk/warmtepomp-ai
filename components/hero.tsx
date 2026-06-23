@@ -4,7 +4,7 @@ import { AddressLookupForm } from "./address-lookup-form";
 const stats = [
   { value: "5 min", label: "tijd om je indicatie te krijgen" },
   { value: "Gratis", label: "geen kosten, geen verplichtingen" },
-  { value: "100%", label: "onafhankelijke vergelijking" },
+  { value: "5 min", label: "tot je advies" },
 ];
 
 type HeroVariant = {
@@ -18,7 +18,7 @@ type HeroVariant = {
 const heroVariants: HeroVariant[] = [
   {
     // Variant 1 — voor twijfelaars
-    badge: "Gratis & onafhankelijke vergelijking",
+    badge: "Gratis & onafhankelijk van merken",
     headlinePrefix: "Is een warmtepomp slim voor ",
     headlineHighlight: "jouw woning?",
     headlineSuffix: " Ontdek het met warmtepomp.ai.",
@@ -26,7 +26,7 @@ const heroVariants: HeroVariant[] = [
   },
   {
     // Variant 2 — voor beslissers
-    badge: "Gratis & onafhankelijke vergelijking",
+    badge: "Gratis & onafhankelijk van merken",
     headlinePrefix: "Bespaar tot ",
     headlineHighlight: "€1.200 per jaar",
     headlineSuffix: " op je energierekening",
@@ -34,7 +34,7 @@ const heroVariants: HeroVariant[] = [
   },
   {
     // Variant 3 — voor sceptici
-    badge: "Gratis & onafhankelijke vergelijking",
+    badge: "Gratis & onafhankelijk van merken",
     headlinePrefix: "Warmtepomp: ",
     headlineHighlight: "geschikt voor jou of niet?",
     subline: "Ik zeg het eerlijk. Soms is het antwoord nee. Maar dan weet je het zeker.",
