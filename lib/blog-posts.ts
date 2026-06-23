@@ -756,6 +756,13 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "link",
+        href: "https://www.laadpaal.ai",
+        label: "Rijd je ook elektrisch? Kijk op laadpaal.ai",
+        description:
+          "Een elektrische auto laden is zo'n grootverbruiker die je overdag op je eigen zonnestroom kunt zetten. Naast warmtepompen help ik je op laadpaal.ai onafhankelijk met het kiezen van een laadpaal voor thuis.",
+      },
+      {
+        type: "link",
         href: "/vergelijk",
         label: "Bereken wat een warmtepomp jou oplevert",
         description:

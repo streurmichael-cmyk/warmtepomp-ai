@@ -109,12 +109,11 @@ export default async function BlogPostPage({
             <div className="space-y-8">
               {post.sections.map((section, i) => {
                 if (section.type === "link") {
-                  return (
-                    <Link
-                      key={i}
-                      href={section.href}
-                      className="flex items-center justify-between gap-4 rounded-2xl border border-green/15 bg-white p-6 transition-all hover:-translate-y-1 hover:border-green/35 hover:shadow-[0_16px_48px_rgba(34,181,114,0.08)]"
-                    >
+                  const isExternal = /^https?:\/\//.test(section.href);
+                  const cardClass =
+                    "flex items-center justify-between gap-4 rounded-2xl border border-green/15 bg-white p-6 transition-all hover:-translate-y-1 hover:border-green/35 hover:shadow-[0_16px_48px_rgba(34,181,114,0.08)]";
+                  const cardInner = (
+                    <>
                       <span>
                         <span className="block font-display text-base font-bold text-dark">
                           {section.label}
@@ -124,6 +123,26 @@ export default async function BlogPostPage({
                         </span>
                       </span>
                       <ArrowRight className="h-5 w-5 flex-shrink-0 text-green" />
+                    </>
+                  );
+
+                  if (isExternal) {
+                    return (
+                      <a
+                        key={i}
+                        href={section.href}
+                        target="_blank"
+                        rel="noopener"
+                        className={cardClass}
+                      >
+                        {cardInner}
+                      </a>
+                    );
+                  }
+
+                  return (
+                    <Link key={i} href={section.href} className={cardClass}>
+                      {cardInner}
                     </Link>
                   );
                 }

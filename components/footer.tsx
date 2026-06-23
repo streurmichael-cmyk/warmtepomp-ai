@@ -69,7 +69,21 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-green/10 pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <span>© {new Date().getFullYear()} warmtepomp.ai · Alle rechten voorbehouden</span>
+          <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            <span>© {new Date().getFullYear()} warmtepomp.ai · Alle rechten voorbehouden</span>
+            <span className="text-muted/60">·</span>
+            <span>
+              Mijn andere project:{" "}
+              <a
+                href="https://www.laadpaal.ai"
+                target="_blank"
+                rel="noopener"
+                className="hover:text-action"
+              >
+                laadpaal.ai
+              </a>
+            </span>
+          </span>
           <span className="flex gap-4">
             <Link href="/voor-installateurs" className="hover:text-action">
               Voor professionals
