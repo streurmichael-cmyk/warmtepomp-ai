@@ -11,7 +11,6 @@ const links = [
   { href: "/hoe-het-werkt", label: "Hoe het werkt" },
   { href: "/installateurs", label: "Installateurs" },
   { href: "/subsidie", label: "Subsidie" },
-  { href: "/blog", label: "Kennisbank" },
   { href: "/faq", label: "FAQ" },
   { href: "/over-ons", label: "Over mij" },
 ];
@@ -35,10 +34,10 @@ export function Header() {
             </Link>
           ))}
           <Link
-            href="/voor-installateurs"
+            href="/blog"
             className="text-sm font-medium text-dark/70 transition-colors hover:text-action"
           >
-            Voor professionals
+            Kennisbank
           </Link>
           <Link
             href="/vergelijk"
@@ -81,11 +80,11 @@ export function Header() {
             ))}
             <li>
               <Link
-                href="/voor-installateurs"
+                href="/blog"
                 className="block py-2.5 text-base font-medium text-dark/80"
                 onClick={() => setOpen(false)}
               >
-                Voor professionals
+                Kennisbank
               </Link>
             </li>
             <li className="pt-2">
