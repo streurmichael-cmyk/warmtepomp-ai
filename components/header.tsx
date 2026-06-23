@@ -11,6 +11,7 @@ const links = [
   { href: "/hoe-het-werkt", label: "Hoe het werkt" },
   { href: "/installateurs", label: "Installateurs" },
   { href: "/subsidie", label: "Subsidie" },
+  { href: "/blog", label: "Kennisbank" },
   { href: "/faq", label: "FAQ" },
   { href: "/over-ons", label: "Over mij" },
 ];
