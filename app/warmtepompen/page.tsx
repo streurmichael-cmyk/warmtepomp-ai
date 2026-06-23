@@ -17,6 +17,7 @@ import {
 } from "@/components/icons";
 import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
 import { buildMetadata, webPageJsonLd } from "@/lib/seo";
+import { ISDE_LUCHT_WATER_MAX_LABEL } from "@/lib/subsidie";
 
 export const metadata = buildMetadata({
   title: "Welke warmtepomp past bij mij? | warmtepomp.ai",
@@ -38,7 +39,7 @@ const types = [
     ],
     nadelen: ["Hogere aanschafprijs dan hybride", "Buitenunit maakt wat geluid"],
     kosten: "€6.000 – €12.000",
-    subsidie: "Tot €2.500",
+    subsidie: `Tot ${ISDE_LUCHT_WATER_MAX_LABEL}`,
     sterren: 5,
   },
   {

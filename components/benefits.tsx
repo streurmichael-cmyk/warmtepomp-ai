@@ -1,11 +1,12 @@
 import { ConversationIcon, ShieldIcon, SubsidyIcon } from "./icons";
+import { ISDE_LUCHT_WATER_MAX_LABEL } from "@/lib/subsidie";
 
 const benefits = [
   {
     icon: SubsidyIcon,
     title: "Actuele subsidie",
     body: "De tool houdt de actuele ISDE-subsidieregeling voor je bij en berekent automatisch hoeveel jij kunt ontvangen in 2026. Zo mis je geen voordeel.",
-    note: "Tot €2.500 voordeel",
+    note: `Tot ${ISDE_LUCHT_WATER_MAX_LABEL} voordeel`,
   },
   {
     icon: ConversationIcon,

@@ -9,6 +9,7 @@ import { SavingsCalculator } from "@/components/savings-calculator";
 import { ArrowRight, NetworkIcon, SubsidyIcon } from "@/components/icons";
 import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
 import { buildMetadata, webPageJsonLd } from "@/lib/seo";
+import { ISDE_HYBRIDE_MAX_LABEL, ISDE_LUCHT_WATER_MAX_LABEL } from "@/lib/subsidie";
 
 export const metadata = buildMetadata({
   title: "Wat kost een warmtepomp in 2026? | warmtepomp.ai",
@@ -25,8 +26,8 @@ const kosten = [
 ];
 
 const subsidieBedragen = [
-  { type: "Lucht-water warmtepomp", bedrag: "Tot €2.500" },
-  { type: "Hybride warmtepomp", bedrag: "Tot €2.300" },
+  { type: "Lucht-water warmtepomp", bedrag: `Tot ${ISDE_LUCHT_WATER_MAX_LABEL}` },
+  { type: "Hybride warmtepomp", bedrag: `Tot ${ISDE_HYBRIDE_MAX_LABEL}` },
   { type: "Bodem-water warmtepomp", bedrag: "Op aanvraag" },
   { type: "Lucht-lucht warmtepomp", bedrag: "Meestal niet" },
 ];

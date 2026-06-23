@@ -71,7 +71,7 @@ export function Hero() {
           <AddressLookupForm />
 
           <p className="mx-auto mt-4 max-w-xl text-sm text-muted lg:mx-0">
-            ✓ Geen registratie vereist · ✓ 100% gratis · ✓ Resultaat binnen 5 minuten
+            ✓ Geen registratie vereist · ✓ Gratis te gebruiken · ✓ Resultaat binnen 5 minuten
           </p>
         </div>
 

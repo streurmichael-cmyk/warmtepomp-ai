@@ -31,7 +31,7 @@ const hybride = [
   "Lagere investering dan all-electric.",
   "Geschikt bij matige isolatie — geen volledige verbouwing nodig.",
   "Behoudt je gasaansluiting en cv-ketel voor de koudste dagen.",
-  "Bespaart doorgaans 50–60% op je gasverbruik voor verwarming.",
+  "Bespaart doorgaans 30–50% op je gasverbruik voor verwarming.",
 ];
 
 const allElectric = [
@@ -60,7 +60,7 @@ const faqs = [
   },
   {
     q: "Hoeveel bespaar ik met een hybride warmtepomp?",
-    a: "Een hybride warmtepomp verlaagt je gasverbruik voor verwarming doorgaans met 50–60%. Je stroomverbruik stijgt iets; netto houd je vaak €20–40 per maand over, afhankelijk van isolatie, gebruik en tarieven.",
+    a: "Een hybride warmtepomp verlaagt je gasverbruik voor verwarming doorgaans met 30–50%. Je stroomverbruik stijgt iets; netto houd je vaak €20–40 per maand over, afhankelijk van isolatie, gebruik en tarieven.",
   },
 ];
 
@@ -239,7 +239,7 @@ export default function HybrideWarmtepompPage() {
             <div className="rounded-2xl border border-green/10 bg-white p-7">
               <p className="text-base leading-relaxed text-muted">
                 Een hybride warmtepomp verlaagt je gasverbruik voor verwarming doorgaans met{" "}
-                <span className="font-bold text-dark">50–60%</span>. Daar staat een iets hoger
+                <span className="font-bold text-dark">30–50%</span>. Daar staat een iets hoger
                 stroomverbruik tegenover.
               </p>
               <p className="mt-4 text-base leading-relaxed text-muted">

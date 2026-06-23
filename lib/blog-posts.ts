@@ -1,3 +1,5 @@
+import { ISDE_LUCHT_WATER_MAX_LABEL, ISDE_LUCHT_WATER_MAX_TOT } from "./subsidie";
+
 export type BlogSection =
   | { type: "text"; heading?: string; paragraphs: string[] }
   | { type: "link"; href: string; label: string; description: string };
@@ -36,7 +38,7 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Hoeveel subsidie kun je krijgen per type warmtepomp?",
         paragraphs: [
-          "De hoogte van de ISDE-subsidie hangt af van het type warmtepomp dat je laat plaatsen. Voor een lucht-water warmtepomp — de meest gekozen warmtepomp in Nederland — kun je doorgaans tot €2.500 subsidie ontvangen, afhankelijk van het thermisch vermogen van de installatie. Hoe hoger het vermogen, hoe hoger het subsidiebedrag, tot een bepaald maximum.",
+          `De hoogte van de ISDE-subsidie hangt af van het type warmtepomp dat je laat plaatsen. Voor een lucht-water warmtepomp — de meest gekozen warmtepomp in Nederland — kun je doorgaans ${ISDE_LUCHT_WATER_MAX_TOT} subsidie ontvangen, afhankelijk van het thermisch vermogen van de installatie. Hoe hoger het vermogen, hoe hoger het subsidiebedrag, tot een bepaald maximum.`,
           "Voor een hybride warmtepomp, die je bestaande cv-ketel niet vervangt maar aanvult, ligt het subsidiebedrag doorgaans lager dan voor een volledig elektrische warmtepomp. Het exacte bedrag is wisselend en hangt af van het vermogen en type van de hybride installatie.",
           "Voor bodem-water (geothermische) warmtepompen geldt vaak een hoger subsidiebedrag, omdat deze installaties duurder zijn en doorgaans efficiënter werken. Voor lucht-lucht warmtepompen — die voornamelijk verwarmen én koelen via luchtcirculatie — geldt meestal geen of een zeer beperkte ISDE-subsidie.",
           "Omdat deze bedragen per jaar en per situatie kunnen verschillen, is het verstandig om je eigen situatie gratis te laten doorrekenen voordat je een definitieve keuze maakt.",
@@ -144,7 +146,7 @@ export const blogPosts: BlogPost[] = [
           "De aanschaf- en installatiekosten van een hybride warmtepomp liggen doorgaans tussen de €3.500 en €7.000, afhankelijk van het merk, vermogen en de complexiteit van de installatie. Dit is aanzienlijk lager dan de €6.000 tot €12.000 die je vaak betaalt voor een volledig elektrische lucht-water warmtepomp.",
           "Met de ISDE-subsidie kun je een deel van deze kosten terugkrijgen, al ligt het subsidiebedrag voor hybride installaties doorgaans lager dan voor volledig elektrische warmtepompen.",
           "Wat de besparing betreft: huiseigenaren met een hybride warmtepomp zien in de praktijk vaak een gasbesparing van 30 tot 50%, afhankelijk van de woning en het stookgedrag. Dit vertaalt zich naar een maandelijkse besparing op de energierekening, al stijgt het stroomverbruik enigszins doordat de warmtepomp elektriciteit gebruikt. Per saldo houden de meeste huishoudens een netto besparing over, vooral bij de huidige gasprijzen.",
-          "Wees realistisch over de terugverdientijd: een hybride warmtepomp op zichzelf verdient zich voor veel woningen pas in zo'n 12 tot 18 jaar terug, afhankelijk van de subsidie, de gasprijs en het isolatieniveau. Heb je eigen zonnepanelen, dan kan dat korter — zeker vanaf 2027, wanneer de salderingsregeling stopt en het zelf gebruiken van je zonnestroom (bijvoorbeeld voor je warmtepomp) waardevoller wordt.",
+          "Wees realistisch over de terugverdientijd: een hybride warmtepomp op zichzelf verdient zich voor veel woningen pas in zo'n 12 tot 18 jaar terug, afhankelijk van de subsidie, de gasprijs en het isolatieniveau. Heb je ook zonnepanelen, beoordeel die dan als een losse investering: ze wekken vooral 's zomers op, terwijl je warmtepomp juist 's winters verwarmt, dus ze verkorten de terugverdientijd van je warmtepomp maar beperkt.",
         ],
       },
       {
@@ -220,8 +222,8 @@ export const blogPosts: BlogPost[] = [
         heading: "Kosten en subsidie voor een tussenwoning",
         paragraphs: [
           "Voor een gemiddelde tussenwoning liggen de kosten van een hybride warmtepomp doorgaans tussen €3.500 en €7.000, inclusief installatie. Een volledig elektrische lucht-water warmtepomp kost voor een tussenwoning meestal tussen €6.000 en €12.000, waarbij het lagere vermogen dat vaak volstaat voor een tussenwoning de prijs gunstig kan beïnvloeden ten opzichte van grotere woningtypes.",
-          "Via de ISDE-subsidie kun je voor een lucht-water warmtepomp tot €2.500 terugkrijgen, afhankelijk van het vermogen. Voor een hybride warmtepomp is het subsidiebedrag wisselend, maar ook hier kan een deel van de kosten worden terugverdiend.",
-          "Reken je de aanschafkosten, subsidie en de netto besparing op je energierekening bij elkaar op, dan kom je voor veel tussenwoningen op een terugverdientijd van zo'n 12 tot 18 jaar voor de warmtepomp op zichzelf. Heb je eigen zonnepanelen, dan kan dat korter, zeker vanaf 2027 wanneer de salderingsregeling stopt. Het blijft een van de meest impactvolle verduurzamingsmaatregelen voor dit woningtype, maar wees realistisch over de terugverdientijd.",
+          `Via de ISDE-subsidie kun je voor een lucht-water warmtepomp ${ISDE_LUCHT_WATER_MAX_TOT} terugkrijgen, afhankelijk van het vermogen. Voor een hybride warmtepomp is het subsidiebedrag wisselend, maar ook hier kan een deel van de kosten worden terugverdiend.`,
+          "Reken je de aanschafkosten, subsidie en de netto besparing op je energierekening bij elkaar op, dan kom je voor veel tussenwoningen op een terugverdientijd van zo'n 12 tot 18 jaar voor de warmtepomp op zichzelf. Heb je ook zonnepanelen, beoordeel die dan als een losse investering — ze wekken vooral 's zomers op en verkorten de terugverdientijd van je warmtepomp daarom maar beperkt. Het blijft een van de meest impactvolle verduurzamingsmaatregelen voor dit woningtype, maar wees realistisch over de terugverdientijd.",
         ],
       },
       {
@@ -573,7 +575,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Stap 4: reken de subsidie en terugverdientijd uit",
         paragraphs: [
           "Trek van de aanschafprijs eerst de ISDE-subsidie af om je netto-investering te bepalen. Voor een hybride warmtepomp van bijvoorbeeld €5.000 met een subsidie van €1.000 kom je op een netto-investering van €4.000. Bij een netto besparing van €300 per jaar is de terugverdientijd dan ongeveer 13 jaar — maar let op: dit is exclusief de stijgende gasprijzen, die de besparing in de praktijk vaak groter maken naarmate de jaren vorderen.",
-          "Voor een volledig elektrische warmtepomp van bijvoorbeeld €9.000 met €2.500 subsidie kom je op een netto-investering van €6.500. Bij een netto besparing van €550 per jaar kom je dan uit op een terugverdientijd van ongeveer 12 jaar.",
+          `Voor een volledig elektrische warmtepomp van bijvoorbeeld €9.000 met ${ISDE_LUCHT_WATER_MAX_LABEL} subsidie kom je op een netto-investering van €6.500. Bij een netto besparing van €550 per jaar kom je dan uit op een terugverdientijd van ongeveer 12 jaar.`,
           "Deze berekeningen zijn voorbeelden — de werkelijke cijfers voor jouw woning kunnen hoger of lager uitvallen, afhankelijk van je verbruik, isolatie en de energieprijzen op het moment van aanschaf.",
         ],
       },
@@ -940,7 +942,7 @@ export const blogPosts: BlogPost[] = [
         heading: "De gebruikskosten: wat verandert er op je energierekening?",
         paragraphs: [
           "Een warmtepomp verlaagt je gasverbruik fors — bij een all-electric systeem zelfs tot nul — maar verhoogt tegelijk je stroomverbruik. Het netto-effect op je energierekening is in vrijwel alle geschikte woningen positief, maar hoe groot de besparing is, hangt af van de verhouding tussen de gas- en stroomprijs en van de efficiëntie van je systeem.",
-          "Een gemiddeld huishouden bespaart met een warmtepomp doorgaans enkele honderden euro's per jaar op de energierekening. In goed geïsoleerde woningen en bij een hoog rendement loopt dit verder op. Heb je zonnepanelen, dan kun je een deel van de stroom voor je warmtepomp zelf opwekken, waardoor je nog meer bespaart en je terugverdientijd korter wordt.",
+          "Een gemiddeld huishouden bespaart met een warmtepomp doorgaans enkele honderden euro's per jaar op de energierekening. In goed geïsoleerde woningen en bij een hoog rendement loopt dit verder op. Heb je zonnepanelen, dan wek je een deel van je stroom zelf op, maar dat verkort de terugverdientijd van je warmtepomp maar beperkt: je panelen leveren vooral 's zomers, terwijl de warmtepomp juist 's winters verwarmt.",
         ],
       },
       {
@@ -988,7 +990,7 @@ export const blogPosts: BlogPost[] = [
         heading: "Alles in één keer: warmtepomp, zonnepanelen en HEMS",
         paragraphs: [
           "Steeds meer huishoudens kiezen ervoor om de warmtepomp te combineren met zonnepanelen, een thuisbatterij en een HEMS (Home Energy Management System). De zonnepanelen leveren de stroom voor je warmtepomp, de batterij slaat overschotten op, en de HEMS stuurt slim aan wanneer je opwekt, opslaat en verbruikt.",
-          "Los van elkaar tellen die investeringen flink op, maar als gecombineerd pakket valt de prijs vaak lager uit doordat de installatie in één keer gebeurt. Bovendien versterken de systemen elkaar: samen verlagen ze je rekening méér dan de som der delen, wat de gezamenlijke terugverdientijd verkort. Een HEMS heeft nog een bijkomend voordeel: door slim met piekmomenten om te gaan, helpt het tegen netcongestie — een groeiend probleem op het Nederlandse stroomnet.",
+          "Los van elkaar tellen die investeringen flink op, maar als gecombineerd pakket valt de installatieprijs vaak lager uit doordat het werk in één keer gebeurt. Let wel: zon en warmtepomp vullen elkaar voor de verwarming maar beperkt aan, want je panelen wekken vooral 's zomers op terwijl de warmtepomp 's winters verwarmt — reken dus niet op een veel kortere terugverdientijd door ze te combineren. Een HEMS heeft nog een bijkomend voordeel: door slim met piekmomenten om te gaan, helpt het tegen netcongestie — een groeiend probleem op het Nederlandse stroomnet.",
         ],
       },
       {

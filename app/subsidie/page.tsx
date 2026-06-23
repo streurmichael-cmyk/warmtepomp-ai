@@ -12,9 +12,10 @@ import {
 } from "@/components/icons";
 import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
 import { buildMetadata, webPageJsonLd } from "@/lib/seo";
+import { ISDE_LUCHT_WATER_MAX_LABEL, ISDE_LUCHT_WATER_MAX_TOT } from "@/lib/subsidie";
 
 export const metadata = buildMetadata({
-  title: "ISDE Subsidie warmtepomp 2026: tot €2.500 | warmtepomp.ai",
+  title: `ISDE Subsidie warmtepomp 2026: ${ISDE_LUCHT_WATER_MAX_TOT} | warmtepomp.ai`,
   description:
     "Alles over de ISDE-subsidie voor warmtepompen in 2026: hoogte van de bedragen per type, voorwaarden en hoe je de subsidie aanvraagt bij de RVO.",
   path: "/subsidie",
@@ -31,7 +32,7 @@ const bedragen = [
   {
     icon: SubsidyIcon,
     title: "Lucht-water warmtepomp",
-    amount: "Tot €2.500",
+    amount: `Tot ${ISDE_LUCHT_WATER_MAX_LABEL}`,
     description:
       "Het indicatieve maximumbedrag voor een lucht-water warmtepomp. De exacte hoogte hangt af van het vermogen van de installatie.",
     highlight: true,

@@ -7,6 +7,7 @@ import { countLeadsByAddress, saveLead } from "@/lib/leads-repository";
 import { sendLeadNotification } from "@/lib/lead-emails";
 import { getClientIp, isRateLimited } from "@/lib/rate-limit";
 import { verifyRecaptcha } from "@/lib/recaptcha";
+import { ISDE_LUCHT_WATER_MAX_TOT } from "@/lib/subsidie";
 
 /** Maximaal aantal leads dat één IP-adres ooit mag indienen. */
 const MAX_LEADS_PER_ADDRESS = 2;
@@ -75,7 +76,7 @@ function valideerLead(lead: LeadData): Record<string, string> {
 
 const RVO_FALLBACK_INFO = `
 Indicatieve ISDE-subsidiebedragen (2026, onder voorbehoud van wijzigingen):
-- Lucht-water warmtepomp: tot €2.500
+- Lucht-water warmtepomp: ${ISDE_LUCHT_WATER_MAX_TOT}
 - Hybride warmtepomp: wisselend bedrag, afhankelijk van vermogen, doorgaans lager dan een volledig elektrische warmtepomp
 - Bodem-water (bodemgebonden) warmtepomp: hoger subsidiebedrag, afhankelijk van vermogen, vraag op aanvraag
 - Lucht-lucht warmtepomp: doorgaans niet of beperkt subsidiabel via ISDE

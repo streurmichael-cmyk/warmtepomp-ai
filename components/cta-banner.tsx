@@ -19,7 +19,7 @@ export function CtaBanner() {
           <ArrowRight className="h-5 w-5" />
         </Link>
         <p className="mt-3 text-sm text-white">
-          Geen registratie vereist · 100% gratis · Resultaat binnen 5 minuten
+          Geen registratie vereist · Gratis te gebruiken · Resultaat binnen 5 minuten
         </p>
       </div>
     </section>
