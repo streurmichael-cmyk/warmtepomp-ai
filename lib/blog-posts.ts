@@ -1022,10 +1022,19 @@ export function getBlogPost(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug);
 }
 
-/** Geeft tot `count` andere blogartikelen terug voor interne links onderaan een artikel. */
+/** Geeft alleen reeds gepubliceerde posts (publishedAt ≤ vandaag), nieuwste eerst. */
+export function getPublishedPosts(): BlogPost[] {
+  const now = Date.now();
+  return blogPosts
+    .filter((post) => new Date(post.publishedAt).getTime() <= now)
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+}
+
+/** Geeft tot `count` andere gepubliceerde blogartikelen terug voor interne links onderaan een artikel. */
 export function getRelatedPosts(slug: string, count = 3): BlogPost[] {
-  const index = blogPosts.findIndex((post) => post.slug === slug);
-  if (index === -1) return blogPosts.slice(0, count);
-  const ordered = [...blogPosts.slice(index + 1), ...blogPosts.slice(0, index)];
+  const published = getPublishedPosts();
+  const index = published.findIndex((post) => post.slug === slug);
+  if (index === -1) return published.slice(0, count);
+  const ordered = [...published.slice(index + 1), ...published.slice(0, index)];
   return ordered.slice(0, count);
 }

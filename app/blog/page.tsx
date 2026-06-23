@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Header } from "@/components/header";
 import { TrustBar } from "@/components/trust-bar";
 import { ArrowRight } from "@/components/icons";
-import { blogPosts } from "@/lib/blog-posts";
+import { getPublishedPosts } from "@/lib/blog-posts";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -23,9 +23,7 @@ function formatDate(dateString: string) {
 }
 
 export default function BlogPage() {
-  const posts = [...blogPosts].sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+  const posts = getPublishedPosts();
 
   return (
     <>
