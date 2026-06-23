@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { cities, isCityIndexed } from "@/lib/cities";
-import { blogPosts } from "@/lib/blog-posts";
+import { getPublishedPosts } from "@/lib/blog-posts";
 import { SITE_URL } from "@/lib/seo";
 
 const staticPages: { path: string; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; priority: number }[] = [
@@ -45,7 +45,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
-  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+  // Alleen reeds gepubliceerde posts (publishedAt <= vandaag); geplande posts
+  // verschijnen vanzelf op hun publicatiedatum, consistent met blog-index en related posts.
+  const blogEntries: MetadataRoute.Sitemap = getPublishedPosts().map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
     lastModified: new Date(post.publishedAt),
     changeFrequency: "monthly",
