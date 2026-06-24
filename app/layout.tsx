@@ -32,13 +32,20 @@ export const metadata: Metadata = {
     title: "Welke warmtepomp past bij jouw woning? | warmtepomp.ai",
     description,
     url: "/",
-    images: [{ url: "/logo.png", width: 512, height: 512, alt: "warmtepomp.ai" }],
+    images: [
+      {
+        url: "https://www.warmtepomp.ai/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "warmtepomp.ai",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Welke warmtepomp past bij jouw woning? | warmtepomp.ai",
     description,
-    images: ["/logo.png"],
+    images: ["https://www.warmtepomp.ai/og-image.png"],
   },
   icons: {
     icon: [
