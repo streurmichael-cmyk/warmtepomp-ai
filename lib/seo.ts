@@ -86,13 +86,13 @@ export function buildMetadata({
       title,
       description,
       url,
-      images: [{ url: "/logo.png", width: 512, height: 512, alt: SITE_NAME }],
+      images: [{ url: "https://www.warmtepomp.ai/og-image.png", width: 1200, height: 630, alt: SITE_NAME }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/logo.png"],
+      images: ["https://www.warmtepomp.ai/og-image.png"],
     },
   };
 }
