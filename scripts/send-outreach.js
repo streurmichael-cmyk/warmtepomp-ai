@@ -12,6 +12,7 @@
 
 const path = require("path");
 const { Resend } = require("resend");
+const { blockReason } = require("./blocklist");
 
 try {
   process.loadEnvFile(path.join(__dirname, "..", ".env.local"));
@@ -361,6 +362,11 @@ async function runBacklink(recipients, dryRun) {
   console.log(`Backlink-outreach: ${recipients.length} geverifieerde ontvangers.`);
 
   for (const ontvanger of recipients) {
+    const reden = blockReason(ontvanger);
+    if (reden) {
+      console.log(`⊘ overgeslagen (blocklist: ${reden}) → ${ontvanger.naam} <${ontvanger.email}>`);
+      continue;
+    }
     if (dryRun) {
       console.log(`\n[dry-run] → ${ontvanger.naam} <${ontvanger.email}>`);
       console.log(`  Onderwerp: ${ontvanger.subject}`);
@@ -427,6 +433,11 @@ async function main() {
   console.log(`Outreach voor regio ${regio.label}: ${regio.installateurs.length} installateurs.`);
 
   for (const installateur of regio.installateurs) {
+    const reden = blockReason(installateur);
+    if (reden) {
+      console.log(`⊘ overgeslagen (blocklist: ${reden}) → ${installateur.naam} <${installateur.email}>`);
+      continue;
+    }
     if (dryRun) {
       console.log(`[dry-run] zou mail sturen naar ${installateur.naam} <${installateur.email}>`);
     } else {
