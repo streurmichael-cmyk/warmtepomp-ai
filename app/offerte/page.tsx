@@ -17,7 +17,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Warmtepomp Offerte Aanvragen 2026 | Gratis & Vrijblijvend",
   description:
-    "Vraag gratis en vrijblijvend warmtepomp-offertes aan en vergelijk 3 installateurs. Ik help je een goede offerte herkennen en de juiste keuze maken.",
+    "Vraag gratis en vrijblijvend warmtepomp-offertes aan en vergelijk tot 3 installateurs. Ik help je een goede offerte herkennen en de juiste keuze maken.",
   path: "/offerte",
 });
 
@@ -40,7 +40,7 @@ const checklist = [
 const tips = [
   {
     titel: "Vergelijk appels met appels",
-    body: "Zorg dat alle drie de offertes uitgaan van hetzelfde type en vermogen. Anders vergelijk je prijzen die niet bij elkaar horen.",
+    body: "Zorg dat de offertes uitgaan van hetzelfde type en vermogen. Anders vergelijk je prijzen die niet bij elkaar horen.",
   },
   {
     titel: "Kijk verder dan de prijs",
@@ -67,7 +67,7 @@ const faqs = [
   },
   {
     q: "Hoeveel offertes kan ik het beste vergelijken?",
-    a: "Ik raad aan om minimaal 3 offertes te vergelijken. Zo krijg je een eerlijk beeld van de prijs, het voorgestelde type en de voorwaarden, en voorkom je dat je te veel betaalt.",
+    a: "Ik raad aan om meerdere offertes te vergelijken. Zo krijg je een eerlijk beeld van de prijs, het voorgestelde type en de voorwaarden, en voorkom je dat je te veel betaalt.",
   },
   {
     q: "Hoe lang duurt het voordat ik een offerte ontvang?",
@@ -98,7 +98,7 @@ export default function OffertePage() {
               Offerte aanvragen
             </p>
             <h1 className="font-display text-3xl font-bold tracking-tight text-dark sm:text-5xl">
-              Warmtepomp offerte aanvragen: vergelijk 3 installateurs
+              Warmtepomp offerte aanvragen en installateurs vergelijken
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted">
               Ik help je in een paar minuten aan een eerlijke indicatie voor jouw woning. Daarna
@@ -156,7 +156,7 @@ export default function OffertePage() {
                 Vergelijken
               </p>
               <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
-                Hoe vergelijk je 3 offertes?
+                Hoe vergelijk je offertes?
               </h2>
             </div>
             <div className="grid gap-6 md:grid-cols-3">

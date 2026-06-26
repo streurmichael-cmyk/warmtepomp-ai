@@ -6,7 +6,7 @@ const links = [
     href: "/offerte",
     icon: ConversationIcon,
     title: "Offerte aanvragen",
-    desc: "Vergelijk vrijblijvend 3 installateurs",
+    desc: "Vergelijk vrijblijvend tot 3 installateurs",
   },
   {
     href: "/beste-warmtepomp",

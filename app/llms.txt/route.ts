@@ -58,7 +58,7 @@ const optioneel: { path: string; naam: string; beschrijving: string }[] = [
   {
     path: "/offerte",
     naam: "Offerte aanvragen",
-    beschrijving: "Vrijblijvend warmtepomp-offertes aanvragen en 3 installateurs vergelijken.",
+    beschrijving: "Vrijblijvend warmtepomp-offertes aanvragen en tot 3 installateurs vergelijken.",
   },
   {
     path: "/hoe-het-werkt",
