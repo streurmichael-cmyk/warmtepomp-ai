@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Installateurs review — warmtepomp.ai</title>
+<!-- Gedeelde blocklist (single source of truth, dual-use Node/browser). -->
+<script src="./blocklist.js"></script>
+<style>
+  :root {
+    --green: #0f7a52;
+    --green-dark: #0a5c3d;
+    --red: #b42318;
+    --bg: #f6f7f8;
+    --line: #e3e6e8;
+    --muted: #5b6770;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1b2227;
+    background: var(--bg);
+  }
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: #fff; border-bottom: 1px solid var(--line);
+    padding: 14px 20px;
+  }
+  h1 { margin: 0 0 4px; font-size: 18px; }
+  .sub { color: var(--muted); font-size: 13px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 10px; }
+  .stat { font-size: 13px; }
+  .stat b { font-variant-numeric: tabular-nums; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; }
+  .pill.keep { background: #e7f5ee; color: var(--green-dark); }
+  .pill.discard { background: #fdecea; color: var(--red); }
+  .pill.blocked { background: #f0f1f2; color: var(--muted); }
+  button {
+    font: inherit; cursor: pointer; border: 1px solid var(--line);
+    background: #fff; border-radius: 8px; padding: 6px 12px;
+  }
+  button:hover { border-color: #c7ccd0; }
+  .btn-primary { background: var(--green); color: #fff; border-color: var(--green); }
+  .btn-primary:hover { background: var(--green-dark); border-color: var(--green-dark); }
+  main { padding: 16px 20px 80px; max-width: 1100px; margin: 0 auto; }
+  .empty { color: var(--muted); padding: 40px 0; text-align: center; }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 16px; margin-bottom: 10px; display: grid;
+    grid-template-columns: 1fr auto; gap: 8px 16px; align-items: start;
+  }
+  .card.keep { border-color: var(--green); box-shadow: inset 4px 0 0 var(--green); }
+  .card.discard { opacity: .55; border-color: var(--red); box-shadow: inset 4px 0 0 var(--red); }
+  .name { font-weight: 600; font-size: 16px; }
+  .meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .meta a { color: var(--green-dark); }
+  .meta span + span::before { content: "·"; margin: 0 8px; color: #c7ccd0; }
+  .rating { font-variant-numeric: tabular-nums; }
+  .actions { display: flex; gap: 8px; align-self: center; }
+  .actions button.active.keep { background: var(--green); color: #fff; border-color: var(--green); }
+  .actions button.active.discard { background: var(--red); color: #fff; border-color: var(--red); }
+  details.blocked { margin: 4px 0 16px; }
+  details.blocked summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+  details.blocked ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 13px; }
+  .filechooser { background: #fff; border: 1px dashed var(--line); border-radius: 12px; padding: 24px; text-align: center; }
+  .hint { color: var(--muted); font-size: 13px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Installateurs review — warmtepomp.ai</h1>
+  <div class="sub">Leest <code>installateurs.csv</code> · blocklist al toegepast · niets wordt verzonden</div>
+  <div class="bar" id="bar" hidden>
+    <span class="stat">Totaal: <b id="s-total">0</b></span>
+    <span class="stat"><span class="pill blocked">geblokkeerd</span> <b id="s-blocked">0</b></span>
+    <span class="stat"><span class="pill keep">houden</span> <b id="s-keep">0</b></span>
+    <span class="stat"><span class="pill discard">weg</span> <b id="s-discard">0</b></span>
+    <span class="stat">onbeslist: <b id="s-todo">0</b></span>
+    <span style="flex:1"></span>
+    <button id="btn-keep-all">Alles houden</button>
+    <button class="btn-primary" id="btn-export">Exporteer gehouden (CSV)</button>
+  </div>
+</header>
+<main>
+  <div id="chooser" class="filechooser" hidden>
+    <p><strong>installateurs.csv</strong> kon niet automatisch geladen worden (dat gebeurt bij openen via <code>file://</code>).</p>
+    <input type="file" id="file" accept=".csv,text/csv" />
+    <div class="hint">Tip: of draai een lokale server in <code>scripts/</code> (<code>python3 -m http.server</code>) en open via http://localhost.</div>
+  </div>
+  <div id="list"></div>
+  <div id="blocked-wrap"></div>
+</main>
+
+<script>
+"use strict";
+
+// ── CSV helpers ────────────────────────────────────────────────────────────
+function parseCsv(text) {
+  const rows = [];
+  let row = [], field = "", i = 0, inQuotes = false;
+  text = text.replace(/^﻿/, ""); // strip BOM
+  while (i < text.length) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { field += '"'; i += 2; continue; }
+        inQuotes = false; i++; continue;
+      }
+      field += c; i++; continue;
+    }
+    if (c === '"') { inQuotes = true; i++; continue; }
+    if (c === ",") { row.push(field); field = ""; i++; continue; }
+    if (c === "\r") { i++; continue; }
+    if (c === "\n") { row.push(field); rows.push(row); row = []; field = ""; i++; continue; }
+    field += c; i++;
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows.filter(r => r.length && !(r.length === 1 && r[0] === ""));
+}
+
+function toCsv(headers, records) {
+  const esc = v => {
+    v = v == null ? "" : String(v);
+    return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+  };
+  const lines = [headers.map(esc).join(",")];
+  for (const rec of records) lines.push(headers.map(h => esc(rec[h])).join(","));
+  return lines.join("\n") + "\n";
+}
+
+// ── Kolom-mapping (flexibel: scraper gebruikt "bedrijf", maar val terug) ─────
+const FIELD_ALIASES = {
+  naam: ["bedrijf", "naam", "company", "name"],
+  stad: ["stad", "plaats", "city"],
+  provincie: ["provincie", "province"],
+  website: ["website", "url", "site"],
+  telefoon: ["telefoon", "tel", "phone"],
+  email: ["email", "e-mail", "mail"],
+  rating: ["rating", "score"],
+  reviews: ["aantal_reviews", "reviews", "review_count"],
+};
+
+function buildGetter(headers) {
+  const idx = {};
+  headers.forEach((h, i) => { idx[h.trim().toLowerCase()] = i; });
+  return function (row, key) {
+    for (const alias of (FIELD_ALIASES[key] || [key])) {
+      if (alias in idx) { const v = row[idx[alias]]; if (v != null && v !== "") return v.trim(); }
+    }
+    return "";
+  };
+}
+
+function websiteHost(url) {
+  if (!url) return "";
+  return url.replace(/^https?:\/\//i, "").replace(/^www\./i, "").split(/[/?#]/)[0].trim().toLowerCase();
+}
+
+// blocklist toepassen op naam, e-maildomein én website-domein
+function blockedReason(item) {
+  const bl = window.blocklist;
+  if (!bl) return null;
+  let r = bl.blockReason({ naam: item.naam, email: item.email });
+  if (r) return r;
+  const host = websiteHost(item.website);
+  if (host) { r = bl.blockReason({ naam: "", email: "_@" + host }); if (r) return r; }
+  return null;
+}
+
+// ── State ───────────────────────────────────────────────────────────────────
+let items = [];           // zichtbaar (niet geblokkeerd)
+let blocked = [];         // weggefilterd door blocklist
+let rawHeaders = [];      // originele CSV-kolommen (voor export)
+
+function render() {
+  document.getElementById("bar").hidden = items.length === 0 && blocked.length === 0;
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  if (!items.length && !blocked.length) {
+    list.innerHTML = '<div class="empty">Nog geen data geladen.</div>';
+    return;
+  }
+  if (!items.length) {
+    list.innerHTML = '<div class="empty">Alle bedrijven zijn door de blocklist weggefilterd.</div>';
+  }
+
+  items.forEach((it, i) => {
+    const card = document.createElement("div");
+    card.className = "card" + (it.decision ? " " + it.decision : "");
+
+    const left = document.createElement("div");
+    const meta = [];
+    if (it.stad) meta.push(`<span>${escapeHtml(it.stad)}</span>`);
+    if (it.website) meta.push(`<span><a href="${escapeAttr(it.website)}" target="_blank" rel="noopener">${escapeHtml(websiteHost(it.website) || it.website)}</a></span>`);
+    if (it.telefoon) meta.push(`<span><a href="tel:${escapeAttr(it.telefoon)}">${escapeHtml(it.telefoon)}</a></span>`);
+    if (it.email) meta.push(`<span><a href="mailto:${escapeAttr(it.email)}">${escapeHtml(it.email)}</a></span>`);
+    if (it.rating) meta.push(`<span class="rating">★ ${escapeHtml(it.rating)}${it.reviews ? " (" + escapeHtml(it.reviews) + ")" : ""}</span>`);
+    left.innerHTML = `<div class="name">${escapeHtml(it.naam || "(zonder naam)")}</div><div class="meta">${meta.join("")}</div>`;
+
+    const actions = document.createElement("div");
+    actions.className = "actions";
+    const keepBtn = document.createElement("button");
+    keepBtn.textContent = "Houden";
+    keepBtn.className = "keep" + (it.decision === "keep" ? " active" : "");
+    keepBtn.onclick = () => { it.decision = it.decision === "keep" ? null : "keep"; render(); };
+    const discardBtn = document.createElement("button");
+    discardBtn.textContent = "Weggooien";
+    discardBtn.className = "discard" + (it.decision === "discard" ? " active" : "");
+    discardBtn.onclick = () => { it.decision = it.decision === "discard" ? null : "discard"; render(); };
+    actions.append(keepBtn, discardBtn);
+
+    card.append(left, actions);
+    list.appendChild(card);
+    void i;
+  });
+
+  renderBlocked();
+  updateStats();
+}
+
+function renderBlocked() {
+  const wrap = document.getElementById("blocked-wrap");
+  wrap.innerHTML = "";
+  if (!blocked.length) return;
+  const d = document.createElement("details");
+  d.className = "blocked";
+  const items_ = blocked.map(b => `<li>${escapeHtml(b.naam || "(zonder naam)")}${b.stad ? " — " + escapeHtml(b.stad) : ""} <em>(${escapeHtml(b.reason)})</em></li>`).join("");
+  d.innerHTML = `<summary>${blocked.length} bedrijven weggefilterd door de blocklist — bekijken</summary><ul>${items_}</ul>`;
+  wrap.appendChild(d);
+}
+
+function updateStats() {
+  const keep = items.filter(it => it.decision === "keep").length;
+  const discard = items.filter(it => it.decision === "discard").length;
+  document.getElementById("s-total").textContent = items.length + blocked.length;
+  document.getElementById("s-blocked").textContent = blocked.length;
+  document.getElementById("s-keep").textContent = keep;
+  document.getElementById("s-discard").textContent = discard;
+  document.getElementById("s-todo").textContent = items.length - keep - discard;
+}
+
+function escapeHtml(s) { return String(s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c])); }
+function escapeAttr(s) { return String(s).replace(/["&<>]/g, c => ({ '"': "&quot;", "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c])); }
+
+// ── Laden ────────────────────────────────────────────────────────────────────
+function loadCsvText(text) {
+  const rows = parseCsv(text);
+  if (!rows.length) { alert("Lege of onleesbare CSV."); return; }
+  rawHeaders = rows[0].map(h => h.trim());
+  const get = buildGetter(rawHeaders);
+  items = []; blocked = [];
+  for (let r = 1; r < rows.length; r++) {
+    const row = rows[r];
+    const it = {
+      naam: get(row, "naam"), stad: get(row, "stad"), provincie: get(row, "provincie"),
+      website: get(row, "website"), telefoon: get(row, "telefoon"), email: get(row, "email"),
+      rating: get(row, "rating"), reviews: get(row, "reviews"),
+      _raw: rawHeaders.reduce((o, h, ci) => { o[h] = row[ci] != null ? row[ci] : ""; return o; }, {}),
+      decision: null,
+    };
+    const reason = blockedReason(it);
+    if (reason) { it.reason = reason; blocked.push(it); } else { items.push(it); }
+  }
+  document.getElementById("chooser").hidden = true;
+  render();
+}
+
+function exportKept() {
+  const kept = items.filter(it => it.decision === "keep");
+  if (!kept.length) { alert("Nog niets op 'houden' gezet."); return; }
+  const csv = toCsv(rawHeaders, kept.map(it => it._raw));
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "installateurs-gehouden.csv";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+document.getElementById("btn-export").onclick = exportKept;
+document.getElementById("btn-keep-all").onclick = () => { items.forEach(it => { if (!it.decision) it.decision = "keep"; }); render(); };
+document.getElementById("file").addEventListener("change", e => {
+  const f = e.target.files[0]; if (!f) return;
+  const reader = new FileReader();
+  reader.onload = () => loadCsvText(reader.result);
+  reader.readAsText(f);
+});
+
+// Probeer automatisch te laden (werkt via http://, faalt stil via file://).
+(function tryAutoLoad() {
+  fetch("./installateurs.csv")
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(loadCsvText)
+    .catch(() => { document.getElementById("chooser").hidden = false; });
+})();
+</script>
+</body>
+</html>

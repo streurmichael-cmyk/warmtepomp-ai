@@ -90,4 +90,12 @@ function isBlocked(entry) {
   return blockReason(entry) !== null;
 }
 
-module.exports = { BLOCKED_NAMES, BLOCKED_DOMAINS, isBlocked, blockReason, domainOf };
+const api = { BLOCKED_NAMES, BLOCKED_DOMAINS, isBlocked, blockReason, domainOf };
+
+// Dual-use: Node (require) én browser (window.blocklist, voor scripts/review.html).
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = api;
+}
+if (typeof window !== "undefined") {
+  window.blocklist = api;
+}
