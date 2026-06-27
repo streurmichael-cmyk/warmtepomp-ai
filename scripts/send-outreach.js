@@ -280,6 +280,13 @@ const REGIONS = {
       { naam: "Gisa Installatietechniek", email: "info@gisa.nl" },
     ],
   },
+  leeuwarden: {
+    label: "Leeuwarden",
+    installateurs: [
+      // Installatietechniek Dijkstra B.V. — Poptawei 180, 8919 AM Leeuwarden — tel. 058-2519226 — dijkstrabv.nl
+      { naam: "Installatietechniek Dijkstra", email: "info@dijkstrabv.nl", telefoon: "058-2519226", website: "https://dijkstrabv.nl" },
+    ],
+  },
 };
 
 // ── Backlink-outreach ────────────────────────────────────────────────────
