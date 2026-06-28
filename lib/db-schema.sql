@@ -53,3 +53,12 @@ create index if not exists aardgasvrij_signups_created_at_idx on aardgasvrij_sig
 -- Bron onderscheidt reguliere aardgasvrij-aanmeldingen van exit-contacten uit de keuzehulp
 -- (stadsverwarming/blokverwarming), zodat ze gescheiden blijven van installateur-leads.
 alter table aardgasvrij_signups add column if not exists bron text not null default 'aardgasvrij';
+
+-- IndexNow: houdt per blog-slug bij welke "signature" (updatedAt ?? publishedAt)
+-- al bij IndexNow is ingediend, zodat de cron alleen nieuwe of gewijzigde posts
+-- opnieuw indient (idempotent, geen dubbele indieningen).
+create table if not exists indexnow_submissions (
+  slug text primary key,
+  signature text not null,
+  submitted_at timestamptz not null default now()
+);

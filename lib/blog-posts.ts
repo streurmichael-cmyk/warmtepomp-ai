@@ -11,6 +11,10 @@ export type BlogPost = {
   metaTitle?: string;
   description: string;
   publishedAt: string;
+  /** Optioneel: datum (YYYY-MM-DD) van de laatste inhoudelijke wijziging. Wordt
+   *  niet in de UI getoond; gebruikt door de IndexNow-cron om een gewijzigde post
+   *  opnieuw in te dienen wanneer deze nieuwer is dan de vorige indiening. */
+  updatedAt?: string;
   intro: string;
   sections: BlogSection[];
 };
