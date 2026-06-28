@@ -1287,6 +1287,205 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "7-warmtepompmythes-ontkracht",
+    title: "7 warmtepompmythes ontkracht (en wat er wél klopt)",
+    description:
+      "Een warmtepomp werkt niet in een oud huis, is altijd te duur en maakt veel herrie? Ik loop de 7 hardnekkigste mythes langs en vertel er eerlijk bij wanneer ze tóch een kern van waarheid hebben.",
+    publishedAt: "2026-06-28",
+    intro:
+      "Sinds ik me verdiep in warmtepompen, valt me één ding op: er gaan ontzettend veel halve waarheden rond. Op verjaardagen, in Facebook-groepen, soms zelfs van een installateur die er belang bij heeft om je iets aan te praten — of juist af te raden. Ik vind het belangrijk om hier eerlijk in te zijn. Sommige mythes zijn echt onzin. Maar een paar hebben een kern van waarheid, en die kern verzwijg ik niet. Hieronder de 7 die ik het vaakst tegenkom.",
+    sections: [
+      {
+        type: "text",
+        heading: "Mythe 1: \"Een warmtepomp werkt niet in een oud huis\"",
+        paragraphs: [
+          "Dit is de hardnekkigste, en hij klopt niet — maar er zit wel een belangrijke nuance in.",
+          "Een warmtepomp werkt op een lagere aanvoertemperatuur dan een cv-ketel: grofweg 35 tot 55 °C in plaats van 70 tot 80 °C. In een slecht geïsoleerd huis is meer warmte nodig om het op temperatuur te krijgen, en dan moet die warmte ergens vandaan komen. Dat betekent niet dat het níét kan, maar wel dat je vaak eerst iets aan isolatie of aan je radiatoren moet doen.",
+          "De eerlijke versie: in een oud huis kán een warmtepomp prima werken, maar zelden zomaar \"plug and play\". Een hybride warmtepomp is hier vaak de logische tussenstap, omdat de cv-ketel bijspringt op de koudste dagen. Wil je weten of jouw woning geschikt is, dan helpt mijn keuzehulp je een eind op weg.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Mythe 2: \"Je moet je hele huis verbouwen en alle radiatoren eruit\"",
+        paragraphs: [
+          "Niet waar. Of je radiatoren kunnen blijven, hangt af van of ze bij een lagere watertemperatuur nog genoeg warmte afgeven.",
+          "Er is een simpele test die je zelf kunt doen: zet de aanvoertemperatuur van je cv-ketel een tijdje op 50 °C en kijk of je woning op een koude dag warm wordt en blijft. Lukt dat, dan zijn je radiatoren waarschijnlijk geschikt en hoeft er weinig te veranderen. Lukt het niet, dan is een deel vervangen of vloerverwarming bijplaatsen een optie — maar dat is iets anders dan \"het hele huis verbouwen\".",
+          "Ik heb hier een aparte uitleg over geschreven: moeten je oude radiatoren eruit?",
+        ],
+      },
+      {
+        type: "link",
+        href: "/blog/warmtepomp-oude-radiatoren",
+        label: "Moeten je oude radiatoren eruit?",
+        description:
+          "Lees wanneer je bestaande radiatoren kunnen blijven en hoe je het zelf test met de 50-graden-test.",
+      },
+      {
+        type: "text",
+        heading: "Mythe 3: \"Een warmtepomp maakt te veel herrie\"",
+        paragraphs: [
+          "Moderne lucht-warmtepompen zijn een stuk stiller dan de eerste generatie, maar geluid is geen verzonnen zorg — het hangt vooral af van plaatsing.",
+          "In Nederland geldt sinds 1 april 2021 een norm in het Bouwbesluit: een buitenunit mag op de erfgrens van de buren niet meer dan 40 dB(A) 's nachts en 45 dB(A) overdag produceren. Een nette installateur houdt daar rekening mee door de unit goed te plaatsen (niet pal onder een slaapkamerraam van de buren) en eventueel een omkasting te gebruiken.",
+          "De eerlijke versie: een slecht geplaatste unit kan wél hinderlijk zijn. Het is geen mythe dat geluid bestaat, het is een mythe dat het onvermijdelijk is. Lees meer over het geluid van de buitenunit.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/blog/warmtepomp-geluid-buitenunit",
+        label: "Het geluid van de buitenunit",
+        description:
+          "De geluidsnorm voor 2026 en praktische tips om gedoe met de buren te voorkomen.",
+      },
+      {
+        type: "text",
+        heading: "Mythe 4: \"Een warmtepomp verdient zichzelf snel terug\"",
+        paragraphs: [
+          "Deze draai ik juist om, want hier wordt vaak té optimistisch over gedaan — ook door verkopers.",
+          "Een volledig elektrische warmtepomp die je los aanschaft in een bestaande woning, verdien je meestal niet binnen een paar jaar terug. Reken eerder op zo'n 15 tot 20 jaar, afhankelijk van je gasverbruik, je isolatie en de energieprijzen. De terugverdientijd is korter als je je cv-ketel tóch moest vervangen (dan vergelijk je de meerprijs, niet de hele aanschaf) of als je voor een hybride opstelling kiest.",
+          "Ik noem dit bewust, omdat ik niet wil dat je straks teleurgesteld bent. Een warmtepomp is vaak een goede keuze, maar \"snel terugverdiend\" is het meestal niet. Wil je het voor jouw situatie doorrekenen, kijk dan bij de kosten van een warmtepomp.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/blog/warmtepomp-kosten-2026",
+        label: "De kosten van een warmtepomp",
+        description:
+          "Wat een warmtepomp in 2026 kost en hoe de terugverdientijd er eerlijk uitziet.",
+      },
+      {
+        type: "text",
+        heading: "Mythe 5: \"Met zonnepanelen verdien je je warmtepomp veel sneller terug\"",
+        paragraphs: [
+          "Logisch dat mensen dit denken — gratis stroom voor je warmtepomp, toch? In de praktijk valt het tegen, en ik zeg dat liever eerlijk dan dat je het achteraf ontdekt.",
+          "Het probleem is timing. Je zonnepanelen leveren het meest op in de zomer, juist wanneer je warmtepomp nauwelijks verwarmt. In de winter, als je warmtepomp het hardst werkt, leveren je panelen het minst. Die seizoensmismatch zorgt ervoor dat zonnepanelen je warmtepomp níét wezenlijk sneller terugverdienen. Daar komt bij dat de salderingsregeling per 1 januari 2027 verdwijnt, waardoor terugleveren minder oplevert.",
+          "Zonnepanelen en een warmtepomp zijn allebei prima keuzes — maar zie ze als twee losse investeringen, niet als een combinatie die elkaar versterkt op de rekening. Ik heb dit verder uitgewerkt in warmtepomp en zonnepanelen.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/blog/warmtepomp-zonnepanelen-besparing-berekenen",
+        label: "Warmtepomp en zonnepanelen",
+        description:
+          "Waarom de combinatie minder oplevert dan je denkt, met een eerlijke berekening.",
+      },
+      {
+        type: "text",
+        heading: "Mythe 6: \"Een warmtepomp krijgt je huis 's winters niet warm\"",
+        paragraphs: [
+          "Onterecht. Een goed gedimensioneerde warmtepomp houdt je woning ook bij vorst comfortabel.",
+          "De truc zit in de dimensionering en de instelling. Een warmtepomp hoeft maar een paar dagen per jaar zijn maximale vermogen te leveren — de echt koude dagen. De rest van het stookseizoen draait hij op een lagere temperatuur, juist heel efficiënt. De meeste systemen hebben daarnaast een elektrisch element dat op de koudste dagen kan bijspringen.",
+          "De eerlijke versie: een verkeerd berekende of te kleine warmtepomp kán tekortschieten. Het is dus geen reden om af te haken, maar wél een reden om voor een installateur te kiezen die een goede warmteverliesberekening maakt in plaats van een natte-vingerschatting.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Mythe 7: \"Een warmtepomp is sowieso te duur, dat kan ik niet betalen\"",
+        paragraphs: [
+          "De aanschaf is fors, dat ontken ik niet. Maar \"te duur\" is te kort door de bocht zonder naar de subsidie en je situatie te kijken.",
+          "Via de ISDE-subsidie krijg je een deel van de kosten van een lucht-water- of hybride warmtepomp terug. Let op: een lucht-lucht warmtepomp (de airco-achtige variant) komt níét in aanmerking voor ISDE — dat is precies het soort detail dat verkopers nog weleens weglaten. Of een warmtepomp voor jou uit kan, hangt af van je gasverbruik, je woning en of je cv-ketel toch al aan vervanging toe was.",
+          "Meer over de subsidie lees je in de subsidiegids 2026.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/blog/warmtepomp-subsidie-2026-complete-gids",
+        label: "De subsidiegids 2026",
+        description:
+          "Alles over de ISDE-subsidie voor warmtepompen in 2026: bedragen, voorwaarden en aanvraag.",
+      },
+      {
+        type: "text",
+        heading: "Mijn conclusie",
+        paragraphs: [
+          "De meeste mythes over warmtepompen zijn óf onzin óf een sterk overdreven kern van waarheid. Wat ik je vooral wil meegeven: laat je niet gek maken door verhalen op verjaardagen, maar ook niet door verkopers die alles rooskleurig voorstellen. De waarheid zit er bijna altijd tussenin.",
+          "Wil je weten wat voor jouw woning realistisch is? Doorloop dan vrijblijvend mijn keuzehulp. Ik ben onafhankelijk van fabrikanten en merken, dus je krijgt een eerlijk beeld — geen verkooppraatje.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/vergelijk",
+        label: "Doe de gratis keuzehulp",
+        description:
+          "Doorloop vrijblijvend de keuzehulp en krijg een eerlijk beeld voor jouw woning, onafhankelijk van fabrikanten en merken.",
+      },
+    ],
+  },
+  {
+    slug: "warmtepomp-oude-radiatoren",
+    title: "Warmtepomp en je oude radiatoren: moet alles eruit?",
+    description:
+      "Kunnen je bestaande radiatoren blijven als je een warmtepomp neemt, of moet alles vervangen? Ik leg eerlijk uit wanneer het wél kan, wanneer niet, en hoe je het zelf simpel test met de 50-graden-test.",
+    publishedAt: "2026-06-28",
+    intro:
+      "Dit is een van de vragen die ik het vaakst voorbij zie komen: \"Als ik een warmtepomp neem, moeten dan al mijn radiatoren eruit?\" Het korte antwoord is: niet per se. Het eerlijke antwoord is: het hangt ervan af — en ik leg hieronder precies waarvan.",
+    sections: [
+      {
+        type: "text",
+        heading: "Waarom radiatoren überhaupt een issue zijn",
+        paragraphs: [
+          "Een cv-ketel verwarmt het water dat naar je radiatoren stroomt tot zo'n 70 à 80 °C. Een warmtepomp werkt heel anders: die levert water van grofweg 35 tot 55 °C. Lagere temperatuur, beter rendement — dat is precies waarom een warmtepomp zuiniger is.",
+          "Maar een radiator geeft bij lager water ook minder warmte af. De vraag is dus niet \"is mijn radiator te oud\", maar: geeft mijn radiator bij die lagere temperatuur nog genoeg warmte af om de kamer warm te krijgen? Daar draait alles om.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Het type warmtepomp maakt het verschil",
+        paragraphs: [
+          "Of je radiatoren kunnen blijven, hangt sterk af van wat voor warmtepomp je kiest.",
+          "Bij een hybride warmtepomp kunnen je bestaande radiatoren vaak gewoon blijven hangen. De warmtepomp doet het grootste deel van het jaar het werk op lage temperatuur, en op de koudste dagen springt je cv-ketel bij met hoog-temperatuurwater. Die achtervang maakt het systeem een stuk vergevingsgezinder voor je oude radiatoren.",
+          "Bij een volledig elektrische (all-electric) warmtepomp ligt het lastiger. Er is geen ketel die bijspringt, dus je radiatoren moeten het bij lage temperatuur zelf rooien. Uit een enquête van EnergieJungle onder warmtepompbezitters (2025) bleek dat bij all-electric installaties in ongeveer 7 van de 10 gevallen de bestaande radiatoren werden vervangen of aangevuld — meestal met vloerverwarming of lagetemperatuurradiatoren. Dat betekent niet automatisch dat het bij jou ook moet, maar het is wel de realiteit waar je rekening mee moet houden.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "De 50-graden-test: zelf checken of je radiatoren geschikt zijn",
+        paragraphs: [
+          "Je hoeft niet te gokken. Er is een simpele test die je deze winter zelf kunt doen, en die geeft een verrassend goed beeld:",
+          "Zet de aanvoertemperatuur van je cv-ketel op 50 °C (in het menu van de ketel, niet de thermostaat).",
+          "Laat de thermostaat op je normale temperatuur staan, bijvoorbeeld 20 °C.",
+          "Kies een koude dag — het liefst als het buiten rond het vriespunt of kouder is.",
+          "Kijk of je woning warm wordt en blijft.",
+          "Wordt je huis op die 50 °C nog comfortabel warm? Dan is de kans groot dat je bestaande radiatoren ook met een warmtepomp voldoen. Blijft het kil, dan geven je radiatoren bij lage temperatuur te weinig af en is aanpassing nodig.",
+          "Let op één ding: het gaat erom óf de kamers warm worden, niet hoe snel. Bij lagere temperatuur duurt het opwarmen wat langer, zeker als je nachtverlaging gebruikt. Dat is normaal en geen teken dat het niet werkt.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Als je radiatoren niet voldoen: je opties",
+        paragraphs: [
+          "Stel, de test valt tegen. Dan heb je grofweg vier richtingen, en ik zet ze eerlijk op een rij — inclusief de nadelen.",
+          "Eerst isoleren. Vaak de slimste eerste stap. Beter geïsoleerd huis betekent minder warmtevraag, en dan voldoen je bestaande radiatoren ineens wél op lage temperatuur. Je bespaart bovendien sowieso op je verbruik.",
+          "Een paar radiatoren vervangen. Niet per se allemaal — soms is het de woonkamer die tekortschiet en de rest prima. Lagetemperatuurradiatoren hebben een groter oppervlak en geven bij 35–55 °C genoeg warmte af.",
+          "Vloerverwarming bijplaatsen. Ideaal voor een warmtepomp door het grote oppervlak en de lage temperatuur. Veel mensen kiezen voor vloerverwarming beneden en radiatoren boven. Wel een flinkere ingreep en investering.",
+          "Een hoge-temperatuur warmtepomp. Die kan water tot 70–75 °C leveren, waardoor je oude radiatoren kunnen blijven. Klinkt ideaal, maar er zit een prijs aan: zo'n warmtepomp verbruikt meer stroom en is duurder in aanschaf. Het rendement — en dus je besparing — is lager. Ik noem dit bewust als optie, maar zou er niet zomaar voor kiezen zonder eerst naar isolatie te kijken.",
+        ],
+      },
+      {
+        type: "text",
+        heading: "Mijn advies",
+        paragraphs: [
+          "Begin niet met de aanname dat alles eruit moet, want dat klopt vaak niet. Doe eerst de 50-graden-test, zodat je weet waar je staat. Overweeg je een hybride warmtepomp, dan kunnen je radiatoren waarschijnlijk grotendeels blijven. Ga je voor all-electric, houd er dan rekening mee dat aanpassingen vaker nodig zijn.",
+          "En het allerbelangrijkste: laat een installateur een echte warmteverliesberekening maken voordat je iets vervangt. Dat voorkomt dat je onnodig radiatoren weggooit die prima hadden voldaan — of dat je straks in de kou zit met radiatoren die het net niet redden.",
+          "Wil je weten welke warmtepomp bij jouw woning en je huidige verwarming past? Doorloop dan vrijblijvend mijn keuzehulp. Ik ben onafhankelijk van fabrikanten en merken, dus je krijgt een eerlijk beeld in plaats van een verkooppraatje. Twijfel je nog tussen hybride en all-electric, lees dan ook hybride warmtepomp: ervaringen.",
+        ],
+      },
+      {
+        type: "link",
+        href: "/vergelijk",
+        label: "Doe de gratis keuzehulp",
+        description:
+          "Doorloop vrijblijvend de keuzehulp en ontdek welke warmtepomp bij jouw woning en verwarming past.",
+      },
+      {
+        type: "link",
+        href: "/blog/hybride-warmtepomp-ervaringen",
+        label: "Hybride warmtepomp: ervaringen",
+        description:
+          "Een eerlijk verhaal over de hybride warmtepomp: hoe het werkt, voor wie het geschikt is en wat het kost.",
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
