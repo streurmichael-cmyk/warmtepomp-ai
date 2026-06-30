@@ -33,6 +33,34 @@ export const ISDE_LUCHT_WATER_MAX_LABEL = formatEuro(ISDE_LUCHT_WATER_MAX);
 /** '€2.000 – €3.500' — indicatieve range, afhankelijk van het vermogen. */
 export const ISDE_LUCHT_WATER_RANGE = `${ISDE_LUCHT_WATER_MIN_LABEL} – ${ISDE_LUCHT_WATER_MAX_LABEL}`;
 
+/**
+ * Bouwstenen van de ISDE-berekening voor de eerste lucht-water warmtepomp
+ * (geverifieerd bij RVO, juni 2026). Formule:
+ *   startbedrag + (per kW × vermogen) + (label A+++ ? bonus : 0)
+ * Controle: 4 kW + A+++ = 1025 + 225×4 + 200 = €2.125.
+ */
+export const ISDE_LUCHT_WATER_START = 1025;
+/** Subsidie per kW thermisch vermogen, vanaf de 1e kW, in euro's. */
+export const ISDE_LUCHT_WATER_PER_KW = 225;
+/** Extra bonus bij energielabel A+++, in euro's. */
+export const ISDE_LUCHT_WATER_LABEL_BONUS = 200;
+/** Vermogensbereik (kW) waarvoor we de calculator aanbieden. */
+export const ISDE_LUCHT_WATER_KW_MIN = 1;
+export const ISDE_LUCHT_WATER_KW_MAX = 20;
+
+/**
+ * Berekent het indicatieve ISDE-subsidiebedrag voor een eerste lucht-water
+ * warmtepomp op basis van het thermisch vermogen (kW) en of het toestel
+ * energielabel A+++ heeft.
+ */
+export function berekenIsdeLuchtWater(vermogenKw: number, isAplusplusplus: boolean): number {
+  return (
+    ISDE_LUCHT_WATER_START +
+    ISDE_LUCHT_WATER_PER_KW * vermogenKw +
+    (isAplusplusplus ? ISDE_LUCHT_WATER_LABEL_BONUS : 0)
+  );
+}
+
 /** Maximale ISDE-subsidie voor een hybride warmtepomp, in euro's. */
 export const ISDE_HYBRIDE_MAX = 2300;
 /** '€2.300' */

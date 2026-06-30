@@ -11,6 +11,7 @@ import {
   SubsidyIcon,
 } from "@/components/icons";
 import { SubsidyDisclaimer } from "@/components/subsidy-disclaimer";
+import { IsdeCalculator } from "@/components/isde-calculator";
 import { buildMetadata, webPageJsonLd } from "@/lib/seo";
 import { ISDE_LUCHT_WATER_MAX_LABEL, ISDE_LUCHT_WATER_RANGE } from "@/lib/subsidie";
 
@@ -94,6 +95,25 @@ export default function SubsidiePage() {
               mogelijk een flink deel van de aanschaf- en installatiekosten van je warmtepomp
               terugkrijgen.
             </p>
+          </div>
+        </section>
+
+        <section className="bg-white pb-20 sm:pb-24">
+          <div className="mx-auto max-w-3xl px-5 sm:px-8">
+            <div className="mb-8 text-center">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-action">
+                Bereken zelf
+              </p>
+              <h2 className="font-display text-2xl font-bold tracking-tight text-dark sm:text-3xl">
+                Wat krijg ik aan ISDE-subsidie?
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-muted">
+                Kies het vermogen en het energielabel van je warmtepomp, dan reken ik direct uit
+                op hoeveel subsidie je indicatief kunt rekenen voor je eerste lucht-water
+                warmtepomp.
+              </p>
+            </div>
+            <IsdeCalculator />
           </div>
         </section>
 
