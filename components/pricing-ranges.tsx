@@ -126,6 +126,13 @@ export function PricingRanges() {
             Bereken mijn persoonlijke prijs
             <ArrowRight className="h-5 w-5" />
           </Link>
+          <Link
+            href="/subsidie"
+            className="inline-flex items-center gap-2 rounded-xl border border-action bg-white px-8 py-4 text-base font-bold text-action transition-colors hover:bg-green/10"
+          >
+            Bereken je ISDE-subsidie 2026
+            <ArrowRight className="h-5 w-5" />
+          </Link>
         </div>
       </div>
     </section>
